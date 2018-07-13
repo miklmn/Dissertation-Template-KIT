@@ -1,0 +1,39 @@
+
+%Setze Titelseite in der IES-Art
+\newcommand{\iestitle}{
+	%\extratitle{\Arbeitsart \\ \Arbeitstitel}
+	\titlehead{
+		\vspace*{-40pt}
+		\begin{tabular}{ll}
+		   %\unilogo{15} &
+		   \includegraphics[width=17mm]{images/logo_4c}&
+		   \parbox[b]{10,9cm}{
+		     {\large \textsc{\Uni} }\\%[-0.4em]
+		     {\large \textsc{\Institut} }\\%[-0.4em]
+		     {\large \textsc{\Lehrstuhl} }\\%[-0.4em]
+	 	    {\normalsize \Lehrstuhlinhaber }
+			 }
+		%\begin{minipage}[t][20mm][c]{1mm}
+ 		%  \includegraphics[width=25mm]{ifl-symbol}
+		%\end{minipage}\hfill
+		\\[0.5cm]
+		\hline
+		\end{tabular}
+	}
+	\subject{\vspace*{3cm}\Arbeitsart}
+	\title{\Arbeitstitel}
+	\author{\vspace*{1cm}\\Vorgelegt von:\\ \Verfasserkomplett}
+	\publishers{\vspace*{3cm}Betreut von:\\ \Hauptreferent \\ \Korreferent \\[-2cm]}
+	\uppertitleback{%#1 #2 am\\
+	            \Uni \\
+	            \Institut \\
+	            \Lehrstuhl \\
+	            Thema: \Arbeitstitel \\
+	            Autor: \Verfasser}
+	\lowertitleback{\Adresse}
+	%\dedication{\Widmung}
+	\date{\Ort, den \Abgabedatum}
+	\maketitle
+}
+
+\iestitle

@@ -1,0 +1,128 @@
+%Tiefe des Inhaltsverzeichnisses setzen:
+% bei Report: 3 geht bis subsection
+\newcommand{\mytocdepth}{2}
+%Tiefe des Inhaltsverzeichnisses in PDF-Lesezeichen setzen (evtl. höher als die des toc)
+%\newcommand{\mybookmarkdepth}{\mytocdepth}
+\newcommand{\mybookmarkdepth}{3}
+%
+% Hier Breite von marginnotes setzen
+\newlength{\mymarginparwidth}
+%\setlength{\mymarginparwidth}{0.15\paperwidth}
+\setlength{\mymarginparwidth}{10mm}
+%\setlength{\mymarginparwidth}{0pt}
+% Abstand zwischen Seitennotizen und Text setzen
+\newlength{\mymarginparsep}
+%\setlength{\mymarginparsep}{}
+\setlength{\mymarginparsep}{3mm}
+%\setlength{\mymarginparsep}{5mm}
+%\setlength{\mymarginparsep}{0pt}
+
+% Abstand zwischen den Paragraphen
+\newlength{\myparskip}
+%\setlength{\myparskip}{0.5\baselineskip plus 0.5\baselineskip} % das wäre wohl default
+%\setlength{\myparskip}{0.5\baselineskip} %ohne Pluswerte (= keine Dehnung)
+%\setlength{\myparskip}{0.6\baselineskip} %ohne Pluswerte (= keine Dehnung)
+\setlength{\myparskip}{0.6\baselineskip plus 1pt minus 1pt} %mit Pluswerten (= Dehnung) und Minuswerten (= Stauchung)
+
+\newlength{\mychapterbeforeskip}
+\newlength{\mychapterafterskip}
+\newlength{\mysectionbeforeskip}
+\newlength{\mysectionafterskip}
+\newlength{\mysubsectionbeforeskip}
+\newlength{\mysubsectionafterskip}
+\newlength{\mysubsubsectionbeforeskip}
+\newlength{\mysubsubsectionafterskip}
+\newlength{\myparagraphbeforeskip}
+\newlength{\myparagraphafterskip}
+
+\setlength{\mychapterbeforeskip}{8\myparskip}
+\setlength{\mychapterafterskip}{2.5\myparskip}
+%
+\setlength{\mysectionbeforeskip}{2\myparskip}
+\setlength{\mysectionafterskip}{1.5\myparskip}
+%
+\setlength{\mysubsectionbeforeskip}{1.5\myparskip}
+\setlength{\mysubsectionafterskip}{1\myparskip}
+%
+\setlength{\mysubsubsectionbeforeskip}{1.5\myparskip}
+\setlength{\mysubsubsectionafterskip}{1\myparskip}
+%
+\setlength{\myparagraphbeforeskip}{1.5\myparskip}
+\setlength{\myparagraphafterskip}{1\myparskip}
+
+%Abstand zwischen der Abbilung/Tabelle und der Überschrift:
+%funktioniert aus irgendeinem Grund nicht!
+\newlength{\myaboveskip}
+%\setlength{\myaboveskip}{10pt}
+\setlength{\myaboveskip}{0pt}
+%Abstand nach der Überschrift einer Abbilung/Tabelle:
+\newlength{\mybelowskip}
+%\setlength{\mybelowskip}{10pt}
+\setlength{\mybelowskip}{0pt}
+%Abstand zwischen der Abbilung/Tabelle und der Überschrift:
+\newlength{\mysubcaptionskip}
+\setlength{\mysubcaptionskip}{6pt}
+%Abstand zwischen der Abbilung/Tabelle und der Überschrift:
+\newlength{\mycaptionskip}
+\setlength{\mycaptionskip}{5pt}
+%Abstand zwischen zwei Subfloats (muss manuell hinzugefügt werden)
+\newlength{\mysubfloatvskip}
+\setlength{\mysubfloatvskip}{10pt} % (default 12pt plus 2pt minus 2pt)
+
+%%% Vertikaler Abstand zwischen zwei Gleitobjekten
+\newlength{\myfloatsep}
+%\setlength{\myfloatsep}{\baselineskip} % (default 12pt plus 2pt minus 2pt)
+\setlength{\myfloatsep}{\baselineskip}
+%\setlength{\myfloatsep}{12pt}
+
+%%% Vertikaler Abstand zwischen der Top- oder Bottom-Bereich und Text-Bereich
+\newlength{\mytextfloatsep}
+%\setlength{\mytextfloatsep}{\baselineskip} % (default 20pt plus 2pt minus 4pt)
+%\setlength{\mytextfloatsep}{\myfloatsep}
+\setlength{\mytextfloatsep}{1.5\baselineskip}
+%\setlength{\mytextfloatsep}{12pt}
+
+%% Abstand zwischen Inline-Gleitobjekten, die mit "here" platziert worden sind,
+%% und dem darüber und darunter angeordneten Fließtext fest
+%% Beispiel: \intextsep5mm plus3mm minus2mm
+%\setlength{\intextsep}{0.5\baselineskip} % Platz ober- und unterhalb des Bildes
+\newlength{\myintextsep}
+\setlength{\myintextsep}{\baselineskip} % (default 12pt plus 2pt minus 2pt) 
+%\setlength{\myintextsep}{10pt} % (default 12pt plus 2pt minus 2pt) 
+
+%% Weitere Angaben:
+%Vorlage KIT-Verlag:
+%usepackage[a5paper,headheight=1.5\baselineskip,top=25mm,lines=31,heightrounded=true,bindingoffset=15mm,textwidth=106mm]{geometry}
+%\usepackage[a4paper,headheight=1.5\baselineskip,top=25mm,lines=46,heightrounded=true,bindingoffset=15mm,textwidth=160mm]{geometry}
+% footskip: Abstand zwischen Textunterkante und Seitenzahl
+% KIT-Verlag: mindestens 10mm bzw. 3 Zeilen
+% Koma-Standard 3.5\baselineskip
+% IES-Vorlage: 2\baselineskip
+% Abstand zwischen Textkörper und Unterkante Fußzeile (Seitenzahlen)
+\newlength{\myfootskip}
+\setlength{\myfootskip}{11mm}
+% Abstand zwischen Textkörper und Linie in der Kopfzeile
+\newlength{\myheadsep}
+%\setlength{\myheadsep}{5mm}
+\setlength{\myheadsep}{7mm} %Da eine kleinere Schriftgröße verwendet wird
+
+\newlength{\myheadheight}
+\setlength{\myheadheight}{1.5\baselineskip}
+
+\newlength{\mytop}
+\setlength{\mytop}{25mm}
+
+\newlength{\mybindingoffset}
+\setlength{\mybindingoffset}{8mm}
+
+\newlength{\myinner}
+\setlength{\myinner}{15mm}
+
+\newlength{\myouter}
+\setlength{\myouter}{15mm}
+
+\newlength{\mytextwidth}
+\setlength{\mytextwidth}{106mm}
+
+\newboolean{SetFloatsVerticallyCentered}
+\setboolean{SetFloatsVerticallyCentered}{false}

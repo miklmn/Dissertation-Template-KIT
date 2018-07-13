@@ -1,0 +1,124 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Notation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% Add an entry to the table of contents
+\addcontentsline{toc}{chapter}{Notation}
+%
+%% No need for a separate bookmark (dove via toc)
+%\pdfbookmark[0]{Notation}{notation}
+%
+%Add a header title (Kolumnentitel setzen)
+\markboth{Notation}{Notation}
+%
+This chapter introduces the notation and symbols which are used in this thesis.
+%In cases where a symbol has more than one meaning, the context (or a specific statement) resolves the ambiguity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{General notation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myNotationDescTable}
+%
+\myNotationDescTableEntry{Scalars}{italic Roman and Greek lowercase letters}{x, \alpha}
+\myNotationDescTableEntry{Sets}{Greek uppercase letters}{\Theta}
+\myNotationDescTableEntry{Vectors}{bold Roman lowercase letters}{\symbf{t}}
+\myNotationDescTableEntry{Matrices}{bold Roman uppercase letters}{\symbf{R}}
+\myNotationDescTableEntry{State spaces}{bold calligraphic Roman uppercase letters}{{\statespace}}
+\myNotationDescTableEntry{Random variables}{italic Roman uppercase letters}{E}
+\myNotationDescTableEntry{Multi-dimensional random variables}{bold italic Roman uppercase letters}{\symbfit{E}}
+%\myNotationDescTableEntry{Distributions}{calligraphic uppercase letters }{\mathcal{N}}
+%
+\end{myNotationDescTable}
+\vspace{-\parskip}
+In multidimensional sets of elements related to time series, the first index denotes time.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Distributions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myNotationTable}
+%
+\myNotationTableEntryMath{\GaussDist}{Gaussian normal distribution}
+\myNotationTableEntryMath{{\chi}^2_{n}}{n-dimensional chi-square distribution}
+%
+\end{myNotationTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Numbers and indexing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myNotationTable}
+%
+\myNotationTableEntryMath{\NatNum}{natural numbers}
+\myNotationTableEntryMath{\NatNum_0}{natural numbers including zero (non-negative integers)}
+\myNotationTableEntryMath{k, t}{discrete points in time}
+\myNotationTableEntryMath{i, j, \ell, q}{indexing for objects, measurements and points}
+%\myNotationTableEntryMath{m, n}{number of detections/measurements, number of tracked objects}
+%
+\end{myNotationTable}
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{Indexing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{myNotationTable}
+%
+%\myNotationTableEntryText{$k$, $t$}{discrete points in time}
+%\myNotationTableEntryText{$i$, $j$, $q$}{indexing for objects, measurements and points}
+%\myNotationTableEntryText{$m$, $n$}{number of detections/measurements, number of tracked objects}
+%
+%\end{myNotationTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Geometry (coordinates, vehicle, {\newline}and camera modeling)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myNotationTable}
+%
+\myNotationTableEntryMath{x, y, z}{world coordinates}
+\myNotationTableEntryMath{u, v}{image coordinates}
+\myNotationTableEntryMath{b}{stereo base line}
+\myNotationTableEntryMath{f}{focal length}
+\myNotationTableEntryMath{\Delta{u}}{displacement in the image, disparity}
+\myNotationTableEntryMath{d(\cdot)}{distortion function}
+\myNotationTableEntryMath{\kappa_1, \kappa_2}{radial distortion parameters}
+\myNotationTableEntryMath{\rho_1, \rho_2}{tangential distortion parameters}
+%
+\myNotationTableEntryMath{l, w, h}{length, width, height}
+\myNotationTableEntryMath{r}{radius}
+%
+\myNotationTableEntryMath{A}{area}
+\myNotationTableEntryMath{V}{volume}
+%
+\myNotationTableEntryMath{v}{velocity}
+\myNotationTableEntryMath{a}{acceleration}
+\myNotationTableEntryMath{\alpha}{steering angle}
+%\myNotationTableEntryText{}{}
+\myNotationTableEntryMath{\varphi}{orientation angle}
+\myNotationTableEntryMath{\dot{\varphi}}{yaw rate}
+%
+\myNotationTableEntryMath{\pkt}{point in 2D and 3D space}
+\myNotationTableEntryMath{\pHomogen}{point in homogeneous coordinates}
+%
+\myNotationTableEntryMath{\RotMat}{rotation matrix}
+\myNotationTableEntryMath{\transVec}{translation vector}
+%
+\end{myNotationTable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Object state modeling and probabilities}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{myNotationTable}
+%
+\myNotationTableEntryMath{\statespace}{state space}
+\myNotationTableEntryMath{\measurementspace}{measurement space}
+%
+\myNotationTableEntryText{}{}
+\myNotationTableEntryMath{\Fmat}{system matrix of the Kalman Filter}
+\myNotationTableEntryMath{\Gmat}{control matrix of the Kalman Filter}
+\myNotationTableEntryMath{\Hmat}{measurement matrix of the Kalman Filter}
+\myNotationTableEntryMath{\KGk}{Kalman gain at time $k$}
+%
+\end{myNotationTable}
+%

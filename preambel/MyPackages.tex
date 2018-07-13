@@ -1,0 +1,109 @@
+%% Define commands that don't eat spaces.
+\usepackage{xspace}
+
+%% IfThenElse: muss frueher eingebunden werden wegen Abfragen zur Sprache etc.
+%\usepackage{ifthen}
+
+%% for adding invisible comments
+%% not needed anymore since included in package "versions"
+%% Braucht ein \write. Vielleicht eins zuviel, Asymptote braucht auch welche, es gibt ing. nur 16.
+%\usepackage{comment}
+%\includecomment{showcomment}
+%\excludecomment{hidecomment}
+
+%for conditional text inclusions
+\usepackage[nogroup]{versions}
+
+%for compact lists
+\usepackage{mdwlist}
+
+%% Einstellungen für die Aufzählungen
+%% Kein Abstand zwischen den Item-Einträgen
+%\setlist{noitemsep}
+%%Verkleinerter Abstand zwischen den Item-Einträgen
+\setlist{%
+		%before=\RaggedRight ,%Flattersatz in itemize- und enumerate-Umgebungen erzwingen
+		%funktioniert nicht so wie gewünscht, s.
+		%https://tex.stackexchange.com/questions/104088/problem-with-enumitem-and-raggedright
+		%Workaround weiter unten mit \AtBeginEnvironment{itemize}{\preto\item{\RaggedRight}}
+		%Ränder setzen:
+		%leftmargin=2em, %linkes Rand explizit setzen
+		%rightmargin=1em, %rechtes Rand vergrößern
+		rightmargin=2mm,
+		itemsep=0.2\baselineskip,% 
+		parsep=0.2\baselineskip%
+		%topsep=0.2\baselineskip,
+		%partopsep=0.2\baselineskip,%
+}
+%Flattersatz in itemize- und enumerate-Umgebungen erzwingen
+% Vorgabe vom KIT-Verlag: keine Worttrennung in Aufzählungen, daher \raggedright statt \RaggedRight
+%\AtBeginEnvironment{itemize}{\preto\item{\RaggedRight}}
+\AtBeginEnvironment{itemize}{\preto\item{\raggedright}}
+\AtBeginEnvironment{enumerate}{\preto\item{\raggedright}}
+%\AtBeginEnvironment{description}{\preto\item{\raggedright}}
+\AtBeginEnvironment{itemize*}{\preto\item{\raggedright}}
+\AtBeginEnvironment{enumerate*}{\preto\item{\raggedright}}
+%\AtBeginEnvironment{description*}{\preto\item{\raggedright}}
+%
+
+%for allowing hyphenation of words that contain a dash
+%using shortcuts \-/, \=/, \--, \==, \---, and \===
+\usepackage[shortcuts]{extdash}
+
+%Zur besseren Silbentrennung
+%s. http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+
+\usepackage[super]{nth}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,positioning,shadows,backgrounds,chains,topaths,matrix,scopes,decorations,decorations.pathmorphing,decorations.markings,fadings,shapes.geometric,shapes.multipart,shapes.misc,through,automata,fit}
+
+%Einschliessen von Matlab-Grafiken:
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+%Externe Generierung von plots, s. https://tex.stackexchange.com/questions/7953/how-to-expand-texs-main-memory-size-pgfplots-memory-overload
+%% Braucht -shell-escape Kompilieroption!!!
+%\usepgfplotslibrary{external} 
+%\tikzexternalize
+
+
+%\usepackage{listings} \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt} %\lstset{language=Perl}
+
+%Achtung! Verwendung von Glossaries bzw. des Befehls \makeglossaries benötigt Perl!!!!
+%Unter Linux ist Perl vorhanden, unter Windows muss es installiert werden, s.
+%http://www.mrunix.de/forums/showthread.php?68892-Tip-Glossaries-Paket-was-oft-falsch-l%E4uft
+%bzw.
+%http://latex-community.org/know-how/latex/55-latex-general/263-glossaries-nomenclature-lists-of-symbols-and-acronyms#texniccenter
+%\usepackage[ngerman]{translator}
+\usepackage[%
+xindy,
+%translate=true,
+%translate=babel, %verwende Babel zur Übersetzung der Überschriften
+translate=false, %keine Übersetzung der Überschriften da ansonsten Zusatzpakete geladen werden müssen
+nonumberlist,    %keine Seitenzahlen anzeigen
+nopostdot,       %den Punkt am Ende jeder Beschreibung deaktivieren
+acronym,         %ein Abkürzungsverzeichnis erstellen
+symbols,					%ein Symbolverzeichnis
+toc,             %Einträge im Inhaltsverzeichnis
+section=chapter, %im Inhaltsverzeichnis auf chapter-Ebene erscheinen
+%numberedsection=autolabel,%Kapitel nicht nummerieren  0> auskommentiert lassen!
+%nohypertypes={glossary}, %nur den ersten Eintrag als Hyperlink anzeigen
+nohypertypes={acronym,notation}, % keine Hyperlinks für Acronyme und Notation
+%style=list
+%style=long
+%style=super
+]%
+{glossaries}
+\usepackage{glossary-longragged} %zusätzlich laden um Glossareinträge linksbündig zu setzen (Wunsch KIT-Verlag)
+%\usepackage{glossary-longbooktabs}
+\setglossarystyle{longragged} % kann erst gesetzt werden, nachdem das Paket glossary-longragged geladen worden ist
+%\renewcommand*{\glspostdescription}{} %Zusätzlichen Punkt am Ende jeder Beschreibung deaktivieren
+\glsdisablehyper %Deaktivieren von Hyperlinks auf das Glossar.
+%%\newglossary[alg]{acronym}{acr}{acn}{\acronymname} %Unnötig durch die Option "acronym" des glossaries-Pakets.
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+\newglossary[slg]{symbolslist}{syi}{syg}{List of Symbols}
+%Glossarentries sollen fett sein
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+%%%makeglossaries muss nach \newglossary eingebunden werden!
+%\makeglossaries

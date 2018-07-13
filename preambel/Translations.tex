@@ -1,0 +1,33 @@
+%% Begriffe in deutsch oder englisch je nach Hauptsprache
+
+%Makro zur Definition eines neuen multilingualen Bezeichner-Makros
+\makeatletter
+\newcommand{\newlanguagecommand}[1]{%
+  \newcommand#1{%
+    \@ifundefined{\string#1\languagename}
+      {``No definition of \texttt{\string#1} for \languagename. Please define it in the file Translations.tex !''}
+      {\@nameuse{\string#1\languagename}}%
+  }%
+}
+%Mit diesem Makro können Varianten in verschiedenen Sprachen hinzugefügt werden.
+\newcommand{\addtolanguagecommand}[3]{%
+  \@namedef{\string#1#2}{#3}}
+\makeatother
+
+
+%Name für das Lesezeichen für die Titelseite
+\newlanguagecommand{\TransTitlePageName}
+\addtolanguagecommand{\TransTitlePageName}{ngerman}{Titelseite}
+\addtolanguagecommand{\TransTitlePageName}{english}{Cover}
+
+\newlanguagecommand{\TransOwnPublications}
+\addtolanguagecommand{\TransOwnPublications}{ngerman}{Publikationen}
+\addtolanguagecommand{\TransOwnPublications}{english}{Publications}
+
+\newlanguagecommand{\TransOwnPatents}
+\addtolanguagecommand{\TransOwnPatents}{ngerman}{Patente}
+\addtolanguagecommand{\TransOwnPatents}{english}{Patents}
+
+\newlanguagecommand{\TransSupervisedTheses}
+\addtolanguagecommand{\TransSupervisedTheses}{ngerman}{Betreute studentische Arbeiten}
+\addtolanguagecommand{\TransSupervisedTheses}{english}{Supervised student theses}

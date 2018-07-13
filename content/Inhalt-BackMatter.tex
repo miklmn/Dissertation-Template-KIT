@@ -1,0 +1,183 @@
+\begin{showBackmatter}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%             Anhang             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\backmatter%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%          Bibliographie         %%%%
+%%% (Achtung! Bibliographie darf im  %%%
+%%%  deutschen nicht in den Anhang!) %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showBibliography}%
+%% mit BibLaTeX:
+\printbibliography
+\end{showBibliography}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%        Eigene Publikationen        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showOwnPublications}%
+%
+%% Hier eigene Publikationen auflisten
+\begin{refsection}[\bibpathOwnPublications]
+\newrefcontext[sorting=ynt]
+%
+%% Aufruf der Quellen ohne Verweis im Text:
+%
+%% entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen
+%\nocite{%
+%GrinbergOhrBeyerer-ITSC2009,
+%TeutschGrinberg-RobustDetectionInWAMI-2016}
+%
+%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+\nocite{*}
+%
+\printbibliography[env=bibliographyNUM,%
+									 keyword=ownpubl,%
+									 %heading=subbibliography,%
+									 %nottype=patent,%
+									 title={\TransOwnPublications}]
+\end{refsection}
+\end{showOwnPublications}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%           Eigene Patente           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showOwnPatents}%
+%
+\begin{refsection}[\bibpathOwnPatents]
+\newrefcontext[sorting=ynt]
+%
+%% Aufruf der Quellen ohne Verweis im Text:
+%%
+%% entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen
+%\nocite{%
+%PatentValeoUltraschall2016DE,
+%PatentValeoUltraschall2016WO}
+%%
+%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+\nocite{*}
+%%
+\printbibliography[env=bibliographyNUM,%
+									 keyword=ownpatent,%
+									 %heading=subbibliography,%
+									 type=patent,%
+									 title={\TransOwnPatents}]
+\end{refsection}
+\end{showOwnPatents}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Betreute studentische Arbeiten   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showSupervisedTheses}%
+%%
+\begin{refsection}[\bibpathStudentTheses]
+\newrefcontext[sorting=ynt]
+%
+%% Aufruf der Quellen ohne Verweis im Text:
+%
+%% entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen
+%\nocite{%
+%Mustermann-2016,
+%Mustermann_2017}
+%
+%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+\nocite{*}
+%%
+\printbibliography[env=bibliographyNUM,%
+									 keyword=supervised,%
+									 %heading=subbibliography,%
+									 %type=thesis,%
+									 title={\TransSupervisedTheses}]
+\end{refsection}
+\end{showSupervisedTheses}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abbildungs- und Tabellenverzeichnis  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showLoF}
+\listoffigures
+\end{showLoF}%
+\begin{showLoT}
+\listoftables
+\end{showLoT}%
+\begin{showGlossary}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Alle Verzeichnisse ausgeben:  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\IfDefined{printglossaries}{\printglossaries}
+%
+% Oder einzelne Verzeichnisse ausgeben:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%          Abkürzungen           %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\IfDefined{printglossary}{\printglossary[type=\acronymtype]} %,style=long-booktabs]}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%            Symbole             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\IfDefined{printglossary}{\printglossary[type=symbolslist]} %,style=long-booktabs]}
+%\IfDefined{printglossary}{\printglossary[type=notation,sort=def]} %,style=long-booktabs]}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%      Begriffsverzeichnis       %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\IfDefined{printnomenclature}{\printnomenclature}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%            Glossar             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\IfDefined{printglossary}{\printglossary[type=notation,style=longheader]}
+%\IfDefined{printglossary}{\printglossary[title=English-German glossary,style=super]}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%     Stichwortverzeichnis       %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\IfDefined{printindex}{\printindex}
+%
+\end{showGlossary}%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%             Anhang             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showAppendix}
+\appendix
+% Platziere einen Verweis auf 'Anhang'
+% ins Inhaltsverzeichnis
+\phantomsection
+\addcontentsline{toc}{part}{Appendix}
+%
+\input{content/Z-Anhang/Derivations.tex}
+%
+%
+\end{showAppendix}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%         Liste der TODOs        %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showTODOs}
+%\ifthenelse{\boolean{showTODOs}}{%if TODOs should be displayed:
+\phantomsection
+\listofTODOs
+\hypertarget{TODO-List}{}
+% Zum Inhaltsverzeichnis hinzufügen
+\addcontentsline{toc}{part}{\todoListName}
+% }{%if no TODOs should be displayed: don't do anything
+% \ }%
+\end{showTODOs}%
+%
+\end{showBackmatter}%

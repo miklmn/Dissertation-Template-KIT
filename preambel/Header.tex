@@ -1,0 +1,161 @@
+%%%%%%%%%% HAUPTDOKUMENT DER LATEX-VORLAGE DES IES %%%%%%%%%%%%%%%
+%% Im wesentlichen basierend auf der Vorlage von Matthias Pospiech
+%% http://www.matthiaspospiech.de/latex/vorlagen/allgemein/
+%% für KOMA-Script 3.x
+%% Erweitert und angepasst von Philipp Woock und Michael Grinberg
+%% Version 2.0
+%% Juli 2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% PW: Paket silence unterdrückt Warnungen. Schreibt die unterdrückten Sachen aber in eine .sil Datei
+%% Silence braucht für save auch ein TeX \write :-(
+% \usepackage[debrief, save]{silence}
+%\RequirePackage[options]{silence} vor \documentclass{}
+% PW: Ausschalten bekannter Warnungen.
+\RequirePackage{silence}
+\WarningFilter{typearea}{Maybe no optimal type area settings}
+\WarningFilter{typearea}{Bad type area settings}
+\WarningFilter{Mathdots}{Redefining amsmath commands}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{pdfpages}{I will use a dummy}
+\WarningFilter{caption}{Unused}
+\WarningFilter{hyperref}{Rerun to get /PageLabels}
+\WarningFilter{scrwfile}{THIS IS AN ALPHA VERSION}
+\WarningFilter*{ifplatform}{^^J \space\space\space shell escape is disabled}
+
+%% Dokumentenklasse (Koma Script) -----------------------------------------
+\documentclass[%
+  % Sprachunterstützung:
+  % (Dokumenthauptsprache ist die, die zuletzt genannt ist - sie wird 
+  % für die Beschriftung von Abbildungen und Verzeichnissen verwendet)
+%  ngerman,% Deutsch (neue Rechtschreibung)
+%  english,% Englisch
+  %draft,     % Entwurfsstadium
+  final,      % fertiges Dokument
+	% --- Paper Settings ---
+	%% Für Dissertationen nimmt KIT Scientific Publishing sowohl A4 als auch A5.
+	%% A4 wird einfach runterskaliert, muss aber entsprechend eine größere
+	%% Schrift haben, was ggf. Nacharbei mit sich ziehen kann.
+	%% Daher besser direkt im A5-Format
+  %paper=a4,
+  paper=a5,
+	%% Hochformat/Querformat
+  paper=portrait, % landscape
+  pagesize=auto, % driver
+  % --- Base Font Size ---
+	%% Schriftgröße
+  %fontsize=9pt,%  9pt ist dem KIT-Verlag bei A5 aktuell zu klein
+  fontsize=10pt,%  bei A5 ist 10pt Mindest-Schriftgröße (Forderung von KIT-Verlag)
+	%fontsize=14pt,%  % 11 bei A4.
+	% --- Koma Script Version ---
+  version=last %,
+% ]{scrbook} % Mögliche Klassen scrartcl, scrreprt, scrbook
+ ]{scrreprt} % 
+
+\usepackage{scrhack}  %um Warnungen zu beheben
+
+% Verwendung von ifthenelse
+\usepackage{ifthen}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/xcolor/xcolor.pdf
+% Farben
+% Muss früher geladen werden, da ansonsten Optionen-Clash mit xelibertine?
+% Incompatible: Do not load when using pstricks !
+\usepackage[%
+	table, % Load for using rowcolors command in tables
+	%cmyk, % CMYK Farbraum
+	dvipsnames % for using the extended name set
+]{xcolor}
+
+% Encoding der Quellcode-Dateien (sonst funktionieren Umlaute in den Quellcodedateien nicht)
+\input{preambel/EncodingAndFont}
+
+%%%%%%%%%%%%%%%% HIER EINSTELLEN, OB ENGLISCH ODER DEUTSCH USW.
+%%% Angaben zum Dokument (Autor, Titel etc.)
+\input{preambel/AlleAngaben}
+
+
+%%% LaTeX-Präambel
+%%% Hier werden Pakete eingebunden, Teil I
+\input{preambel/preambel-commands}
+
+%% Es werden jeweils eines der begrenzt verfügbaren TeX-\writes verwendet für
+% Table of Contents
+% List of figures
+% List of tables
+% List of listings
+% List of theorems
+
+%%% Einstellungen zu Seitenlayout, Abständen etc.
+\input{preambel/settings}
+
+%%% Einstellungen für KOMA-Script
+%%% Hier werden die KOMAoptions gesetzt wie z.B. Ränder, Kopfzeilen, einseitig/zweiseitig, Absatzabstände, Inhaltsverzeichnis usw.
+%%% Alle Optionen sind im scrguide.pdf erklärt, die ihr in Eurem LaTeX-Distributionsverzeichnis bei den Docs findet!
+\input{preambel/KomaOptions}
+
+%% Präambel Teil II
+\input{preambel/preambel}
+
+%%%Alle Pakete, die ich selbst eingebunden habe
+\input{preambel/MyPackages}
+
+%% Mathe-Pakete laden
+\input{preambel/Math}
+
+
+%% Hauptsprache des Dokuments setzen
+\ifthenelse{\boolean{iesenglishs}}{%
+	\selectlanguage{english}
+}{%
+	\selectlanguage{ngerman}
+}
+
+%%PW: Glyphtounicode für pdfx, PDF/A-Kompatibilität. In Ruhe lassen!
+%\input{preambel/glyphtounicode.tex}
+
+% Angaben zu den Pfaden zu Grafiken, BibTeX-.Datei etc
+\input{preambel/AllePfade}
+
+%%%% Neue Befehle / Makros
+\input{preambel/Newcommands}
+
+\input{preambel/Translations}
+
+%%% Wenn man das Aussehen der Tabellen ändern will, findet man die Einstellungen in dieser Datei
+%\input{macros/TableCommands}
+
+% In der Arbeit verwendete Spezialelemente, Acronyme und Glossarbegriffe
+\input{preambel/SpecialSymbols}
+\input{preambel/Acronyms}
+\input{content/Z-Anhang/Glossary}
+
+
+
+%%% Silbentrennung
+\input{preambel/Hyphenation}
+
+%remove padding in fboxes
+\setlength{\fboxsep}{0pt}
+% make a wider description in the glossary
+\setlength{\glsdescwidth}{0.7\linewidth}
+
+%% Optionen für das Stichwortverzeichnis:
+%% Create the file IndexStyle.ist on the fly:
+%\usepackage{filecontents}
+%\begin{filecontents}{IndexStyle.ist}
+%headings_flag 1 % we use headings for letters
+%heading_prefix "{\\textbf{\\hspace{4.5em}" % and they should be bold
+%heading_suffix "}}\\nopagebreak\n"
+%\end{filecontents}
+
+% Auszufuehrende Befehle  ------------------------------------------------
+%%\makeindex[options=-s ../../macros/IndexStyle.ist]
+\IfDefined{makeindex}{\makeindex[options=-s preambel/IndexStyle.tex]}
+\IfDefined{makenomenclature}{\makenomenclature}
+%%makeglossaries muss nach \newglossary eingebunden werden!
+\makeglossaries
+\glsaddall
+\IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
+\listfiles
+%------------------------------------------------------------------------

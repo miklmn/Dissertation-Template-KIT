@@ -1,0 +1,167 @@
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf
+\usepackage{ifxetex}
+%
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/oberdiek/ifpdf.sty
+% command for testing for pdf-creation
+\usepackage{ifpdf} %\ifpdf \else \fi
+%
+% Amsmath - Mathematik Basispaket
+%
+% fuer pst-pdf displaymath Modus vor pst-pdf benoetigt.
+\usepackage[%
+   centertags, % (default) center tags vertically
+   %tbtags,    % 'Top-or-bottom tags': For a split equation, place equation numbers level
+               % with the last (resp. first) line, if numbers are on the right (resp. left).
+   sumlimits,  %(default) Place the subscripts and superscripts of summation
+               % symbols above and below
+   %nosumlimits, % Always place the subscripts and superscripts of summation-type
+               % symbols to the side, even in displayed equations.
+   intlimits,  % Like sumlimits, but for integral symbols.
+   %nointlimits, % (default) Opposite of intlimits.
+   namelimits, % (default) Like sumlimits, but for certain 'operator names' such as
+               % det, inf, lim, max, min, that traditionally have subscripts placed underneath
+               % when they occur in a displayed equation.
+   %nonamelimits, % Opposite of namelimits.
+   %leqno,     % Place equation numbers on the left.
+   %reqno,     % Place equation numbers on the right.
+   fleqn,     % Position equations at a fixed indent from the left margin
+   			  % rather than centered in the text column.
+]{amsmath} %
+%
+\usepackage{amsfonts}
+%\usepackage{amssymb} %bei Kompilierung mit LaTeX verursacht probleme mit tikz
+\usepackage[fixamsmath,disallowspaces]{mathtools}
+\usepackage{fixmath}
+% eqnarray nicht zusammen mit amsmath benutzen, siehe l2tabu.pdf für
+% Hintergruende.
+%
+%--------------------------------
+% Hier die Schriftart auswählen:
+%--------------------------------
+%\def\UseLibertine{true} %Problem bei Bibliografie: fett und kursiv statt nur kursiv
+%\def\UseLibertinus{true}
+%\def\UseSTIX{true}
+%\def\UseXITS{true}
+\def\UseLibertinusFrutigerSTIXMix{true}
+%--------------------------------
+%
+%
+\makeatletter
+\ifxetex %Nutzung von XeLaTeX anstatt nur LaTeX:
+	\usepackage{unicode-math}
+	%--------------------------------------------------
+	%  Libertine Fonts
+	%--------------------------------------------------
+	\ifdefined\UseLibertine
+		\setmainfont{Linux Libertine O}
+		\setsansfont[%
+								%SmallCapsFont={TeX Gyre Termes},
+								%SmallCapsFeatures={Letters=SmallCaps}
+								]%
+								{Libertinus Sans}
+		\setmathfont{Libertinus Math}
+	\fi
+	%--------------------------------------------------
+	%  Libertinus Fonts
+	%--------------------------------------------------
+	\ifdefined\UseLibertinus
+		\setmainfont[
+								%Scale = 0.95,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .otf
+								]{libertinusserif}
+		\setsansfont[
+								%Scale = 0.85,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								%BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .otf
+								]{libertinussans}
+		\setmonofont[
+								%Scale = 0.95,
+								FakeStretch = 0.8,
+								UprightFont = *-regular,
+								%ItalicFont = *-italic,
+								%BoldFont = *-bold,
+								% AutoFakeBold = 1.5,
+								Extension = .otf
+								]{libertinusmono}
+		\setmathfont[
+								%Scale = 0.95,
+								Extension=.otf
+								]{libertinusmath-regular}
+	\fi
+	%--------------------------------------------------
+	%  STIX Fonts; use STIX-Regular as SANS font
+	%--------------------------------------------------
+	\ifdefined\UseSTIX
+		\setmainfont[
+								UprightFont = *-Regular,
+								ItalicFont = *-Italic,
+								BoldFont = *-Bold,
+								BoldItalicFont = *-BoldItalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .otf
+								]{STIX2Text}
+		\setsansfont{STIX2Text-Regular.otf}
+		\setmathfont{STIX2Math.otf}
+	\fi
+	%--------------------------------------------------
+	%  XITS Fonts; use xits-regular as SANS font
+	%--------------------------------------------------
+	\ifdefined\UseXITS
+		\setmainfont[
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .otf
+								]{xits}
+		\setsansfont{xits-regular.otf}
+		\setmathfont{xits-math.otf}
+	\fi
+	\ifdefined\UseLibertinusFrutigerSTIXMix
+		\setmainfont[
+								%Scale = 0.95,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .otf
+								]{libertinusserif}
+		\setsansfont[
+								%Scale = 0.90,
+								UprightFont = *-Roman,
+								ItalicFont = *-Italic,
+								BoldFont = *-Bold,
+								BoldItalicFont = *-BoldItalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Extension = .ttf
+								]{FrutigerLTCom}
+		\setmonofont[
+								%Scale = 0.95,
+								FakeStretch = 0.8,
+								UprightFont = *-regular,
+								Extension = .otf
+								]{libertinusmono}
+		\setmathfont[
+								%Scale = 0.85,
+								Extension = .otf
+								]{STIX2Math}
+	\fi
+\else %falls doch LaTeX anstatt XeLaTeX verwendet wird soll:
+	\usepackage[utf8x]{inputenc} %Die Dateien liegen in der UTF-8-Kodierung vor
+	\usepackage[T1]{fontenc} %Der Text enthält Umlaute
+	\usepackage{libertine}
+	\usepackage{libertinust1math}
+\fi
+%}
+\makeatother

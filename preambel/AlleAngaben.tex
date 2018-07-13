@@ -1,0 +1,96 @@
+% ******  Angaben zur Arbeit ******
+
+
+%% Booleans, mit deren Hilfe wichtige Festlegungen gemacht werden.
+%% Belegung mit "true" und "false" weiter unten
+\newboolean{iesenglishs}     % Hauptsprache der Arbeit: Englisch oder Deutsch
+\newboolean{useiosblogo}     % Soll zusätzlich das IOSB-Logo verwendet werden
+\newboolean{isdissertation}  % Ist die Arbeit eine Dissertation?
+\newboolean{printMuster}     % Die Seiten mit dem Wort "Muster" bedrucken
+\newboolean{coloredlinks}    % Sollen die Links farbig dargestellt werden (oder schwarz für den Druck)?
+\newboolean{istgenehmigt}    % Bei Dissertationen: handelt es sich um die genehmigte Version?
+\newboolean{showFrame}       % Sollen die Satzspiegel-Ränder angezeigt werden?
+\newboolean{showGrid}        % soll ein Gitter angezeigt werden?
+
+%% Hier true oder false auswählen!!!
+\setboolean{iesenglishs}{true}
+\setboolean{useiosblogo}{true}
+\setboolean{isdissertation}{true}
+\setboolean{printMuster}{false}
+\setboolean{coloredlinks}{true}
+\setboolean{istgenehmigt}{true}
+\setboolean{showFrame}{false}
+\setboolean{showGrid}{false}
+
+% Titel der Arbeit
+\newcommand{\Worktitle}{Hier den kompletten Titel der Arbeit angeben}
+\newcommand{\WorktitleDivided}{Hier den manuell\\umbrochenen Titel der Arbeit\\für die Titelseite angeben}
+
+% Typ der Arbeit angeben
+\newcommand{\TypeOfThesis}{%
+%Dissertation%
+%Seminararbeit%
+%Masterarbeit%
+%Bachelorarbeit%
+%Diplomarbeit%
+%Studienarbeit%
+%Technischer Bericht%
+PhD thesis%
+%Master thesis%
+%Bachelor thesis%
+%Diploma thesis%
+%Term paper%
+%Technical report%
+}
+
+\newcommand{\Authortitle}{Dipl.-Ing.~}
+\newcommand{\AuthorFirstname}{Max}
+\newcommand{\AuthorSurname}{Mustermann}
+\newcommand{\Authorname}{\AuthorFirstname \  \AuthorSurname}
+\newcommand{\AuthorFull}{\Authortitle \Authorname}
+\newcommand{\PlaceOfBirth}{Kiel}
+\newcommand{\DocDegreeVorgelegt}{Doktors der Ingenieurwissenschaften /\newline Doktors der Naturwissenschaften}
+\newcommand{\DocDegreeGenehmigt}{Doktors der Ingenieurwissenschaften}
+\ifthenelse{\boolean{istgenehmigt}}{%
+		\newcommand{\DocDegree}{\DocDegreeGenehmigt}
+}{%
+		\newcommand{\DocDegree}{\DocDegreeVorgelegt}
+}%
+
+\newcommand{\Uni}{Karlsruhe Institut für Technologie (KIT)}
+\newcommand{\Institut}{Institut für Anthropomatik}
+\newcommand{\Lehrstuhl}{Lehrstuhl für Interaktive Echtzeitsysteme}
+\newcommand{\Lehrstuhlinhaber}{Prof.~Dr.-Ing.~habil.~Jürgen~Beyerer}
+
+\newcommand{\MainAdvisor}{Prof.~Dr.-Ing.~habil.~Jürgen~Beyerer}
+\newcommand{\CoAdvisor}{Zweitgutachter}
+\newcommand{\Reviewer}{\MainAdvisor}
+\newcommand{\Supervisor}{\CoAdvisor}
+
+
+\newcommand{\Submissiondate}{\today} %entsprechend ändern
+\newcommand{\Signplace}{Karlsruhe}
+\newcommand{\ExamDate}{12.12.2017}
+
+%\newcommand{\Widmung}{Für meine Eltern, die}
+
+\newcommand{\Strassenadresse}{Strassenadresse hier einfügen\\PLZ und Ort}%{Rintheimer Str. 11\\76131 Karlsruhe}
+\newcommand{\eMailAdresse}{test@test.de}
+\newcommand{\Adresse}{
+\Verfasser \\
+\Strassenadresse
+}
+
+
+\newcommand{\Arbeitsart}{\TypeOfThesis}
+\newcommand{\Arbeitstitel}{\Worktitle}
+\newcommand{\Verfassertitel}{\Authortitle}
+\newcommand{\Verfasservorname}{\AuthorFirstname}
+\newcommand{\Verfassernachname}{\AuthorSurname}
+\newcommand{\Verfasser}{\Verfasservorname \  \Verfassernachname}
+\newcommand{\Verfasserkomplett}{\Verfassertitel \Verfasser}
+\newcommand{\Abgabedatum}{\Submissiondate}
+\newcommand{\Ort}{\Signplace}
+\newcommand{\Hauptreferent}{\MainAdvisor}
+\newcommand{\Korreferent}{\CoAdvisor}
+\newcommand{\Betreuer}{\Supervisor}

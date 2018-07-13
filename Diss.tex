@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Main document  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document header:
+% - Definition of the document format,
+% - encoding and fonts to be used,
+% - LaTeX packages to be loaded,
+% - main language of the document contents,
+% - search paths for images,
+% - special symbols and acronyms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preambel/Header.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Macros for hiding individual chapters, remarks, TODOs %%%%
+%%%%  use showif{} or hideif{} for showing or hiding parts  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\showif{showCoverPage}
+\showif{showCV}
+\showif{showAbstractEN}
+\showif{showAbstractDE}
+\showif{showAcknowledgments}
+\showif{showContents}
+\showif{showNotation}
+\showif{showIntro}
+\showif{showRelatedWork}
+\showif{showConcept}
+\showif{showSystem}
+\showif{showEvaluation}
+\showif{showConclusion}
+\showif{showOutlook}
+\showif{showBackmatter}
+\showif{showGlossary}
+\showif{showBibliography}
+\showif{showOwnPublications}
+\showif{showOwnPatents}
+\showif{showSupervisedTheses}
+\showif{showLoF}
+\showif{showLoT}
+\showif{showAppendix}
+\showif{showTODOs}
+\hideif{showMarginNotes}
+
+
+\begin{document}
+%
+%% Add all acronyms etc.
+%\glsaddall
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  BEGIN of the document content  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\input{content/Inhalt-FrontMatter.tex}
+\input{content/Inhalt-Intro.tex}
+\input{content/Inhalt-Basics.tex}
+\input{content/Inhalt-Concept.tex}
+\input{content/Inhalt-System.tex}
+\input{content/Inhalt-Evaluation.tex}
+\input{content/Inhalt-Conclusion.tex}
+\input{content/Inhalt-BackMatter.tex}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%   END of the document content   %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,63 @@
+\begin{titlepage}
+\thispagestyle{empty}
+
+%%%%Dazu muss \usepackage[absolute]{textpos} eingebunden werden.
+%%%%Die erste Zahl gibt die Breite des Textblocks an (wird fur Bilder NICHT!!! ignoriert, legt die Bildbreite fest), die
+%%%%zweite den Abstand zum linken und die dritte den Abstand zum oberen Seitenrand.
+%
+\mbox{}%
+%%%%%%%%%%%%  TITEL DER ARBEIT
+ 	\begin{textblock}{11}[0.5,0.5](7.8,4.5)
+		\sffamily%
+		%\huge%
+		\LARGE%
+ 		\centering%
+		\textbf{\WorktitleDivided}
+ 	\end{textblock}
+
+%%%%%%%%%%%% TYP DER ARBEIT
+%%%%%%%%%%%% AUTORNAME UND DATUM
+ 	\begin{textblock}{11}[0.5,0.5](7.8,11.0)
+ 		\sffamily%
+		\centering%
+		zur Erlangung des akademischen Grades eines\\%
+		\vspace{0.5\baselineskip}%
+		\Large%
+		\DocDegree%
+		\vspace{1\baselineskip}\\%
+		\normalsize%
+		der Fakultät für Informatik\texorpdfstring{\\}{}%
+		des Karlsruher Instituts für Technologie (KIT)%
+		\vspace{0.75\baselineskip}\\%
+\ifthenelse{\boolean{istgenehmigt}}{%
+		\textbf{genehmigte}%
+}{%
+		\textbf{vorgelegte}% 
+}%
+		\vspace{0.5\baselineskip}\\%
+		\Large%
+		{Dissertation}%
+		\vspace{0.5\baselineskip}\\%
+		\normalsize%
+		von%
+		\vspace{0.5\baselineskip}\\%
+		\Large%
+		\textbf{\Authorname}%
+		\vspace{0.5\baselineskip}\\%
+		\normalsize%
+		aus \PlaceOfBirth%
+ 	\end{textblock}
+
+%%%%%%%%%%%% BETREUER
+	\begin{textblock}{12}[0.5,0.5](7.8,17)
+	%\begin{textblock}{9}(2.4,17)
+	\sffamily%
+	\raggedleft%
+		\begin{tabular}{p{5cm}l}
+			Tag der mündlichen Prüfung: & \ExamDate\texorpdfstring{\\}{}
+			Erster Gutachter: & \Reviewer\texorpdfstring{\\}{}
+			Zweiter Gutachter: & \Supervisor\texorpdfstring{\\}{}
+		\end{tabular}
+ 	\end{textblock}
+	
+\end{titlepage}

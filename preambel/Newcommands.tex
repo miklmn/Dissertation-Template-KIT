@@ -1,0 +1,366 @@
+% -- new commands by MiG---
+
+% 1.) Seitliche Kommentare/Abschnitts-Untertitel
+%   a.) Für Verwendung im Text (Float-Variante)
+\newcommand{\partitle}[1]{%
+\ifthenelse{\boolean{showMarginNotes}}{%if margin notes should be displayed:
+%Variante mit Kapitälchen
+\marginpar[\flushleft{\textcolor{gray}{\textsc{#1}}}]{\flushleft{\textcolor{gray}{\textsc{#1}}}}%
+%Variante ohne Kapitälchen
+%\marginpar[\flushleft{\textcolor{gray}{#1}}]{\flushleft{\textcolor{gray}{#1}}}%
+}{%else
+\relax%
+}}
+
+%   b.) Non-Float-Variante (für Verwendung in Gleichungen):
+\newcommand{\partitlenonfloat}[1]{%
+\ifthenelse{\boolean{showMarginNotes}}{%if margin notes should be displayed:
+\marginnote[\RaggedRight#1]{\RaggedRight#1}%
+%%Variante mit Kapitälchen (obsolet, s.u.)
+%\marginnote[\textcolor{gray}{\textsc{#1}}]{\textcolor{gray}{\textsc{#1}}}
+%%Variante mit Kapitälchen wird direkt durch die folgenden Befehle in der Präambel gesetzt:
+%%\renewcommand*{\raggedleftmarginnote}{}
+%%\renewcommand*{\marginfont}{\color{gray}\sffamily\scshape}
+}{%else
+\relax%
+}}
+
+%2.) Befehle zum Rumspielen mit Layout:
+%Zusätzliche Seitenumbrüche, die bei Bedarf deaktiviert werden können
+%\newcommand{\mynewpage}{\newpage}
+\newcommand{\mynewpage}{\relax}
+\newcommand{\myspecialpagebreak}{\clearpage}
+%\newcommand{\myspecialpagebreak}{\relax}
+%%
+%
+
+%Breite der Grafiken in einer fbox:
+\newcommand{\linewidthwithoutfbox}{\linewidth-2\fboxsep-2\fboxrule}
+
+\newcommand{\code}[1]{\lstinline|#1|}
+\newcommand{\myemph}[1]{\emph{#1}}
+\newcommand{\mydef}[1]{\textbf{#1}}
+
+
+%Hilfsmakros:
+
+% Definition von Hilfsmacros \showif und \hideif, die
+% das Verstecken bzw. Einblenden von Textteilen ermöglichen werden:
+% Es wird eine Boolean-Variable mit dem angegebenen Namen angelegt
+% und entsprechend auf true (showif) oder false (hideif) gesetzt.
+% Außerdem werden entsprechende includeversion/excludeversion-Macros aufgerufen.
+\newcommand{\showif}[1]{%
+	\ifcsname#1\endcsname%
+		%falls Boolean bereits existiert: nichts tun
+	\else%
+		\newboolean{#1}%
+	\fi%
+	\setboolean{#1}{true}%
+	\includeversion{#1}%
+}
+\newcommand{\hideif}[1]{%
+	\ifcsname#1\endcsname%
+		%falls Boolean bereits existiert: nichts tun
+	\else%
+		\newboolean{#1}%
+	\fi%
+	\setboolean{#1}{false}%
+	\excludeversion{#1}%
+}
+
+
+%Ein TikZ-TODO-Bild:
+\newcommand{\myTodoImg}{%
+  \begin{tikzpicture}
+   \draw[
+     use as bounding box,
+     black,
+     thick,
+     double, 
+     double distance = 4pt, 
+     rounded corners = 6pt] 
+    (-4,-3)rectangle(4,3);    
+   \node[rotate=45,scale = 5,opacity = 0.5] at (0,0) {TODO!};
+  \end{tikzpicture}%
+}
+
+%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache (je nach gewählter Hauptsprache)
+\ifthenelse{\boolean{iesenglishs}}{%
+	% Hauptsprache ist Englisch
+	\newcommand{\textInEnglish}[1]{#1}
+	\newcommand{\textInGerman}[1]{\foreignlanguage{ngerman}{#1}}
+}{%
+	% Hauptsprache ist Deutsch
+	\newcommand{\textInEnglish}[1]{\foreignlanguage{english}{#1}}
+	\newcommand{\textInGerman}[1]{#1}
+}
+
+%% Name (Titel) der ToDo-Liste,
+\ifthenelse{\boolean{iesenglishs}}{%
+	\newcommand{\todoListName}{TODO List}
+}{%
+	\newcommand{\todoListName}{TODO--Liste}
+}
+
+%% Erzeugung einer ToDo-Liste
+%% newlistof bedarf das Paket tocloft (\usepackage{tocloft})
+\newlistof{TODOs}{tdo}{\todoListName}%tdo ist die Erweiterung der zu bildenden Hilfsdatei
+
+
+%% Befehl zum Eintragen der Inhalte in die ToDo-Liste
+\newcommand{\addToTodoList}[1]{%
+	\refstepcounter{TODOs}%
+	\addcontentsline{tdo}{TODOs}{%
+		%Füge den Eintrag als eine neue Zeile zur ToDo-Liste hinzu
+		\protect{\numberline{\theTODOs:}} % (\thechapter.\thesection)}}
+		\ifx\relax#1\relax% Falls Argument #1 leer:
+				\textcolor{red}{ToDo!}%
+		\else% Falls #1 mit Inhalt:
+				\textcolor{red}{#1}%
+		\fi%
+	}%
+}
+
+
+\newcounter{imgtdoCounter}
+
+
+%TODO-Gestaltungsmakro für Textmodus mit einer Unterscheidung,
+%ob etwas übergeben worden ist oder nicht
+%und mit einem optionalen Argument für die Nachfrage-Liste
+\newcommand{\myTodo}[2][]{%
+	\ifthenelse{\boolean{showTODOs}}{%if TODOs should be displayed:
+		\ifx\relax#2\relax% Falls der erforderliche Argument #2 leer:
+			\hyperlink{TODO-List}{\textcolor{red}{\textbf{ToDo!}}}%
+				\ifx\relax#2\relax% Falls der optionale Argument #1 ebenfalls leer:
+					\addToTodoList{\textcolor{red}{ToDo!}}%
+				\else% #2 leer aber #1 mit Inhalt
+					\addToTodoList{\textcolor{red}{#1}}%
+				\fi%
+		\else% Falls der erforderliche Argument #2 mit Inhalt:
+			\hyperlink{TODO-List}{\textcolor{red}{\textbf{ToDo: }}}\textcolor{red}{ #2}%
+				\ifx\relax#1\relax% Falls der optionale Argument #1 leer:
+					\addToTodoList{\textcolor{red}{#2}}
+				\else% sowohl #2 als auch #1 mit Inhalt
+					\addToTodoList{\textcolor{red}{#1}}
+				\fi%
+		\fi%
+	}{%if no TODOs should be displayed: don't do anything
+	\ }%
+}
+
+%% TODO-Gestaltungsmakro für Mathe-Modus mit einer Unterscheidung,
+%% ob etwas übergeben worden ist oder nicht
+%% und mit einem optionalen Argument für die TODO-Liste
+%% Verwendung, z.B. \myMathTodo[Alternativtext für die Übersicht]{x+y=z}
+\newcommand{\myMathTodo}[2][]{%
+	\ifthenelse{\boolean{showTODOs}}{%if TODOs should be displayed:
+		\ifx\relax#2\relax% Falls der erforderliche Argument #2 leer:
+			\hyperlink{TODO-List}{\textcolor{red}{\symbf{\textnormal{ ToDo! }}}}%
+			\ifx\relax#1\relax% Falls der optionale Argument #1 auch leer:
+				\addToTodoList{TODO in an equation}%
+			\else% Argument #2 leer, aber Argument #1 nicht leer
+				\addToTodoList{#1}%
+			\fi%
+		\else% Falls der erforderliche Argument #2 mit Inhalt:
+			\hyperlink{TODO-List}{\textcolor{red}{\symbf{\textcolor{red}{#2}}}}%
+			\ifx\relax#1\relax% Falls der optionale Argument #1 leer:
+				\addToTodoList{$#2$}%
+			\else% sowohl #1 als auch #2 mit Inhalt
+				\addToTodoList{#1}%
+			\fi%
+		\fi%
+	}{%if no TODOs should be displayed: don't do anything
+	\. }%
+}
+
+
+%TODO-Makro für Zitate
+%mit einem optionalen Argument für die TODO-Liste
+\newcommand{\myCiteTodo}[1]{%
+	\ifx\relax#1\relax%
+		\myTodo[Literaturverweis!]{Referenz!}%
+	\else%
+			\myTodo[Bib-Eintrag für #1!]{[#1]}%
+	\fi%
+}
+
+%TODO-Makro für Querverweise
+%mit einem optionalen Argument für die TODO-Liste
+\newcommand{\myRefTodo}[1]{%
+	\ifx\relax#1\relax%
+		\myTodo[Verweis!]{Querverweis!}%
+	\else%
+		\myTodo[Verweis auf #1!]{(#1)}%
+	\fi%
+}
+
+
+%TODO-Makro für Fußnoten
+%mit dem optionalen ersten Argument für die TODO-Liste
+\newcommand{\myFootTodo}[2][]{%
+	\ifx\relax#1\relax%
+		\myTodo[#2]{\footnote{#2}}%
+	\else%
+		\myTodo[#1]{\footnote{#2}}%
+	\fi%
+}
+
+
+%Makro für Qualltext-TODOs
+%mit einem optionalen Argument für die TODO-Liste
+\newcommand{\myRemTodo}[1]{\myTodo[#1]{s. Quelltext}}
+
+%#1: [optional] short caption
+%#2: caption
+%#3: label, z.B. fig:Blockschaltbild
+\newcommand{\myImgTodo}[3][]
+{
+	% increase image-todo counter
+	\stepcounter{imgtdoCounter}
+	\ifx\relax#1\relax%
+		\addToTodoList{Bild: #2}%
+	\else%
+		\addToTodoList{Bild: #1}%
+	\fi%
+ % new figure floating environment
+ \begin{figure}[!htb]
+  \centering
+  % TODO-image
+	\myTodoImg
+	%\includegraphics[width=0.8\textwidth]{\myTodoImg}
+  \caption[#1]{\hyperlink{TODO-List}{\color{red}{ToDo:}} \color{red}{#2}}
+  \label{#3}
+ \end{figure}
+}
+
+
+
+%TODO-Befehle für den Textmodus
+%optional argument #1 for alternative text in the TODO list
+\newcommand{\todo}[2][]{\myTodo[#1]{#2}}
+\newcommand{\ToDo}[2][]{\myTodo[#1]{#2}}
+\newcommand{\Todo}[2][]{\myTodo[#1]{#2}}
+\newcommand{\TODO}[2][]{\myTodo[#1]{#2}}
+
+
+%Add a ToDo for a citation
+\newcommand{\citetodo}[1]{\myCiteTodo{#1}}
+\newcommand{\citeToDo}[1]{\myCiteTodo{#1}}
+\newcommand{\citeTodo}[1]{\myCiteTodo{#1}}
+\newcommand{\citeTODO}[1]{\myCiteTodo{#1}}
+
+%add a ToDo for a reference
+\newcommand{\reftodo}[1]{\myRefTodo{#1}}
+\newcommand{\refToDo}[1]{\myRefTodo{#1}}
+\newcommand{\refTodo}[1]{\myRefTodo{#1}}
+\newcommand{\refTODO}[1]{\myRefTodo{#1}}
+
+%add a ToDo as a footnote
+\newcommand{\foottodo}[2][]{\myFootTodo[#1]{#2}}
+\newcommand{\footToDo}[2][]{\myFootTodo[#1]{#2}}
+\newcommand{\footTodo}[2][]{\myFootTodo[#1]{#2}}
+\newcommand{\footTODO}[2][]{\myFootTodo[#1]{#2}}
+
+%TODO-Befehle für den Mathe-Modus
+% Verwendung, z.B.
+% \mathTodo[Alternativtext für die Übersicht]{x+y=z}
+\newcommand{\mathtodo}[2][]{\myMathTodo[#1]{#2}}
+\newcommand{\mathToDo}[2][]{\myMathTodo[#1]{#2}}
+\newcommand{\mathTodo}[2][]{\myMathTodo[#1]{#2}}
+\newcommand{\mathTODO}[2][]{\myMathTodo[#1]{#2}}
+
+%Erzeugen eines TODO-Bildes:
+%[#1]: optionale Kurzbeschriftung (in eckigen Klammern)
+%{#2}: Beschriftung
+%{#3}: Label, z.B. fig:Blockschaltbild
+\newcommand{\imgtodo}[3][]{\myImgTodo[#1]{#2}{#3}}
+\newcommand{\imgToDo}[3][]{\myImgTodo[#1]{#2}{#3}}
+\newcommand{\imgTodo}[3][]{\myImgTodo[#1]{#2}{#3}}
+\newcommand{\imgTODO}[3][]{\myImgTodo[#1]{#2}{#3}}
+
+
+\newenvironment{myNotationTable}{%
+		\setlength{\tabcolsep}{0pt}% Kein Einzug bei Notation
+		\renewcommand{\arraystretch}{1.3}% Etwas mehr Abstand zwuischen den Zeilen, damit sie nicht zusammenfasllen
+		% Vorgabe vom KIT-Verlag: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight
+		\begin{longtable}{>{\raggedright\arraybackslash}p{0.21\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.79\linewidth-2\tabcolsep}}%
+	}{%
+		\end{longtable}%
+	}
+\newenvironment{myNotationDescTable}{%
+		\setlength{\tabcolsep}{0pt}% Kein Einzug bei Notation
+		\renewcommand{\arraystretch}{1.3}%
+		% Vorgabe vom KIT-Verlag: keine Zeilenumbrüche, daher \raggedright statt \RaggedRight
+		\begin{longtable}{>{\raggedright\arraybackslash}p{0.3\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.6\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.1\linewidth-2\tabcolsep}}%
+	}{%
+		\end{longtable}%
+	}
+
+\newcommand{\myNotationDescTableEntry}[3]{{#1}&{#2}&{$#3$}\\}
+\newcommand{\myNotationTableEntryText}[2]{{#1}&{#2}\\}
+\newcommand{\myNotationTableEntryMath}[2]{{$#1$}&{#2}\\}
+\newcommand{\mySymbolListEntry}[4]{%
+	%\AtBeginDocument{%
+		\newglossaryentry{#1}{type=notation,name={\ensuremath{#3}},description={#4},sort={#2}}%
+	%}%
+	%% Falls die Begriffe im Text nicht referenziert werden:
+	%% alle Begriffe am Anfang des Dokuments zur Liste hinzufügen
+	%% Problem: erzeuge eine leere Seite am Anfang des Dokumentes
+	%\AtBeginDocument{%
+	%	\glsadd{#1}%
+	%}%
+}%
+
+\newcommand{\ie}{i.e.,\ }
+\newcommand{\eg}{e.g.,\ }
+\newcommand{\dhe}{d.\,h.\ }
+\newcommand{\Dhe}{D.\,h.\ }
+\newcommand{\eV}{e.\,V.\ }
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\zb}{z.\,B.\ }
+\newcommand{\oae}{o.\,\"{a}.\ }
+\newcommand{\uU}{u.\,U.\ }
+\newcommand{\ua}{u.\,a.\ }
+\newcommand{\ia}{i.\,a.\ }
+\newcommand{\og}{o.\,g.\ }
+\newcommand{\bzw}{bzw.\ }
+\newcommand{\usw}{usw.\ }
+\newcommand{\vgl}{vgl.\ }
+\newcommand{\etc}{etc.\ }
+\newcommand{\evtl}{evtl.\ }
+\newcommand{\ca}{ca.\ }
+\newcommand{\sog}{sog.\ }
+\newcommand{\insbes}{insbes.\ }
+
+\newcommand{\mb}[1]{\ensuremath{\symbfit{#1}}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+% Die Definition eigener mathematischer Befehle ist besonders sinnvoll, wenn diese im Dokument oft verwendet werden.
+% Man kann dann hier an zentraler Stelle z.B. Vektoren mit Pfeil statt fett formatieren.
+
+
+\newcommand{\bild}[6]      % Bild-Pfadname, Beschriftung, Label, Breite, Kurzbeschriftung (für Abbildungsverzeichnis), optional: Platzierung
+{
+     \begin{figure}[#6]
+				\Centering
+        \includegraphics*[width=#4]{#1}
+        \caption[#5]{\label{#3} #2}
+     \end{figure}
+}
+
+
+\makeatletter
+\newcommand{\figureref}[1]{(Abbildung \ref{#1})}%
+\newcommand{\eqnref}[1]{(\ref{#1})}%
+
+% Command for margin text with usefull style
+%\newcommand{\marginlabel}[1]{\mbox{}\marginline{\hspace{0pt}\footnotesize\sffamily #1}}%
+\newcommand{\marginlabel}[1]{\marginnote{#1}}%
+
+\newlength{\marginwidth}
+\setlength{\marginwidth}{\marginparwidth}
+\addtolength{\marginwidth}{\marginparsep}

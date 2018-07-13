@@ -1,0 +1,76 @@
+%  Sondersymbole:
+%
+%
+%% Menge natürlicher Zahlen
+\newcommand{\NatNum}{\mathbb{N}}
+%
+%-------------------------------------------------------------------------------
+% Zustandsraum und Messraum:
+%-------------------------------------------------------------------------------
+\newcommand{\statespace}{\symbfcal{X}}
+\newcommand{\measurementspace}{\symbfcal{Z}}
+%-------------------------------------------------------------------------------
+%
+%-------------------------------------------------------------------------------
+%Erwartungswert:
+%
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Erw}[1]{ \E[#1] }
+\newcommand{\ERW}[1]{ \E\bigl[#1\bigr] } %Mit großen Klammern
+%
+%
+%-------------------------------------------------------------------------------
+%
+%Gauss-Verteilung an einer Stelle:
+\newcommand{\GaussDist}{\mathcal{N}}
+\newcommand{\GaussDistValue}[3]{\mathcal{N}({#1}; {#2}, {#3})}
+%
+%-------------------------------------------------------------------------------
+%
+%
+%
+%% Matrizen und Vektoren
+%-------------------------------------------------------------------------------
+%Rotation matrix
+\newcommand{\RotMat}{\symbf{R}}
+%Translation vector
+\newcommand{\transVec}{\symbf{t}}
+%
+%
+% Multidimensionale Zufallsvariablen
+\newcommand{\mdrv}[1]{\symbfit{#1}}
+%
+\newcommand{\uVec}{\symbf{u}} % Control vector (vector with control parameters)
+\newcommand{\wVec}{\symbf{w}} % 
+\newcommand{\vVec}{\symbf{v}} % 
+%-------------------------------------------------------------------------------
+\newcommand{\Imat}{\symbf{I}} % Einheitsmatrix
+\newcommand{\ZeroMat}{\symbf{0}} % zero matrix
+\newcommand{\Fmat}{\symbf{F}} % system matrix of the Kalman Filter
+\newcommand{\Gmat}{\symbf{G}} % control matrix of the Kalman Filter
+\newcommand{\Hmat}{\symbf{H}} % measurement matrix of the Kalman Filter
+\newcommand{\Qmat}{\symbf{Q}} % system noise covariance matrix of the Kalman Filter
+\newcommand{\Rmat}{\symbf{R}} % measurement noise covariance matrix of the Kalman Filter
+\newcommand{\Wmat}{\symbf{W}} % Jacobian matrix in the Extended Kalman Filter
+\newcommand{\Vmat}{\symbf{V}} % Jacobian matrix in the Extended Kalman Filter
+\newcommand{\KG}{\symbf{K}} % Kalman Gain
+%-------------------------------------------------------------------------------
+\newcommand{\uk}{\symbf{u}_k} % Control vector (vector with control parameters) at time $k$
+\newcommand{\Qk}{\symbf{Q}_k} % System noise covariance matrix at time $k$
+\newcommand{\Rk}{\symbf{R}_k} % Measurement noise covariance matrix at time $k$
+\newcommand{\KGk}{\symbf{K}_{k}} % Kalman gain at time $k$ at time $k$
+%
+%
+%
+% point in image coordinates
+\newcommand{\pkt}{\symbf{p}}
+\newcommand{\pImage}{\pkt}
+\newcommand{\pImageUntransf}{\symbf{p'}}
+% points in camera coordinates
+\newcommand{\PCam}{\pkt_{\textnormal{C}}}
+\newcommand{\pLeft}{\pkt_{\textnormal{L}}}
+\newcommand{\pRight}{\pkt_{\textnormal{R}}}
+% point in world coordinates
+\newcommand{\PWorld}{\pkt_{\textnormal{W}}}
+% homogenious coordinates
+\newcommand{\pHomogen}{\check{\pkt}}

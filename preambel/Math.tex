@@ -1,0 +1,181 @@
+% *** Mathematik **************************************
+%
+% amsmath schon vorher geladen da es vor pst-pdf geladen werden muss
+
+\ifxetex
+	% hier nichts tun
+\else
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/mh/doc/mathtools.pdf
+% Erweitert amsmath und behebt einige Bugs.
+% Muss vor ntheorem geladen werden!
+%\usepackage{mathtools}
+%\usepackage[disallowspaces]{mathtools}
+%\usepackage[fixamsmath,disallowspaces]{mathtools}
+
+
+%%% Doc: http://www.ctan.org/info?id=fixmath
+% LaTeX's default style of typesetting mathematics does not comply
+% with the International Standards ISO31-0:1992 to ISO31-13:1992
+% which indicate that uppercase Greek letters always be typset
+% upright, as opposed to italic (even though they usually
+% represent variables) and allow for typsetting of variables in a
+% boldface italic style (even though the required fonts are
+% available). This package ensures that uppercase Greek be typeset
+% in italic style, that upright $\Delta$ and $\Omega$ symbols are
+% available through the commands \upDelta and \upOmega; and
+% provides a new math alphabet \mathbold for boldface
+% italic letters, including Greek.
+
+
+%\usepackage{fixmath}
+%%%%%PW: fixmath ist schuld, dass mathbold mit eulervm nicht mehr funktioniert
+
+
+	%bei Verwendung von xelatex folgendes nicht einbinden:
+	
+	%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/onlyamsmath/onlyamsmath.dvi
+	% Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
+	% verursacht Probleme mit XeLaTeX
+	\usepackage[%
+		all,%
+		warning%
+	]{onlyamsmath}
+
+
+%
+%%PW:
+% Ohne (!) bm-Paket gehen Formeln in Überschriften nicht mehr --> too many math alphabets used in version normal
+\newcommand\hmmax{0}
+\newcommand\bmmax{1}  %%2 ist schon zuviel
+\usepackage{bm}
+% bm an sich gibt aber auch schnell "too many math alphabets" Fehler. Insg. kann TeX 16 Mathe-Alphabete
+%% Kann man wegbekommen, indem man die heavy families reduziert (hmmax) und die bold families (bmmax)
+%% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=manymathalph
+%\renewcommand{\hmmax}{0}
+%\renewcommand{\bmmax}{3}
+%Boldmath mit \bm Befehl. Empfohlen im LaTeX-Begleiter. Laden nach allen Pakten, die Mathefont-Einstellungen machen.
+\fi
+
+%Alternative for XeLaTeX-Befehlen zur Textauszeichnung \symbf und \mathbfcal
+\makeatletter
+\@ifpackageloaded{unicode-math}{%
+%nichts tun
+}{%ansonsten fehlende Makros definieren
+%
+%\usepackage{amssymb}   %for using \mathbb{}, \nexists etc.
+%
+%Folgende Makros, die in unicode-math definiert sind, brauchen das bm-Paket
+\newcommand{\symbf}[1]{\bm{#1}}
+\newcommand{\symbfit}[1]{\bm{#1}}
+\newcommand{\symbfcal}[1]{\bm{\mathcal{#1}}}
+\newcommand{\mathbfcal}[1]{\bm{\mathcal{#1}}}
+}
+\makeatother
+
+
+
+
+%%PW: Für Beispiele, Sätze, Lemmata: ntheorem
+%%PW: amsthm gibt es auch noch, ist aber älter
+% Muss nach mathtools geladen werden!
+%\usepackage[thmmarks,standard,hyperref]{ntheorem} 
+%\usepackage[amsmath,thmmarks,standard,hyperref]{ntheorem}   %hyperref-Option macht Probleme  %im Minimaltest aber nicht
+%\usepackage{thmtools}   %Fuer \listoftheorems  %Nicht in MikTeX 2.8 %Wird nicht benutzt
+%\usepackage{theoremref}  %Für bessere Referenzierung
+
+%\fi
+
+
+%% PW: Asymptote Unterstützung. Asymptote braucht auch ein TeX-\write von denen es nur 16 gibt. Bin schon am Limit, deswegen Asymptote XOR comment (braucht auch eins).
+%\usepackage[inline]{asymptote}  %%gibts erst nach Installation von Hand
+%\usepackage[% %%gehört zu MikTeX, macht aber nicht das, was man sich erhofft.
+%process=all,%
+%%process=none,
+%]{asyfig}
+
+%------------------------------------------------------
+
+% -- Vektor fett darstellen -----------------
+% \let\oldvec\vec
+% \def\vec#1{{\boldsymbol{#1}}} %Fetter Vektor
+% \newcommand{\ve}{\vec} %
+% -------------------------------------------
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/misc/braket.sty
+%\usepackage{braket}  % Quantenmechanik Bracket Schreibweise
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/misc/cancel.sty
+\usepackage{cancel}  % Durchstreichen
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/mh/doc/empheq.pdf
+\usepackage{empheq}  % Hervorheben
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/info/math/voss/mathmode/Mathmode.pdf
+%\usepackage{exscale} % Skaliert Mathe-Modus Ausgaben in allen Umgebungen richtig.
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/was/icomma.dtx
+% Erlaubt die Benutzung von Kommas im Mathematikmodus
+\usepackage{icomma}
+
+
+%%PW stackrel
+\usepackage{stackrel} %provides enhanced \stackrel and \stackbin
+%\stackrel [subscript] {superscript} {rel}
+%\stackbin [subscript] {superscript} {bin}
+%Example:
+%A \stackbin[\text{and}]{}{+} B \stackrel[x]{!}{=} C
+
+%%% Doc: http://www.ctex.org/documents/packages/special/units.pdf
+%\usepackage[nice]{nicefrac}
+\usepackage{xfrac}
+
+%%PW commath
+%commath -- A LaTeX class which provides some commands which help you to format formulas flexibly.
+%Differentiale aufrecht setzen mit vorgefertigten Operatoren, Intervalle, Senkrechter Evaluationsstrich, Norm
+%%% PW: Gibt aber leider Probleme mit figureref-Befehl und wenn das draußen ist mit "`too many math alphabets"'
+%\usepackage{commath}
+
+
+%%% Tauschen von Epsilon und andere:
+% \let\ORGvarrho=\varrho
+% \let\varrho=\rho
+% \let\rho=\ORGvarrho
+%
+\let\ORGvarepsilon=\varepsilon
+\let\varepsilon=\epsilon
+\let\epsilon=\ORGvarepsilon
+%
+% \let\ORGvartheta=\vartheta
+% \let\vartheta=\theta
+% \let\theta=\ORGvartheta
+%
+% \let\ORGvarphi=\varphi
+% \let\varphi=\phi
+% \let\phi=\ORGvarphi
+
+% Vier Indizes an beliebigen Zeichen (2 links, 2 rechts)
+\usepackage{fouridx}
+
+% Matrizen mit Randbeschriftung
+\usepackage{blkarray}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Symbole
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%
+%%% General Doc: http://www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
+%
+%% Symbole für Mathematiksatz
+%\usepackage{mathrsfs} %% Schreibschriftbuchstaben für den Mathematiksatz (nur Großbuchstaben)   %%%%% PW: Auch einfach mal reingemacht
+%\usepackage{dsfont}   %% Double Stroke Fonts   %%%% PW: Für Mengensymbole R Q Z N
+%\usepackage[mathcal]{euscript} %% adds euler mathcal font    %%%% PW: Mathcal ist zwar bei Eulervm schon irgendwie drin. Ist zuviel. Gibt dann "`too many math alphabets"' Fehler.
+%\usepackage{amssymb}      %%%% knallt mit eufrak, was das gleiche macht
+%\usepackage[Symbolsmallscale]{upgreek} % upright symbols from euler package [Euler] or Adobe Symbols [Symbol]
+%\usepackage[upmu]{gensymb}             % Option upmu  %% bekomme Fehler: command \upmu is undefined
+
+%% Allgemeine Symbole
+%\usepackage{wasysym}  %% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/wasysym/wasysym.pdf
+%\usepackage{marvosym} %% Symbole aus der marvosym Schrift
+%\usepackage{pifont}   %% ZapfDingbats

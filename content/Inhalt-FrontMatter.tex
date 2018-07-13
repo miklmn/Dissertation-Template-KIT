@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%           Deckblatt            %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showCoverPage}%
+%define an (invisible) numbering for the cover page
+%that is different from those used in the document
+%(i.e. Roman and Arabic) in order to prevent warnings
+%due to duplicates in page numbering
+%("destinatiion with same identifier (name{page.1})...")
+\pagenumbering{alph}%
+\pdfbookmark[0]{\TransTitlePageName}{cover}% Sets a PDF bookmark for the title page
+%\input{content/00-FrontMatter/Titel-A4.tex}
+%\input{content/00-FrontMatter/Titel-A5.tex}
+%\input{content/00-FrontMatter/Titel-A4-DissBlank.tex}
+\input{content/00-FrontMatter/Titel-A5-DissBlank.tex}
+\clearpage
+\end{showCoverPage}%
+\frontmatter
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%       Curriculum Vitae         %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showCV}%
+%
+\input{content/00-FrontMatter/CV-EN.tex}
+\clearpage
+\end{showCV}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%       Abstract (English)       %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showAbstractEN}%
+%
+\textInEnglish{%
+\input{content/00-FrontMatter/Abstract.tex}
+}%endtextInEnglish
+%
+\clearpage
+%
+\end{showAbstractEN}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Kurzzusammenfassung (Deutsch)  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showAbstractDE}%
+
+\textInGerman{%
+\input{content/00-FrontMatter/Kurzfassung.tex}
+}%endtextInGerman
+
+\cleardoublepage
+\end{showAbstractDE}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%           Danksagung           %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showAcknowledgments}%
+%
+\input{content/00-FrontMatter/Acknowledgments.tex}
+%
+\clearpage
+\end{showAcknowledgments}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%       Inhaltsverzeichnis       %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showContents}%
+%\cleardoublepage
+% Inhaltsverzeichnis in die PDF-Links eintragen
+\phantomsection
+\pdfbookmark[0]{\protect\contentsname}{toc}
+\tableofcontents
+\clearpage
+\end{showContents}%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%       Symbolverzeichnis        %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showNotation}
+\input{content/00-FrontMatter/Notation.tex}
+%
+%\input{content/Z-Anhang/Symbolverzeichnis}
+%\IfDefined{printglossary}{\printglossary[type=notation]} %,style=long-booktabs]}
+\end{showNotation}
+%
+% Ab hier der Hauptteil
+\mainmatter
+%
