@@ -1783,9 +1783,9 @@ afterskip=\myparagraphafterskip%
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
 
 %% Mehrere Zitate in einer Klammer, aber Komma statt Semikolon:
-%\renewcommand*{\multicitedelim}{\addcomma\addspace}
+\renewcommand*{\multicitedelim}{\addcomma\addspace}
 %% Nicht mehrere Zitate in einer Klammer, sondern eine Klammer pro Zitat:
-\renewcommand*{\multicitedelim}{\bibclosebracket\addcomma\addspace\bibopenbracket}
+%\renewcommand*{\multicitedelim}{\bibclosebracket\addcomma\addspace\bibopenbracket}
 
 %% Definition für die allgemeine Literaturliste
 \defbibenvironment{bibliography}
