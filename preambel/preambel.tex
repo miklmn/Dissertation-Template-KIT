@@ -275,6 +275,9 @@
 %\renewcommand\multirowsetup{\RaggedRight}
 \renewcommand\multirowsetup{\raggedRight}
 
+%% Für rotierte Tabellen
+\usepackage{rotating}
+
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % text related packages
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -670,6 +673,26 @@ verbose,
    			language=[Visual]C++
 }
 \lstdefinestyle{nonumbers}{numbers=none}
+
+\lstnewenvironment{latex}[1][]{%
+  \lstset{%
+    language=[LaTeX]TeX,%
+    morekeywords={cref,%
+      includegraphics,%
+      toprule,%
+      midrule,%
+      bottomrule,%
+      tikzsetnextfilename,%
+      enquote,%
+			newacronym,%
+			longnewglossaryentry,%
+      subfloat},%
+		#1}%
+}{}
+
+\lstnewenvironment{java}[1][]{%
+  \lstset{language=Java,#1}%
+}{}
 
 %% PW
 % Weitere Algorithmenumgebungen: http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode

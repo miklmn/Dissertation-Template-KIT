@@ -159,9 +159,9 @@
 % Platziere einen Verweis auf 'Anhang'
 % ins Inhaltsverzeichnis
 \phantomsection
-\addcontentsline{toc}{part}{Appendix}
+\addcontentsline{toc}{part}{\AppendixName}
 %
-\input{content/Z-Anhang/Derivations.tex}
+\input{content/Z-Appendix/Derivations.tex}
 %
 %
 \end{showAppendix}%
@@ -175,7 +175,7 @@
 \listofTODOs
 \hypertarget{TODO-List}{}
 % Zum Inhaltsverzeichnis hinzufügen
-\addcontentsline{toc}{part}{\todoListName}
+\addcontentsline{toc}{part}{\TodoListName}
 % }{%if no TODOs should be displayed: don't do anything
 % \ }%
 \end{showTODOs}%

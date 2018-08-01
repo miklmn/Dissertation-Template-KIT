@@ -84,27 +84,9 @@
   \end{tikzpicture}%
 }
 
-%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache (je nach gewählter Hauptsprache)
-\ifthenelse{\boolean{iesenglishs}}{%
-	% Hauptsprache ist Englisch
-	\newcommand{\textInEnglish}[1]{#1}
-	\newcommand{\textInGerman}[1]{\foreignlanguage{ngerman}{#1}}
-}{%
-	% Hauptsprache ist Deutsch
-	\newcommand{\textInEnglish}[1]{\foreignlanguage{english}{#1}}
-	\newcommand{\textInGerman}[1]{#1}
-}
-
-%% Name (Titel) der ToDo-Liste,
-\ifthenelse{\boolean{iesenglishs}}{%
-	\newcommand{\todoListName}{TODO List}
-}{%
-	\newcommand{\todoListName}{TODO--Liste}
-}
-
 %% Erzeugung einer ToDo-Liste
 %% newlistof bedarf das Paket tocloft (\usepackage{tocloft})
-\newlistof{TODOs}{tdo}{\todoListName}%tdo ist die Erweiterung der zu bildenden Hilfsdatei
+\newlistof{TODOs}{tdo}{\TodoListName}%tdo ist die Erweiterung der zu bildenden Hilfsdatei
 
 
 %% Befehl zum Eintragen der Inhalte in die ToDo-Liste

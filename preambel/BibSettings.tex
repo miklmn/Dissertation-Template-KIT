@@ -1,0 +1,102 @@
+%% Settings for biblatex
+
+\usepackage[backref=true,%
+						%backend=bibtex8,%
+						backend=biber,%
+						style=alphabetic,%
+						labelnumber,% zusätzlich labelnummer zur Verfügung stel
+						defernumbers=true,%
+						%maxnames=10,% Maximal 10 Autorennamen zulassen, wenn >10, dann lasse nur einen + et al. (ggf. änderbar mit  der Option "minnames"
+						maxbibnames=10,%
+						maxcitenames=1,%
+						maxalphanames=1,% Anzahl der aufzuführenden Namen in Bib-Label
+						%dashed=false,%will print recurring author/editor names instead of replacing them by a dash in case of authoryear, authortitle, and verbose bibliography styles)
+						isbn=false,%die ISBN-Felder nicht drucken
+						%doi=false,%
+						%eprint=false,%
+						block=none,
+						%block=space,% Füge zusätzlichen horizontalen Raum zwischen den Einträgen hinzu.
+						%block=par,% Beginne einen neuen Paragraphen für jeden Eintrag
+						%block=nbpar,% Ähnlich der par-Option, aber verbietet Seitensprünge zwischen den Übergängen und innerhalb der Einträge.
+						%block=ragged,% Fügt einen kleinen Strafraum ein, um Zeilenumbrüche an Blockgrenzen zu fördern und die Bibliografie rechts orientiert (Flattersatz) zu setzen
+						backref=false%Entscheidet,ob die Endreferenzen (Seitenzahlen) in die Bibliografie geschrieben werden sollen. (default=false)
+						]{biblatex}
+
+%% Das "+"-Zeichen nach mehr als <maxcitenames> Authoren entfernen durch Umdefinieren von "labelalphaothers":
+\renewcommand*{\labelalphaothers}{}
+
+%% Reihenfolge umdrehen: Nachname, Vorname
+\DeclareNameAlias{default}{last-first}
+
+%% Separator zwischen den Autornamen: Semikolon statt Komma
+%\renewcommand*{\multinamedelim}{;\space}
+\DeclareDelimFormat{multinamedelim}{\addsemicolon\space}
+
+%% Separator vor dem letzten den Autornamen: ohne Komma vor dem "and" bei mehreren Authoren
+%% da Komma den Nach- und Vornamen trennt
+\renewcommand*{\finalnamedelim}{\space and\space}
+
+%% Nach Autornamen: Doppelpunkt statt Punkt:
+\renewcommand*{\labelnamepunct}{\addcolon\addspace}
+
+%% Vergrößerung des hängenden Einzuges
+\setlength{\bibhang}{5em}
+%\addtolength{\bibhang}{2em}
+
+
+%% Nachnamen in Kapitälchen
+\AtBeginBibliography{\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}}
+
+%% Titel: nicht kursiv
+\DeclareFieldFormat{title}{{#1}}
+
+%%% Hack, damit man mehrere Bibliografien mit verschiedenen Zitationsstilen hat:
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+
+%% Mehrere Zitate in einer Klammer, aber Komma statt Semikolon:
+\renewcommand*{\multicitedelim}{\addcomma\addspace}
+%% Nicht mehrere Zitate in einer Klammer, sondern eine Klammer pro Zitat:
+%\renewcommand*{\multicitedelim}{\bibclosebracket\addcomma\addspace\bibopenbracket}
+
+%% Definition für die allgemeine Literaturliste
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelalphawidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelalpha}}}
+     {\setlength{\labelwidth}{\labelalphawidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{2\labelsep}%
+      \setlength{\itemindent}{-\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      %\addtolength{\bibhang}{3em}%
+      }%
+      %% \hss für rechtsbündige Ausrichtung
+      %\renewcommand*{\makelabel}[1]{\hss##1}}
+      \renewcommand*{\makelabel}[1]{##1}}
+  {\endlist}
+  {\item}
+
+
+%% Definition für die Liste eigener Publikationen
+\defbibenvironment{bibliographyNUM}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{2\labelsep}%
+      \setlength{\itemindent}{-\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      %\addtolength{\bibhang}{3em}%
+      }%
+      %% \hss für rechtsbündige Ausrichtung
+      %\renewcommand*{\makelabel}[1]{\hss##1}}
+      \renewcommand*{\makelabel}[1]{##1}}
+  {\endlist}
+  {\item}

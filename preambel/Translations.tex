@@ -31,3 +31,50 @@
 \newlanguagecommand{\TransSupervisedTheses}
 \addtolanguagecommand{\TransSupervisedTheses}{ngerman}{Betreute studentische Arbeiten}
 \addtolanguagecommand{\TransSupervisedTheses}{english}{Supervised student theses}
+
+\newlanguagecommand{\AppendixName}
+\addtolanguagecommand{\AppendixName}{ngerman}{Anhang}
+\addtolanguagecommand{\AppendixName}{english}{Appendix}
+
+\newlanguagecommand{\TodoListName}
+\addtolanguagecommand{\TodoListName}{ngerman}{Todo-Liste}
+\addtolanguagecommand{\TodoListName}{english}{Todo List}
+
+
+%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache (je nach gewählter Hauptsprache)
+\ifthenelse{\boolean{iesenglishs}}{%
+	% Hauptsprache ist Englisch
+	\newcommand{\textInEnglish}[1]{#1}
+	\newcommand{\textInGerman}[1]{\foreignlanguage{ngerman}{#1}}
+}{%
+	% Hauptsprache ist Deutsch
+	\newcommand{\textInEnglish}[1]{\foreignlanguage{english}{#1}}
+	\newcommand{\textInGerman}[1]{#1}
+}
+
+
+\newtheorem{theorem}{Satz}[chapter]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\crefname{chapter}{Kapitel}{Kapitel}
+\crefname{section}{Abschnitt}{Abschnitte}
+\crefname{subsection}{Abschnitt}{Abschnitte}
+\crefname{figure}{Abbildung}{Abbildungen}
+\crefname{table}{Tabelle}{Tabellen}
+\crefname{appendix}{Anhang}{Anhänge}
+
+\crefname{theorem}{Satz}{Sätze}
+\crefname{definition}{Definition}{Definitionen}
+\crefname{lemma}{Lemma}{Lemmata}
+\crefname{corollary}{Korollar}{Korollare}
+\crefname{proposition}{Proposition}{Propositionen}
+
+\newcommand{\crefpairconjunction}{ und }
+\newcommand{\crefmiddleconjunction}{, }
+\newcommand{\creflastconjunction}{ und }
+\newcommand{\crefpairgroupconjunction}{ sowie }
+\newcommand{\crefmiddlegroupconjunction}{, }
+\newcommand{\creflastgroupconjunction}{ sowie }

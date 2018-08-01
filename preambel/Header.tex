@@ -66,6 +66,7 @@
 	%cmyk, % CMYK Farbraum
 	dvipsnames % for using the extended name set
 ]{xcolor}
+\usepackage{KAcolors}
 
 % Encoding der Quellcode-Dateien (sonst funktionieren Umlaute in den Quellcodedateien nicht)
 \input{preambel/EncodingAndFont}
@@ -117,10 +118,11 @@
 % Angaben zu den Pfaden zu Grafiken, BibTeX-.Datei etc
 \input{preambel/AllePfade}
 
+% Übersetzungen verschiedener Überschriften etc.
+\input{preambel/Translations}
+
 %%%% Neue Befehle / Makros
 \input{preambel/Newcommands}
-
-\input{preambel/Translations}
 
 %%% Wenn man das Aussehen der Tabellen ändern will, findet man die Einstellungen in dieser Datei
 %\input{macros/TableCommands}
@@ -128,7 +130,7 @@
 % In der Arbeit verwendete Spezialelemente, Acronyme und Glossarbegriffe
 \input{preambel/SpecialSymbols}
 \input{preambel/Acronyms}
-\input{content/Z-Anhang/Glossary}
+\input{preambel/Glossary}
 
 
 
