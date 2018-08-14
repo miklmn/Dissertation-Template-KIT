@@ -23,15 +23,34 @@
 % (z.B.) \raggedright geschuetzt werden:
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 
+% Vorgabe vom KIT-Verlag: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight
+%\renewcommand\multirowsetup{\RaggedRight}
+\renewcommand\multirowsetup{\raggedRight}
 
 % Spalten mit Flattersatz und definierte Breite:
 % m{} -> mittig
 % p{} -> oben
 % b{} -> unten
 %
-% Linksbuendig:
+%\newcolumntype{L}[1]{>{\hsize=#1\hsize\RaggedRight\arraybackslash}X}%
+%\newcolumntype{R}[1]{>{\hsize=#1\hsize\RaggedLeft\arraybackslash}X}%
+%\newcolumntype{C}[1]{>{\hsize=#1\hsize\Centering\arraybackslash}X}%
+%
+% Vorgabe vom KIT-Verlag: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight etc.
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+%
+\newcolumntype{M}{>{\begin{minipage}[t]{2cm}\raggedright}c<{\end{minipage}}}
+%
+\newcolumntype{G}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcolumntype{U}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+%\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+
 \newcolumntype{v}[1]{>{\PreserveBackslash\RaggedRight\hspace{0pt}}p{#1}}
-\newcolumntype{M}[1]{>{\PreserveBackslash\RaggedRight\hspace{0pt}}m{#1}}
+\newcolumntype{Y}{>{\PreserveBackslash\RaggedLeft\hspace{0pt}}X}
+% Tabellenspaltentyp fuer den Kopf: (Farbe + Ausrichtung)
+\newcolumntype{H}[1]{>{\columncolor{tableheadcolor}}l}
 % % Rechtsbuendig :
 % \newcolumntype{R}[1]{>{\PreserveBackslash\RaggedLeft\hspace{0pt}}m{#1}}
 % \newcolumntype{S}[1]{>{\PreserveBackslash\RaggedLeft\hspace{0pt}}p{#1}}
@@ -39,17 +58,9 @@
 % \newcolumntype{Z}[1]{>{\PreserveBackslash\Centering\hspace{0pt}}m{#1}}
 % \newcolumntype{A}[1]{>{\PreserveBackslash\Centering\hspace{0pt}}p{#1}}
 
-\newcolumntype{Y}{>{\PreserveBackslash\RaggedLeft\hspace{0pt}}X}
 %%% Spalten fuer Mathematik
-%
 % serifenlose Matheschrift
-\newcolumntype{s}[1]{%
-	>{\DC@{.}{,}{#1}\mathsf\bgroup}l%
-	<{\egroup\DV@end}%
-}
-
-% Tabellenspaltentyp fuer den Kopf: (Farbe + Ausrichtung)
-\newcolumntype{H}[1]{>{\columncolor{tableheadcolor}}l}
+\newcolumntype{s}[1]{>{\DC@{.}{,}{#1}\mathsf\bgroup}l<{\egroup\DV@end}}
 
 % aequivalent aus typokurz (fett+grau+links)
 % \newcolumntype{H}{>{\fontseries{b}\selectfont%
@@ -69,6 +80,22 @@
 	\removeindentation
 }
 \makeatother
+
+
+%% Aufzählungen in einer Tabelle
+\newenvironment{tabitemize}{%
+\begin{list}{\textbullet}{%
+\setlength\topsep{0pt}%
+\setlength\parsep{0pt}%
+\setlength\itemsep{0pt}%
+\setlength\leftmargin{0em}%
+\setlength\leftmargin{1em}%
+\setlength\labelwidth{0.5em}%
+\setlength\labelsep{0.5em}%
+}
+}{%
+\end{list}
+}
 %%% --------------------------------------------
 
 %%% ---|Layout der Tabellen |-------------------
@@ -108,12 +135,12 @@
 }
 
 % Tabellenkopf: Serifenlos+fett+schraeg+Schriftfarbe
-\newcommand\tablehead{%
-  \tableheadfontsize%
-  \sffamily\bfseries%
-  %\slshape
-  %\color{white}
-}
+%\newcommand\tablehead{%
+  %\tableheadfontsize%
+  %\sffamily\bfseries%
+  %%\slshape
+  %%\color{white}
+%}
 
 \newcommand\tablesubheadfont{%
   \tableheadfontsize%

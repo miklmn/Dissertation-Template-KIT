@@ -76,13 +76,27 @@
 
 
 %%PW: Für Beispiele, Sätze, Lemmata: ntheorem
+\usepackage{amsthm}
 %%PW: amsthm gibt es auch noch, ist aber älter
 % Muss nach mathtools geladen werden!
-\usepackage{ntheorem}
+%\usepackage{ntheorem}
+%\usepackage[standard]{ntheorem}  %funktioniert nicht, da mit der Option "Standard" asmsymb eingebunden wird, das Probleme ergibt
 %\usepackage[thmmarks,standard,hyperref]{ntheorem} 
 %\usepackage[amsmath,thmmarks,standard,hyperref]{ntheorem}   %hyperref-Option macht Probleme  %im Minimaltest aber nicht
 %\usepackage{thmtools}   %Fuer \listoftheorems  %Nicht in MikTeX 2.8 %Wird nicht benutzt
 %\usepackage{theoremref}  %Für bessere Referenzierung
+\newtheorem{theorem}{\protect\theoremname}[chapter]
+\newtheorem{definition}[theorem]{\protect\definitionname}
+\newtheorem{proposition}[theorem]{\protect\propositionname}
+\newtheorem{lemma}[theorem]{\protect\lemmaname}
+\newtheorem{example}{\protect\examplename}
+%\newtheorem{proof}{\protect\proofname}
+\newtheorem{cor}{\protect\corollaryname}
+
+%% Changing the qed symbol from white square to something else:
+%\renewcommand\qedsymbol{QED}% just "QED"
+%\renewcommand\qedsymbol{$\blacksquare$}% black square, needs amssymb package!
+
 
 %\fi
 

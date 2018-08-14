@@ -53,28 +53,36 @@
 }
 
 
-\newtheorem{theorem}{Satz}[chapter]
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\theoremname}{} % initialization
+\newcommand{\examplename}{} % initialization
+%\newcommand{\proofname}{} % initialization
+\newcommand{\definitionname}{} % initialization
+\newcommand{\lemmaname}{} % initialization
+\newcommand{\corollaryname}{} % initialization
+\newcommand{\propositionname}{} % initialization
 
-\crefname{chapter}{Kapitel}{Kapitel}
-\crefname{section}{Abschnitt}{Abschnitte}
-\crefname{subsection}{Abschnitt}{Abschnitte}
-\crefname{figure}{Abbildung}{Abbildungen}
-\crefname{table}{Tabelle}{Tabellen}
-\crefname{appendix}{Anhang}{Anhänge}
+\addto\captionsenglish{%
+  \renewcommand{\theoremname}{Theorem}%
+  \renewcommand{\examplename}{Example}%
+	%\renewcommand{\proofname}{Proof}%
+	\renewcommand{\definitionname}{Definition}%
+	\renewcommand{\lemmaname}{Lemma}%
+	\renewcommand{\corollaryname}{Corollary}%
+	\renewcommand{\propositionname}{Proposition}%
+}
+\addto\captionsngerman{%
+  \renewcommand{\theoremname}{Satz}%
+  \renewcommand{\examplename}{Beispiel}%
+	%\renewcommand{\proofname}{Beweis}%
+	\renewcommand{\definitionname}{Definition}%
+	\renewcommand{\lemmaname}{Lemma}%
+	\renewcommand{\corollaryname}{Korollar}%
+	\renewcommand{\propositionname}{Proposition}%
+}
 
-\crefname{theorem}{Satz}{Sätze}
-\crefname{definition}{Definition}{Definitionen}
-\crefname{lemma}{Lemma}{Lemmata}
-\crefname{corollary}{Korollar}{Korollare}
-\crefname{proposition}{Proposition}{Propositionen}
+%\newtheorem{theorem}{Satz}[chapter]
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proposition}[theorem]{Proposition}
 
-\newcommand{\crefpairconjunction}{ und }
-\newcommand{\crefmiddleconjunction}{, }
-\newcommand{\creflastconjunction}{ und }
-\newcommand{\crefpairgroupconjunction}{ sowie }
-\newcommand{\crefmiddlegroupconjunction}{, }
-\newcommand{\creflastgroupconjunction}{ sowie }
