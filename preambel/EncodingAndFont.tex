@@ -42,7 +42,8 @@
 %\def\UseLibertinus{true}
 %\def\UseSTIX{true}
 %\def\UseXITS{true}
-\def\UseLibertinusFrutigerSTIXMix{true}
+\def\UseLibertinusSTIXMix{true}
+%\def\UseLibertinusFrutigerSTIXMix{true}
 %--------------------------------
 %
 %
@@ -53,13 +54,41 @@
 	%  Libertine Fonts
 	%--------------------------------------------------
 	\ifdefined\UseLibertine
-		\setmainfont{Linux Libertine O}
-		\setsansfont[%
-								%SmallCapsFont={TeX Gyre Termes},
-								%SmallCapsFeatures={Letters=SmallCaps}
-								]%
-								{Libertinus Sans}
-		\setmathfont{Libertinus Math}
+		\setmainfont[
+								%Scale = 0.95,
+								UprightFont = *_R_G,
+								ItalicFont = *_RI_G,
+								BoldFont = *_RB_G,
+								BoldItalicFont = *_RBI_G,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
+								Extension = .ttf
+								]{LinLibertine}
+		\setsansfont[
+								%Scale = 0.85,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								%BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinussans}
+		\setmonofont[
+								%Scale = 0.95,
+								FakeStretch = 0.8,
+								UprightFont = *-regular,
+								%ItalicFont = *-italic,
+								%BoldFont = *-bold,
+								% AutoFakeBold = 1.5,
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinusmono}
+		\setmathfont[
+								%Scale = 0.95,
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinusmath-regular}
 	\fi
 	%--------------------------------------------------
 	%  Libertinus Fonts
@@ -72,6 +101,7 @@
 								BoldFont = *-bold,
 								BoldItalicFont = *-bolditalic,
 								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
 								Extension = .otf
 								]{libertinusserif}
 		\setsansfont[
@@ -81,6 +111,7 @@
 								BoldFont = *-bold,
 								%BoldItalicFont = *-bolditalic,
 								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
 								Extension = .otf
 								]{libertinussans}
 		\setmonofont[
@@ -90,11 +121,13 @@
 								%ItalicFont = *-italic,
 								%BoldFont = *-bold,
 								% AutoFakeBold = 1.5,
+								Path=./fonts/,
 								Extension = .otf
 								]{libertinusmono}
 		\setmathfont[
 								%Scale = 0.95,
-								Extension=.otf
+								Path=./fonts/,
+								Extension = .otf
 								]{libertinusmath-regular}
 	\fi
 	%--------------------------------------------------
@@ -109,8 +142,14 @@
 								SmallCapsFeatures={Letters=SmallCaps},
 								Extension = .otf
 								]{STIX2Text}
-		\setsansfont{STIX2Text-Regular.otf}
-		\setmathfont{STIX2Math.otf}
+		\setsansfont[
+								Path=./fonts/,
+								Extension = .otf
+								]{STIX2Text-Regular}
+		\setmathfont[
+								Path=./fonts/,
+								Extension = .otf
+								]{STIX2Math}
 	\fi
 	%--------------------------------------------------
 	%  XITS Fonts; use xits-regular as SANS font
@@ -122,10 +161,51 @@
 								BoldFont = *-bold,
 								BoldItalicFont = *-bolditalic,
 								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
 								Extension = .otf
 								]{xits}
-		\setsansfont{xits-regular.otf}
-		\setmathfont{xits-math.otf}
+		\setsansfont[
+								Path=./fonts/,
+								Extension = .otf
+								]{xits-regular}
+		\setmathfont[
+								Path=./fonts/,
+								Extension = .otf
+								]{xits-math}
+	\fi
+	\ifdefined\UseLibertinusSTIXMix
+		\setmainfont[
+								%Scale = 0.95,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinusserif}
+		\setsansfont[
+								%Scale = 0.85,
+								UprightFont = *-regular,
+								ItalicFont = *-italic,
+								BoldFont = *-bold,
+								%BoldItalicFont = *-bolditalic,
+								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinussans}
+		\setmonofont[
+								Scale = 0.95,
+								FakeStretch = 0.8,
+								UprightFont = *-regular,
+								Path=./fonts/,
+								Extension = .otf
+								]{libertinusmono}
+		\setmathfont[
+								%Scale = 0.85,
+								Path=./fonts/,
+								Extension = .otf
+								]{STIX2Math}
 	\fi
 	\ifdefined\UseLibertinusFrutigerSTIXMix
 		\setmainfont[
@@ -135,6 +215,7 @@
 								BoldFont = *-bold,
 								BoldItalicFont = *-bolditalic,
 								SmallCapsFeatures={Letters=SmallCaps},
+								Path=./fonts/,
 								Extension = .otf
 								]{libertinusserif}
 		\setsansfont[
@@ -144,16 +225,19 @@
 								BoldFont = *-Bold,
 								BoldItalicFont = *-BoldItalic,
 								SmallCapsFeatures={Letters=SmallCaps},
+								%Path=./fonts/,
 								Extension = .ttf
 								]{FrutigerLTCom}
 		\setmonofont[
 								Scale = 0.95,
 								FakeStretch = 0.8,
 								UprightFont = *-regular,
+								Path=./fonts/,
 								Extension = .otf
 								]{libertinusmono}
 		\setmathfont[
 								%Scale = 0.85,
+								Path=./fonts/,
 								Extension = .otf
 								]{STIX2Math}
 	\fi
@@ -162,6 +246,10 @@
 	\usepackage[T1]{fontenc} %Der Text enthält Umlaute
 	\usepackage{libertine}
 	\usepackage{libertinust1math}
+	%% Alternative:
+	%\usepackage{mathptmx}
+	%\usepackage[scaled=.92]{helvet}
+	%\usepackage{courier}
 \fi
 %}
 \makeatother
