@@ -1,5 +1,13 @@
 % *** Mathematik **************************************
 %
+% Eine Definition eigener mathematischer Befehle ist besonders sinnvoll, wenn diese im Dokument oft verwendet werden.
+% Man kann dann hier an zentraler Stelle z.B. alle Vektoren mit Pfeil statt fett formatieren.
+%
+%
+
+
+
+
 % amsmath schon vorher geladen da es vor pst-pdf geladen werden muss
 
 \ifxetex
@@ -194,3 +202,417 @@
 %\usepackage{wasysym}  %% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/wasysym/wasysym.pdf
 %\usepackage{marvosym} %% Symbole aus der marvosym Schrift
 %\usepackage{pifont}   %% ZapfDingbats
+
+
+\newcommand{\mb}[1]{\ensuremath{\symbfit{#1}}}
+
+
+
+\newcommand{\Ast}{\ensuremath{\mathord{\ast}}}
+\newcommand{\Sim}{\ensuremath{\mathord{\sim}}}
+\newcommand{\Cdot}{\ensuremath{\mathord{\,\cdot\,}}}
+\newcommand{\Tr}{\ensuremath{\mathsf{T}}}
+\newcommand{\const}{\ensuremath{\mathord{\mathrm{const}}}}
+
+\newcommand{\SkalProd}[2]{\langle #1,#2 \rangle}
+\newcommand{\SkalProdD}[2]{\left\langle #1,#2 \right\rangle}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\rect}{rect}
+\DeclareMathOperator{\ld}{ld}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\aff}{aff}
+% http://tex.stackexchange.com/questions/84302/what-is-the-difference-of-mathop-operatorname-and-declaremathoperator
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand{\ceq}{\mathrel{\mathop:}=}
+
+
+% ------------------------------------------------------------------------------
+% Expectation value:
+% Erwartungswert:
+% ------------------------------------------------------------------------------
+%\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\E}{\mathbb{E}}
+%\newcommand{\E}{\mathbb{E}}
+\newcommand{\Erw}[1]{ \E[#1] }
+\newcommand{\ERW}[1]{ \E\bigl[#1\bigr] } %Mit großen Klammern
+% ------------------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% Random variables, command is small "rv" followed by letter
+% ------------------------------------------------------------------------------
+\newcommand{\randomvar}[1]{#1}
+
+\newcommand{\rvA}{\randomvar{A}}
+\newcommand{\rvB}{\randomvar{B}}
+\newcommand{\rvC}{\randomvar{C}}
+\newcommand{\rvD}{\randomvar{D}}
+\newcommand{\rvE}{\randomvar{E}}
+\newcommand{\rvF}{\randomvar{F}}
+\newcommand{\rvG}{\randomvar{G}}
+\newcommand{\rvH}{\randomvar{H}}
+\newcommand{\rvI}{\randomvar{I}}
+\newcommand{\rvJ}{\randomvar{J}}
+\newcommand{\rvK}{\randomvar{K}}
+\newcommand{\rvL}{\randomvar{L}}
+\newcommand{\rvM}{\randomvar{M}}
+\newcommand{\rvN}{\randomvar{N}}
+\newcommand{\rvO}{\randomvar{O}}
+\newcommand{\rvP}{\randomvar{P}}
+\newcommand{\rvQ}{\randomvar{Q}}
+\newcommand{\rvR}{\randomvar{R}}
+\newcommand{\rvS}{\randomvar{S}}
+\newcommand{\rvT}{\randomvar{T}}
+\newcommand{\rvU}{\randomvar{U}}
+\newcommand{\rvV}{\randomvar{V}}
+\newcommand{\rvW}{\randomvar{W}}
+\newcommand{\rvX}{\randomvar{X}}
+\newcommand{\rvY}{\randomvar{Y}}
+\newcommand{\rvZ}{\randomvar{Z}}
+\newcommand{\rvGamma}{\randomvar{\Gamma}}
+% ------------------------------------------------------------------------------
+
+
+% ------------------------------------------------------------------------------
+% Multidimensionale Zufallsvariablen:
+% Multidimensional random variables, command is small "mrv" followed by letter
+% ------------------------------------------------------------------------------
+\newcommand{\mdrv}[1]{\symbfit{#1}}
+
+\newcommand{\mdrvA}{\mdrv{A}}
+\newcommand{\mdrvB}{\mdrv{B}}
+\newcommand{\mdrvC}{\mdrv{C}}
+\newcommand{\mdrvD}{\mdrv{D}}
+\newcommand{\mdrvE}{\mdrv{E}}
+\newcommand{\mdrvF}{\mdrv{F}}
+\newcommand{\mdrvG}{\mdrv{G}}
+\newcommand{\mdrvH}{\mdrv{H}}
+\newcommand{\mdrvI}{\mdrv{I}}
+\newcommand{\mdrvJ}{\mdrv{J}}
+\newcommand{\mdrvK}{\mdrv{K}}
+\newcommand{\mdrvL}{\mdrv{L}}
+\newcommand{\mdrvM}{\mdrv{M}}
+\newcommand{\mdrvN}{\mdrv{N}}
+\newcommand{\mdrvO}{\mdrv{O}}
+\newcommand{\mdrvP}{\mdrv{P}}
+\newcommand{\mdrvQ}{\mdrv{Q}}
+\newcommand{\mdrvR}{\mdrv{R}}
+\newcommand{\mdrvS}{\mdrv{S}}
+\newcommand{\mdrvT}{\mdrv{T}}
+\newcommand{\mdrvU}{\mdrv{U}}
+\newcommand{\mdrvV}{\mdrv{V}}
+\newcommand{\mdrvW}{\mdrv{W}}
+\newcommand{\mdrvX}{\mdrv{X}}
+\newcommand{\mdrvY}{\mdrv{Y}}
+\newcommand{\mdrvZ}{\mdrv{Z}}
+\newcommand{\mdrvGamma}{\mdrv{\Gamma}}
+% ------------------------------------------------------------------------------
+
+
+% ------------------------------------------------------------------------------
+% Estimation, command is mall "es" followed by letter
+% ------------------------------------------------------------------------------
+\newcommand{\esti}[1]{\hat{#1}}
+
+\newcommand{\esa}{\esti{a}}
+\newcommand{\esb}{\esti{b}}
+\newcommand{\esc}{\esti{c}}
+\newcommand{\esd}{\esti{d}}
+\newcommand{\ese}{\esti{e}}
+\newcommand{\esf}{\esti{f}}
+\newcommand{\esg}{\esti{g}}
+\newcommand{\esh}{\esti{h}}
+\newcommand{\esi}{\esti{i}}
+\newcommand{\esj}{\esti{j}}
+\newcommand{\esk}{\esti{k}}
+\newcommand{\esl}{\esti{l}}
+\newcommand{\esm}{\esti{m}}
+\newcommand{\esn}{\esti{n}}
+\newcommand{\eso}{\esti{o}}
+\newcommand{\esp}{\esti{p}}
+\newcommand{\esq}{\esti{q}}
+\newcommand{\esr}{\esti{r}}
+\newcommand{\ess}{\esti{s}}
+\newcommand{\est}{\esti{t}}
+\newcommand{\esu}{\esti{u}}
+\newcommand{\esv}{\esti{v}}
+\newcommand{\esw}{\esti{w}}
+\newcommand{\esx}{\esti{x}}
+\newcommand{\esy}{\esti{y}}
+\newcommand{\esz}{\esti{z}}
+\newcommand{\esgamma}{\esti{\gamma}}
+\newcommand{\essigma}{\esti{\sigma}}
+\newcommand{\esomega}{\esti{\omega}}
+\newcommand{\eskappa}{\esti{\kappa}}
+\newcommand{\esmu}{\esti{\mu}}
+\newcommand{\esSigma}{\esti{\Sigma}}
+% ------------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------
+% Matrices and vectors:
+% Matrizen und Vektoren:
+% 
+% Vectors, command is "v" followed by lowercase letter
+% Matrices, command is "m" followed by capital letter
+%-------------------------------------------------------------------------------
+\newcommand{\vecfont}[1]{\symbf{#1}}
+\newcommand{\matfont}[1]{\symbf{#1}}
+
+\newcommand{\Vektor}[1]{\vecfont{#1}}
+\newcommand{\Matrix}[1]{\matfont{#1}}
+\newcommand{\Vek}[1]{\vecfont{#1}}
+\newcommand{\Mat}[1]{\matfont{#1}}
+
+\newcommand{\va}{\vecfont{a}}
+\newcommand{\vb}{\vecfont{b}}
+\newcommand{\vc}{\vecfont{c}}
+\newcommand{\vd}{\vecfont{d}}
+\newcommand{\ve}{\vecfont{e}}
+\newcommand{\vf}{\vecfont{f}}
+\newcommand{\vg}{\vecfont{g}}
+\newcommand{\vh}{\vecfont{h}}
+\newcommand{\vi}{\vecfont{i}}
+\newcommand{\vj}{\vecfont{j}}
+\newcommand{\vk}{\vecfont{k}}
+\newcommand{\vl}{\vecfont{l}}
+\newcommand{\vm}{\vecfont{m}}
+\newcommand{\vn}{\vecfont{n}}
+\newcommand{\vo}{\vecfont{o}}
+\newcommand{\vp}{\vecfont{p}}
+\newcommand{\vq}{\vecfont{q}}
+\newcommand{\vr}{\vecfont{r}}
+\newcommand{\vs}{\vecfont{s}}
+\newcommand{\vt}{\vecfont{t}}
+\newcommand{\vu}{\vecfont{u}}
+\newcommand{\vv}{\vecfont{v}}
+\newcommand{\vw}{\vecfont{w}}
+\newcommand{\vx}{\vecfont{x}}
+\newcommand{\vy}{\vecfont{y}}
+\newcommand{\vz}{\vecfont{z}}
+
+\newcommand{\valpha}{\vecfont{\alpha}}
+\newcommand{\vepsilon}{\vecfont{\varepsilon}}
+\newcommand{\vgamma}{\vecfont{\gamma}}
+\newcommand{\veta}{\vecfont{\eta}}
+\newcommand{\vmu}{\vecfont{\mu}}
+
+\newcommand{\mA}{\matfont{A}}
+\newcommand{\mB}{\matfont{B}}
+\newcommand{\mC}{\matfont{C}}
+\newcommand{\mD}{\matfont{D}}
+\newcommand{\mE}{\matfont{E}}
+\newcommand{\mF}{\matfont{F}}
+\newcommand{\mG}{\matfont{G}}
+\newcommand{\mH}{\matfont{H}}
+\newcommand{\mI}{\matfont{I}}
+\newcommand{\mJ}{\matfont{J}}
+\newcommand{\mK}{\matfont{K}}
+\newcommand{\mL}{\matfont{L}}
+\newcommand{\mM}{\matfont{M}}
+\newcommand{\mN}{\matfont{N}}
+\newcommand{\mO}{\matfont{O}}
+\newcommand{\mP}{\matfont{P}}
+\newcommand{\mQ}{\matfont{Q}}
+\newcommand{\mR}{\matfont{R}}
+\newcommand{\mS}{\matfont{S}}
+\newcommand{\mT}{\matfont{T}}
+\newcommand{\mU}{\matfont{U}}
+\newcommand{\mV}{\matfont{V}}
+\newcommand{\mW}{\matfont{W}}
+\newcommand{\mX}{\matfont{X}}
+\newcommand{\mY}{\matfont{Y}}
+\newcommand{\mZ}{\matfont{Z}}
+
+
+
+
+%-------------------------------------------------------------------------------
+% Spaces, command is "sp" followed by capital letter
+%-------------------------------------------------------------------------------
+\newcommand{\spacefont}[1]{\symbfcal{#1}}
+
+\newcommand{\spA}{\spacefont{A}}
+\newcommand{\spB}{\spacefont{B}}
+\newcommand{\spC}{\spacefont{C}}
+\newcommand{\spD}{\spacefont{D}}
+\newcommand{\spE}{\spacefont{E}}
+\newcommand{\spF}{\spacefont{F}}
+\newcommand{\spG}{\spacefont{G}}
+\newcommand{\spH}{\spacefont{H}}
+\newcommand{\spI}{\spacefont{I}}
+\newcommand{\spJ}{\spacefont{J}}
+\newcommand{\spK}{\spacefont{K}}
+\newcommand{\spL}{\spacefont{L}}
+\newcommand{\spM}{\spacefont{M}}
+\newcommand{\spN}{\spacefont{N}}
+\newcommand{\spO}{\spacefont{O}}
+\newcommand{\spP}{\spacefont{P}}
+\newcommand{\spQ}{\spacefont{Q}}
+\newcommand{\spR}{\spacefont{R}}
+\newcommand{\spS}{\spacefont{S}}
+\newcommand{\spT}{\spacefont{T}}
+\newcommand{\spU}{\spacefont{U}}
+\newcommand{\spV}{\spacefont{V}}
+\newcommand{\spW}{\spacefont{W}}
+\newcommand{\spX}{\spacefont{X}}
+\newcommand{\spY}{\spacefont{Y}}
+\newcommand{\spZ}{\spacefont{Z}}
+%-------------------------------------------------------------------------------
+% State space and measurement space:
+% Zustandsraum und Messraum:
+%-------------------------------------------------------------------------------
+\newcommand{\statespace}{\spX}
+\newcommand{\measurementspace}{\spZ}
+%-------------------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------------------
+% Sets, command is "s" followed by capital letter
+%-------------------------------------------------------------------------------
+\newcommand{\setfont}[1]{\mathcal{#1}}
+
+\newcommand{\sA}{\setfont{A}}
+\newcommand{\sB}{\setfont{B}}
+\newcommand{\sC}{\setfont{C}}
+\newcommand{\sD}{\setfont{D}}
+\newcommand{\sE}{\setfont{E}}
+\newcommand{\sF}{\setfont{F}}
+\newcommand{\sG}{\setfont{G}}
+\newcommand{\sH}{\setfont{H}}
+\newcommand{\sI}{\setfont{I}}
+\newcommand{\sJ}{\setfont{J}}
+\newcommand{\sK}{\setfont{K}}
+\newcommand{\sL}{\setfont{L}}
+\newcommand{\sM}{\setfont{M}}
+\newcommand{\sN}{\setfont{N}}
+\newcommand{\sO}{\setfont{O}}
+\newcommand{\sP}{\setfont{P}}
+\newcommand{\sQ}{\setfont{Q}}
+\newcommand{\sR}{\setfont{R}}
+\newcommand{\sS}{\setfont{S}}
+\newcommand{\sT}{\setfont{T}}
+\newcommand{\sU}{\setfont{U}}
+\newcommand{\sV}{\setfont{V}}
+\newcommand{\sW}{\setfont{W}}
+\newcommand{\sX}{\setfont{X}}
+\newcommand{\sY}{\setfont{Y}}
+\newcommand{\sZ}{\setfont{Z}}
+
+%-------------------------------------
+% Special sets:
+%-------------------------------------
+% Short forms for well-known sets ("ds" = double stroke, \mathbb is correct
+% because it is redefined by libertine to print nice double stroke letters)
+\newcommand{\dsA}{\mathbb{A}}
+\newcommand{\dsB}{\mathbb{B}}
+\newcommand{\dsC}{\mathbb{C}}
+\newcommand{\dsD}{\mathbb{D}}
+\newcommand{\dsE}{\mathbb{E}}
+\newcommand{\dsF}{\mathbb{F}}
+\newcommand{\dsG}{\mathbb{G}}
+\newcommand{\dsH}{\mathbb{H}}
+\newcommand{\dsI}{\mathbb{I}}
+\newcommand{\dsJ}{\mathbb{J}}
+\newcommand{\dsK}{\mathbb{K}}
+\newcommand{\dsL}{\mathbb{L}}
+\newcommand{\dsM}{\mathbb{M}}
+\newcommand{\dsN}{\mathbb{N}}
+\newcommand{\dsO}{\mathbb{O}}
+\newcommand{\dsP}{\mathbb{P}}
+\newcommand{\dsQ}{\mathbb{Q}}
+\newcommand{\dsR}{\mathbb{R}}
+\newcommand{\dsS}{\mathbb{S}}
+\newcommand{\dsT}{\mathbb{T}}
+\newcommand{\dsU}{\mathbb{U}}
+\newcommand{\dsV}{\mathbb{V}}
+\newcommand{\dsW}{\mathbb{W}}
+\newcommand{\dsX}{\mathbb{X}}
+\newcommand{\dsY}{\mathbb{Y}}
+\newcommand{\dsZ}{\mathbb{Z}}
+%
+% Set of natural numbers, set of real numbers, set of rational numbers:
+% Menge natürlicher Zahlen, Menge reeller Zahlen, menge rationaler Zahlen:
+%-------------------------------------
+\newcommand{\NatNum}{\mathbb{N}}
+\newcommand{\RealNum}{\mathbb{R}}
+\newcommand{\RatNum}{\mathbb{Q}}
+%-------------------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------------------
+% Distributions
+%-------------------------------------------------------------------------------
+% Gauss-Verteilung + Gauss-Verteilung an einer Stelle:
+\newcommand{\GaussDist}{\mathcal{N}}
+\newcommand{\NormDist}{\mathcal{N}}
+\newcommand{\GaussDistValue}[3]{\mathcal{N}({#1}; {#2}, {#3})}
+\newcommand{\NormDistValue}[3]{\mathcal{N}({#1}; {#2}, {#3})}
+% Chi^2-Verteilung:
+\newcommand{\ChiSqDist}{\chi^2}
+%Dirac-Verteilung
+\newcommand{\DiracDist}{\delta}
+%-------------------------------------------------------------------------------
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Special symbols:
+% Sondersymbole:
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Rotation matrix
+\newcommand{\RotMat}{\mR}
+%Translation vector
+\newcommand{\transVec}{\vt}
+%
+\newcommand{\uVec}{\vu} % Control vector (vector with control parameters)
+\newcommand{\wVec}{\vw} % 
+\newcommand{\vVec}{\vv} % 
+%-------------------------------------------------------------------------------
+\newcommand{\Imat}{\mI} % Einheitsmatrix
+\newcommand{\ZeroMat}{\Mat{0}} % zero matrix
+\newcommand{\Fmat}{\mF} % system matrix of the Kalman Filter
+\newcommand{\Gmat}{\mG} % control matrix of the Kalman Filter
+\newcommand{\Hmat}{\mH} % measurement matrix of the Kalman Filter
+\newcommand{\Qmat}{\mQ} % system noise covariance matrix of the Kalman Filter
+\newcommand{\Rmat}{\mR} % measurement noise covariance matrix of the Kalman Filter
+\newcommand{\Wmat}{\mW} % Jacobian matrix in the Extended Kalman Filter
+\newcommand{\Vmat}{\mV} % Jacobian matrix in the Extended Kalman Filter
+\newcommand{\KG}{\mK} % Kalman Gain
+%-------------------------------------------------------------------------------
+\newcommand{\uk}{\vu_k} % Control vector (vector with control parameters) at time $k$
+\newcommand{\Qk}{\mQ_k} % System noise covariance matrix at time $k$
+\newcommand{\Rk}{\mR_k} % Measurement noise covariance matrix at time $k$
+\newcommand{\KGk}{\mK_k} % Kalman gain at time $k$ at time $k$
+%
+%
+%
+% point in image coordinates
+\newcommand{\pkt}{\vp}
+\newcommand{\pImage}{\pkt}
+\newcommand{\pImageUntransf}{\vecfont{p'}}
+% points in camera coordinates
+\newcommand{\PCam}{\pkt_{\textnormal{C}}}
+\newcommand{\pLeft}{\pkt_{\textnormal{L}}}
+\newcommand{\pRight}{\pkt_{\textnormal{R}}}
+% point in world coordinates
+\newcommand{\PWorld}{\pkt_{\textnormal{W}}}
+% homogenious coordinates
+\newcommand{\pHomogen}{\check{\pkt}}
+
+

@@ -274,7 +274,7 @@
 		\setlength{\tabcolsep}{0pt}% Kein Einzug bei Notation
 		\renewcommand{\arraystretch}{1.3}%
 		% Vorgabe vom KIT-Verlag: keine Zeilenumbrüche, daher \raggedright statt \RaggedRight
-		\begin{longtable}{>{\raggedright\arraybackslash}p{0.3\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.6\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.1\linewidth-2\tabcolsep}}%
+		\begin{longtable}{>{\raggedright\arraybackslash}p{0.3\linewidth-2\tabcolsep}>{\raggedright\arraybackslash}p{0.6\linewidth-2\tabcolsep}>{\centering\arraybackslash}p{0.1\linewidth-2\tabcolsep}}%
 	}{%
 		\end{longtable}%
 	}
@@ -315,14 +315,7 @@
 \newcommand{\sog}{sog.\ }
 \newcommand{\insbes}{insbes.\ }
 
-\newcommand{\mb}[1]{\ensuremath{\symbfit{#1}}}
 
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-
-
-% Die Definition eigener mathematischer Befehle ist besonders sinnvoll, wenn diese im Dokument oft verwendet werden.
-% Man kann dann hier an zentraler Stelle z.B. Vektoren mit Pfeil statt fett formatieren.
 
 
 \newcommand{\bild}[6]      % Bild-Pfadname, Beschriftung, Label, Breite, Kurzbeschriftung (für Abbildungsverzeichnis), optional: Platzierung
