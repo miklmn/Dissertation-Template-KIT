@@ -2,11 +2,11 @@
 %%%%           Deckblatt            %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showCoverPage}%
-%define an (invisible) numbering for the cover page
-%that is different from those used in the document
-%(i.e. Roman and Arabic) in order to prevent warnings
-%due to duplicates in page numbering
-%("destinatiion with same identifier (name{page.1})...")
+%% define an (invisible) numbering for the cover page
+%% that is different from those used in the document
+%% (i.e. Roman and Arabic) in order to prevent warnings
+%% due to duplicates in page numbering
+%% ("destinatiion with same identifier (name{page.1})...")
 \pagenumbering{alph}%
 \pdfbookmark[0]{\TransTitlePageName}{cover}% Sets a PDF bookmark for the title page
 %\input{content/00-FrontMatter/Titel-A4.tex}
@@ -33,6 +33,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showAbstractEN}%
 %
+%% Set English as the text language
+%% independent on the document language
 \textInEnglish{%
 \input{content/00-FrontMatter/Abstract.tex}
 }%endtextInEnglish
@@ -46,11 +48,13 @@
 %%%% Kurzzusammenfassung (Deutsch)  %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showAbstractDE}%
-
+%
+%% Set German as the text language
+%% independent on the document language
 \textInGerman{%
 \input{content/00-FrontMatter/Kurzfassung.tex}
 }%endtextInGerman
-
+%
 \cleardoublepage
 \end{showAbstractDE}%
 %
@@ -71,7 +75,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showContents}%
 %\cleardoublepage
-% Inhaltsverzeichnis in die PDF-Links eintragen
+%% Inhaltsverzeichnis in die PDF-Links eintragen
+%% damit es als Lesezeichen im PDF auftaucht
 \phantomsection
 \pdfbookmark[0]{\protect\contentsname}{toc}
 \tableofcontents
