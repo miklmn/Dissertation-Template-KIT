@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\node (M) at (0,0) {$M$};
+\node (F) [right=5em of M] {$F$};
+\node (N) [right=5em of F] {$M'$};
+
+\draw[-latex] (M)--(F) node[above,midway,font=\scriptsize] {$\varphi$};
+\draw[-latex] (F)--(N) node[above,midway,font=\scriptsize] {PCA};
+\draw[-latex,dotted] (M) to[bend left] node[above,midway,font=\scriptsize] {kernelized PCA} (N);
+
+\node[below=3ex of M,font=\scriptsize] {$\dim(M) = d$};
+\node[below=3ex of F,font=\scriptsize] {$\dim(F) \gg d$};
+\node[below=3ex of N,font=\scriptsize] {$\dim(M') = d' < d$};
+\end{tikzpicture}
