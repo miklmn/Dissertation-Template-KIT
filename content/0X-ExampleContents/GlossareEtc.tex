@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abkürzungsverzeichnis, Stichwortverzeichnis (Index) und Glossar}%
+\label{sec:Glossare}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Die Vorlage unterstützt auch ein Stichwortverzeichnis und ein Glossar. Ein
+Stichwortverzeichnis (oder Index) ist einfach nur eine alphabetisch sortierte
+Liste von Begriffen mit einer Auflistung der \index{Fundstelle}Fundstellen
+im Dokument. Ein Glossar ist eine alphabetisch sortierte Liste von Begriffen mit
+\index{Erklarung@Erklärung}Erklärung.
+
+Der Index wird erzeugt, indem im Quellcode der Befehl \verb#\index{Begriff}#
+eingefügt wird. Wichtig, der Begriff selbst wird dadurch nicht gedruckt, sondern
+muss noch einmal wiederholt werden, um auch gedruckt zu werden. Dieses Verhalten
+ist beabsichtigt, sodass im Index immer nur die Grundform des Wortes verwendet
+wird, aber im Text natürlich die richtige Deklination. Also:
+\begin{latex}[caption={Beispiel für Index},label={lst:index}]
+Die meisten Funktionen dieser \index{Vorlage}Vorlage, werden durch
+\index{Paket}Standardpakete bereitgestellt.
+\end{latex}
+Obiges Beispiel erzeugt einen Indexeintrag für \enquote{Vorlage} der auf
+\enquote{Vorlage} verweist und einen Eintrag \enquote{Paket} der auf 
+\enquote{Standardpaket} verweist.
+
+Um ein Glossar zu erzeugen, müssen die Glossarbegriffe zunächst definiert werden.
+Dies geschieht in der Datei \texttt{./content/00-glossary-definitions.tex}.
+Es gibt zwei Haupttypen von Glossarbegriffen: Abkürzungen (Akronyme) und allg.
+Einträge (z.\,B. Fachtermini).
+
+Abkürzungen werden mit
+\begin{latex}[caption={Definition von Abkürzungen},label={lst:acro}]
+\newacronym[%
+  shortplural={AUen},%
+  longplural={Abgasuntersuchungen}%
+] {au}{AU}{Abgasuntersuchung}
+\end{latex}
+Die drei Hauptargumente sind in dieser Reihenfolge Marke, Abkürzung und
+Ausschreibung. Optionale Argumente sind die kurze und lange Pluralform.
+
+Allgemeine Glossarbegriffe werden mit
+\begin{latex}[caption={Definition von allg. Glossareinträgen},label={lst:gls}]
+\longnewglossaryentry{pkg}{%
+  name={Paket},%
+  plural={Pakete}}%
+{%
+  Hier folgt eine lange Definition, die auch mehr als einen
+	Absatz beinhalten darf.
+}
+\end{latex}
+erzeugt.
+
+Im Text werden die Einträge durch den Befehl \verb#\gls{gls:Marke}# verwendet.
+Der wesentliche Unterschied zwischen einer Abkürzung und einem allg.
+Glossareintrag ist, dass bei Abkürzungen bei erstmaliger Verwendung die
+Abkürzung gedruckt und die Langform in Klammer dahinter gesetzt wird.
+Bei allg. Glossareinträgen wird einfach nur der Name gesetzt. Statt
+\verb#\gls{gls:Marke}# gibt es noch viele weitere Befehle, um im Kontext des
+umgebenen Textes die korrekte Pluralform, Großschreibung am Satzanfang, etc.
+zu gewährleisten. Hierfür konsultiere man das Handbuch zum Paket \texttt{glossaries}
+(Pluralform, sic!) \parencite{talbot2014}.

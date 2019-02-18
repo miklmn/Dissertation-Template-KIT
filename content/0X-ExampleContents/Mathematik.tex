@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathematik}%
+\label{sec:Mathe}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Grundsätzlich gilt, was in \parencites{ams1999a}{ams1999b} steht. In der Datei
+\texttt{./preamble/05-math.tex} sind eine Menge Kurzkommandos definiert, um eine
+einheitliche Typografie von \index{Skalar}Skalaren, \index{Vektor}Vektoren,
+\index{Matrix}Matrizen, \index{Zufallsvariable}Zufallsvariablen etc.
+zur vereinfachen. In diese Dateien einfach mal reinschauen, welche Kurzkommandos
+es gibt.
+
+Auf zwei besondere Kommandos wird näher eingegangen, weil dies häufig falsch
+gemacht wird.
+\begin{itemize}
+  \item Für die Matrixtransponierte gibt es das Kommando \verb#\Tr#, also
+	\verb#$A^{\Tr}$# liefert $A^{\Tr}$
+	
+	\item Bei \index{Integral}Integralen muss das \enquote{Differential-d} gemäß
+	ISO in aufrechter Schrift als Operator gesetzt sein mit einem kleinen Abstand
+	zum Integranden. Hierfür gibt es das spezielle Kommando \verb#\diff#. Also
+	\begin{equation}
+	 \int^1_0 x^2 d x = \frac{1}{3} \qquad \text{(falsche Typografie!)}
+	\end{equation}
+	ist falsch, während \verb#\int^1_0 x^2 \diff x = \frac{1}{3}# das Richtige
+	liefert
+	\begin{equation}
+	 \int^1_0 x^2 \diff x = \frac{1}{3} \qquad \text{(richtige Typografie!)}
+	\end{equation}
+\end{itemize}

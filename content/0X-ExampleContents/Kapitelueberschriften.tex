@@ -1,0 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Wichtiges zu Kapitelüberschriften \mbox{(Kurzversion für das Inhaltsverzeichnis etc.)}]{Wichtiges zu Kapitelüberschriften (und ein Beispiel für eine lange Überschrift, welche für das Inhaltsverzeichnis und die Kolumnentiteln zu lang ist).}%
+\label{chap:Titles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+Bei den Kapitelüberschriften kann man zwei Versionen definieren:
+eine lange Überschrift in geschweiften Klammern, welche in der Arbeit selbst angezeigt wird, 
+und eine Kurzversion, welche im Inhaltsverzeichnis und in den 
+\href{https://de.wikipedia.org/wiki/Kolumnentitel}{Kolumnentiteln}%
+\footnote{Kolumnentitel sind Überschriften der einzelnen Seiten. Meist stehen sie in der Kopfzeile.}
+angezeigt wird.
+
+Manchmal sind dem \glsdat{ac:KSP} die von \LaTeX{} automatisch eingefügten Zeilenumbrüche in den Kapitelüberschriften im Inhaltsverzeichnis nicht \enquote{schön} genug.
+Ein manuelles Einfügen der Zeilenumbrüche etwa mit \verb+\\+ oder mit \verb+\newline+ funktioniert leider nicht,
+da diese dann nicht nur im Inhaltsverzeichnis, sondern auch in den Kolumnentiteln und PDF"=Lesezeichen zur Geltung kommen, 
+was normalerweise nicht erwünscht ist.
+
+Abhilfe schafft der folgende Trick:
+man schließt den letzten, umzubrechenden Teil der Kurzversion des Titels in eine \verb+\mbox{}+ (s. Quelltext).
+Der Text, der in eine \verb+\mbox{}+ eingeschlossen wird, darf nicht umbrochen werden.
+Im Kolumnentiteln hat dies keine besondere Wirkung; im Inhaltsverzeichnis führt dies jedoch dazu, dass \LaTeX{} den Zeilenumbruch vor der \verb+\mbox{}+ einfügt.

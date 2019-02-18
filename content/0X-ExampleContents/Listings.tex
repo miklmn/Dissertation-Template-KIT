@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Listings}%
+\label{sec:Listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Zum Einbinden und formatieren von \index{Code|see{Listing}}Quellcode"=Beispielen
+-- sog. \index{Listing}Listings -- wird das Paket \texttt{listings}
+\parencite{Hoffmann2014} verwendet.
+Das Hervorheben von \index{Schlusselwort@Schlüsselwort}Schlüsselwörtern
+wird von LaTeX automatisch erledigt,
+wenn die korrekte Sprache des Listings angegeben ist.
+Vordefininiert sind die Umgebungen \index{Java}\texttt{java} für \gls{gls:java},
+\index{C++}\texttt{C++} für C++ und \texttt{latex} für \gls{gls:latex}.
+
+So bewirkt
+%
+\begin{latex}[%
+  caption={Listing-Beispiel},%
+  label={lst:listing}]
+\begin{java}[caption={A Java Hello-World example},label={lst:hello-world}]
+public class HelloWorld {
+  public static void main( String[] args ) {
+    System.out.println( "HelloWorld" );
+  }
+}
+\end{java}
+\end{latex}
+%
+das folgende Ergebnis:
+%
+\begin{java}[caption={A Java Hello-World example},label={lst:hello-world}]
+public class HelloWorld {
+  public static void main( String[] args ) {
+    System.out.println( "HelloWorld" );
+  }
+}
+\end{java}
+
+Man beachte, dass anders als bei anderen Umgebungen
+die Bezeichnung (\texttt{caption}) und die Referenzmarke (\texttt{label})
+nicht als gesonderte Befehle sondern als optionale Argumente übergeben werden.
+Dies liegt daran, dass ein Listing in der Regel keine Fließumgebung ist,
+sondern an der Stelle im Text erscheint, an der sie im Code auch steht.
+Ferner folgt ein Listing den ganz normalen Seitenumbruchsregeln.
+Das heißt, überlanger Code wird einfach umgebrochen. 
+m ein Listing zu einem Fließobjekt zu machen, muss das optionale Argument
+\texttt{float=<tbp>} angegeben werden.
+Die \index{Platzierung}Plazierungsangabe \enquote{\texttt{h}} für \enquote{hier}
+ist nicht erlaubt. Denn dies ist das Standardverhalten ohne \texttt{float}.

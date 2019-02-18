@@ -1,0 +1,51 @@
+\begin{showExamples}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Anleitung zur Nutzung dieser Vorlage}%
+\label{chap:Examples}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+Dieses Kapitel, welches in anderen Kapiteln als \cref{chap:Examples} referenziert werden könnte, zeigt den grundlegenden Aufbau eines einfachen Kapitels.
+Die einzelnen Abschnitte beschreiben die Struktur der Vorlage und geben wichtige allgemeine Tipps.
+Die Verwendung einzelner Features dieser Vorlage wird in \cref{chap:Examples} detailliert beschrieben und demonstriert.
+
+Es wird empfohlen, die einzelnen Unterkapiteln jedes Kapitels als eigene Dateien anzulegen und sie mit dem \verb+\input{}+-Befehl einzubinden (s. Quelltext).
+Dies erlaubt die einzelnen Unterkapitel bei Bedarf leichter zu verschieben oder mit einem einzigen \%-Zeichen temporär auszukommentieren und erleichtert so die Fehlersuche.
+
+Zur Nutzung dieser Vorlage für die eigene Arbeit empfiehlt es sich, die Anleitungskapiteln auszublenden und ansonsten die bestehende Struktur zu nutzen.
+Die Anleitungskapiteln lassen sich ausblenden, indem man in der Hauptdatei \texttt{Diss.tex} in der Zeile 27 \verb+\showif{showExamples}+ durch \verb+\hideif{showExamples}+ ersetzt.%
+%
+\footnote{Die Befehle \verb+\showif{showExamples}+ bzw. \verb+\hideif{showExamples}+ definieren die Umgebung \texttt{showExamples}, deren Inhalt jeweils angezeigt bzw. ausgeblendet wird.
+Dies betrifft alles, was zwischen \verb+\begin{showExamples}+ und \verb+\end{showExamples}+ steht.
+Der Vorteil dieser Vorgehensweise gegenüber einem einfachen Auskommentieren liegt darin,
+dass die zwischen \verb+\begin{showExamples}+ und \verb+\end{showExamples}+ eingebundenen Dateien
+weiterhin im Verzeichnisbaum vom TeXnicCenter etc. sichtbar bleiben und bei Bedarf schnell aufgerufen werden können.}
+%
+Ähnlich lassen sich auch andere Teile des Manuskriptes ausblenden ohne sie auskommentieren zu müssen.
+%
+\input{content/0X-ExampleContents/Kompilierung.tex}
+\input{content/0X-ExampleContents/AufbauDerVorlage.tex}
+\input{content/0X-ExampleContents/Grundsaetzliches.tex}
+%\input{content/0X-ExampleContents/Kapitelueberschriften.tex}
+%\input{content/0X-ExampleContents/Bilder.tex}
+%\input{content/0X-ExampleContents/Tabellen.tex}
+%\input{content/0X-ExampleContents/Theoreme.tex}
+%\input{content/0X-ExampleContents/Listings.tex}
+%\input{content/0X-ExampleContents/Querverweise.tex}
+%\input{content/0X-ExampleContents/Mathematik.tex}
+%\input{content/0X-ExampleContents/GlossareEtc.tex}
+%\input{content/0X-ExampleContents/Randnotizen.tex}
+%\input{content/0X-ExampleContents/DOsAndDONTs.tex}
+%\input{content/0X-ExampleContents/Sprachumschaltung.tex}
+%
+% Alte Anleitung von Philipp Woock
+%\input{content/0X-ExampleContents/0-Anleitung.tex}
+%\input{content/0X-ExampleContents/0-Beispiele.tex}
+%\input{content/0X-ExampleContents/1-Bilder}
+%\input{content/0X-ExampleContents/1-Mathematik}
+%\input{content/0X-ExampleContents/2-Experimente}
+%\input{content/0X-ExampleContents/3-Ergebnisse}
+%\input{content/0X-ExampleContents/4-Zusammenfassung}
+%
+\end{showExamples}%

@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Querverweise}%
+\label{sec:Querverweise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Querverweise sollten nicht mit dem Befehl \verb#\ref{...}# gesetzt werden,
+sondern mit \verb#\cref{...}# und verwandten Befehlen aus dem Paket
+\texttt{cleveref} \cite{Cubitt2013}.
+Diese Befehle haben den Vorteil nicht nur die Nummer zu referenzieren,
+sondern auch den Typ mit anzugeben.
+Hinzu kommt eine intelligente Verwendung der Pluralform und
+\index{Sortierung}Sortierung bei Mehrfachaufzählungen auch unterschiedlichen Typs.
+Will man \bspw auf zwei Abbildungen und eine Tabelle mit den Marken (\enquote{Labels})
+%
+\begin{itemize*}
+\item \texttt{fig:subfloat-example}
+\item \texttt{tab:files-dirs-of-template}
+\item \texttt{fig:kit-colors}
+\end{itemize*}
+%
+verweisen, so schreibt man einfach per Komma getrennt
+%
+\begin{latex}[caption={Cleveres Referenzieren mit \bs cref},label={lst:cref}]
+\cref{fig:subfloat-example,
+      tab:ex-sideways,
+      fig:kit-colors}
+\end{latex}
+%
+und erhält als Resultat
+\enquote{\cref{fig:subfloat-example,tab:ex-sideways,fig:kit-colors}}.

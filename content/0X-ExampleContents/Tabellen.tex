@@ -1,0 +1,183 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tabellen}
+\label{sec:Tabellen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Typografisch gute Tabellen haben \emph{niemals} vertikale Trennlinien,
+sondern nur wenige horizontale Linien.
+Ferner haben sie eine trennende Linie ganz oben und ganz unten.
+Hierfür stellt das Paket \texttt{booktabs} die Befehle
+\begin{itemize*}
+  \item \lc{toprule}
+	\item \lc{midrule}
+	\item \lc{bottomrule}
+\end{itemize*}
+zur Verfügung.
+Der Befehl \lc{hline} ist tabu.
+Für eine ausführliche Erläuterung auch über gute und schlechte Tabellen
+siehe die Dokumentation des \texttt{booktabs}-Pakets \cite{Fear2005}.
+
+Eine einfache Tabelle hat den folgenden Code:
+\begin{latex}[caption={Einfache Tabelle in \LaTeX},label={lst:tables}]
+\begin{table}%
+  \centering%
+  \begin{tabular}{l l l}%
+	  \toprule%
+    Datei       &  Bedeutung    &  Benutzer \\
+		\midrule%
+    ./main.tex  &  Hauptdatei   &  nein     \\
+    ./figures/  &  Zeichnungen  &  ja       \\
+    ./content/  &  Kapitel      &  ja       \\
+    ./logos/    &  Logos        &  nein     \\
+		\bottomrule%
+  \end{tabular}%
+  \caption{Dateien der Vorlage}%
+  \label{tab:files-dirs-of-template}%
+\end{table}
+\end{latex}
+%und sieht dann so aus wie \cref{tab:files-dirs-of-template}.
+
+
+%Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einfügen möchte
+%
+%% -- Einstellungen für Tabellen  ----------
+%% -- Können auch in die Präambel ----------
+%\colorlet{tablesubheadcolor}{gray!40}
+%\colorlet{tableheadcolor}{gray!25}
+%\colorlet{tableblackheadcolor}{black!60}
+%\colorlet{tablerowcolor}{gray!15.0}
+%
+%
+%\renewcommand\tablehead{%
+  %\tableheadfontsize%
+  %\sffamily\bfseries%
+  %\slshape
+%}
+%
+%%\renewcommand\tableheadcolor{
+   %%\rowcolor{tableblackheadcolor}
+%%}
+%
+%
+%%---------------------------------------
+%%
+%\begin{center}
+   %\tablestyle
+   %\tablealtcolored
+   %\begin{tabular}{*{2}{v{0.45\textwidth}}}
+   %\hline
+   %\tableheadcolor
+%\tablehead Tabellenkopf &
+%\tablehead Tabellenkopf \tabularnewline\hline
+%% Zwischenkopf
+%\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{
+   %\bfseries\color{blue} Zwischenkopf
+%} \tabularnewline
+%
+%\tablebody
+ %Inhalt  & Inhalt \tabularnewline
+ %Inhalt  & Inhalt \tabularnewline
+ %Inhalt  & Inhalt \tabularnewline
+%\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{
+   %\bfseries\color{green} Zwischenkopf
+%} \tabularnewline
+ %Inhalt  & Inhalt \tabularnewline
+ %Inhalt  & Inhalt \tabularnewline
+   %\hline
+   %\end{tabular}
+%\captionof{table}{Superteil 4}
+%\end{center}
+%%
+%% ------------------------------------------------------------
+%\IfDefined{LTXtable}{%
+%
+%Und hier ein Beispiel für eine sehr lange Tabelle, die umbrochen werden soll.
+%
+%%--Einstellungen für Tabellen ----------
+%\colorlet{tablerowcolor}{gray!10.0}
+%
+%\renewcommand\tableheadcolor{
+   %\rowcolor{tableheadcolor}
+%}
+%
+%\renewcommand\tablehead{%
+  %\tableheadfontsize%
+  %\sffamily\bfseries%
+  %\slshape
+  %\color{black}
+%}
+%%---------------------------------------
+%{
+   %\tablestyle
+   %\tablealtcolored
+   %\LTXtable{\textwidth}{tables/LongTableExample.tex}
+%}
+%} % End If 
+%
+%
+%
+Sollten eine Tabelle einmal so breit sein, dass sie nicht mehr horizontal auf
+eine Seite passt, so ist es natürlich möglich, diese mithilfe des Pakets
+\texttt{rotfloat} \parencite{Sommerfeldt2004} in eine
+\texttt{sidewaystable} statt in eine \texttt{table}-Umgebung zu setzen.
+Also so:
+\begin{latex}[caption={Gedrehte Tabelle},label={lst:rotated-table}]
+\begin{sidewaystable}
+  \centering%
+  \begin{tabular}{...}%
+    ...
+  \end{tabular}%
+  \caption{Bezeichnung}%
+  \label{Referenzmarke}%
+\end{sidewaystable}%
+\end{latex}
+
+Ein Ergebnis sieht man in \cref{tab:ex-sideways}.
+
+
+\begin{sidewaystable}[p]
+\scriptsize%
+%\tiny
+\centering%
+\begin{tabular}{l M M M M M}%
+\toprule%
+\addlinespace[0pt]%
+ & \multicolumn{5}{c}{\bfseries Level} \tabularnewline
+ & \multicolumn{2}{c}{\bfseries Qualitative} & \multicolumn{3}{c}{\bfseries Quantitative} \tabularnewline
+ & \bfseries\centering Nominal & \bfseries\centering Ordinal & \bfseries\centering Interval & \bfseries\centering Ratio & \bfseries\centering Absolute \tabularnewline \addlinespace[0pt]\midrule\addlinespace[0pt]
+Empirical relation &
+\begin{tabitemize}\item[$\sim$] Equivalence\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\strut\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\strut\end{tabitemize} \tabularnewline \midrule
+Empirical operation &
+ &
+ &
+\begin{tabitemize}\item[$\oplus$] Addition\end{tabitemize} &
+\begin{tabitemize}\item[$\oplus$] Addition\item[$\otimes$] Multiplication\strut\end{tabitemize} &
+\begin{tabitemize}\item[$\oplus$] Addition\item[$\otimes$] Multiplication\strut\end{tabitemize} \tabularnewline \midrule
+Feasable transformation &
+$m' = f( m )$ for $f$ bij.\strut &
+$m' = f( m )$ for $f$ mon.\strut &
+$m' = am + b$ for $a>0$\strut &
+$m' = am$ for $a>0$\strut &
+$m' = m$\strut \tabularnewline \midrule
+Examples of features &
+\begin{tabitemize}\item Telephone numbers\item Postal codes\item Gender\strut\end{tabitemize} &
+\begin{tabitemize}\item Grades\item Degree of hardness\item Wind intensity\strut\end{tabitemize} &
+\begin{tabitemize}\item Temperatur in F\textdegree\item Calendric time\item Geographic altitude\strut\end{tabitemize} &
+\begin{tabitemize}\item Temperatur in K\item Mass\item Length\item Electric current\strut\end{tabitemize} &
+\begin{tabitemize}\item Quantum numbers\item Error number\strut\end{tabitemize} \tabularnewline \midrule
+Range of features &
+\begin{tabitemize}\item Numbers\item Names\item Symbols\strut\end{tabitemize} &
+Natural numbers &
+Real numbers &
+Real, positive numbers &
+Natural numbers \tabularnewline \midrule
+Expressiveness & low & \dots & \dots & \dots & high\strut \tabularnewline \addlinespace[0pt]
+\bottomrule%
+\end{tabular}%
+\caption{Beispiel für eine breite, gedrehte Tabelle (hier: Taxonomie der Maßskalen)}%
+\label{tab:ex-sideways}%
+\end{sidewaystable}

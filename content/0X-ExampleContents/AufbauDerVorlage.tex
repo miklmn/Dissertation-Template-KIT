@@ -1,0 +1,197 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Aufbau der Vorlage}%
+\label{sec:AufbauDerVorlage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Die Vorlage besteht aus mehreren Dateien und Verzeichnissen.
+Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
+%
+%{\footnotesize
+\begin{table}[htbp]
+%\scriptsize% kleinere Schrift
+\footnotesize% kleinere Schrift
+\centering%% Tabelle zentrieren (falls nicht volle Seitenbreite)
+\renewcommand{\arraystretch}{1.5}% Abstand zwischen den Zeilen auf 1,5faches
+\setlength{\tabcolsep}{0pt}% Seitliche Abstände eliminieren
+% Tabelle auf die Seitenbreite strecken
+\begin{tabularx}{\columnwidth}%
+% Breite der ersten Spalte auf Inhalt anpassen,
+% Breite der zweiten Spalte auf 25% der Seitenbreite,
+% Breite der dritten Spalte automatisch bestimmen,
+%Spacing zwischen den Spalten auf 10pt setzen:
+{l@{\extracolsep{10pt}}p{0.25\columnwidth}X}%
+%-----------------------------------------------------------------------------------------------------
+\toprule%
+%-----------------------------------------------------------------------------------------------------
+\bfseries Datei/Verzeichnis               & \bfseries Bedeutung
+                                          & \bfseries Benutzerinteraktion\\
+%-----------------------------------------------------------------------------------------------------
+\midrule%
+%-----------------------------------------------------------------------------------------------------
+\texttt{./Diss.tcp}                       & \texttt{TeXnicCenter}-Projektdatei
+                                          & Aufruf im TeXnicCenter. Indirekte Änderung durch Einstellungen im TeXnicCenter.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei
+                                          & Aus- und Einblenden der einzelnen Teile durch Ersetzen von \texttt{showif} durch \texttt{hideif} und vice versa.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./bib/Diss.bib}                   & \texttt{BibLaTeX}-Quelldatei
+                                          & Verwendete Referenzen einfügen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./content/*}                      & \texttt{LaTeX}-Kapitel
+                                          & Kapitelinhalte einfügen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./figures-src/*}                  & \texttt{TikZ}-Zeichnungen
+                                          & Ggf. \texttt{TikZ}-Zeichnungen hinzufügen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./figures-compiled/*}             & Temporäre Kompilate
+                                          & nur löschen \\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./fonts/*}                        & Schriften
+                                          & keine \\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./images/*}                       & Binärformat-Bilder
+                                          & Ggf. Bilder im Binärformat hinzufügen. \\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/*}                     & Konfigurationsdateien
+                                          & s.u.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Acronyms.tex}          & Akronyme
+                                          & Ggf. Definition von Akronymen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/AlleAngaben.tex}       & Daten der Arbeit
+                                          & Hier werden die Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern gemacht. Auch lässt sich hier die Sprache der Arbeit einstellen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/AllePfade.tex}         & Definition von Zusatzpfaden
+                                          & Ggf. Pfade zu weiteren Bildverzeichnissen und Bibliografie"=Dateien ergänzen.\\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/BibSettings.tex}       & Konfiguration der Bibliografie
+%                                          & Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern. \\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/EncodingAndFont.tex}   & Schriftarteinstellungen
+%                                          & Keine.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Glossary.tex}          & Glossareinträge
+                                          & Ggf. Glossareinträge definieren.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Header.tex}            & Präambel-Definitionen
+                                          & Hier könnte das A4-Layout und die Draft-Option aktiviert werden.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Hyphenation.tex}       & Silbentrennung
+                                          & Ggf. Regeln für die Silbentrennung unbekannter Wörter hinzufügen.\\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/IndexStyle.tex}        & Layout des Stichwortverzeichnisses
+%                                          & Keine.\\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/KomaOptions.tex}       & KomaScript-Optionen
+%                                          & Keine.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Math.tex}              & Mathe-Einstellungen
+                                          & Bei Bedarf eigene Mathe-Makros definieren.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/MyPackages.tex}        & Zusatzpakete
+                                          & Ggf. Einbindung von Zusatzpaketen.\\
+%-----------------------------------------------------------------------------------------------------
+\texttt{./preamble/Newcommands.tex}       & Eigene Macros
+                                          & Ggf. eigene \LaTeX{}-Macros hinzufügen.\\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/preambel.tex}          & Paketkonfigurationen
+%                                          & normalerweise keine \\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/preambel-commands.tex} & Paketkonfigurationen
+%                                          & normalerweise keine \\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
+%                                          & normalerweise keine \\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/TableCommands.tex}     & Tabelleneinstellungen
+%                                          & normalerweise keine \\
+%-----------------------------------------------------------------------------------------------------
+%\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen
+%                                          & normalerweise keine \\
+%-----------------------------------------------------------------------------------------------------
+\bottomrule%
+%-----------------------------------------------------------------------------------------------------
+\end{tabularx}%
+\caption[Dateien und Verzeichnisse der Vorlage]{Dateien und Verzeichnisse der Vorlage}%
+\label{tab:StrukturDerVorlage}%
+\end{table}
+
+Bei der Datei \texttt{Diss.tcp} handelt es sich um die Projektdatei für den \LaTeX-Editor TeXnicCenter.
+In ihr werden die projektbezogenen Einstellungen des TeXnicCenter festgehalten.
+Das sind u.a. Angaben zur Hauptdatei des Projektes und zur Projektsprache.
+Die korrekte Angabe der Projektsprache ist insofern wichtig, als dass diese in TeXnicCenter ab Version 2.0 Beta 1 zur Bestimmung der Sprache für die Rechtschreibprüfung verwendet wird.
+Die entsprechenden Einstellungen können im TeXnicCenter über den Menüeintrag \texttt{Projekt} $\rightarrow$ \texttt{Eigenschaften} vorgenommen werden.
+
+
+Die Hauptdatei ist die Datei \texttt{Diss.tex}.
+Sie ist verhältnismäßig kurz, da die Hauptinhalte in andere Dateien ausgelagert sind, welche mit Hilfe des \verb+\input{}+ \bzw des \verb+\include{}+-Befehls eingebunden werden.
+Die Hauptdatei besteht im Wesentlichen aus vier Abschnitten.
+Im ersten stehen die sogenannten \enquote{Magic comments}, mit deren Hilfe manche \LaTeX-IDEs sich selbst vorkonfigurieren können.
+Sie fangen mit \verb+\% !TeX+ an und geben an, welche Kodierung für die Dateien verwendet wird und welche Programme für die Kompilierung des Quelltextes und der Bibliografie verwendet werden sollen.
+Außerdem kann hier angegeben werden, welche Sprache für die Rechtschreibprüfung innerhalb der IDE verwendet werden soll.
+Im zweiten Abschnitt wird die Header-Datei eingebunden.
+In dieser wird die verwendeten Dokumentklasse (inklusive Papierformat und Schriftgröße) definiert, sowie weitere Dateien eingebunden,
+in welchen die zu landenden Pakete, Layout"=Parameter sowie alle weiteren Einstellungen definiert und konfiguriert werden.
+Im dritten Teil können mit Hilfe von Schaltern einzelne Teile der Arbeit aus- und wieder eingeblendet werden, ohne dass sie auskommentiert werden müssen.
+Im vierten Teil werden nun die einzelnen Inhalte der Arbeit eingebunden.
+
+Das entstehende PDF heißt genauso wie die Hauptdatei.
+
+Die einzelnen \index{Kapitel}Kapiteln der Arbeit werden im Verzeichnis \texttt{./content/} als separate Dateien gespeichert.
+Es empfiehlt sich als Dateiname das Schema \texttt{nn-name.tex} zu verwenden, wobei \texttt{nn} die Nummer des Kapitels ist,
+sodass die Dateien in der semantisch richtigen Reihenfolge sortiert angezeigt werden.
+Die einzelnen Dateien werden per \verb+include{}+-Direktive in der Datei \texttt{Diss.tex} eingebunden.
+Theoretisch wäre es an dieser Stelle auch möglich mit \verb+\input{}+ zu arbeiten, was jedoch seine Nachteile hätte.
+Der Unterschied zwischen den beiden Befehlen wird \href{https://texwelt.de/wissen/fragen/32/was-ist-der-unterschied-zwischen-include-and-input}{auf texwelt.de} erklärt:
+
+\begin{quote}
+{\small
+\verb+\input{file}+ lädt die Datei an Ort und Stelle in die Ziel-Datei und ist äquivalent
+als ob man den Text in \texttt{file} direkt in die Ziel-Datei geschrieben hätte.
+\verb+\input+ kann letztlich überall für jede Art Datei verwendet werden und kann auch verschachtelt angewendet werden,
+d.h. eine eingebundene Datei kann ihrerseits Dateien mit \verb+\input+ einbinden.
+
+\verb+\include{file}+ hingegen führt zunächst einmal ein \verb+\clearpage+ aus bevor es \verb+\input{file}+ ausführt.
+Im Gegensatz zu \verb+\input+ kann eine Datei, die mit \verb+\include+ eingebunden wird,
+kein weiteres \verb+\include+ enthalten, es ist also keine verschachtelte Anwendung möglich.
+Eine mit \verb+\include+ eingebundene Datei kann aber natürlich \verb+\input+ enthalten.
+\verb+\include+ erzeugt eine neue \texttt{aux}-Datei für die eingebundene Datei.
+Das erlaubt es beispielsweise, ein Dokument in mehrere logische Einheiten zu zerlegen (etwa einzelne Kapitel),
+die jede einer Datei entsprechen, die mit \verb+\include+ in die Hauptdatei eingebunden wird.
+\verb+\includeonly{file1,file3}+ würde dann erlauben, nur gerade bearbeitete Dateien für die Kompilation einzubinden
+und durch die separaten \texttt{aux}-Dateien dennoch korrekte Seitenzahlen und Querverweise zu erhalten.
+Es gibt auch das \texttt{excludeonly} Paket, dessen Befehl \verb+\excludeonly+ das gegensätzliche Verhalten bietet.%
+}%
+\footnote{\url{https://texwelt.de/wissen/fragen/32/was-ist-der-unterschied-zwischen-include-and-input}}
+\end{quote}
+
+Zur besseren Übersicht und zur Vereinfachung der Fehlersuche wird empfohlen,
+die einzelnen Unterkapitel ebenfalls als separate Dateien in Unterverzeichnissen von \texttt{./content/} anzulegen
+und sie mit den \verb+\input{}+-Direktiven in die jeweiligen Kapitel-Dateien einzubinden.
+
+Es wird davon ausgegangen, dass sich sämtliche Bibliografie-Angaben in der Datei
+\texttt{./bib/Diss.bib} befinden.
+Sollten mehrere Bibliografie-Dateien verwendet werden, können diese in der Datei
+\texttt{./preamble/AllePfade.tex} gesetzt werden.
+
+\index{Bild}Bilder bzw. \index{Zeichnung|see{Bild}}Zeichnungen werden auf zwei Arten eingebunden.
+Bilder im \index{Bild!Binär-}Binärformat (PNG, JPEG, TIFF, PDF, etc.)
+werden mit \verb+\includegraphics+-Befehl eingebunden. 
+Bei den \index{Bild!TikZ}\gls{gls:tikz}-Zeichnungen handelt es sich um reguläre TeX-Quellcode-Dateien,
+die mit dem \verb+\input+-Befehl eingebunden werden.
+Für eine einfache Verwaltung wird empfohlen, Binärbilder im Verzeichnis \texttt{./images/} abzulegen.
+Zusätzliche Pfade können in der Datei \texttt{./preamble/AllePfade.tex} definiert werden.
+Die \gls{gls:tikz}-Quellcode-Dateien sollten im Verzeichnis \texttt{./figures-src/} abgelegt werden.
+Während des Kompilierens werden für jede \gls{gls:tikz}-Zeichnung im Verzeichnis \texttt{./figures-compiled/} mehrere Dateien erzeugt.
+Der Inhalt dieses Verzeichnisses kann gefahrlos gelöscht werden.
+Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{sec:Bilder}.
+
+Die wichtigsten Einstellungen, die auf jeden Fall geändert werden müssen,
+finden sich in der Datei \verb+./preamble/AlleAngaben.tex+.
+Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
+Außerdem wird hier die Hauptsprache der Arbeit gesetzt, was sich an mehreren Stellen auswirkt.
+So wird beispielsweise bei Umstellung auf Englisch als Hauptsprache
+\enquote{Danksagung} durch \enquote{Acknowledgments},
+\enquote{Inhaltsverzeichnis} durch \enquote{Contents}
+\usw ersetzt.
+Auch die Regeln der Silbentrennung werden entsprechend angepasst.

@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Bilder, Grafiken und Diagramme]{Bilder, Grafiken und Diagramme}
+\label{sec:Bilder}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Bei Einbindung von Grafiken sind zwei Fälle zu unterscheiden:
+\begin{itemize*}
+  \item reguläre \index{Bild!Binär-}Bilder in einem Binärformat
+	      (\texttt{PNG}, \texttt{TIFF}, \texttt{JPG}, \texttt{PDF}, etc.)
+	\item \index{Bild!Vektor-}Grafiken, die im \gls{gls:tikz}-Quellcode vorliegen 
+\end{itemize*}
+
+Grundlegender Unterschied bei der Einbindung \enquote{regulärer} Bilder
+und \gls{gls:tikz}-Bilder ist, dass Binärformatgrafiken mit \lc{includegraphics}
+eingebunden werden, während \gls{gls:tikz}-Grafiken mit \lc{input} eingebunden
+und von \texttt{latex} mitkompiliert werden.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Floats]{\index{Float}\index{Bild!Float}Floats}%
+\label{sec:Floats}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Üblicherweise werden Bilder und Tabellen in Fließumgebungen (floats) gesetzt,
+damit \LaTeX\ sie geschickt positionieren kann.
+Bei Bildern heißt die entsprechende Float-Umgebung \texttt{figure}.
+Die Positionierung kann durch Angabe von Buchstaben
+\texttt{h}, \texttt{t}, \texttt{b} und \texttt{p}
+beeinflusst werden, die Auswirkung ist allerdings nicht immer intuitiv.
+Um diese zu verstehen, empfiehlt sich die Lektüre der Beschreibung
+von Frank Mittelbach
+\href{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}{auf stackexchange.com}.%
+\footnote{\url{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}}
+
+\textbf{Wichtig!}
+Seitens des \glsgen{ac:KSP} wird bezüglich Einbindung von Floats gefordert,
+dass diese die einzelnen Sätze nicht zerreißen.
+Dies bedeutet, dass eine Platzierung am Anfang oder am Ende einer Seite
+unerwünscht ist, wenn dadurch ein Satz aufgeteilt wird.
+Somit bleibt eigentlich nur noch die Verwendung der \texttt{h}-Option,
+die das Bild allerdings nicht immer an der gewünschten Stelle einfügen kann.
+Manchmal wird das Bild dadurch ans Ende des Kapitels
+(genauer gesagt, an die Stelle, wo die nächste \lc{clearpage}-Anweisung kommt)
+verschoben.
+Und auch wenn die Platzierung mit der \texttt{h}-Option klappt,
+können unerwünschte Effekte auftreten.
+So können beispielsweise auf der vorherigen Seite riesige leere Flächen entstehen.
+Daher empfiehlt sich eine endgültige Platzierung der Bilder erst ganz am Schluss,
+nachdem alle anderen Korrekturen durchgeführt sind.
+Ggf. müssen die Bilderdefinitionen manuell im Quellcode herumgeschoben werden,
+bis sie von \LaTeX\ optimal gesetzt werden.
+Dafür empfiehlt es sich, die einzelnen Bilddefinitionen in Extra-Dateien auszulagern.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Binärbilder]{\index{Bild!Binär-}Binärbilder}%
+\label{sec:Binaerbilder}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Ein Beispiel für die Einbindung eines Bildes im Binärformat ist in \cref{lst:binary-image} angeführt:
+
+\begin{latex}[caption={Einbindung einer Binärgrafik in LaTeX},label={lst:binary-image}]
+\begin{figure}[h]%
+  \centering%
+  \includegraphics[width=\linewidth]{Bildpfad/Dateiname}%
+  \caption[Kurzversion für das Abbildungsverzeichnis]{%
+           Eine tolle sehr lange Abbildungsunterschrift}%
+  \label{fig:my-binary-image}%
+\end{figure}
+\end{latex}
+
+Die Angabe des Pfades kann sowohl absolut als auch relativ
+zum Verzeichnis der Hauptdatei oder zu einem der Pfade angegeben werden,
+die in der Datei \texttt{AllePfade.tex} definiert sind.
+Diese Pfade werden in angegebenen Reihenfolge durchsucht.
+Dasselbe gilt für die Dateierweiterung.
+Ist keine Erweiterung definiert und liegen mehrere Bilder mit gleichem Namen jedoch unterschiedlicher Dateierweiterung vor,
+wird die Reihenfolge, die in der Datei texttt{AllePfade.tex} definiert ist, verwendet.
+
+Zu beachten ist dabei, dass der \gls{ac:KSP} Skalierung der Bildern auf die Seitenbreite fordert,
+was hier durch die Option \texttt{width=\textbackslash linewidth} verwirklicht wurde.
+
+Wichtig anzumerken ist, dass alle Zeilen innerhalb der \texttt{Figure}"=Umgebung
+mit einem Prozentzeichen abzuschließen sind.
+Ansonsten werden überflüssige Leerzeichen eingefügt,
+was zu unerwünschten Nebenwirkungen führen kann.
+
+Mit Hilfe von Paket \texttt{Subfig} \cite{Cochran2005} können Bilder auch in
+\index{Abbildung|see{Bild}}\index{Bild!Unterabbildung}Unterabbildungen gesetzt
+und sowohl als ganzes (vgl. \cref{fig:subfloat-example}) als auch einzeln (vgl.
+\cref{fig:subfloat-example-01,fig:subfloat-example-02,fig:subfloat-example-03,fig:subfloat-example-04})
+referenziert werden.
+
+\begin{figure}[h]%
+	\centering%
+	\subfloat[La Savoureuse, Lepuix, Frankreich (\copyright\ Thomas Bresson)]{%
+		\label{fig:subfloat-example-01}%
+		\includegraphics[width=0.49\linewidth]{./images/examples/subfloat-example-01.jpg}%
+	}%
+	\hfill%
+	\subfloat[Bangkok, Thailand (\copyright\ Prachanart Viriyaraks)]{%
+		\label{fig:subfloat-example-02}%
+		\includegraphics[width=0.49\linewidth]{./images/examples/subfloat-example-02.jpg}%
+	}%
+	\\%
+	\subfloat[Wahkeena Falls, Lincoln Park, USA (\copyright\ srslyguys)]{%
+		\label{fig:subfloat-example-03}%
+		\includegraphics[width=0.49\linewidth]{./images/examples/subfloat-example-03.jpg}%
+	}%
+	\hfill%
+	\subfloat[Nacionalni park Plitvička jezer, Kroatien (\copyright\ Roman Bonnefoy)]{%
+		\label{fig:subfloat-example-04}%
+		\includegraphics[width=0.49\linewidth]{./images/examples/subfloat-example-04.jpg}%
+	}%
+	\caption[Bild mit Unterabbildungen]{Wasserfälle der Welt als Beispiel für Unterabbildungen}%
+	\label{fig:subfloat-example}%
+\end{figure}
+
+Der Beispielcode dafür ist in \cref{lst:subfigures} dargestellt.
+
+\begin{latex}[caption={Unterabbildungen in LaTeX},label={lst:subfigures}]
+\begin{figure}[h]%
+	\centering%
+	\subfloat[Unterbezeichnung 1)]{%
+		\label{fig:my-sub-figure-1}%
+		\includegraphics[width=0.49\linewidth]{Bildpfad/Bild1}%
+	}%
+	\hfill%
+\subfloat[Unterbezeichnung 2]{%
+  \label{fig:my-sub-figure-2}%
+	\includegraphics[width=0.49\linewidth]{Bildpfad/Bild2}%
+}%
+\caption[Kurzversion]{Langversion der Bildunterschrift}%
+\label{fig:my-whole-figure}%
+\end{figure}
+\end{latex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[TikZ-Grafiken]{\index{TikZ}\index{Bild!TikZ}\gls{gls:tikz}-Grafiken}%
+\label{sec:TikZ}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\Gls{gls:tikz} eignet sich hervorragend, um wissenschaftliche Zeichnungen,
+Vektorgrafiken und \index{Diagramm}Diagramme direkt mithilfe von LaTeX
+zu setzen, sodass die Schrift direkt zum restlichen Dokument passt.
+Zu \gls{gls:tikz} und dem darauf aufsetzenden \gls{gls:pgfplots} gibt
+es hervorragende Dokumentation \parencites{Tantau2013}{Feuersaenger2014}.
+Mit TikZ lassen sich viele gute Sachen machen.
+
+
+Der Code für die Einbindung einer \gls{gls:tikz}-Grafik sieht folgendermaßen aus:
+\begin{latex}[caption={Einbindung einer TikZ-Zeichnung in LaTeX},label={lst:tikz-figure}]
+\begin{figure}[h]%
+  \centering%
+  \tikzsetnextfilename{TikZ-Bild}%
+  \resizebox{\textwidth}{!}{%
+    \input{./figures-src/TikZ-Bild.tex}%
+  }%
+  \caption[Kurzversion für das Abbildungsverzeichnis]{%
+           Eine tolle sehr lange Abbildungsunterschrift}%
+  \label{fig:my-tikz-figure}%
+\end{figure}
+\end{latex}
+
+Auch hier wird mit Hilfe der Anweisung
+\texttt{\bs resizebox\{\bs textwidth\}\{!\}\{...\}}
+Skalierung auf die volle Seitenbreite durchgeführt.
+
+Das Kommando \verb+\tikzsetnextfilename{...}+ ist nicht unbedingt notwendig,
+ aber sehr zu empfehlen, da dies als Name für das temporäre Kompilat im Ordner
+\texttt{./figures-compiled/} genommen wird.
+Dieser sollte gleich dem Namen des Quelldatei (ohne Endung) gewählt werden.
+Ansonsten nimmt \texttt{pdflatex} eine hochlaufende Nummer als Dateiname,
+was die Fehlersuche sehr erschwert.
+
+Nachfolgend finden sich einige Beispiele für TikZ-Zeichnungen, nämlich
+eine Übersicht über die KIT-Corporate-Identity-Farben (\cref{fig:kit-colors}),
+ein kommutatives Diagramm (\cref{fig:kpca}),
+ein Netzwerkkommunikationsgraph (\cref{fig:net-comm}),
+ein einfaches \index{Diagramm!Punkt-}Punktdiagramme (\cref{fig:ica})
+und etwas aufwendigere Diagramme mit mehreren
+\index{Achsensystem|see{Diagramm}}Achsensystemen (\cref{fig:pca}).
+
+\begin{figure}[hp]%
+	\centering%
+  \tikzsetnextfilename{kit-colors}%
+	%\resizebox{\textwidth}{!}{%
+		\input{./figures-src/kit-colors.tex}%
+	%}%
+	\caption{KIT-Corporate-Identity-Farben}%
+  \label{fig:kit-colors}%
+\end{figure}
+
+\begin{figure}[hp]%
+	\centering%
+  \tikzsetnextfilename{kpca}%
+	%\resizebox{\textwidth}{!}{%
+		\input{./figures-src/kpca.tex}%
+	%}%
+	\caption{Kommutative Diagramm mit TikZ}%
+  \label{fig:kpca}%
+\end{figure}
+
+\begin{figure}[hp]%
+	\centering
+  \tikzsetnextfilename{net-comm}%
+	\resizebox{\textwidth}{!}{%
+		\input{./figures-src/net-comm.tex}%
+	}%
+	\caption{Netzwerkkommunikationsgraph mit TikZ}%
+  \label{fig:net-comm}%
+\end{figure}
+
+\begin{figure}[hp]%
+	\centering%
+	\subfloat[Ursprünglicher Merkmalsraum]{%
+		\label{fig:ica-1}%
+		\tikzsetnextfilename{ica-1}%
+		\resizebox{0.45\textwidth}{!}{%
+			\input{./figures-src/ica-1.tex}
+		}%
+	}%
+	\hfill%
+	\subfloat[Transienter Merkmalsraum (Nach Whitening, z.\,B. durch \gls{ac:PCA} inkl. Normalisierung)]{%
+		\label{fig:ica-2}%
+		\tikzsetnextfilename{ica-2}%
+		\resizebox{0.45\textwidth}{!}{%
+			\input{./figures-src/ica-2.tex}%
+		}%
+	}%
+	\hfill%
+	\subfloat[Transformierter Merkmalsraum]{%
+		\label{fig:ica-3}%
+		\tikzsetnextfilename{ica-3}%
+		\resizebox{0.45\textwidth}{!}{%
+			\input{./figures-src/ica-3.tex}%
+		}%
+}%
+\caption{Diagramme mit TikZ direkt in LaTeX (hier: Die Schritte der \enquote{Independent component analysis})}%
+\label{fig:ica}%
+\end{figure}
+
+\begin{figure}[hp]
+	\centering%
+	\subfloat[Ungünstige Projektion]{%
+		\label{fig:pca-1}%
+		\tikzsetnextfilename{pca-1}%
+		\resizebox{0.48\textwidth}{!}{%
+			\input{./figures-src/pca-1.tex}%
+		}%
+	}\hfill%
+	\subfloat[Zielführende Projektion]{%
+		\label{fig:pca-2}%
+		\tikzsetnextfilename{pca-2}%
+		\resizebox{0.48\textwidth}{!}{%
+			\input{./figures-src/pca-2.tex}%
+		}%
+	}%
+	\caption{Aufwändiges Diagramm mit TikZ (hier: Probleme der \enquote{Principal component analysis})}%
+	\label{fig:pca}%
+\end{figure}

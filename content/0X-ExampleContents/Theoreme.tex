@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathematische Sätze, Lemmas, Definitionen etc.}%
+\label{sec:Theoreme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Für eine mathematische Ausarbeitung gibt es LaTeX-\glspl{gls:umgebung}, um
+\index{Satz|see{Theorem}}\index{Theorem}Sätze (Theoreme), \index{Lemma|see{Theorem}}Lemma,
+\index{Beispiel|see{Theorem}}Beispiele etc. im üblichen Stil von
+Mathematik-Büchern zu setzen und zu referenzieren. Vordefiniert sind die
+\glspl{gls:umgebung}
+\begin{itemize*}
+  \item \texttt{theorem} für Sätze
+  \item \texttt{definition} für Definitionen
+  \item \texttt{lemma} für Lemma
+  \item \texttt{corollary} für Korollare
+  \item \texttt{proposition} für Propositionen
+\end{itemize*}
+Die übliche Verwendung ist
+\begin{latex}[caption={Beispiel für Theorem-Umgebungen},label={lst:ntheorem}]
+\begin{theorem}[Optionaler Name]\label{thm:my-theorem}
+...
+\end{theorem}
+\end{latex}
+Weitere Informationen findet man in der Dokumentation zum \texttt{ntheorem}-Paket
+\parencite{May2011}. Das Ganze sieht dann beispielsweise wie folgt aus.
+
+\begin{theorem}[Theorem von Arthur Dent]\label{thm:arthur-dent} Die Antwort auf
+die Frage nach dem Leben, dem Universum und den ganzen Rest ist 42.
+\end{theorem}
+
+\begin{proposition}[Zweifelhafte Folgerung] LaTeX ist schön. Beweis folgt
+unmittelbar aus \cref{thm:arthur-dent}.
+\end{proposition}
