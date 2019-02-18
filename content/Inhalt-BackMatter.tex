@@ -114,55 +114,81 @@
 \begin{showListOfListings}
 \lstlistoflistings
 \end{showListOfListings}%
-\begin{showGlossary}%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%  Alle Verzeichnisse ausgeben:  %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\IfDefined{printglossaries}{\printglossaries}
 %
-% Oder einzelne Verzeichnisse ausgeben:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Alle Glossare etc. ausgeben:  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{showGlossaries}%
+%\IfDefined{printglossaries}{%
+%	\printglossaries[style=mylongglossstyle]%
+%}
+%\end{showGlossaries}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+% Oder einzelne Glossartypen ausgeben:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%          Abkürzungen           %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
-%\IfDefined{printglossary}{\printglossary[type=\acronymtype]} %,style=long-booktabs]}
-\setlength{\LTleft}{0pt}
-\IfDefined{printglossary}{\printglossary[type=\acronymtype,style=mylong]}
-%
+\begin{showAcronyms}%
+\IfDefined{printglossary}{%
+	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
+}
+\end{showAcronyms}%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%            Symbole             %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{0pt} % Einzug entfernen (Forderung des KSP-Verlages)
-\IfDefined{printglossary}{\printglossary[type=symbolslist]} %,style=long-booktabs]}
-%\IfDefined{printglossary}{\printglossary[type=notation,sort=def]} %,style=long-booktabs]}
+\begin{showSymbols}%
+\IfDefined{printglossary}{%
+	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
+	\printglossary[type=symbolslist]%,style=long-booktabs]%
+	%\printglossary[type=notation,style=longheader,sort=def]%,style=long-booktabs]%
+}
+\end{showSymbols}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%      Begriffsverzeichnis       %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{0pt} % Einzug entfernen (Forderung des KSP-Verlages)
-\IfDefined{printnomenclature}{\printnomenclature}
+\begin{showNomenclature}%
+\IfDefined{printnomenclature}{%
+	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
+	\printnomenclature%
+}
+\end{showNomenclature}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%            Glossar             %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
-\setlength{\LTleft}{0pt}
-%\IfDefined{printglossary}{\printglossary[type=notation,style=longheader]}
-%\IfDefined{printglossary}{\printglossary[style=super]}
-%\IfDefined{printglossary}{\printglossary[style=longheader]}
-%\IfDefined{printglossary}{\printglossary[style=long]}
-\IfDefined{printglossary}{\printglossary[style=mylong]}
-%\IfDefined{printglossary}{\printglossary}
+\begin{showGlossary}%
+\IfDefined{printglossary}{%
+	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
+	%\printglossary%
+	%\printglossary[style=super]%
+	%\printglossary[style=longheader]%
+	%\printglossary[style=long]%
+	\printglossary[style=mylongglossstyle]%
+}
+\end{showGlossary}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%     Stichwortverzeichnis       %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
-\renewcommand{\indexname}{\TransIndexName}
-\IfDefined{printindex}{\printindex}
+\begin{showIndex}%
+\IfDefined{printindex}{%
+	\setlength{\LTleft}{-5pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	\renewcommand{\indexname}{\TransIndexName}%
+	\printindex%
+}
+\end{showIndex}%
 %
-\end{showGlossary}%
 %
 %
 %

@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hack for correct glossary width in case of too long entries:
+%% define an own glossary style "mylongglossstyle"
+%% (see https://tex.stackexchange.com/questions/25380/glossaries-printglossaries-prints-too-wide)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\myglstargetwidth}
+\newlength{\myglshspace}
+\newlength{\myglsdescwidth}
+\newglossarystyle{mylongglossstyle}{%
+% put the glossary in the longtable environment:
+	\renewenvironment{theglossary}{%
+		\setlength{\myglstargetwidth}{0.19\textwidth}%
+		\setlength{\myglshspace}{0.02\textwidth}%
+		\setlength{\myglsdescwidth}{0.79\textwidth}%
+		\setlength{\tabcolsep}{0pt}%
+		\setlength{\extrarowheight}{12pt}%
+		\begin{longtable}{p{\myglstargetwidth} @{\hspace{\myglshspace}} p{\myglsdescwidth}}
+	}{%
+	  \end{longtable}%
+	}%
+	% have nothing after \begin{theglossary}:
+	\renewcommand*{\glossaryheader}{}%
+	% have nothing between glossary groups:
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glsgroupskip}{}%
+	% set how each entry should appear:
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\raggedright\strong{\glstarget{##1}{##2}}% the entry name
+		##4% the symbol 
+		&##3%,% the description
+		%\space%
+		%##5% the number list 
+		\\%
+	}%
+	% set how sub-entries appear:
+	\renewcommand*{\glossarysubentryfield}[6]{%
+		\glossaryentryfield{##2}{##3}{##4}{##5}{##6}
+	}%
+}
+
+% setglossarystyle must be issued before \printglossaries.
+% the longragged style can be set only after the corresponding package (i.e. glossary-longragged) has been loaded
+%\setglossarystyle{longragged}
+\setglossarystyle{mylongglossstyle}
+
+%% Glossarentries sollen fett sein
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+%% Glossareintäge (auch Links) schwarz
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}%
+
+%% Zusätzlichen Punkt am Ende jeder Beschreibung deaktivieren
+%\renewcommand*{\glspostdescription}{}
+
+%% Deaktivieren von Hyperlinks auf das Glossar.
+\glsdisablehyper
+
+% Hinzufügen verschieder Zusatz-Formen für Glossareinträge ermöglichen (Genitiv, Dativ + Plural)
+% s. https://tex.stackexchange.com/questions/178725/how-to-use-glossaries-for-different-grammatical-acronym-forms
+% genitive
+\glsaddkey*
+ {genitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrygenitive}% no link cs
+ {\Glsentrygenitive}% no link ucfirst cs
+ {\glsgenitive}% link cs
+ {\Glsgenitive}% link ucfirst cs
+ {\GLSgenitive}% link all caps cs
+
+% dative
+\glsaddkey*
+ {dative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrydative}% no link cs
+ {\Glsentrydative}% no link ucfirst cs
+ {\glsdative}% link cs
+ {\Glsdative}% link ucfirst cs
+ {\GLSdative}% link all caps cs
+
+% accusative
+\glsaddkey*
+ {accusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryaccusative}% no link cs
+ {\Glsentryaccusative}% no link ucfirst cs
+ {\glsaccusative}% link cs
+ {\Glsaccusative}% link ucfirst cs
+ {\GLSaccusative}% link all caps cs
+
+% short genitive
+\glsaddkey*
+ {shortgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortgenitive}% no link cs
+ {\Glsentryshortgenitive}% no link ucfirst cs
+ {\glsshortgenitive}% link cs
+ {\Glsshortgenitive}% link ucfirst cs
+ {\GLSshortgenitive}% link all caps cs
+
+% short dative
+\glsaddkey*
+ {shortdative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortdative}% no link cs
+ {\Glsentryshortdative}% no link ucfirst cs
+ {\glsshortdative}% link cs
+ {\Glsshortdative}% link ucfirst cs
+ {\GLSshortdative}% link all caps cs
+
+% short accusative
+\glsaddkey*
+ {shortaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortaccusative}% no link cs
+ {\Glsentryshortaccusative}% no link ucfirst cs
+ {\glsshortaccusative}% link cs
+ {\Glsshortaccusative}% link ucfirst cs
+ {\GLSshortaccusative}% link all caps cs
+
+% genitive plural
+\glsaddkey*
+ {pluralgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluralgenitive}% no link cs
+ {\Glsentrypluralgenitive}% no link ucfirst cs
+ {\glsplgenitive}% link cs
+ {\Glsplgenitive}% link ucfirst cs
+ {\GLSplgenitive}% link all caps cs
+
+% dative plural
+\glsaddkey*
+ {pluraldative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluraldative}% no link cs
+ {\Glsentrypluraldative}% no link ucfirst cs
+ {\glspldative}% link cs
+ {\Glspldative}% link ucfirst cs
+ {\GLSpldative}% link all caps cs
+
+% accusative plural
+\glsaddkey*
+ {pluralaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluralaccusative}% no link cs
+ {\Glsentrypluralaccusative}% no link ucfirst cs
+ {\glsplaccusative}% link cs
+ {\Glsplaccusative}% link ucfirst cs
+ {\GLSplaccusative}% link all caps cs
+
+% short genitive plural
+\glsaddkey*
+ {shortpluralgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluralgenitive}% no link cs
+ {\Glsentryshortpluralgenitive}% no link ucfirst cs
+ {\glssplgenitive}% link cs
+ {\Glssplgenitive}% link ucfirst cs
+ {\GLSsplgenitive}% link all caps cs
+
+% short dative plural
+\glsaddkey*
+ {shortpluraldative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluraldative}% no link cs
+ {\Glsentryshortpluraldative}% no link ucfirst cs
+ {\glsspldative}% link cs
+ {\Glsspldative}% link ucfirst cs
+ {\GLSspldative}% link all caps cs
+
+% short accusative plural
+\glsaddkey*
+ {shorttpluralaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluralaccusative}% no link cs
+ {\Glsentryshortpluralaccusative}% no link ucfirst cs
+ {\glssplaccusative}% link cs
+ {\Glssplaccusative}% link ucfirst cs
+ {\GLSsplaccusative}% link all caps cs
+
+
+% command for usage of genitive:
+\newcommand{\glsgen}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortgenitive{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsgenitive{#1} (\glsshortgenitive{#1})% use the long genitive form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsgenitive{#1}%
+    }%% fi
+  }%
+}
+
+% ommand for usage of dative
+\newcommand{\glsdat}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortdative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsdative{#1} (\glsshortdative{#1})% use the long genitive form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsdative{#1}%
+    }%% fi
+  }%
+}
+
+% ommand for usage of accusative
+\newcommand{\glsacc}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortaccusative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsaccusative{#1} (\glsshortacccusative{#1})% use the long accusative form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsaccusative{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural genitive:
+\newcommand{\glsplgen}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glssplgenitive{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsplgenitive{#1} (\glssplgenitive{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsplgenitive{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural dative
+\newcommand{\glspldat}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsspldative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsspldative{#1} (\glspldative{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glspldative{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural accusative
+\newcommand{\glsplacc}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glssplaccusative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glssplaccusative{#1} (\glsplaccusative{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsplaccusative{#1}%
+    }%% fi
+  }%
+}
+
+
+%%\newglossary[alg]{acronym}{acr}{acn}{\acronymname} %Unnötig durch die Option "acronym" des glossaries-Pakets.
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+\newglossary[slg]{symbolslist}{syi}{syg}{\TransListOfSymbols}
+
+%%%makeglossaries muss nach \newglossary eingebunden werden!
+%\makeglossaries
