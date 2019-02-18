@@ -21,18 +21,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showOwnPublications}%
 %
-%% Hier eigene Publikationen auflisten
+%% Hier eigene Publikationen auflisten (aus der bib-Datei, die in Der Datei
+%% .preambel/AllePfade.tex in \bibpathOwnPublications definiert wird).
 \begin{refsection}[\bibpathOwnPublications]
 \newrefcontext[sorting=ynt]
-%
-%% Aufruf der Quellen ohne Verweis im Text:
-%
-%% entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen
-%\nocite{%
-%GrinbergOhrBeyerer-ITSC2009,
-%TeutschGrinberg-RobustDetectionInWAMI-2016}
-%
-%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+%%
+%% Aufruf der Quellen ohne Verweis im Text geschieht mit \nocite{...}:
+%%
+%%  -  entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen, z.B.
+%\nocite{GrinbergOhrBeyerer-ITSC2009,TeutschGrinberg-RobustDetectionInWAMI-2016}
+%%
+%%  -  oder alle Quellen auf einmal mit \nocite{*} aufrufen und (sofern keine
+%%     eigenständige, sondern eine gemeinsame Literaturdatenbank verwendet wird)
+%%     ein Keyword (z.B. "ownpubl") als Filter verwenden
 \nocite{*}
 %
 \printbibliography[env=bibliographyNUM,%
@@ -49,17 +50,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showOwnPatents}%
 %
+%% Hier eigene Patente auflisten (aus der bib-Datei, die in Der Datei
+%% .preambel/AllePfade.tex in \bibpathOwnPatents definiert wird).
 \begin{refsection}[\bibpathOwnPatents]
 \newrefcontext[sorting=ynt]
-%
-%% Aufruf der Quellen ohne Verweis im Text:
 %%
-%% entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen
-%\nocite{%
-%PatentValeoUltraschall2016DE,
-%PatentValeoUltraschall2016WO}
+%% Aufruf der Quellen ohne Verweis im Text geschieht mit \nocite{...}:
 %%
-%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+%%  -  entweder nur die benötigten Quellen einzeln mit \nocite{X,Y,Z} aufrufen, z.B.
+%\nocite{PatentValeoUltraschall2016DE,PatentValeoUltraschall2016WO}
+%%
+%%  -  oder alle Quellen auf einmal mit \nocite{*} aufrufen und (sofern keine
+%%     eigenständige, sondern eine gemeinsame Literaturdatenbank verwendet wird)
+%%     ein Keyword (z.B. "ownpatent") als Filter verwenden
 \nocite{*}
 %%
 \printbibliography[env=bibliographyNUM,%
@@ -86,7 +89,8 @@
 %Mustermann-2016,
 %Mustermann_2017}
 %
-%% oder alle Quellen auf einmal mit \nocite{*} aufrufen und ein Keyword als Filter verwenden
+%% oder alle Quellen auf einmal mit \nocite{*} aufrufen
+%% und ein Keyword (z.B. "supervised") als Filter verwenden
 \nocite{*}
 %%
 \printbibliography[env=bibliographyNUM,%
@@ -101,12 +105,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abbildungs- und Tabellenverzeichnis  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{showLoF}
+\begin{showListOfFigures}
 \listoffigures
-\end{showLoF}%
-\begin{showLoT}
+\end{showListOfFigures}%
+\begin{showListOfTables}
 \listoftables
-\end{showLoT}%
+\end{showListOfTables}%
+\begin{showListOfListings}
+\lstlistoflistings
+\end{showListOfListings}%
 \begin{showGlossary}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%  Alle Verzeichnisse ausgeben:  %%%%
@@ -118,32 +125,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%          Abkürzungen           %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
-\IfDefined{printglossary}{\printglossary[type=\acronymtype]} %,style=long-booktabs]}
+%\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
+%\IfDefined{printglossary}{\printglossary[type=\acronymtype]} %,style=long-booktabs]}
+\setlength{\LTleft}{0pt}
+\IfDefined{printglossary}{\printglossary[type=\acronymtype,style=mylong]}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%            Symbole             %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\setlength{\LTleft}{0pt} % Einzug entfernen (Forderung des KSP-Verlages)
 \IfDefined{printglossary}{\printglossary[type=symbolslist]} %,style=long-booktabs]}
 %\IfDefined{printglossary}{\printglossary[type=notation,sort=def]} %,style=long-booktabs]}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%      Begriffsverzeichnis       %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\setlength{\LTleft}{0pt} % Einzug entfernen (Forderung des KSP-Verlages)
 \IfDefined{printnomenclature}{\printnomenclature}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%            Glossar             %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
+\setlength{\LTleft}{0pt}
 %\IfDefined{printglossary}{\printglossary[type=notation,style=longheader]}
-%\IfDefined{printglossary}{\printglossary[title=English-German glossary,style=super]}
+%\IfDefined{printglossary}{\printglossary[style=super]}
+%\IfDefined{printglossary}{\printglossary[style=longheader]}
+%\IfDefined{printglossary}{\printglossary[style=long]}
+\IfDefined{printglossary}{\printglossary[style=mylong]}
+%\IfDefined{printglossary}{\printglossary}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%     Stichwortverzeichnis       %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KIT-Verlages)
+\setlength{\LTleft}{-5pt} % Einzug entfernen (Forderung des KSP-Verlages)
+\renewcommand{\indexname}{\TransIndexName}
 \IfDefined{printindex}{\printindex}
 %
 \end{showGlossary}%

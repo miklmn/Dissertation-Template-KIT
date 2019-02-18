@@ -3,6 +3,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% "Magic comments" for the LaTeX editor -------------
+% !TeX encoding = utf8
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX root = Diss.tex
+%% !TeX spellcheck = de_DE
+%% !TeX spellcheck = en_US
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document header:
 % - Definition of the document format,
 % - encoding and fonts to be used,
@@ -24,6 +34,7 @@
 \showif{showAcknowledgments}
 \showif{showContents}
 \showif{showNotation}
+\showif{showExamples}
 \showif{showIntro}
 \showif{showRelatedWork}
 \showif{showConcept}
@@ -37,8 +48,9 @@
 \showif{showOwnPublications}
 \showif{showOwnPatents}
 \showif{showSupervisedTheses}
-\showif{showLoF}
-\showif{showLoT}
+\showif{showListOfFigures}
+\showif{showListOfTables}
+\showif{showListOfListings}
 \showif{showAppendix}
 \showif{showTODOs}
 \hideif{showMarginNotes}
@@ -46,7 +58,7 @@
 
 \begin{document}
 %
-%% Add all acronyms etc.
+%% Add all acronyms, glossary entries, etc.
 %\glsaddall
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,6 +66,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \input{content/Inhalt-FrontMatter.tex}
+%\input{content/Inhalt-Examples.tex}
 \input{content/Inhalt-Intro.tex}
 \input{content/Inhalt-Basics.tex}
 \input{content/Inhalt-Concept.tex}

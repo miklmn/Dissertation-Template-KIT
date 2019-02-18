@@ -3,8 +3,8 @@
 %% http://www.matthiaspospiech.de/latex/vorlagen/allgemein/
 %% für KOMA-Script 3.x
 %% Erweitert und angepasst von Philipp Woock und Michael Grinberg
-%% Version 2.0
-%% Juli 2018
+%% Version 3.0
+%% Februar 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% PW: Paket silence unterdrückt Warnungen. Schreibt die unterdrückten Sachen aber in eine .sil Datei
@@ -45,7 +45,7 @@
   % --- Base Font Size ---
 	%% Schriftgröße
   %fontsize=9pt,%  9pt ist dem KIT-Verlag bei A5 aktuell zu klein
-  fontsize=10pt,%  bei A5 ist 10pt Mindest-Schriftgröße (Forderung von KIT-Verlag)
+  fontsize=10pt,%  bei A5 ist 10pt Mindest-Schriftgröße (Forderung des KSP-Verlages)
 	%fontsize=14pt,%  % 11 bei A4.
 	% --- Koma Script Version ---
   version=last %,
@@ -75,6 +75,8 @@
 %%% Angaben zum Dokument (Autor, Titel etc.)
 \input{preambel/AlleAngaben}
 
+%%% Einstellungen zu Seitenlayout, Abständen etc.
+\input{preambel/settings}
 
 %%% LaTeX-Präambel
 %%% Hier werden Pakete eingebunden, Teil I
@@ -86,9 +88,6 @@
 % List of tables
 % List of listings
 % List of theorems
-
-%%% Einstellungen zu Seitenlayout, Abständen etc.
-\input{preambel/settings}
 
 %%% Einstellungen für KOMA-Script
 %%% Hier werden die KOMAoptions gesetzt wie z.B. Ränder, Kopfzeilen, einseitig/zweiseitig, Absatzabstände, Inhaltsverzeichnis usw.
@@ -141,7 +140,7 @@
 %remove padding in fboxes
 \setlength{\fboxsep}{0pt}
 % make a wider description in the glossary
-\setlength{\glsdescwidth}{0.7\linewidth}
+%\setlength{\glsdescwidth}{0.7\linewidth}
 
 %% Optionen für das Stichwortverzeichnis:
 %% Create the file IndexStyle.ist on the fly:
@@ -158,7 +157,8 @@
 \IfDefined{makenomenclature}{\makenomenclature}
 %%makeglossaries muss nach \newglossary eingebunden werden!
 \makeglossaries
-\glsaddall
+%% Add all acronyms, glossary entries, etc.
+%\glsaddall
 \IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
 \listfiles
 %------------------------------------------------------------------------
