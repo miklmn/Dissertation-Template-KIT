@@ -38,8 +38,8 @@
 		%topsep=0.2\baselineskip,
 		%partopsep=0.2\baselineskip,%
 }
-%Flattersatz in itemize- und enumerate-Umgebungen erzwingen
-% Vorgabe vom KIT-Verlag: keine Worttrennung in Aufzählungen, daher \raggedright statt \RaggedRight
+%% Flattersatz in itemize- und enumerate-Umgebungen erzwingen
+%% Forderung des KSP-Verlages: keine Worttrennung in Aufzählungen, daher \raggedright statt \RaggedRight
 %\AtBeginEnvironment{itemize}{\preto\item{\RaggedRight}}
 \AtBeginEnvironment{itemize}{\preto\item{\raggedright}}
 \AtBeginEnvironment{enumerate}{\preto\item{\raggedright}}
@@ -60,22 +60,33 @@
 \usepackage[super]{nth}
 
 \usepackage{tikz}
-\usetikzlibrary{calc,arrows,positioning,shadows,backgrounds,chains,topaths,matrix,scopes,decorations,decorations.pathmorphing,decorations.markings,fadings,shapes.geometric,shapes.multipart,shapes.misc,through,automata,fit,external}
+\usetikzlibrary{%
+				automata,%
+				arrows,%
+				backgrounds,%
+				calc,%
+				chains,%
+				decorations,%
+				decorations.markings,%
+				decorations.pathmorphing,%
+				external,%
+				fadings,%
+				fit,%
+				matrix,%
+				positioning,%
+				scopes,%
+				shadows,%
+				shapes.geometric,%
+				shapes.misc,%
+				shapes.multipart,%
+				through,%
+				topaths}
 \usepackage{tikz-3dplot}
-
 
 %Einschliessen von Matlab-Grafiken:
 \usepackage{pgfplots}
-%\pgfplotsset{compat=1.14}
 %Externe Generierung von plots, s. https://tex.stackexchange.com/questions/7953/how-to-expand-texs-main-memory-size-pgfplots-memory-overload
 %% Braucht -shell-escape Kompilieroption!!!
-%\usepgfplotslibrary{external} 
-%\tikzexternalize
-%
-%\usepgfplotslibrary{ternary}
-%\tikzsetexternalprefix{./figures-compiled/}
-%\tikzset{external/aux in dpth={false},external/disable dependency files}
-%\tikzexternalize[shell escape=-enable-write18]
 
 \pgfplotsset{
   compat=1.14,%
@@ -156,6 +167,12 @@
     KITbrown,semithick,dashed,smooth},%
 }
 
+%\usepgfplotslibrary{external} 
+%\tikzexternalize
+%\usepgfplotslibrary{ternary}
+%\tikzsetexternalprefix{./figures-compiled/}
+%\tikzset{external/aux in dpth={false},external/disable dependency files}
+%\tikzexternalize[shell escape=-enable-write18]
 
 %\usepackage{listings} \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt} %\lstset{language=Perl}
 
@@ -167,16 +184,16 @@
 %\usepackage[ngerman]{translator}
 \usepackage[%
 xindy,
-%translate=true,
-%translate=babel, %verwende Babel zur Übersetzung der Überschriften
-translate=false, %keine Übersetzung der Überschriften da ansonsten Zusatzpakete geladen werden müssen
-nonumberlist,    %keine Seitenzahlen anzeigen
-nopostdot,       %den Punkt am Ende jeder Beschreibung deaktivieren
-acronym,         %ein Abkürzungsverzeichnis erstellen
-symbols,					%ein Symbolverzeichnis
-toc,             %Einträge im Inhaltsverzeichnis
-section=chapter, %im Inhaltsverzeichnis auf chapter-Ebene erscheinen
-%numberedsection=autolabel,%Kapitel nicht nummerieren  0> auskommentiert lassen!
+translate=true,
+translate=babel, % verwende Babel zur Übersetzung der Überschriften
+%translate=false, % keine Übersetzung der Überschriften da ansonsten Zusatzpakete geladen werden müssen
+nonumberlist,    % keine Seitenzahlen anzeigen
+nopostdot,       % den Punkt am Ende jeder Beschreibung deaktivieren
+acronym,         % ein Abkürzungsverzeichnis erstellen
+symbols,         % ein Symbolverzeichnis erstellen
+toc,             % Einträge im Inhaltsverzeichnis erzeugen
+section=chapter, % Einträge im Inhaltsverzeichnis auf chapter-Ebene erscheinen lassen
+%numberedsection=autolabel,%Kapitel nicht nummerieren  => auskommentiert lassen!
 %nohypertypes={glossary}, %nur den ersten Eintrag als Hyperlink anzeigen
 nohypertypes={acronym,notation}, % keine Hyperlinks für Acronyme und Notation
 %style=list
@@ -184,14 +201,238 @@ nohypertypes={acronym,notation}, % keine Hyperlinks für Acronyme und Notation
 %style=super
 ]%
 {glossaries}
-\usepackage{glossary-longragged} %zusätzlich laden um Glossareinträge linksbündig zu setzen (Wunsch KIT-Verlag)
+
+% Hinzufügen verschieder Zusatz-Formen für Glossareinträge ermöglichen (Genitiv, Dativ + Plural)
+% s. https://tex.stackexchange.com/questions/178725/how-to-use-glossaries-for-different-grammatical-acronym-forms
+% genitive
+\glsaddkey*
+ {genitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrygenitive}% no link cs
+ {\Glsentrygenitive}% no link ucfirst cs
+ {\glsgenitive}% link cs
+ {\Glsgenitive}% link ucfirst cs
+ {\GLSgenitive}% link all caps cs
+
+% dative
+\glsaddkey*
+ {dative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrydative}% no link cs
+ {\Glsentrydative}% no link ucfirst cs
+ {\glsdative}% link cs
+ {\Glsdative}% link ucfirst cs
+ {\GLSdative}% link all caps cs
+
+% accusative
+\glsaddkey*
+ {accusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryaccusative}% no link cs
+ {\Glsentryaccusative}% no link ucfirst cs
+ {\glsaccusative}% link cs
+ {\Glsaccusative}% link ucfirst cs
+ {\GLSaccusative}% link all caps cs
+
+% short genitive
+\glsaddkey*
+ {shortgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortgenitive}% no link cs
+ {\Glsentryshortgenitive}% no link ucfirst cs
+ {\glsshortgenitive}% link cs
+ {\Glsshortgenitive}% link ucfirst cs
+ {\GLSshortgenitive}% link all caps cs
+
+% short dative
+\glsaddkey*
+ {shortdative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortdative}% no link cs
+ {\Glsentryshortdative}% no link ucfirst cs
+ {\glsshortdative}% link cs
+ {\Glsshortdative}% link ucfirst cs
+ {\GLSshortdative}% link all caps cs
+
+% short accusative
+\glsaddkey*
+ {shortaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortaccusative}% no link cs
+ {\Glsentryshortaccusative}% no link ucfirst cs
+ {\glsshortaccusative}% link cs
+ {\Glsshortaccusative}% link ucfirst cs
+ {\GLSshortaccusative}% link all caps cs
+
+% genitive plural
+\glsaddkey*
+ {pluralgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluralgenitive}% no link cs
+ {\Glsentrypluralgenitive}% no link ucfirst cs
+ {\glsplgenitive}% link cs
+ {\Glsplgenitive}% link ucfirst cs
+ {\GLSplgenitive}% link all caps cs
+
+% dative plural
+\glsaddkey*
+ {pluraldative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluraldative}% no link cs
+ {\Glsentrypluraldative}% no link ucfirst cs
+ {\glspldative}% link cs
+ {\Glspldative}% link ucfirst cs
+ {\GLSpldative}% link all caps cs
+
+% accusative plural
+\glsaddkey*
+ {pluralaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentrypluralaccusative}% no link cs
+ {\Glsentrypluralaccusative}% no link ucfirst cs
+ {\glsplaccusative}% link cs
+ {\Glsplaccusative}% link ucfirst cs
+ {\GLSplaccusative}% link all caps cs
+
+% short genitive plural
+\glsaddkey*
+ {shortpluralgenitive}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluralgenitive}% no link cs
+ {\Glsentryshortpluralgenitive}% no link ucfirst cs
+ {\glssplgenitive}% link cs
+ {\Glssplgenitive}% link ucfirst cs
+ {\GLSsplgenitive}% link all caps cs
+
+% short dative plural
+\glsaddkey*
+ {shortpluraldative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluraldative}% no link cs
+ {\Glsentryshortpluraldative}% no link ucfirst cs
+ {\glsspldative}% link cs
+ {\Glsspldative}% link ucfirst cs
+ {\GLSspldative}% link all caps cs
+
+% short accusative plural
+\glsaddkey*
+ {shorttpluralaccusative}% key
+ {\acrshort{\glslabel}}% default value
+ {\glsentryshortpluralaccusative}% no link cs
+ {\Glsentryshortpluralaccusative}% no link ucfirst cs
+ {\glssplaccusative}% link cs
+ {\Glssplaccusative}% link ucfirst cs
+ {\GLSsplaccusative}% link all caps cs
+
+
+% command for usage of genitive:
+\newcommand{\glsgen}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortgenitive{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsgenitive{#1} (\glsshortgenitive{#1})% use the long genitive form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsgenitive{#1}%
+    }%% fi
+  }%
+}
+
+% ommand for usage of dative
+\newcommand{\glsdat}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortdative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsdative{#1} (\glsshortdative{#1})% use the long genitive form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsdative{#1}%
+    }%% fi
+  }%
+}
+
+% ommand for usage of accusative
+\newcommand{\glsacc}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsshortaccusative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsaccusative{#1} (\glsshortacccusative{#1})% use the long accusative form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsaccusative{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural genitive:
+\newcommand{\glsplgen}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glssplgenitive{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsplgenitive{#1} (\glssplgenitive{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsplgenitive{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural dative
+\newcommand{\glspldat}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glsspldative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glsspldative{#1} (\glspldative{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glspldative{#1}%
+    }%% fi
+  }%
+}
+
+% command for usage of plural accusative
+\newcommand{\glsplacc}[1]{%
+  \glsdoifexists{#1}{% do something only if the glossary entry has been defined
+	\ifthenelse{\equal{\glsentrytype{#1}}{acronym}}{% if the entry is an acronym:
+       \ifglsused{#1}{% if this acronym has been used:
+	     \glssplaccusative{#1}% use only the short form
+       }{% esle (acronym has not been used yet):
+         \glssplaccusative{#1} (\glsplaccusative{#1})% use the long form followed by the short form
+         \glsunset{#1}% unset the "first use" flag
+       }%
+    }{% else (the entry is not an acronym):
+       \glsplaccusative{#1}%
+    }%% fi
+  }%
+}
+
+\usepackage{glossary-longragged} %zusätzlich laden um Glossareinträge linksbündig zu setzen (Forderung des KSP-Verlages)
 %\usepackage{glossary-longbooktabs}
-\setglossarystyle{longragged} % kann erst gesetzt werden, nachdem das Paket glossary-longragged geladen worden ist
+
+% setglossarystyle must be issued before \printglossaries.
+% the longragged style can be set only after the corresponding package (i.e. glossary-longragged) has been loaded
+\setglossarystyle{longragged}
+
 %\renewcommand*{\glspostdescription}{} %Zusätzlichen Punkt am Ende jeder Beschreibung deaktivieren
 \glsdisablehyper %Deaktivieren von Hyperlinks auf das Glossar.
 %%\newglossary[alg]{acronym}{acr}{acn}{\acronymname} %Unnötig durch die Option "acronym" des glossaries-Pakets.
 \newglossary[nlg]{notation}{not}{ntn}{Notation}
-\newglossary[slg]{symbolslist}{syi}{syg}{List of Symbols}
+\newglossary[slg]{symbolslist}{syi}{syg}{\TransListOfSymbols}
 %Glossarentries sollen fett sein
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
 %%%makeglossaries muss nach \newglossary eingebunden werden!
