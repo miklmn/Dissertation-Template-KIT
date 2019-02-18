@@ -1804,7 +1804,7 @@ afterskip=\myparagraphafterskip%
 \defbibenvironment{bibliography}
   {\list
      {\printtext[labelalphawidth]{%
-        \printfield{prefixnumber}%
+        \printfield{labelprefix}%
         \printfield{labelalpha}}}
      {\setlength{\labelwidth}{\labelalphawidth}%
       \setlength{\leftmargin}{\labelwidth}%
@@ -1826,7 +1826,7 @@ afterskip=\myparagraphafterskip%
 \defbibenvironment{bibliographyNUM}
   {\list
      {\printtext[labelnumberwidth]{%
-        \printfield{prefixnumber}%
+        \printfield{labelprefix}%
         \printfield{labelnumber}}}
      {\setlength{\labelwidth}{\labelnumberwidth}%
       \setlength{\leftmargin}{\labelwidth}%
@@ -1989,7 +1989,8 @@ afterskip=\myparagraphafterskip%
 \fi
 \else
 %pdfLaTeX oder XeLaTeX unter Linux:
-\usepackage[ps2pdf-options={-dPDFSETTINGS=/prepress -dCompatibilityLevel=1.3 -dEmbedAllFonts=true -dSubsetFonts=true]{pstool}
+%hier gibt es zur Zeit einen Fehler im IOSB-Cluster
+%\usepackage[ps2pdf-options={-dPDFSETTINGS=/prepress -dCompatibilityLevel=1.3 -dEmbedAllFonts=true -dSubsetFonts=true}]{pstool}
 \fi
 %\usepackage[cleanup={},mode=nonstop,ps2pdf-options={"-dPDFSETTINGS=/prepress"}]{pstool}
 %%PW: ps2pdf-options={"-dPDFSETTINGS=/prepress"} sorgt für Einbettung der Base14-Schriften, was laut KIT-SP-Richtlinien erwünscht ist.
