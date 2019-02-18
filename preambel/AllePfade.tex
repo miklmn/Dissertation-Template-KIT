@@ -3,23 +3,30 @@
 % erlaubte Erweiterungen für Grafikdateien
 %
 %
-% Pfad und Name der BibteX-Dateien
-\newcommand{\bibpathGeneral}{./bib/Diss.bib}
+% Pfad und Name der BibteX-Datei(en)
+% Hier alle bib-Ressourcen angeben, die Literaturreferenzen enthalten,
+% welche im Text der Arbeit referenziert werden bzw. im Haupt-Literaturverzeichnis
+% stehen sollen.
+% Achtung: die Bibliografien sollten in biblatex mit UTF8-Notation formatiert sein!
+\addbibresource{./bib/Diss.bib}
+\addbibresource{./bib/example.bib}
+\addbibresource{./bib/examplePW.bib}
+
+% Man könnte eigene Publikationen, Patente und betreute Arbeiten in jeweils
+% eigenen Bibliografie-Dateien vorhalten, kann aber alle Angaben auch
+% in einer einziger Datei verwalten (z.B Diss.bib).
+% Bei Erstellung dieser Zusatz-Literaturverzeichnisse werden jeweils
+% folgende Makros verwendet. Sie können auf eine der oben angegebenen Dateien
+% oder auf jeweils eine andere Datei zeigen.
 \newcommand{\bibpathOwnPatents}{./bib/Diss.bib}
 \newcommand{\bibpathOwnPublications}{./bib/Diss.bib}
 \newcommand{\bibpathStudentTheses}{./bib/Diss.bib}
 
-% Hier der Pfad zu der allgemeinen Bibliographie
-% biblatex mit mit UTF8-Notation
-\addbibresource{\bibpathGeneral}
-\addbibresource{./bib/literature.bib}
-%
-%
-%
+
 %% Pfade zu Bildern:
 %% Verwendete Pfade: (Reihenfolge wichtig, da Durchsuchen in dieser Reihenfolge erfolgt!!!)
 %% Achtung: Es gibt keine Warnung, falls Pfade an mehreren Stellen gesetzt werden!
 \graphicspath{{./images/}{../Papers/images/Diss/}{../Papers/images/}}
 %
 % Grafikdatei-Erweiterungen
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.bmp}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.bmp,.eps}
