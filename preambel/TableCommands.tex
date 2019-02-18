@@ -23,7 +23,7 @@
 % (z.B.) \raggedright geschuetzt werden:
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 
-% Vorgabe vom KIT-Verlag: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight
+%% Forderung des KSP-Verlages: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight
 %\renewcommand\multirowsetup{\RaggedRight}
 \renewcommand\multirowsetup{\raggedRight}
 
@@ -36,7 +36,7 @@
 %\newcolumntype{R}[1]{>{\hsize=#1\hsize\RaggedLeft\arraybackslash}X}%
 %\newcolumntype{C}[1]{>{\hsize=#1\hsize\Centering\arraybackslash}X}%
 %
-% Vorgabe vom KIT-Verlag: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight etc.
+%% Forderung des KSP-Verlages: keine Worttrennung in einer Tabelle, daher \raggedright statt \RaggedRight etc.
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe

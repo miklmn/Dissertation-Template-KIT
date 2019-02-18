@@ -91,7 +91,7 @@
 %\setlength{\myintextsep}{10pt} % (default 12pt plus 2pt minus 2pt) 
 
 %% Weitere Angaben:
-%Vorlage KIT-Verlag:
+%% Forderung des KSP-Verlages:
 %usepackage[a5paper,headheight=1.5\baselineskip,top=25mm,lines=31,heightrounded=true,bindingoffset=15mm,textwidth=106mm]{geometry}
 %\usepackage[a4paper,headheight=1.5\baselineskip,top=25mm,lines=46,heightrounded=true,bindingoffset=15mm,textwidth=160mm]{geometry}
 % footskip: Abstand zwischen Textunterkante und Seitenzahl
@@ -124,5 +124,8 @@
 \newlength{\mytextwidth}
 \setlength{\mytextwidth}{106mm}
 
+
+%vertical float alignment for the only-float pages:
+%on float-only pages the figures/tables shall be aligned at the top of the page instead of being centered
 \newboolean{SetFloatsVerticallyCentered}
 \setboolean{SetFloatsVerticallyCentered}{false}
