@@ -1,106 +1,220 @@
-%%Examlpe of a glossary entry:
-%
-%\newglossaryentry{BicycleModel}{%
-%name=bicycle model,
-%plural=bycicle models
-%sort=bicycle model, % need a sort key if the name contains a command
-%description=Einspurmodell
-%}
-%
-%define own command for easier glossary term definition (without plural etc. if not needed)
-\newcommand{\myglossaryentry}[3]{%
+%% ----------------------------------------------------------------------------------------
+%% In dieser Datei werden die verwendeten Glossarbegriffe definiert
+%% ----------------------------------------------------------------------------------------
+%%
+%%
+%% ----------------------------------------------------------------------------------------
+%% Definition eines eigenes Macro \myglossaryentry[]{}{}{} zur Erstellung von Glossareinträgen
+%% ----------------------------------------------------------------------------------------
+\newcommand{\myglossaryentry}[4][]{%
 	%\AtBeginDocument{%
-		\newglossaryentry{#1}{name=#2,description={#3}}%
+		\ifx\relax#1\relax%
+			\newglossaryentry{#2}{name={#3},description={#4}}%
+		\else%
+			\newglossaryentry{#2}{name={#3},description={#4},#1}%
+		\fi%
 	%}%
-	%% Falls die Begriffe im Text nicht referenziert werden:
-	%% alle Begriffe am Anfang des Dokuments zur Liste hinzufügen
-	%% Problem: erzeuge eine leere Seite am Anfang des Dokumentes
-	%\AtBeginDocument{%
-		%\glsadd{#1}%
-	%}%
-}
+}% ----------------------------------------------------------------------------------------
+%%
+%% ----------------------------------------------------------------------------------------
+%% Beschreibung:
+%% ----------------------------------------------------------------------------------------
+%% \myglossaryentry[]{}{}{} nimmt 4 Argumente
+%% Im ersten, optionalen Argument (in Eckigen Klammern), kann die Pluralform definiert werden
+%% Außerdem kann hier der Sortierschlüssel definiert werden, falls der Akronym LaTeX-Befehle beinhaltet
+%% Zweites Argument ist das Schlüsselwort. Konvontion: zur Markierung des Schlüsselwortes als solches
+%%    und zur Unterscheidung dieses von der Kurzform sollte dem Schlüsselwort ein "ac:" vorangestellt werden.
+%% Drittes Argument ist das eigentliche Akronym.
+%% Viertes Argument ist die Langform.
+%% ----------------------------------------------------------------------------------------
+%%
+%% ----------------------------------------------------------------------------------------
+%% Beispiel:
+%% ----------------------------------------------------------------------------------------
+%\myglossaryentry[plural={Umgebungen}]%
+%                {gls:umgebung}{Umgebung}{Ein Bereich im LaTeX-Code der mit
+%								\texttt{begin} eingeleitet und mit \texttt{end} beendet wird.
+%								Umgebungen können auch verschachtelt sein.}
+%% ----------------------------------------------------------------------------------------
+%%
+%% ----------------------------------------------------------------------------------------
+%%
+%% A
+%%
+%% ----------------------------------------------------------------------------------------
 %
+%% ----------------------------------------------------------------------------------------
+%%
+%% B
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry{gls:biblatex}{BibLaTex}{Der Nachfolger von BibTex zum Erzeugen
+                von Literaturverzeichnissen in LaTeX. Es zeichnet sich vor allem
+                durch deutlich bessere Flexibilität bei der Gestaltung des
+                Literaturverzeichnisses und der Art und Weise wie Zitatmarken
+                gesetzt werden aus. Darüber hinaus ist es vollständig UTF-8-kompatibel.}
+\myglossaryentry{gls:bibtex}{BibTeX}{Der Vorgänger von BibLaTex}
 \myglossaryentry{gls:BicycleModel}{bicycle model}{Einspurmodell}
+%% ----------------------------------------------------------------------------------------
+%%
+%% C
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% D
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry[plural={degrees of freedom}]%
+                {gls:DegreeOfFreedom}{degree of freedom}{Freiheitsgrad}
 \myglossaryentry{gls:DepthOfField}{depth of field}{Schärfebereich}
-\myglossaryentry{gls:FieldOfView}{field of view}{Sichtfeld}
+%% ----------------------------------------------------------------------------------------
+%%
+%% E
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% F
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry[plural={fields of view}]%
+                {gls:FieldOfView}{field of view}{Sichtfeld}
+%% ----------------------------------------------------------------------------------------
+%%
+%% G
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% H
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% I
+%%
+%% ----------------------------------------------------------------------------------------
 \myglossaryentry{gls:InterceptTheorem}{intercept theorem}{Strahlensatz}
 \myglossaryentry{gls:InstantaneousCenterOfRotation}{instantaneous center of rotation}{Momentanpol}
+%% ----------------------------------------------------------------------------------------
+%%
+%% J
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry{gls:java}{Java}{Eine von Sun Microsystems 1995 veröffentlichte, objektorientierte Programmiersprache.}
+%% ----------------------------------------------------------------------------------------
+%%
+%% K
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% L
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry{gls:latex}{LaTeX}{Eine von Leslie Lamport 1980 entwickelter Satz von Makros
+                zur Erweiterung von TeX.}
 \myglossaryentry{gls:LeastSquares}{least squares method}{Methode kleinster Fehlerquadrate}
+%% ----------------------------------------------------------------------------------------
+%%
+%% M
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% N
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% O
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+%%
+%% P
+%%
+%% ----------------------------------------------------------------------------------------
 \myglossaryentry{gls:ProbabilityDensityFunction}{probability density function}{Wahrscheinlichkeitsdichte}
 \myglossaryentry{gls:ProbabilityMassFunction}{probability mass function}{Zähldichte}
-\myglossaryentry{gls:DegreeOfFreedom}{degree of freedom}{Freiheitsgrad}
+\myglossaryentry{gls:pgfplots}{PGFplots}{Eine Sammlung von TikZ-Paketen, die ein direktes Erzeugen
+                von Diagrammen aller Art (inkl. 3D-Diagramme) direkt aus LaTeX heraus ermöglicht.}
+\myglossaryentry[plural={Pakete}]%
+								{gls:pkg}{Paket}{Ein LaTeX-Paket besteht aus einer oder mehrerer Dateien,
+								die entweder vorhandene Kernfunktionen von LaTeX umdefinieren und so das Verhalten
+								derselbigen bzw. das Erscheinungsbild des fertigen Dokuments verändern
+								oder die zusätzliche Befehle zur Verfügung stellen.}
+\myglossaryentry{gls:postscript}{PostScript}{Eine von Adobe 1984 entwickelte Seitenbeschreibungssprache.}
+%% ----------------------------------------------------------------------------------------
+%%
+%% R
+%%
+%% ----------------------------------------------------------------------------------------
 
-\newacronym[%
-  shortplural={PCAs},%
-  longplural={Principal Component Analyses}%
-] {pca}{PCA}{Principal Component Analysis}
+%% ----------------------------------------------------------------------------------------
+%%
+%% S
+%%
+%% ----------------------------------------------------------------------------------------
 
-\newacronym[] {pdf}{PDF}{Portable Document Format}
+%% ----------------------------------------------------------------------------------------
+%%
+%% T
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry{gls:tikz}{TikZ}{Eine Sammlung von LaTeX-Paketen, die ein direktes Erzeugen
+                von (technischen) Zeichnungen, Diagrammen, etc. in LaTeX erlaubt.}
+%% ----------------------------------------------------------------------------------------
+%%
+%% U
+%%
+%% ----------------------------------------------------------------------------------------
+\myglossaryentry[plural={Umgebungen}]%
+                {gls:umgebung}{Umgebung}{Ein Bereich im LaTeX-Code der mit
+								\texttt{begin} eingeleitet und mit \texttt{end} beendet wird.
+								Umgebungen können auch verschachtelt sein.}
+\myglossaryentry{gls:utf8}{UTF-8}{Ein Schema zur Kodierung von Zeichen in computerverarbeitbarer Form,
+                             die Zeichen aus allen Sprachen umfasst.}
+%% ----------------------------------------------------------------------------------------
+%%
+%% V
+%%
+%% ----------------------------------------------------------------------------------------
 
-\newacronym[] {eps}{EPS}{Embedded Postscript}
+%% ----------------------------------------------------------------------------------------
+%%
+%% W
+%%
+%% ----------------------------------------------------------------------------------------
 
-\newacronym[] {wysiwyg}{WYSIWYG}{What you see is what you get}
-
-\longnewglossaryentry{pkg}{%
-  name={Paket},%
-  plural={Pakete}}%
-{%
-Ein LaTeX-Paket besteht aus einer oder mehrerer Dateien, die entweder vorhandene
-Kernfunktionen von LaTeX umdefinieren und so das Verhalten derselbigen bzw.
-das Erscheinungsbild des fertigen Dokuments verändern oder die zusätzliche
-Befehle zur Verfügung stellen.}
-
-\longnewglossaryentry{utf8}{%
-  name={UTF-8}}%
-{%
-Ein Schema zur Kodierung von Zeichen in computerverarbeitbarer Form, die Zeichen
-aus allen Sprachen umfasst.}
-
-\longnewglossaryentry{tikz}{%
-  name={TikZ}}%
-{%
-Eine Sammlung von LaTeX-Paketen, die ein direktes Erzeugen von (technischen)
-Zeichnungen, Diagrammen, etc. in LaTeX erlaubt.}
-
-\longnewglossaryentry{pgfplots}{%
-  name={PGFplots}}%
-{%
-Eine Sammlung von TikZ-Paketen, die ein direktes Erzeugen von Diagrammen aller
-Art (inkl. 3D-Diagramme) direkt aus LaTeX heraus ermöglicht.}
-
-\longnewglossaryentry{biblatex}{%
-  name={BibLaTex}}%
-{%
-Der Nachfolger von BibTex zum Erzeugen von Literaturverzeichnissen in LaTeX. Es
-zeichnet sich vor allem durch deutlich bessere Flexibilität bei der Gestaltung
-des Literaturverzeichnisses und der Art und Weise wie Zitatmarken gesetzt werden
-aus. Darüber hinaus ist es vollständig UTF-8-kompatibel.
+%% ----------------------------------------------------------------------------------------
+%%
+%% X
+%%
+%% ----------------------------------------------------------------------------------------
+%
+%% ----------------------------------------------------------------------------------------
+\newglossaryentry{pi}
+{
+  name={\ensuremath{\pi}},
+  description={ratio of circumference of circle to its
+               diameter},
+  sort=pi,
+	type=symbolslist
 }
-
-\longnewglossaryentry{bibtex}{%
-  name={BibTeX}}%
-{%
-Der Vorgänger von BibLaTex.}
-
-\longnewglossaryentry{postscript}{%
-  name={PostScript}}%
-{%
-Eine von Adobe 1984 entwickelte Seitenbeschreibungssprache.}
-
-\longnewglossaryentry{java}{%
-  name={Java}}%
-{%
-Eine von Sun Microsystems 1995 veröffentlichte, objektorientierte Programmiersprache.}
-
-\longnewglossaryentry{latex}{%
-  name={LaTeX}}%
-{%
-Eine von Leslie Lamport 1980 entwickelter Satz von Makros zur Erweiterung von TeX.}
-
-
-\longnewglossaryentry{umgebung}{%
-  name={Umgebung},%
-  plural={Umgebungen}}%
-{%
-Ein Bereich im LaTeX-Code der mit \texttt{begin} eingeleitet und mit \texttt{end}
-beendet wird. Umgebungen können auch verschachtelt sein.}
+%%
+%% Achtung: Falls die Begriffe im Text nicht mit \gls{label} referenziert werden:
+%% Alle Begriffe am Anfang des Dokuments zur Liste hinzufügen
+%\AtBeginDocument{%
+	%\glsadd{#1}%
+%}%
+%% Problem: erzeugt eine leere Seite am Anfang des Dokumentes
