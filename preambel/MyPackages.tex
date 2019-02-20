@@ -184,12 +184,13 @@
 %\usepackage[ngerman]{translator}
 \usepackage[%
 xindy,
-translate=true,
+%translate=true, % verwendet das translator-paket
 translate=babel, % verwende Babel zur Übersetzung der Überschriften
 %translate=false, % keine Übersetzung der Überschriften da ansonsten Zusatzpakete geladen werden müssen
 nonumberlist,    % keine Seitenzahlen anzeigen
 nopostdot,       % den Punkt am Ende jeder Beschreibung deaktivieren
 acronym,         % ein Abkürzungsverzeichnis erstellen
+shortcuts,       % Shortcuts aus dem Acronym-Package verwenden, z.B. as \ac, \acs, \acl, \acf, etc.
 symbols,         % ein Symbolverzeichnis erstellen
 toc,             % Einträge im Inhaltsverzeichnis erzeugen
 section=chapter, % Einträge im Inhaltsverzeichnis auf chapter-Ebene erscheinen lassen

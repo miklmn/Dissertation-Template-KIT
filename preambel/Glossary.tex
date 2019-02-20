@@ -31,10 +31,9 @@
 %% ----------------------------------------------------------------------------------------
 %% Beispiel:
 %% ----------------------------------------------------------------------------------------
-%\myglossaryentry[plural={Umgebungen}]%
-%                {gls:umgebung}{Umgebung}{Ein Bereich im LaTeX-Code der mit
-%								\texttt{begin} eingeleitet und mit \texttt{end} beendet wird.
-%								Umgebungen können auch verschachtelt sein.}
+\myglossaryentry[plural={Glossare},%
+                 genitive={Glossars}]%
+                {gls:Glossar}{Glossar}{alphabetisch sortierte Liste von Begriffen mit Erklärung}
 %% ----------------------------------------------------------------------------------------
 %%
 %% ----------------------------------------------------------------------------------------
@@ -118,8 +117,7 @@
 %% L
 %%
 %% ----------------------------------------------------------------------------------------
-\myglossaryentry{gls:latex}{LaTeX}{Eine von Leslie Lamport 1980 entwickelter Satz von Makros
-                zur Erweiterung von TeX.}
+\myglossaryentry{gls:latex}{LaTeX}{Eine von Leslie Lamport 1980 entwickelter Satz von Makros zur Erweiterung von TeX.}
 \myglossaryentry{gls:LeastSquares}{least squares method}{Methode kleinster Fehlerquadrate}
 %% ----------------------------------------------------------------------------------------
 %%
@@ -203,14 +201,6 @@
 %% ----------------------------------------------------------------------------------------
 %
 %% ----------------------------------------------------------------------------------------
-\newglossaryentry{pi}
-{
-  name={\ensuremath{\pi}},
-  description={ratio of circumference of circle to its
-               diameter},
-  sort=pi,
-	type=symbolslist
-}
 %%
 %% Achtung: Falls die Begriffe im Text nicht mit \gls{label} referenziert werden:
 %% Alle Begriffe am Anfang des Dokuments zur Liste hinzufügen

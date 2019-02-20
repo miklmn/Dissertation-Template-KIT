@@ -93,13 +93,13 @@
 %\usepackage[amsmath,thmmarks,standard,hyperref]{ntheorem}   %hyperref-Option macht Probleme  %im Minimaltest aber nicht
 %\usepackage{thmtools}   %Fuer \listoftheorems  %Nicht in MikTeX 2.8 %Wird nicht benutzt
 %\usepackage{theoremref}  %Für bessere Referenzierung
-\newtheorem{theorem}{\protect\theoremname}[chapter]
-\newtheorem{definition}[theorem]{\protect\definitionname}
-\newtheorem{proposition}[theorem]{\protect\propositionname}
-\newtheorem{lemma}[theorem]{\protect\lemmaname}
-\newtheorem{example}{\protect\examplename}
-%\newtheorem{proof}{\protect\proofname}
-\newtheorem{cor}{\protect\corollaryname}
+\newtheorem{theorem}{\protect\TransTheorem}[chapter]
+\newtheorem{definition}[theorem]{\protect\TransDefinition}
+\newtheorem{proposition}[theorem]{\protect\TransProposition}
+\newtheorem{lemma}[theorem]{\protect\TransLemma}
+\newtheorem{example}{\protect\TransExample}
+%\newtheorem{proof}{\protect\TransProof}
+\newtheorem{cor}{\protect\TransCorollary}
 
 %% Changing the qed symbol from white square to something else:
 %\renewcommand\qedsymbol{QED}% just "QED"

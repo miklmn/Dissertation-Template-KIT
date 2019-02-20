@@ -69,18 +69,18 @@
 \usepackage{KAcolors}
 
 % Encoding der Quellcode-Dateien (sonst funktionieren Umlaute in den Quellcodedateien nicht)
-\input{preambel/EncodingAndFont}
+\input{preambel/EncodingAndFont.tex}
 
 %%%%%%%%%%%%%%%% HIER EINSTELLEN, OB ENGLISCH ODER DEUTSCH USW.
 %%% Angaben zum Dokument (Autor, Titel etc.)
-\input{preambel/AlleAngaben}
+\input{preambel/AlleAngaben.tex}
 
 %%% Einstellungen zu Seitenlayout, Abständen etc.
-\input{preambel/settings}
+\input{preambel/settings.tex}
 
 %%% LaTeX-Präambel
 %%% Hier werden Pakete eingebunden, Teil I
-\input{preambel/preambel-commands}
+\input{preambel/preambel-commands.tex}
 
 %% Es werden jeweils eines der begrenzt verfügbaren TeX-\writes verwendet für
 % Table of Contents
@@ -92,13 +92,13 @@
 %%% Einstellungen für KOMA-Script
 %%% Hier werden die KOMAoptions gesetzt wie z.B. Ränder, Kopfzeilen, einseitig/zweiseitig, Absatzabstände, Inhaltsverzeichnis usw.
 %%% Alle Optionen sind im scrguide.pdf erklärt, die ihr in Eurem LaTeX-Distributionsverzeichnis bei den Docs findet!
-\input{preambel/KomaOptions}
+\input{preambel/KomaOptions.tex}
 
 %% Präambel Teil II
-\input{preambel/preambel}
+\input{preambel/preambel.tex}
 
 %%%Alle Pakete, die ich selbst eingebunden habe
-\input{preambel/MyPackages}
+\input{preambel/MyPackages.tex}
 
 %% Mathe-Pakete laden, Sondersymbole und Mathe-Macros definieren
 \input{preambel/Math}
@@ -115,28 +115,29 @@
 %\input{preambel/glyphtounicode.tex}
 
 % Angaben zu den Pfaden zu Grafiken, BibTeX-.Datei etc
-\input{preambel/AllePfade}
+\input{preambel/AllePfade.tex}
 
 % Übersetzungen verschiedener Überschriften etc.
-\input{preambel/Translations}
+\input{preambel/Translations.tex}
 
 %%% Wenn man das Aussehen der Tabellen ändern will, findet man die Einstellungen in dieser Datei
-\input{preambel/TableCommands}
+\input{preambel/TableCommands.tex}
 
 %%%% Aussehen von Glossaren
-\input{preambel/GlossaryOptions}
+\input{preambel/GlossaryOptions.tex}
 
 %%%% Neue Befehle / Makros
-\input{preambel/Newcommands}
+\input{preambel/Newcommands.tex}
 
 % In der Arbeit verwendete Acronyme und Glossarbegriffe
-\input{preambel/Acronyms}
-\input{preambel/Glossary}
+\input{preambel/Acronyms.tex}
+\input{preambel/Glossary.tex}
+\input{preambel/GlossarySymbols.tex}
 
 
 
 %%% Silbentrennung
-\input{preambel/Hyphenation}
+\input{preambel/Hyphenation.tex}
 
 %remove padding in fboxes
 \setlength{\fboxsep}{0pt}

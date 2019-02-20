@@ -1,0 +1,32 @@
+%% ----------------------------------------------------------------------------------------
+%% In dieser Datei werden die verwendeten Symbole als Glossareinträge definiert
+%% ----------------------------------------------------------------------------------------
+%%
+%% ----------------------------------------------------------------------------------------
+%% Beschreibung:
+%% ----------------------------------------------------------------------------------------
+%% \neglossaryentry[]{}{}{} nimmt 4 Argumente
+%% - Im ersten, optionalen Argument (in Eckigen Klammern) wird der Sortierschlüssel definiert.
+%% - Zweites Argument ist die Makre (Label)
+%%   Konvention: der Marke wird ein Prefix "symb:" vorangestellt.
+%% - Drittes Argument ist das eigentliche Symbol.
+%% - Viertes Argument ist die Beschreibung.
+%% ----------------------------------------------------------------------------------------
+%%
+%% ----------------------------------------------------------------------------------------
+%% Beispiel:
+%% ----------------------------------------------------------------------------------------
+\newglossaryentry{symb:pi}{%
+									name={\ensuremath{\pi}},%
+									sort={pi},%
+									type=symbols,%
+									%parent=greekletter,%
+									description={Kreiszahl, Verhältnis des Umfangs eines Kreises zu seinem Durchmesser}%
+									}
+%% ----------------------------------------------------------------------------------------
+%% Achtung: Falls die Symbole im Text nicht mit \gls{<label>} referenziert werden:
+%% Alle Begriffe am Anfang des Dokuments zur Liste hinzufügen
+%\AtBeginDocument{%
+%\glsaddall[type=symbols]%
+%}%
+%% Problem: erzeugt eine leere Seite am Anfang des Dokumentes

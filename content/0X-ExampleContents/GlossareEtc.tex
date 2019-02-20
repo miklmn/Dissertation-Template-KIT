@@ -3,58 +3,209 @@
 \label{sec:Glossare}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Die Vorlage unterstützt auch ein Stichwortverzeichnis und ein Glossar. Ein
-Stichwortverzeichnis (oder Index) ist einfach nur eine alphabetisch sortierte
-Liste von Begriffen mit einer Auflistung der \index{Fundstelle}Fundstellen
-im Dokument. Ein Glossar ist eine alphabetisch sortierte Liste von Begriffen mit
-\index{Erklarung@Erklärung}Erklärung.
+Die Vorlage unterstützt auch ein Abkürzungsverzeichnis, ein Stichwortverzeichnis,
+ein Symbolverzeichnis sowie ein allgemeines \index{Glossar}\gls{gls:Glossar},
+das Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
+\index{Übersetzung}Übersetzungen von fremdsprachlichen Begriffen
+(d.h. eine Art Lexikons) enthalten kann.
 
-Der Index wird erzeugt, indem im Quellcode der Befehl \verb#\index{Begriff}#
-eingefügt wird. Wichtig, der Begriff selbst wird dadurch nicht gedruckt, sondern
-muss noch einmal wiederholt werden, um auch gedruckt zu werden. Dieses Verhalten
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Abkürzungen und Abkürzungsverzeichnis}%
+\label{sec:Akronyme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Zur Erzeugung des Abkürzungsverzeichnis und des Glossar wird intern das
+\pkg{glossaries}-\gls{gls:pkg} verwendet \cite{talbot2014}.
+Zudem wurden einige Makros definiert, welche die Erfassung der Begriffe erleichtern sollen.
+
+Um ein Abkürzungsverzeichnis zu erzeugen, muss zuerst eine Liste der Abkürzungen angelegt werden.
+Dies geschieht in der Datei \texttt{./preambel/Acronyms.tex}.
+Hierfür wird das Makro \lc{newacronym} verwendet.
+Dieses Makro hat drei obligatorische Argumente, nämlich das
+\begin{itemize*}
+\item die Marke,
+\item das Akronym und
+\item die Langform.
+\end{itemize*}
+Als Konvention wird der Marke eines Akronyms ein \enquote{ac:} als Präfix vorangestellt.
+Optional können Pluralformen, sowie Genitiv-, Dativ- und Akkusativ-Formen 
+der Abkürzung und des eigentlichen Begriffs angegeben werden,
+sofern sie im Quelltext verwendet werden und sich von der Grundform unterscheiden.
+Außerdem kann mit dem Schlüsselwort \texttt{description}
+eine abweichende Version der Langform für die Verwendung im Abkürzungsverzeichnis definiert werden.
+
+Eine Abkürzung wird folgendermaßen definiert (Angaben in eckigen Klammern und auskommentierte Zeilen sind optional):
+\begin{latex}[caption={Definition einer Abkürzung},label={lst:AcronymEntry}]
+\newacronym[shortgenitive={MSAs},%
+            genitive={meines schönen Akronyms},%
+            %shortdative={MSA},%
+            dative={meinem schönen Akronym},%
+            %shortaccusative={MSA},%
+            %accusative={mein schönes Akronym},%
+            shortplural={MSAs},
+            longplural={meine schönen Akronyme},%
+            %shortpluralgenitive={MSAs},%
+            pluralgenitive={meiner schönen Akronyme},%
+            %shortpluraldative={MSAs},%
+            pluraldative={meinen schönen Akronymen},%
+            %shortpluralaccusative={MSAs},%
+            pluralaccusative={meine schönen Akronyme},%
+            description={mein schönes Akronym, ein Beispiel für eine Abkürzung}% <- optional
+           ]{ac:MSA}{MSA}{mein schönes Akronym}
+\end{latex}
+
+Im Text des Dokumentes werden die Einträge durch den Befehl \lc{ac\{<Marke>\}} verwendet.
+Bei der erstmaliger Verwendung wird die Langform gedruckt, gefolgt von der Abkürzung, welche in Klammern gesetzt wird.
+Beim zweiten Vorkommen wird nur noch die Abkürzung gedruckt.
+Zusätzlich definiert die Vorlage die Befehle
+\lc{acgen\{...\}}, \lc{acdat\{...\}} und \lc{acacc\{...\}}, sowie
+\lc{acplgen\{...\}}, \lc{acpldat\{...\}} und \lc{acplacc\{...\}},
+die jeweils die Genitiv- Dativ- und Akkusativ-Form (singular und Plural) drucken.
+
+Im \gls{gls:pkg} \pkg{glossaries} stellt der Befehl \lc{ac\{...\}} ein Shortcut für den Befehl \lc{gls\{...\}} dar.
+Mit diesem kann ein allgemeines Glossareintrag im Text referenziert werden.
+
+Mit den Befehlen
+\lc{acrshort\{...\}}, \lc{acrlong\{...\}}, \lc{acrfull\{...\}}
+und ihren Abwandlungen sowie den Shortcuts
+\lc{acs\{...\}}, \lc{acl\{...\}}, \lc{acf\{...\}},
+kann jeweils nur die Abkürzung, nur die Langform oder beides explizit angefordert werden.
+Allerdings wird eine solche Verwendung ggf. nicht als \enquote{erstmalige Verwendung} zählen.
+
+Damit resultiert der folgende Quellcode
+\begin{latex}[caption={Verwendung von Abkürzungen},label={lst:AcronymUsage}]
+    \Acf{ac:MSA} ist ein Beispiel für die Verwendung einer
+    Abkürzung am Anfang des Satzes. Man beachte, dass
+    der Aufruf der Marke mit dem Makro \lc{acf} bzw. \lc{Acf}
+    nicht als die erste Erwähnung im Text zählt.
+    Bei der ersten Nennung des \acgen{ac:MSA} unter Verwendung
+    der Makros \lc{ac}, \lc{acgen} \oae erscheint die Langform,
+    gefolgt von der Kurzform. Bei der zweiten Nennung des
+    \acgen{ac:MSA} erscheint nur noch die Kurzform.
+\end{latex}
+%
+in der Ausgabe
+%
+\begin{quote}
+\Acf{ac:MSA} ist ein Beispiel für die Verwendung einer
+Abkürzung am Anfang des Satzes. Man beachte, dass
+der Aufruf der Marke mit dem Makro \lc{acf} bzw. \lc{Acf}
+nicht als die erste Erwähnung im Text zählt.
+Bei der ersten Nennung des \acgen{ac:MSA} unter Verwendung
+der Makros \lc{ac}, \lc{acgen} \oae erscheint die Langform,
+gefolgt von der Kurzform. Bei der zweiten Nennung des
+\acgen{ac:MSA} erscheint nur noch die Kurzform.
+\end{quote}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Glossar}%
+\label{sec:Glossar}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Neben einem Abkürzungsverzeichnis kann man auch ein
+\index{Glossar}\gls{gls:Glossar} erstellen lassen.
+In diesem können Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
+\index{Übersetzung}Übersetzungen von fremdsprachlichen Begriffen stehen.
+
+Der wesentliche Unterschied zwischen einer Abkürzung und einem allgemeinen Glossareintrag ist,
+dass bei Abkürzungen bei erstmaliger Verwendung die Abkürzung gedruckt und die Langform in Klammer dahinter gesetzt wird.
+Bei allgemeinen Glossareinträgen wird normalerweise nur der Name gesetzt.
+Durch eine Option des \pkg{glossaries}-\glsgen{gls:pkg} kann man sicher stellen,
+dass alle Glossareinträge auf das Glossar am Ende des Manuskripts verlinkt werden.
+Standardmäßig ist diese Option jedoch deaktiviert.
+
+Die Glossareinträge werden in der Datei  \texttt{./preambel/Glossary.tex} definiert.
+
+Die Definition der Glossareinträge geschieht mit dem Makro \lc{myglossaryentry},
+welches drei obligatorische Argumente hat, nämlich
+\begin{itemize*}
+\item die Marke,
+\item den Begriff und
+\item die Erklärung / Definition / Übersetzung.
+\end{itemize*}
+Als Konvention wird der Marke eines Glossareintrages ein \enquote{gls:} als Präfix vorangestellt.
+Optional kann die Plural-, sowie Genitiv-, Dativ- und Akkusativ-Form des Begriffs angegeben werden,
+sofern sie im Quelltext verwendet werden und sich von der Grundform unterscheiden.
+
+Ein Glossareintrag kann beispielsweise folgendermaßen definiert werden:
+\begin{latex}[caption={Definition eines Glossareintrages},label={lst:GlossEntry}]
+\myglossaryentry[plural={Glossare},%
+                 genitive={Glossars}]%
+                {gls:Glossare}{Glossar}{alphabetisch sortierte Liste von Begriffen mit Erklärung}
+\end{latex}
+
+Normalerweise werden im Glossar nur diejenigen Begriffe angezeigt,
+die im Text des Dokumentes erwähnt und entsprechend referenziert worden sind.
+Eine Referenzierung der Glossareinträge im Text geschieht normalerweise mit dem
+\lc{gls\{<Marke>\}}-Befehl,
+welcher den Begriff im Text druckt und für seine Aufnahme ins Glossar sorgt.
+Weitere mögliche Befehle sind \lc{Gls\{...\}} und \lc{GLS\{...\}},
+die den ersten bzw. alle Buchstaben in Großbuchstaben umwandeln,
+\lc{glpl\{...\}}, \lc{Glspl\{...\}}, \lc{GLSpl\{...\}} für die Pluralform \usw.
+Zusätzlich definiert die Vorlage die Befehle
+\lc{glsgen\{...\}}, \lc{glsdat\{...\}} und \lc{glsacc\{...\}}, sowie
+\lc{glsplgen\{...\}}, \lc{glspldat\{...\}} und \lc{glsplacc\{...\}},
+die jeweils die Genitiv- Dativ- und Akkusativ-Form drucken.
+
+Außerdem gibt es mit dem Befehl \lc{glsadd\{...\}} die Möglichkeit,
+eine Stelle im Text mit einem Glossar-Begriff zu verlinken, ohne diesen explizit zu drucken.
+Mit \lc{glsaddall} kann man alle definierte Glossareinträge ins Glossar aufnehmen,
+ohne sie im Text des Dokumentes referenziert zu haben.
+
+Die Verwendung des oben definierten Glossareintrages im Text mit dem Befehl
+\lc{glsgen\{gls:Glossar\}} mündet im Text in Erwähnung des \glsgen{gls:Glossar}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stichwortverzeichnis (Index)}%
+\label{sec:Index}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Ein \index{Stichwortverzeichnis}Stichwortverzeichnis (oder
+\index{Index|see{Stichwortverzeichnis}}Index)
+ist einfach nur eine alphabetisch sortierte Liste von Begriffen mit einer Auflistung der Fundstellen im Dokument.
+Diese ist nützlich, wenn sich der Leser zu einem Begriff alle Vorkommnisse anschauen möchte.
+Der Index wird erzeugt, indem im Quellcode der Befehl \verb+\index{Begriff}+
+eingefügt wird. Der Begriff selbst wird dadurch nicht gedruckt und muss daher
+noch einmal wiederholt werden, um auch im Text gedruckt zu werden. Dieses Verhalten
 ist beabsichtigt, sodass im Index immer nur die Grundform des Wortes verwendet
-wird, aber im Text natürlich die richtige Deklination. Also:
-\begin{latex}[caption={Beispiel für Index},label={lst:index}]
-Die meisten Funktionen dieser \index{Vorlage}Vorlage, werden durch
-\index{Paket}Standardpakete bereitgestellt.
+wird, aber im Text natürlich die richtige Deklination.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Symbolverzeichnis}%
+\label{sec:Symbolverz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Ein Symbolverzeichnis kann auf zwei Arten angelegt werden.
+Normalerweise reicht eine manuell erstellte Übersicht über die Notation,
+so wie sie in der Datei \texttt{./00-Front-Matter/Notation.tex}
+mit Hilfe von Befehlen
+\texttt{\bs myNotationTableEntryMath\{<Mathe-Ausdruck>\}\{<Beschreibung>\}}
+und
+\texttt{\bs myNotationTableEntryText\{<Text-Ausdruck>\}\{<Beschreibung>\}}
+definiert wird.
+Diese ist recht einfach und lässt sich bei Bedarf beliebig ergänzen.
+
+Allerdings gibt es auch die Möglichkeit zur automatischen Erzeugung eines
+Symbolverzeichnisses mit Hilfe des \pkg{glossaries}-\glsgen{gls:pkg}.
+Um dieses, am Ende des Manuskriptes eingebundene Symbolverzeichnis zu erzeugen,
+müssen Symbole in Form von Glossareinträgen angelegt und im Text des Dokumentes
+zumindest einmal entsprechend mit dem Befehl \lc{gls\{<Marke>\}} referenziert werden.
+Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
+\begin{latex}[caption={Definition eines Symboleintrages},label={lst:SymbEntry}]
+\newglossaryentry{symb:pi}{%
+                  name={\ensuremath{\pi}},%
+                  sort={pi},%
+                  type=symbols,%
+                  description={Kreiszahl, Verhältnis des Umfangs eines Kreises zu seinem Durchmesser}%
+                 }
 \end{latex}
-Obiges Beispiel erzeugt einen Indexeintrag für \enquote{Vorlage} der auf
-\enquote{Vorlage} verweist und einen Eintrag \enquote{Paket} der auf 
-\enquote{Standardpaket} verweist.
+Die Referenzierung des Symbols \gls{symb:pi} im Text geschieht dann mit \verb+\gls{symb:pi}+.
 
-Um ein Glossar zu erzeugen, müssen die Glossarbegriffe zunächst definiert werden.
-Dies geschieht in der Datei \texttt{./content/00-glossary-definitions.tex}.
-Es gibt zwei Haupttypen von Glossarbegriffen: Abkürzungen (Akronyme) und allg.
-Einträge (z.\,B. Fachtermini).
-
-Abkürzungen werden mit
-\begin{latex}[caption={Definition von Abkürzungen},label={lst:acro}]
-\newacronym[%
-  shortplural={AUen},%
-  longplural={Abgasuntersuchungen}%
-] {au}{AU}{Abgasuntersuchung}
-\end{latex}
-Die drei Hauptargumente sind in dieser Reihenfolge Marke, Abkürzung und
-Ausschreibung. Optionale Argumente sind die kurze und lange Pluralform.
-
-Allgemeine Glossarbegriffe werden mit
-\begin{latex}[caption={Definition von allg. Glossareinträgen},label={lst:gls}]
-\longnewglossaryentry{pkg}{%
-  name={Paket},%
-  plural={Pakete}}%
-{%
-  Hier folgt eine lange Definition, die auch mehr als einen
-	Absatz beinhalten darf.
-}
-\end{latex}
-erzeugt.
-
-Im Text werden die Einträge durch den Befehl \verb#\gls{gls:Marke}# verwendet.
-Der wesentliche Unterschied zwischen einer Abkürzung und einem allg.
-Glossareintrag ist, dass bei Abkürzungen bei erstmaliger Verwendung die
-Abkürzung gedruckt und die Langform in Klammer dahinter gesetzt wird.
-Bei allg. Glossareinträgen wird einfach nur der Name gesetzt. Statt
-\verb#\gls{gls:Marke}# gibt es noch viele weitere Befehle, um im Kontext des
-umgebenen Textes die korrekte Pluralform, Großschreibung am Satzanfang, etc.
-zu gewährleisten. Hierfür konsultiere man das Handbuch zum Paket \texttt{glossaries}
-(Pluralform, sic!) \parencite{talbot2014}.
+Die Einbindung eines automatisch erzeugten Symbolverzeichnisses ist am Ende des Manuskripts vorgesehen.
+Es passiert in der Datei
+\texttt{./content/Inhalt-BackMatter.tex}.
+Dabei ist darauf zu achten, dass in der Hauptdatei \texttt{Diss.tex}
+die Einblendung durch \lc{showif\{showListOfSymbols\}} aktiviert ist.

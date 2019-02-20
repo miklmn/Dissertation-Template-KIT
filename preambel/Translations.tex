@@ -48,13 +48,54 @@
 \addtolanguagecommand{\TransAcknowledgements}{ngerman}{Danksagung}
 \addtolanguagecommand{\TransAcknowledgements}{english}{Acknowledgements}
 
-\newlanguagecommand{\TransListOfSymbols}
-\addtolanguagecommand{\TransListOfSymbols}{ngerman}{Symbolverzeichnis}
-\addtolanguagecommand{\TransListOfSymbols}{english}{List of Symbols}
+\newlanguagecommand{\TransTheorem}
+\addtolanguagecommand{\TransTheorem}{ngerman}{Satz}
+\addtolanguagecommand{\TransTheorem}{english}{Theorem}
 
-\newlanguagecommand{\TransIndexName}
-\addtolanguagecommand{\TransIndexName}{ngerman}{Stichwortverzeichnis}
-\addtolanguagecommand{\TransIndexName}{english}{Index}
+\newlanguagecommand{\TransExample}
+\addtolanguagecommand{\TransExample}{ngerman}{Beispiel}
+\addtolanguagecommand{\TransExample}{english}{Example}
+
+\newlanguagecommand{\TransLemma}
+\addtolanguagecommand{\TransLemma}{ngerman}{Lemma}
+\addtolanguagecommand{\TransLemma}{english}{Lemma}
+
+\newlanguagecommand{\TransCorollary}
+\addtolanguagecommand{\TransCorollary}{ngerman}{Korollar}
+\addtolanguagecommand{\TransCorollary}{english}{Corollary}
+
+\newlanguagecommand{\TransProposition}
+\addtolanguagecommand{\TransCorollary}{ngerman}{Proposition}
+\addtolanguagecommand{\TransCorollary}{english}{Proposition}
+
+\newlanguagecommand{\TransDefinition}
+\addtolanguagecommand{\TransDefinition}{ngerman}{Definition}
+\addtolanguagecommand{\TransDefinition}{english}{Definition}
+
+\newlanguagecommand{\TransProof}
+\addtolanguagecommand{\TransProof}{ngerman}{Beweis}
+\addtolanguagecommand{\TransProof}{english}{Proof}
+
+%\newlanguagecommand{\TransListOfSymbols}
+%\addtolanguagecommand{\TransListOfSymbols}{ngerman}{Symbolverzeichnis}
+%\addtolanguagecommand{\TransListOfSymbols}{english}{List of Symbols}
+%
+%\newlanguagecommand{\TransIndexName}
+%\addtolanguagecommand{\TransIndexName}{ngerman}{Stichwortverzeichnis}
+%\addtolanguagecommand{\TransIndexName}{english}{Index}
+
+\addto\captionsenglish{%
+	%% Redefine existing babel translations in English:
+	\renewcommand{\acronymname}{List of Acronyms}
+	\renewcommand{\glssymbolsgroupname}{List of Symbols}
+	\renewcommand{\indexname}{Index}
+}
+\addto\captionsngerman{%
+	%% Redefine existing babel translations in German:
+	\renewcommand{\acronymname}{Abkürzungsverzeichnis}
+	\renewcommand{\glssymbolsgroupname}{Symbolverzeichnis}
+	\renewcommand{\indexname}{Stichwortverzeichnis}
+}
 
 
 %% Befehle für korrekte Behandlung von Textteilen in anderer Sprache (je nach gewählter Hauptsprache)
@@ -67,38 +108,4 @@
 	\newcommand{\textInEnglish}[1]{\foreignlanguage{english}{#1}}
 	\newcommand{\textInGerman}[1]{#1}
 }
-
-
-\newcommand{\theoremname}{} % initialization
-\newcommand{\examplename}{} % initialization
-%\newcommand{\proofname}{} % initialization
-\newcommand{\definitionname}{} % initialization
-\newcommand{\lemmaname}{} % initialization
-\newcommand{\corollaryname}{} % initialization
-\newcommand{\propositionname}{} % initialization
-
-\addto\captionsenglish{%
-  \renewcommand{\theoremname}{Theorem}%
-  \renewcommand{\examplename}{Example}%
-	%\renewcommand{\proofname}{Proof}%
-	\renewcommand{\definitionname}{Definition}%
-	\renewcommand{\lemmaname}{Lemma}%
-	\renewcommand{\corollaryname}{Corollary}%
-	\renewcommand{\propositionname}{Proposition}%
-}
-\addto\captionsngerman{%
-  \renewcommand{\theoremname}{Satz}%
-  \renewcommand{\examplename}{Beispiel}%
-	%\renewcommand{\proofname}{Beweis}%
-	\renewcommand{\definitionname}{Definition}%
-	\renewcommand{\lemmaname}{Lemma}%
-	\renewcommand{\corollaryname}{Korollar}%
-	\renewcommand{\propositionname}{Proposition}%
-}
-
-%\newtheorem{theorem}{Satz}[chapter]
-%\newtheorem{definition}[theorem]{Definition}
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{corollary}[theorem]{Corollary}
-%\newtheorem{proposition}[theorem]{Proposition}
 

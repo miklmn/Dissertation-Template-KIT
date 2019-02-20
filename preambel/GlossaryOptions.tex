@@ -273,10 +273,25 @@
   }%
 }
 
+%Define shortcuts similar to \ac \acl, acf, acp etc.
+\newcommand{\acgen}[1]{\glsgen{#1}}
+\newcommand{\acdat}[1]{\glsdat{#1}}
+\newcommand{\acacc}[1]{\glsacc{#1}}
+\newcommand{\acpgen}[1]{\glsplgen{#1}}
+\newcommand{\acpdat}[1]{\glspldat{#1}}
+\newcommand{\acpacc}[1]{\glsplacc{#1}}
+\newcommand{\acsgen}[1]{\glsshortgenitive{#1}}
+\newcommand{\acsdat}[1]{\glsshortdative{#1}}
+\newcommand{\acsacc}[1]{\glsshortacccusative{#1}}
+\newcommand{\aclgen}[1]{\glsgenitive{#1}}
+\newcommand{\acldat}[1]{\glsdative{#1}}
+\newcommand{\aclacc}[1]{\glsaccusative{#1}}
+% weitere noch zu definieren...
+
 
 %%\newglossary[alg]{acronym}{acr}{acn}{\acronymname} %Unnötig durch die Option "acronym" des glossaries-Pakets.
 \newglossary[nlg]{notation}{not}{ntn}{Notation}
-\newglossary[slg]{symbolslist}{syi}{syg}{\TransListOfSymbols}
+%\newglossary[slg]{symbols}{sls}{slo}{\glssymbolsgroupname}
 
 %%%makeglossaries muss nach \newglossary eingebunden werden!
 %\makeglossaries

@@ -2,213 +2,219 @@
 %% In dieser Datei werden die verwendeten Akronyme definiert
 %% ----------------------------------------------------------------------------------------
 %%
-%%
-%% ----------------------------------------------------------------------------------------
-%% Definition eines eigenes Macro \myacronymentry[]{}{}{} zur Erstellung von Akronymen
-%% ----------------------------------------------------------------------------------------
-\newcommand{\myacronymentry}[4][]{%
-		\ifx\relax#1\relax%
-			%\newacro{#2}[#3]{#4}%Definition zur Verwendung im Text mit \ac,\acf etc.
-			\newacronym{#2}{#3}{#4}%Hinzufügen zur Liste und zur Verwendung mit \gls{}
-		\else%
-			%\newacro{#2}[#3]{#4}%Definition zur Verwendung im Text mit \ac,\acf etc.
-			\newacronym[#1]{#2}{#3}{#4}%Hinzufügen zur Liste und zur Verwendung mit \gls{}
-		\fi%
-}% ----------------------------------------------------------------------------------------
-%%
 %% ----------------------------------------------------------------------------------------
 %% Beschreibung:
 %% ----------------------------------------------------------------------------------------
-%% \myacronymentry[]{}{}{} nimmt 4 Argumente
-%% Im ersten, optionalen Argument (in Eckigen Klammern), kann die Pluralform definiert werden
-%% Außerdem kann hier der Sortierschlüssel definiert werden, falls der Akronym LaTeX-Befehle beinhaltet
-%% Zweites Argument ist das Schlüsselwort. Konvontion: zur Markierung des Schlüsselwortes als solches
-%%    und zur Unterscheidung dieses von der Kurzform sollte dem Schlüsselwort ein "ac:" vorangestellt werden.
-%% Drittes Argument ist das eigentliche Akronym.
-%% Viertes Argument ist die Langform.
+%% \newacronym[]{}{}{} nimmt 4 Argumente
+%% - Im ersten, optionalen Argument (in Eckigen Klammern), kann die Pluralform definiert werden (Kurzform und Langform).
+%%   Außerdem kann hier Genitiv-, Dativ- und Akkusativ-Form definiert werden, sofern sich diese von der grundform unterscheiden.
+%%   Falls der Akronym LaTeX-Befehle beinhaltet, kann hier eine alphanumerischer Sortierschlüssel definiert werden.
+%% - Zweites Argument ist das Schlüsselwort. Konvention: zur Markierung des Schlüsselwortes als solches
+%%   und zur Unterscheidung dieses von der Kurzform sollte dem Schlüsselwort ein "ac:" vorangestellt werden.
+%% - Drittes Argument ist das eigentliche Akronym.
+%% - Viertes Argument ist die Langform.
 %% ----------------------------------------------------------------------------------------
 %%
 %% ----------------------------------------------------------------------------------------
 %% Beispiel:
+% ----------------------------------------------------------------------------------------
+\newacronym[shortgenitive={MSAs},%
+            genitive={meines schönen Akronyms},%
+            %shortdative={MSA},%
+            dative={meinem schönen Akronym},%
+            %shortaccusative={MSA},%
+            %accusative={mein schönes Akronym},%
+            shortplural={MSAs},
+            longplural={meine schönen Akronyme},%
+            %shortpluralgenitive={MSAs},%
+            pluralgenitive={meiner schönen Akronyme},%
+            %shortpluraldative={MSAs},%
+            pluraldative={meinen schönen Akronymen},%
+            %shortpluralaccusative={MSAs},%
+            pluralaccusative={meine schönen Akronyme},%
+            description={mein schönes Akronym, ein Beispiel für eine Abkürzung}% <- optional
+           ]{ac:MSA}{MSA}{mein schönes Akronym}
 %% ----------------------------------------------------------------------------------------
-%% \myacronymentry[shortplural={FoVs},longplural={Fields of View}]%
-%%                {ac:FoV}{FoV}{Field of view}
+%%
+%%  Nachfolgend eigene Begriffe definieren!
+%%
 %% ----------------------------------------------------------------------------------------
 %%
 %% A
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:ABS}{ABS}{Anti-lock Braking System}
-\myacronymentry[shortplural={ADAS},longplural={Advanced Driver Assistance Systems}]%
-               {ac:ADAS}{ADAS}{Advanced Driver Assistance System}
+\newacronym{ac:ABS}{ABS}{Anti-lock Braking System}
+\newacronym[shortplural={ADAS},longplural={Advanced Driver Assistance Systems}]%
+           {ac:ADAS}{ADAS}{Advanced Driver Assistance System}
 %% ----------------------------------------------------------------------------------------
 %%
 %% B
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:BOF}{BOF}{Bayesian Occupancy Filter}
+\newacronym{ac:BOF}{BOF}{Bayesian Occupancy Filter}
 %% ----------------------------------------------------------------------------------------
 %%
 %% C
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:CAN}{CAN}{Controller Area Network}
-\myacronymentry[shortplural={CNNs},longplural={Convolutional Neural Networks}]%
-               {ac:CNN}{CNN}{Convolutional Neural Network}
-\myacronymentry{ac:CRF}{CRF}{Conditional Random Field}
-\myacronymentry{ac:CTAN}{CTAN}{Comprehensive TeX Archive Network}
+\newacronym{ac:CAN}{CAN}{Controller Area Network}
+\newacronym[shortplural={CNNs},longplural={Convolutional Neural Networks}]%
+           {ac:CNN}{CNN}{Convolutional Neural Network}
+\newacronym{ac:CRF}{CRF}{Conditional Random Field}
+\newacronym{ac:CTAN}{CTAN}{Comprehensive TeX Archive Network}
 %% ----------------------------------------------------------------------------------------
 %%
 %% D
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:DARPA}{DARPA}{Defense Advanced Research Projects Agency}
-\myacronymentry{ac:DBSCAN}{DBSCAN}{Density-Based Spacial Clustering of Applications with Noise}
+\newacronym{ac:DARPA}{DARPA}{Defense Advanced Research Projects Agency}
+\newacronym{ac:DBSCAN}{DBSCAN}{Density-Based Spacial Clustering of Applications with Noise}
 %% ----------------------------------------------------------------------------------------
 %%
 %% E
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry[shortplural={EKFs},longplural={Extended Kalman Filters}]%
-               {ac:EKF}{EKF}{Extended Kalman Filter}
+\newacronym[shortplural={EKFs},longplural={Extended Kalman Filters},
+            genitive={Extended Kalman Filters}]%
+           {ac:EKF}{EKF}{Extended Kalman Filter}
 %% ----------------------------------------------------------------------------------------
 %%
 %% F
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry[shortplural={FoVs},longplural={Fields of View}]%
-               {ac:FoV}{FoV}{Field of view}
-\myacronymentry[longplural={Frames per Second}]%
-               {ac:fps}{FPS}{Frame per Second}
+\newacronym[shortplural={FoVs},longplural={Fields of View}]%
+           {ac:FoV}{FoV}{Field of view}
+\newacronym[longplural={Frames per Second}]%
+           {ac:fps}{FPS}{Frame per Second}
 %% ----------------------------------------------------------------------------------------
 %%
 %% G
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:GNN}{GNN}{Global Nearest Neighbor}
-\myacronymentry[shortplural={GUIs},longplural={Graphical User Interfaces}]%
-               {ac:GUI}{GUI}{Graphical User Interface}
+\newacronym{ac:GNN}{GNN}{Global Nearest Neighbor}
+\newacronym[shortplural={GUIs},longplural={Graphical User Interfaces}]%
+           {ac:GUI}{GUI}{Graphical User Interface}
 %% ----------------------------------------------------------------------------------------
 %%
 %% H
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:HMM}{HMM}{Hidden Markov Model}
+\newacronym{ac:HMM}{HMM}{Hidden Markov Model}
 %% ----------------------------------------------------------------------------------------
 %%
 %% I
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry[shortplural={IEKFs},longplural={Iterative Extended Kalman Filters}]%
-               {ac:IEKF}{IEKF}{Iterative Extended Kalman Filter}
-\myacronymentry[genitive={Lehrstuhls für Interaktive Echtzeitsysteme}]%
-               {ac:IES}{IES}{Lehrstuhl für Interaktive Echtzeitsysteme}
-\myacronymentry[genitive={Fraunhofer-Instituts für Optronik, Systemtechnik und Bildauswertung}]%
-               {ac:IOSB}{IOSB}{Fraunhofer-Institut für Optronik, Systemtechnik und Bildauswertung}
+\newacronym[shortplural={IEKFs},longplural={Iterative Extended Kalman Filters}]%
+           {ac:IEKF}{IEKF}{Iterative Extended Kalman Filter}
+\newacronym[genitive={Lehrstuhls für Interaktive Echtzeitsysteme}]%
+           {ac:IES}{IES}{Lehrstuhl für Interaktive Echtzeitsysteme}
+\newacronym[genitive={Fraunhofer-Instituts für Optronik, Systemtechnik und Bildauswertung}]%
+           {ac:IOSB}{IOSB}{Fraunhofer-Institut für Optronik, Systemtechnik und Bildauswertung}
 %% ----------------------------------------------------------------------------------------
 %%
 %% J
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:JPDA}{JPDA}{Joint Probabilistic Data Association}
+\newacronym{ac:JPDA}{JPDA}{Joint Probabilistic Data Association}
 %% ----------------------------------------------------------------------------------------
 %%
 %% K
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry[shortplural={KFs},longplural={Kalman Filters}]%
-               {ac:KF}{KF}{Kalman Filter}
-\myacronymentry{ac:KHYS}{KHYS}{Karlsruhe House of Young Scientists}
-\myacronymentry[genitive={Karlsruher Instituts für Technologie}]%
-               {ac:KIT}{KIT}{Karlsruher Institut für Technologie}
-\myacronymentry[name={KSP},% Bezeichnung im Glossar
-                description={\acrshort{ac:KIT} Scientific Publishing},% Beschreibung im Glossar
-                genitive={\acrshort{ac:KIT} Scientific Publishing Verlages},%
-                shortgenitive={KSP Verlages}%
-               ]%
-               {ac:KSP}{KSP Verlag}{\acrshort{ac:KIT} Scientific Publishing Verlag}
+\newacronym[shortplural={KFs},longplural={Kalman Filters}]%
+           {ac:KF}{KF}{Kalman Filter}
+\newacronym{ac:KHYS}{KHYS}{Karlsruhe House of Young Scientists}
+\newacronym[genitive={Karlsruher Instituts für Technologie}]%
+           {ac:KIT}{KIT}{Karlsruher Institut für Technologie}
+\newacronym[name={KSP},% Bezeichnung im Glossar
+            description={\acrshort{ac:KIT} Scientific Publishing},% Beschreibung im Glossar
+            genitive={\acrshort{ac:KIT} Scientific Publishing Verlages},%
+            shortgenitive={KSP Verlages}%
+           ]%
+           {ac:KSP}{KSP Verlag}{\acrshort{ac:KIT} Scientific Publishing Verlag}
 %% ----------------------------------------------------------------------------------------
 %%
 %% L
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:LeastSquareError}{LSE}{Least square error}
+\newacronym{ac:LeastSquareError}{LSE}{Least square error}
 %% ----------------------------------------------------------------------------------------
 %%
 %% M
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:MDP}{MDP}{Markov Decision Process}
-\myacronymentry{ac:MHT}{MHT}{Multi-Hypotheses Tracking}
-\myacronymentry{ac:MOT}{MOT}{Multi-Object Tracking}
+\newacronym{ac:MDP}{MDP}{Markov Decision Process}
+\newacronym{ac:MHT}{MHT}{Multi-Hypotheses Tracking}
+\newacronym{ac:MOT}{MOT}{Multi-Object Tracking}
 %% ----------------------------------------------------------------------------------------
 %%
 %% N
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:NN}{NN}{Nearest Neighbor}
+\newacronym{ac:NN}{NN}{Nearest Neighbor}
 %% ----------------------------------------------------------------------------------------
 %%
 %% O
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:OF}{OF}{Optical Flow}
+\newacronym{ac:OF}{OF}{Optical Flow}
 %% ----------------------------------------------------------------------------------------
 %%
 %% P
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry[shortplural={PCAs},longplural={Principal Component Analyses}]%
-               {ac:PCA}{PCA}{Principal Component Analysis}
-\myacronymentry[shortplural={PFs},longplural={Particle Filters}]%
-               {ac:PF}{PF}{Particle Filter}
-\myacronymentry{ac:PDF}{PDF}{Portable Document Format}
-\myacronymentry[shortplural={pdfs},longplural={Probability Density Functions}]%
-               {ac:ProbabilityDensityFunction}{pdf}{Probability Density Function}
-\myacronymentry[shortplural={pmfs},longplural={Probability Mass Functions}]%
-               {ac:ProbabilityMassFunction}{pmf}{Probability Mass Function}
+\newacronym[shortplural={PCAs},longplural={Principal Component Analyses}]%
+           {ac:PCA}{PCA}{Principal Component Analysis}
+\newacronym[shortplural={PFs},longplural={Particle Filters}]%
+           {ac:PF}{PF}{Particle Filter}
+\newacronym{ac:PDF}{PDF}{Portable Document Format}
+\newacronym[shortplural={pdfs},longplural={Probability Density Functions}]%
+           {ac:ProbabilityDensityFunction}{pdf}{Probability Density Function}
+\newacronym[shortplural={pmfs},longplural={Probability Mass Functions}]%
+           {ac:ProbabilityMassFunction}{pmf}{Probability Mass Function}
 %% ----------------------------------------------------------------------------------------
 %%
 %% R
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:RANSAC}{RANSAC}{RAndom SAmple Consensus}
-\myacronymentry{ac:RCNN}{R-CNN}{Recurrent Convolutional Neural Network}
-\myacronymentry[shortplural={ROIs},longplural={Regions of Interest}]%
-               {ac:ROI}{ROI}{Region of Interest}
+\newacronym{ac:RANSAC}{RANSAC}{RAndom SAmple Consensus}
+\newacronym{ac:RCNN}{R-CNN}{Recurrent Convolutional Neural Network}
+\newacronym[shortplural={ROIs},longplural={Regions of Interest}]%
+           {ac:ROI}{ROI}{Region of Interest}
 %% ----------------------------------------------------------------------------------------
 %%
 %% S
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:SIFT}{SIFT}{Scale-Invariant Feature Transform}
-\myacronymentry{ac:SLAM}{SLAM}{Simultaneous Localization and Mapping}
-\myacronymentry{ac:SURF}{SURF}{Speeded Up Robust Features}
+\newacronym{ac:SIFT}{SIFT}{Scale-Invariant Feature Transform}
+\newacronym{ac:SLAM}{SLAM}{Simultaneous Localization and Mapping}
+\newacronym{ac:SURF}{SURF}{Speeded Up Robust Features}
 %% ----------------------------------------------------------------------------------------
 %%
 %% T
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:TOMHT}{TOMHT}{Track-Oriented MHT}
+\newacronym{ac:TOMHT}{TOMHT}{Track-Oriented MHT}
 %% ----------------------------------------------------------------------------------------
 %%
 %% U
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:UKF}{UKF}{Unscented Kalman Filter}
+\newacronym{ac:UKF}{UKF}{Unscented Kalman Filter}
 %% ----------------------------------------------------------------------------------------
 %%
 %% V
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:VID}{VID}{Video Exploitation Systems}
+\newacronym{ac:VID}{VID}{Video Exploitation Systems}
 %% ----------------------------------------------------------------------------------------
 %%
 %% W
 %%
 %% ----------------------------------------------------------------------------------------
-\myacronymentry{ac:WAMI}{WAMI}{Wide Area Motion Imagery}
-\myacronymentry{ac:WYSIWYG}{WYSIWYG}{What you see is what you get}
+\newacronym{ac:WAMI}{WAMI}{Wide Area Motion Imagery}
+\newacronym{ac:WYSIWYG}{WYSIWYG}{What you see is what you get}
 %% ----------------------------------------------------------------------------------------
 %%
 %% X
