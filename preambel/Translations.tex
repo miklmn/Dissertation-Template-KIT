@@ -6,18 +6,28 @@
 
 %Makro zur Definition eines neuen multilingualen Bezeichner-Makros
 \makeatletter
-\newcommand{\newlanguagecommand}[1]{%
-  \newcommand#1{%
-    \@ifundefined{\string#1\languagename}
-      {``No definition of \texttt{\string#1} for \languagename. Please define it in the file Translations.tex !''}
-      {\@nameuse{\string#1\languagename}}
-  }%
-}
 % Mit diesem Makro können Varianten in verschiedenen Sprachen hinzugefügt werden.
 % Sie werden auch zu der Liste der Babel-Übersetzungen hinzugefügt
+%Sofern ein gleichbenannter String existiert, wird er umbenannt.
 \newcommand{\addtolanguagecommand}[3]{%
-	%create a command with such name if it does not exist yet
-	\ifdef{#1}{}{\newlanguagecommand{#1}}%
+	% create a command with such name if it does not exist yet
+	% generate a command that prints a warning if the command is used with a language,
+	% for which no translation has been defined
+	\ifdef{#1}{}{%
+	  \newcommand#1{%
+			\@ifundefined{\string#1\languagename}%
+				{%
+					\GenericError{}{No definition of \string#1 for \languagename. Please define it in the file Translations.tex !}%
+					\texorpdfstring{%
+						``Placeholder for \texttt{\string#1} in \languagename. Please define the missing translation in the file Translations.tex !''%
+					}{%
+						Placeholder. Please define the missing translation in the file Translations.tex !%
+					}%
+				}{%
+					\@nameuse{\string#1\languagename}%
+				}%
+		}%
+  }%
 	%define own translation for the required language
 	\@namedef{\string#1#2}{#3}%
 	%add or override babel translation in the required language
