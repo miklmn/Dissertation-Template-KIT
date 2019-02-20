@@ -14,13 +14,13 @@
 	% generate a command that prints a warning if the command is used with a language,
 	% for which no translation has been defined
 	\ifdef{#1}{}{%
-	  \newcommand#1{%
+		\DeclareRobustCommand#1{% need robist command if the command will be used in a way that it lands in toc etc.
 			\@ifundefined{\string#1\languagename}%
 				{%
-					\GenericError{}{No definition of \string#1 for \languagename. Please define it in the file Translations.tex !}%
-					\texorpdfstring{%
+					\GenericError{}{No definition of \string#1 for \languagename. Please define it in the file Translations.tex}{}{}%
+					\texorpdfstring{% Placeholder for the document text
 						``Placeholder for \texttt{\string#1} in \languagename. Please define the missing translation in the file Translations.tex !''%
-					}{%
+					}{% Placeholder for PDF links in case the command is used within Section etc.
 						Placeholder. Please define the missing translation in the file Translations.tex !%
 					}%
 				}{%
@@ -99,16 +99,9 @@
 
 
 %-----------------------------------------------------------
-%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache
+%% Befehle für korrekte Behandlung von Textteilen in anderen Sprachen
 %% (je nach gewählter Hauptsprache)
 %-----------------------------------------------------------
-\ifthenelse{\boolean{iesenglishs}}{%
-	% Hauptsprache ist Englisch
-	\newcommand{\textInEnglish}[1]{#1}
-	\newcommand{\textInGerman}[1]{\foreignlanguage{ngerman}{#1}}
-}{%
-	% Hauptsprache ist Deutsch
-	\newcommand{\textInEnglish}[1]{\foreignlanguage{english}{#1}}
-	\newcommand{\textInGerman}[1]{#1}
-}
+\newcommand{\textInEnglish}[1]{\IfLanguageName{english}{#1}{\foreignlanguage{english}{#1}}}
+\newcommand{\textInGerman}[1]{\IfLanguageName{ngerman}{#1}{\foreignlanguage{ngerman}{#1}}}
 
