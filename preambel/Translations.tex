@@ -10,95 +10,88 @@
   \newcommand#1{%
     \@ifundefined{\string#1\languagename}
       {``No definition of \texttt{\string#1} for \languagename. Please define it in the file Translations.tex !''}
-      {\@nameuse{\string#1\languagename}}%
+      {\@nameuse{\string#1\languagename}}
   }%
 }
-%Mit diesem Makro können Varianten in verschiedenen Sprachen hinzugefügt werden.
+% Mit diesem Makro können Varianten in verschiedenen Sprachen hinzugefügt werden.
+% Sie werden auch zu der Liste der Babel-Übersetzungen hinzugefügt
 \newcommand{\addtolanguagecommand}[3]{%
-  \@namedef{\string#1#2}{#3}}
+	%create a command with such name if it does not exist yet
+	\ifdef{#1}{}{\newlanguagecommand{#1}}%
+	%define own translation for the required language
+	\@namedef{\string#1#2}{#3}%
+	%add or override babel translation in the required language
+	\expandafter\addto\csname captions#2\endcsname{\renewcommand{#1}{#3}}%
+}
 \makeatother
 
+%-----------------------------------------------------------
+%% Define own multilingual macros:
+%-----------------------------------------------------------
 
 %Name für das Lesezeichen für die Titelseite
-\newlanguagecommand{\TransTitlePageName}
 \addtolanguagecommand{\TransTitlePageName}{ngerman}{Titelseite}
 \addtolanguagecommand{\TransTitlePageName}{english}{Cover}
 
-\newlanguagecommand{\TransOwnPublications}
 \addtolanguagecommand{\TransOwnPublications}{ngerman}{Publikationen}
 \addtolanguagecommand{\TransOwnPublications}{english}{Publications}
 
-\newlanguagecommand{\TransOwnPatents}
 \addtolanguagecommand{\TransOwnPatents}{ngerman}{Patente}
 \addtolanguagecommand{\TransOwnPatents}{english}{Patents}
 
-\newlanguagecommand{\TransSupervisedTheses}
 \addtolanguagecommand{\TransSupervisedTheses}{ngerman}{Betreute studentische Arbeiten}
 \addtolanguagecommand{\TransSupervisedTheses}{english}{Supervised student theses}
 
-\newlanguagecommand{\AppendixName}
 \addtolanguagecommand{\AppendixName}{ngerman}{Anhang}
 \addtolanguagecommand{\AppendixName}{english}{Appendix}
 
-\newlanguagecommand{\TodoListName}
 \addtolanguagecommand{\TodoListName}{ngerman}{Todo-Liste}
 \addtolanguagecommand{\TodoListName}{english}{Todo List}
 
-\newlanguagecommand{\TransAcknowledgements}
 \addtolanguagecommand{\TransAcknowledgements}{ngerman}{Danksagung}
 \addtolanguagecommand{\TransAcknowledgements}{english}{Acknowledgements}
 
-\newlanguagecommand{\TransTheorem}
 \addtolanguagecommand{\TransTheorem}{ngerman}{Satz}
 \addtolanguagecommand{\TransTheorem}{english}{Theorem}
 
-\newlanguagecommand{\TransExample}
 \addtolanguagecommand{\TransExample}{ngerman}{Beispiel}
 \addtolanguagecommand{\TransExample}{english}{Example}
 
-\newlanguagecommand{\TransLemma}
 \addtolanguagecommand{\TransLemma}{ngerman}{Lemma}
 \addtolanguagecommand{\TransLemma}{english}{Lemma}
 
-\newlanguagecommand{\TransCorollary}
 \addtolanguagecommand{\TransCorollary}{ngerman}{Korollar}
 \addtolanguagecommand{\TransCorollary}{english}{Corollary}
 
-\newlanguagecommand{\TransProposition}
-\addtolanguagecommand{\TransCorollary}{ngerman}{Proposition}
-\addtolanguagecommand{\TransCorollary}{english}{Proposition}
+\addtolanguagecommand{\TransProposition}{ngerman}{Proposition}
+\addtolanguagecommand{\TransProposition}{english}{Proposition}
 
-\newlanguagecommand{\TransDefinition}
+
 \addtolanguagecommand{\TransDefinition}{ngerman}{Definition}
 \addtolanguagecommand{\TransDefinition}{english}{Definition}
 
-\newlanguagecommand{\TransProof}
 \addtolanguagecommand{\TransProof}{ngerman}{Beweis}
 \addtolanguagecommand{\TransProof}{english}{Proof}
 
-%\newlanguagecommand{\TransListOfSymbols}
-%\addtolanguagecommand{\TransListOfSymbols}{ngerman}{Symbolverzeichnis}
-%\addtolanguagecommand{\TransListOfSymbols}{english}{List of Symbols}
-%
-%\newlanguagecommand{\TransIndexName}
-%\addtolanguagecommand{\TransIndexName}{ngerman}{Stichwortverzeichnis}
-%\addtolanguagecommand{\TransIndexName}{english}{Index}
+%-----------------------------------------------------------
+%% Redefine existing translations from the babel package:
+%-----------------------------------------------------------
 
-\addto\captionsenglish{%
-	%% Redefine existing babel translations in English:
-	\renewcommand{\acronymname}{List of Acronyms}
-	\renewcommand{\glssymbolsgroupname}{List of Symbols}
-	\renewcommand{\indexname}{Index}
-}
-\addto\captionsngerman{%
-	%% Redefine existing babel translations in German:
-	\renewcommand{\acronymname}{Abkürzungsverzeichnis}
-	\renewcommand{\glssymbolsgroupname}{Symbolverzeichnis}
-	\renewcommand{\indexname}{Stichwortverzeichnis}
-}
+\addtolanguagecommand{\indexname}{ngerman}{Stichwortverzeichnis}
+\addtolanguagecommand{\indexname}{english}{Index}
+
+\addtolanguagecommand{\glssymbolsgroupname}{ngerman}{Symbolverzeichnis}
+\addtolanguagecommand{\glssymbolsgroupname}{english}{Symbols}
+
+\addtolanguagecommand{\acronymname}{ngerman}{Abkürzungsverzeichnis}
+\addtolanguagecommand{\acronymname}{english}{Acronyms}
 
 
-%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache (je nach gewählter Hauptsprache)
+
+%-----------------------------------------------------------
+%% Befehle für korrekte Behandlung von Textteilen in anderer Sprache
+%% (je nach gewählter Hauptsprache)
+%-----------------------------------------------------------
 \ifthenelse{\boolean{iesenglishs}}{%
 	% Hauptsprache ist Englisch
 	\newcommand{\textInEnglish}[1]{#1}
