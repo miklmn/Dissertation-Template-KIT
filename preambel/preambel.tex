@@ -665,18 +665,25 @@ verbose,
 \lstdefinestyle{nonumbers}{numbers=none}
 
 \lstnewenvironment{latex}[1][]{%
-  \lstset{%
-    language=[LaTeX]TeX,%
-    morekeywords={cref,%
-      includegraphics,%
-      toprule,%
-      midrule,%
-      bottomrule,%
-      tikzsetnextfilename,%
-      enquote,%
+	\lstset{%
+		language=[LaTeX]TeX,%
+		morekeywords={%
+			Acf,%
+			lc,%
+			acgen,%
+			resizebox,%
+			cref,%
+			includegraphics,%
+			toprule,%
+			midrule,%
+			bottomrule,%
+			tikzsetnextfilename,%
+			enquote,%
+			myglossaryentry,%
+			newglossaryentry,%
 			newacronym,%
 			longnewglossaryentry,%
-      subfloat},%
+			subfloat},%
 		#1}%
 }{}
 
