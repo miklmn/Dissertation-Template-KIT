@@ -14,9 +14,12 @@ Es wird empfohlen, die einzelnen Unterkapiteln jedes Kapitels als eigene Dateien
 Dies erlaubt die einzelnen Unterkapitel bei Bedarf leichter zu verschieben oder mit einem einzigen \%-Zeichen temporär auszukommentieren und erleichtert so die Fehlersuche.
 
 Zur Nutzung dieser Vorlage für die eigene Arbeit empfiehlt es sich, die Anleitungskapiteln auszublenden und ansonsten die bestehende Struktur zu nutzen.
-Die Anleitungskapiteln lassen sich ausblenden, indem man in der Hauptdatei \texttt{Diss.tex} in der Zeile 27 \verb+\showif{showExamples}+ durch \verb+\hideif{showExamples}+ ersetzt.%
+Die Anleitungskapiteln lassen sich ausblenden, indem man in der Hauptdatei
+\printfilepath{Diss.tex} in der Zeile 27
+\verb+\showif{showExamples}+ durch \verb+\hideif{showExamples}+ ersetzt.%
 %
-\footnote{Die Befehle \verb+\showif{showExamples}+ bzw. \verb+\hideif{showExamples}+ definieren die Umgebung \texttt{showExamples}, deren Inhalt jeweils angezeigt bzw. ausgeblendet wird.
+\footnote{Die Befehle \verb+\showif{showExamples}+ bzw. \verb+\hideif{showExamples}+ definieren die Umgebung \texttt{showExamples},
+deren Inhalt jeweils angezeigt bzw. ausgeblendet wird.
 Dies betrifft alles, was zwischen \verb+\begin{showExamples}+ und \verb+\end{showExamples}+ steht.
 Der Vorteil dieser Vorgehensweise gegenüber einem einfachen Auskommentieren liegt darin,
 dass die zwischen \verb+\begin{showExamples}+ und \verb+\end{showExamples}+ eingebundenen Dateien

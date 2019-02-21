@@ -23,26 +23,26 @@ und von \texttt{latex} mitkompiliert werden.
 %
 Üblicherweise werden Bilder und Tabellen in Fließumgebungen (floats) gesetzt,
 damit \LaTeX\ sie geschickt positionieren kann.
-Bei Bildern heißt die entsprechende Float-Umgebung \texttt{figure}.
+Bei Bildern heißt die entsprechende Float-Umgebung \printkeyword{figure}.
 Die Positionierung kann durch Angabe von Buchstaben
-\texttt{h}, \texttt{t}, \texttt{b} und \texttt{p}
+\printkeyword{h}, \printkeyword{t}, \printkeyword{b} und \printkeyword{p}
 beeinflusst werden, die Auswirkung ist allerdings nicht immer intuitiv.
 Um diese zu verstehen, empfiehlt sich die Lektüre der Beschreibung
 von Frank Mittelbach
 \href{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}{auf stackexchange.com}.%
 \footnote{\url{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}}
 
-\textbf{Wichtig!}
+\myexcl{Wichtig!}
 Seitens des \glsgen{ac:KSP} wird bezüglich Einbindung von Floats gefordert,
 dass diese die einzelnen Sätze nicht zerreißen.
 Dies bedeutet, dass eine Platzierung am Anfang oder am Ende einer Seite
 unerwünscht ist, wenn dadurch ein Satz aufgeteilt wird.
-Somit bleibt eigentlich nur noch die Verwendung der \texttt{h}-Option,
+Somit bleibt eigentlich nur noch die Verwendung der \printkeyword{h}-Option,
 die das Bild allerdings nicht immer an der gewünschten Stelle einfügen kann.
 Manchmal wird das Bild dadurch ans Ende des Kapitels
 (genauer gesagt, an die Stelle, wo die nächste \lc{clearpage}-Anweisung kommt)
 verschoben.
-Und auch wenn die Platzierung mit der \texttt{h}-Option klappt,
+Und auch wenn die Platzierung mit der \printkeyword{h}-Option klappt,
 können unerwünschte Effekte auftreten.
 So können beispielsweise auf der vorherigen Seite riesige leere Flächen entstehen.
 Daher empfiehlt sich eine endgültige Platzierung der Bilder erst ganz am Schluss,
@@ -70,21 +70,21 @@ Ein Beispiel für die Einbindung eines Bildes im Binärformat ist in \cref{lst:b
 
 Die Angabe des Pfades kann sowohl absolut als auch relativ
 zum Verzeichnis der Hauptdatei oder zu einem der Pfade angegeben werden,
-die in der Datei \texttt{AllePfade.tex} definiert sind.
+die in der Datei \printfilepath{./preambel/AllePfade.tex} definiert sind.
 Diese Pfade werden in angegebenen Reihenfolge durchsucht.
 Dasselbe gilt für die Dateierweiterung.
 Ist keine Erweiterung definiert und liegen mehrere Bilder mit gleichem Namen jedoch unterschiedlicher Dateierweiterung vor,
 wird die Reihenfolge, die in der Datei texttt{AllePfade.tex} definiert ist, verwendet.
 
 Zu beachten ist dabei, dass der \gls{ac:KSP} Skalierung der Bildern auf die Seitenbreite fordert,
-was hier durch die Option \texttt{width=\textbackslash linewidth} verwirklicht wurde.
+was hier durch die Option \printkeyword{width=\bs linewidth} verwirklicht wurde.
 
-Wichtig anzumerken ist, dass alle Zeilen innerhalb der \texttt{Figure}"=Umgebung
+Wichtig anzumerken ist, dass alle Zeilen innerhalb der \printkeyword{Figure}"=Umgebung
 mit einem Prozentzeichen abzuschließen sind.
 Ansonsten werden überflüssige Leerzeichen eingefügt,
 was zu unerwünschten Nebenwirkungen führen kann.
 
-Mit Hilfe von Paket \texttt{Subfig} \cite{Cochran2005} können Bilder auch in
+Mit Hilfe von Paket \pkg{subfig} \cite{Cochran2005} können Bilder auch in
 \index{Abbildung|see{Bild}}\index{Bild!Unterabbildung}Unterabbildungen gesetzt
 und sowohl als ganzes (vgl. \cref{fig:subfloat-example}) als auch einzeln (vgl.
 \cref{fig:subfloat-example-01,fig:subfloat-example-02,fig:subfloat-example-03,fig:subfloat-example-04})
@@ -121,29 +121,40 @@ Der Beispielcode dafür ist in \cref{lst:subfigures} dargestellt.
 \begin{figure}[h]%
 	\centering%
 	\subfloat[Unterbezeichnung 1)]{%
-		\label{fig:my-sub-figure-1}%
+		\label{fig:UnterAbb1}%
 		\includegraphics[width=0.49\linewidth]{Bildpfad/Bild1}%
 	}%
 	\hfill%
-\subfloat[Unterbezeichnung 2]{%
-  \label{fig:my-sub-figure-2}%
-	\includegraphics[width=0.49\linewidth]{Bildpfad/Bild2}%
-}%
+	\subfloat[Unterbezeichnung 2]{%
+		\label{fig:UnterAbb2}%
+		\includegraphics[width=0.49\linewidth]{Bildpfad/Bild2}%
+	}%
+	\\%
+	\subfloat[Unterbezeichnung 3)]{%
+		\label{fig:UnterAbb3}%
+		\includegraphics[width=0.49\linewidth]{Bildpfad/Bild3}%
+	}%
+	\hfill%
+	\subfloat[Unterbezeichnung 4]{%
+		\label{UnterAbb4}%
+		\includegraphics[width=0.49\linewidth]{Bildpfad/Bild4}%
+	}%
 \caption[Kurzversion]{Langversion der Bildunterschrift}%
-\label{fig:my-whole-figure}%
+\label{fig:MeinGanzesBild}%
 \end{figure}
 \end{latex}
 
+Man beachte die abschließenden Prozent-Zeichen am Ende jeder Zeile!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[TikZ-Grafiken]{\index{TikZ}\index{Bild!TikZ}\gls{gls:tikz}-Grafiken}%
 \label{sec:TikZ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\Gls{gls:tikz} eignet sich hervorragend, um wissenschaftliche Zeichnungen,
+\pkg{\Gls{gls:tikz}} eignet sich hervorragend, um wissenschaftliche Zeichnungen,
 Vektorgrafiken und \index{Diagramm}Diagramme direkt mithilfe von LaTeX
 zu setzen, sodass die Schrift direkt zum restlichen Dokument passt.
-Zu \gls{gls:tikz} und dem darauf aufsetzenden \gls{gls:pgfplots} gibt
+Zu \gls{gls:tikz} und dem darauf aufsetzenden \pkg{\gls{gls:pgfplots}} gibt
 es hervorragende Dokumentation \parencites{Tantau2013}{Feuersaenger2014}.
 Mit TikZ lassen sich viele gute Sachen machen.
 
@@ -153,22 +164,22 @@ Der Code für die Einbindung einer \gls{gls:tikz}-Grafik sieht folgendermaßen a
 \begin{figure}[h]%
   \centering%
   \tikzsetnextfilename{TikZ-Bild}%
-  \resizebox{\textwidth}{!}{%
+  \resizebox{\textwidth}{!}{%   <--- optionale Skalierung
     \input{./figures-src/TikZ-Bild.tex}%
-  }%
+  }%                            <--- optionale Skalierung
   \caption[Kurzversion für das Abbildungsverzeichnis]{%
            Eine tolle sehr lange Abbildungsunterschrift}%
   \label{fig:my-tikz-figure}%
 \end{figure}
 \end{latex}
 
-Auch hier wird mit Hilfe der Anweisung
+Eine Skalierung auf die volle Seitenbreite oder ein vielfaches davon im Falle von Unterabbildungen kann bei Bedarf mit Hilfe der Anweisung
 \texttt{\bs resizebox\{\bs textwidth\}\{!\}\{...\}}
-Skalierung auf die volle Seitenbreite durchgeführt.
+durchgeführt werden.
 
 Das Kommando \verb+\tikzsetnextfilename{...}+ ist nicht unbedingt notwendig,
  aber sehr zu empfehlen, da dies als Name für das temporäre Kompilat im Ordner
-\texttt{./figures-compiled/} genommen wird.
+\printfilepath{./figures-compiled/} genommen wird.
 Dieser sollte gleich dem Namen des Quelldatei (ohne Endung) gewählt werden.
 Ansonsten nimmt \texttt{pdflatex} eine hochlaufende Nummer als Dateiname,
 was die Fehlersuche sehr erschwert.
@@ -177,7 +188,7 @@ Nachfolgend finden sich einige Beispiele für TikZ-Zeichnungen, nämlich
 eine Übersicht über die KIT-Corporate-Identity-Farben (\cref{fig:kit-colors}),
 ein kommutatives Diagramm (\cref{fig:kpca}),
 ein Netzwerkkommunikationsgraph (\cref{fig:net-comm}),
-ein einfaches \index{Diagramm!Punkt-}Punktdiagramme (\cref{fig:ica})
+einfache \index{Diagramm!Punkt-}Punktdiagramme (\cref{fig:ica})
 und etwas aufwendigere Diagramme mit mehreren
 \index{Achsensystem|see{Diagramm}}Achsensystemen (\cref{fig:pca}).
 
