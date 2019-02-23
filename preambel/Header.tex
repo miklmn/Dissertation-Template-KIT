@@ -23,6 +23,9 @@
 \WarningFilter{scrwfile}{THIS IS AN ALPHA VERSION}
 \WarningFilter*{ifplatform}{^^J \space\space\space shell escape is disabled}
 
+%% For debug reasons: list all files
+%\listfiles
+
 %% Dokumentenklasse (Koma Script) -----------------------------------------
 \documentclass[%
   % Sprachunterstützung:
@@ -111,6 +114,9 @@
 	\selectlanguage{ngerman}
 }
 
+%%% Silbentrennung
+\input{preambel/Hyphenation.tex}
+
 %%PW: Glyphtounicode für pdfx, PDF/A-Kompatibilität. In Ruhe lassen!
 %\input{preambel/glyphtounicode.tex}
 
@@ -136,13 +142,13 @@
 
 
 
-%%% Silbentrennung
-\input{preambel/Hyphenation.tex}
 
 %remove padding in fboxes
 \setlength{\fboxsep}{0pt}
 % make a wider description in the glossary
 %\setlength{\glsdescwidth}{0.7\linewidth}
+
+\IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
 
 %% Optionen für das Stichwortverzeichnis:
 %% Create the file IndexStyle.ist on the fly:
@@ -153,13 +159,13 @@
 %heading_suffix "}}\\nopagebreak\n"
 %\end{filecontents}
 
-% Auszufuehrende Befehle  ------------------------------------------------
-\IfDefined{makeindex}{\makeindex[options=-s preambel/IndexStyle.tex]}
+%% Auszufuehrende Kommandozeilenbefehle  ------------------------------------------------
+%%
+%% Generation of intermediate files for glossary, acronym and symbol list
+%% In order to make this work, "makeglossaries <filename>" has to be run from the command line
+\IfDefined{makeglossaries}{\makeglossaries}
+%%
+%% makeindex is called implicitly thank to the package imakeidx
+\IfDefined{makeindex}{\makeindex[options=-g -s preambel/IndexStyle.tex]}
 \IfDefined{makenomenclature}{\makenomenclature}
-%%makeglossaries muss nach \newglossary eingebunden werden!
-\makeglossaries
-%% Add all acronyms, glossary entries, etc.
-%\glsaddall
-\IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
-\listfiles
 %------------------------------------------------------------------------

@@ -53,6 +53,7 @@ Unter Ubuntu 17.04 sollte es funktionieren, wenn folgende Linux-\glspl{gls:pkg} 
 	\item {\small\verb#texlive-bibtex-extra#}
 	\item {\small\verb#fonts-linuxlibertine#}
 	\item {\small\verb#biber#}
+	\item {\small\verb#xindy#}
 	\item {\small\verb#texmaker#}
 \end{itemize*}
 Texmaker ist eine IDE für \LaTeX, die aber vermutlich über Dependencies schon einige Pakete mitbringt.
@@ -73,16 +74,15 @@ in den nachfolgenden Kapiteln.
 Die einzelnen Aufrufe sind:
 \begin{itemize*}
 \item \index{xelatex}\texttt{xelatex} zur eigentlichen Kompilierung von \LaTeX-Quelltext,
-\item \index{biber}\texttt{biber} zur Kompilierung von Bibliografien sowie
-\item \index{makexindex}\texttt{makeindex} und \index{makeglossaries}\texttt{makeglossaries}
-zur Erstellung einer Zwischenausgabe für das Stichwortverzeichnis,
-Abkürzungsverzeichnis und Glossar.
+\item \index{biber}\texttt{biber} zur Kompilierung von Bibliografien,
+\item \index{makeglossaries}\texttt{makeglossaries}, welches intern \index{xindy}\texttt{xindy} aufruft,
+zur Erstellung einer Zwischenausgabe für das Abkürzungsverzeichnis und das Glossar
+\index{makexindex}\texttt{makeindex}, welches durch die Verwendung des Pakets \pkg{imakeidx} implizit aufgerufen wird, zur Erstellung des Stichwortverzeichnisses
 \end{itemize*}
 Dabei sind mehrere Durchläufe von \texttt{xelatex} nötig,
 damit sowohl alle Verzeichnisse
-(Inhalts-, Abbildungs-, Tabellen- und Literaturverzeichnis)
-samt den Seitenzahlen,
-als auch die PDF-Lesezeichen korrekt aktualisiert werden.
+(Inhalts-, Abbildungs-, Tabellen-, Literatur, Abkürzungs- und Stichwortverzeichnis)
+samt den Seitenzahlen, als auch die PDF-Lesezeichen korrekt aktualisiert werden.
 
 Sollte man ausnahmsweise das Dokument doch noch aus der Kommandozeile oder von einem Script heraus aufrufen wollen,
 so ist die Reihenfolge der Aufrufe wie folgt:
@@ -90,16 +90,12 @@ so ist die Reihenfolge der Aufrufe wie folgt:
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> biber Diss
-#> makeindex "Diss.idx" -t "Diss.ilg" -o "Diss.ind"
-#> makeindex "Diss.acn" -t "Diss.alg" -o "Diss.acr"
-#> makeindex "Diss.glo" -t "Diss.glg" -o "Diss.gls"
-#> makeindex "Diss.syg" -t "Diss.slg" -o "Diss.syi"
 #> makeglossaries Diss
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 \end{verbatim}
 
-Wenn kein \index{Fehler}Fehler aufgetreten ist,
+Wenn kein \index{Kompilierfehler}Kompilierfehler aufgetreten ist,
 sollte nach dem vierten Durchlauf von \texttt{xelatex} die
 \index{Warnung!Please re-run latex}Warnung \enquote{Please re-run latex}
 verschwunden sein.

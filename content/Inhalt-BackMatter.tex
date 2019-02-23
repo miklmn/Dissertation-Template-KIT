@@ -107,12 +107,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showListOfFigures}
 \listoffigures
+\cleardoublepage
 \end{showListOfFigures}%
 \begin{showListOfTables}
 \listoftables
+\cleardoublepage
 \end{showListOfTables}%
 \begin{showListOfListings}
 \lstlistoflistings
+\cleardoublepage
 \end{showListOfListings}%
 %
 %
@@ -121,7 +124,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{showGlossaries}%
 %\IfDefined{printglossaries}{%
-%	\printglossaries[style=mylongglossstyle]%
+%	\printglossaries[style=mylongglossstyle]
 %}
 %\end{showGlossaries}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,6 +145,7 @@
 	\printglossary[type=\acronymtype,style=mylongglossstyle]
 	%\printglossary[type=\acronymtype,style=mylongglossstyle]
 }%
+\cleardoublepage
 \end{showListOfAcronyms}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,6 +159,7 @@
 	\printglossary[type=symbols,style=mylongglossstyle]
 	%\printglossary[type=notation,style=longheader,sort=def] %,style=long-booktabs]
 }%
+\cleardoublepage
 \end{showListOfSymbols}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,8 +169,9 @@
 \IfDefined{printnomenclature}{%
 	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
 	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
-	\printnomenclature %
+	\printnomenclature
 }%
+\cleardoublepage
 \end{showNomenclature}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,18 +187,8 @@
 	%\printglossary[style=long]
 	\printglossary[style=mylongglossstyle]
 }%
+\cleardoublepage
 \end{showGlossary}%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%     Stichwortverzeichnis       %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{showIndex}%
-\IfDefined{printindex}{%
-	\setlength{\LTleft}{-5pt}% Einzug entfernen (Forderung des KSP-Verlages)
-	%\renewcommand{\indexname}{\TransIndexName}%
-	\printindex
-}%
-\end{showIndex}%
 %
 %
 %
@@ -210,21 +206,40 @@
 %
 \input{content/Z-Appendix/Derivations.tex}
 %
-%
+% Reset the PDF bookmark level
+\bookmarksetup{startatroot}
+\cleardoublepage
 \end{showAppendix}%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%     Stichwortverzeichnis       %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showIndex}%
+% Platziere einen Verweis auf das Stichwortverzeichnis
+% ins Inhaltsverzeichnis
+\phantomsection
+\IfDefined{printindex}{%
+	\addcontentsline{toc}{chapter}{\indexname}%
+	\setlength{\LTleft}{-5pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\renewcommand{\indexname}{\TransIndexName}%
+	\printindex
+	\cleardoublepage
+}%
+\end{showIndex}%
+%
+%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%         Liste der TODOs        %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showTODOs}
-%\ifthenelse{\boolean{showTODOs}}{%if TODOs should be displayed:
-\phantomsection
-\listofTODOs
-\hypertarget{TODO-List}{}
+\phantomsection%
+\listofTODOs%
+\hypertarget{TODO-List}{}%
 % Zum Inhaltsverzeichnis hinzufügen
-\addcontentsline{toc}{part}{\TodoListName}
-% }{%if no TODOs should be displayed: don't do anything
-% \ }%
+\addcontentsline{toc}{chapter}{\TodoListName}%
 \end{showTODOs}%
 %
 \end{showBackmatter}%

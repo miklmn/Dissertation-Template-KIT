@@ -183,8 +183,9 @@
 %http://latex-community.org/know-how/latex/55-latex-general/263-glossaries-nomenclature-lists-of-symbols-and-acronyms#texniccenter
 %\usepackage[ngerman]{translator}
 \usepackage[%
-xindy,
-%translate=true, % verwendet das translator-paket
+xindy={language=german-din,codepage=utf8},
+%automake=immediate, %
+%automake=true, %
 translate=babel, % verwende Babel zur Übersetzung der Überschriften
 %translate=false, % keine Übersetzung der Überschriften da ansonsten Zusatzpakete geladen werden müssen
 nonumberlist,    % keine Seitenzahlen anzeigen

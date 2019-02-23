@@ -3,97 +3,22 @@
 \label{sec:DOsAndDONTs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In diesem Kapitel sind einige LaTeX-Dinge zusammengesammelt, die immer wieder
-auch von Personen verkehrt gemacht werden, die bereits längere Zeit mit LaTeX
-arbeiten. Dies soll hier also keine Einführung in LaTeX werden, sondern spiegelt
-nur meine Erfahrung der häufigsten Fehler wieder. Außerdem soll gezeigt werden,
-wie bestimmte Dinge innerhalb dieser Vorlage gemacht werden.
 
-Grundsätzlich sollte man bei \index{Problem}Problemen nie, nimmer, niemals einfach nach
-einer Lösung im Internet suchen. 95\,\% der Lösungen im Internet sind
-bestenfalls falsch, aber eigentlich der größte Mist für den die jeweiligen
-Autoren angespitzt in den Boden gerammt, im eigen Saft gegart, gevierteilt und
-anschließend in Beton gegossen gehören. Aber eigentlich ist es schade um den
-guten Beton.
-
-\subsection{Dokumentationsquellen}
-
-Statt wahllos im Internet nach \index{Losung@Lösung}Lösungen zu suchen, sucht man direkt auf
-\url{http://www.ctan.org/tex-archive/} nach dem Paketnamen und verwendet die
-dortige Originaldokumentation des Paketautors selbst. Dort zu findende \index{Warnung}Warnungen
-sollte man ernst nehmen und nicht machen, auch wenn irgendwo anders behauptet
-wird, es würde so funktionieren. Es funktioniert NICHT oder nur scheinbar.
-
-Im Rahmen dieser Vorlage sind insbesondere die \index{Dokumentation}Dokumentationen aus dem
-Literaturverzeichnis wärmstens zu empfehlen.
-
-\subsection{Fließumgebungen (Floats)}
-
-Fließumgebungen sind bei LaTeX blockbildende \index{Element!blockbildend}Elemente,
-die nicht an der Stelle erscheinen, an der sie im Quellcode definiert sind sondern aus optischen
-Gründen an umhergeschoben werden können. Typische Beispiele sind Tabellen,
-Bilder, längere Codeausschnitte und ähnliche Dinge. Später wird noch auf
-Bilder und Tabellen im Detail eingegangen, aber an diese Stelle sollen vier
-Todsünden in Bezug auf Fließumgebungen abgehandelt werden.
-
-Todsünde Nummer eins ist die Verwendung der \index{Platzierung}Platzierungsangabe \texttt{H}, also
-bspw.
-\begin{latex}[caption={Verbot von \texttt{H} als Platzierungsangabe},label={lst:prohibited-h}]
-\begin{figure}[H]
-\end{figure}
-\end{latex}
-um zu erzwingen, dass ein Fließobjekt an dieser Stelle (engl. \enquote{here})
-passiert, wenn \texttt{h} nicht genügt. Wenn \texttt{h} nicht genügt, dann liegt
-der Fehler bereits woanders und man sollte in das Log schauen, warum LaTeX
-die Umgebung nicht platzieren kann und das originäre Problem lösen. Alles andere
-macht es nur schlimmer.
-
-Todsünde Nummer zwei ist die Verwendung von Leerzeilen innerhalb der
-Fließumgebung oder auch das Abrücken der Fließumgebung mit einer Leerzeile von
-dem Text der die Fließumgebung referenziert. Leerzeilen sind bei LaTeX Absätze
-und damit potentielle Stellen für Seitenumbrüche. Korrekt ist also folgendes:
-\begin{latex}[caption={Verbot von Leerzeilen},label={lst:prohibited-blank-lines}]
-Ein Text der auf die \cref{fig:my-fig} verweist
-\begin{figure}[h]%
-  \centering%
-  \includegraphics[width=\linewidth]{Bildpfad/Dateiname}%
-  \caption[Kurzversion]{Lange Beschriftung}%
-  \label{fig:my-fig}%
-\end{figure}
-und ohne Leerzeile an der figure-Umgebung dransteht.
-
-Dies ist nun ein neuer Absatz.
-\end{latex}
-Wie man erkennen kann, steht die \texttt{figure}-Umgebung sogar mitten im Satz
-zu der sie gehört. Der häufigste Grund, warum die Platzierungsoptionen
-\texttt{t}, \texttt{b}, \texttt{h} und  \texttt{p} nicht so verhalten, wie
-man erwartet, ist, dass die \texttt{figure}-Umgebung aus Gründen der Übersicht
-mit Leerzeilen abgesetzt wird, sodass diese dann für LaTeX einen eigenen Block
-bildet.
-
-Todsünde Nummer drei ist die Verwendung von \verb#\begin{center}# und
-\verb#\end{center}# statt von \verb#\centering# innerhalb der Fließumgebung.
-Ersteres erzeugt wieder einen internen Absatz und damit einen eigenen Block.
-Dies ist also genauso schlimm wie Leerzeilen.
-
-Todsünde Nummer vier ist die falsche Reihenfolge von \verb#\caption{...}# und
-\verb#\label{...}#. Die Reihenfolge ist \emph{immer} das Objekt selbst (also
-\verb#\includegraphics# oder \verb#tabular#, usw.), dann folgt \verb#\caption{...}#
-und zum Schluss \verb#\label{...}#.
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{URLs}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \index{Internetadresse|see{URL}}Internetadressen werden in das Kommando \verb#\url{...}# eingefasst
 
-\subsection{Anführungszeichen}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Anführungszeichen}%
+\index{Anführungszeichen}%
+\label{sec:Anfuehrungszeichen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Um irgendwas in Anführungszeichen einzufassen, wird das Kommando 
-\verb#\enquote{...}# verwendet. Dies hat den Vorteil, dass man sich nicht um die
-korrekte typografische Variation der Anführungszeichen in Abhängigkeit der
-\index{Sprache}Sprache kümmern muss und auch verschachtelte Anführungszeichen korrekt behandelt
-werden. Also aus
-\begin{latex}[caption={Behandlung von Anführungszeichen},label={lst:quotes},escapechar=\#]
- \enquote{Beim Erreichen der K#ü#ste sprach Hamlet: \enquote{Es ist etwas faul im Staate D#ä#nemark}}.
-\end{latex}
-wird \enquote{Beim Erreichen der Küste sprach Hamlet: \enquote{Es ist etwas faul
-im Staate Dänemark}} mit korrekt verschachtelten einfachen Anführungszeichen.
+\verb#\enquote{...}# verwendet. Seine Verwendung hat den Vorteil,
+dass man sich nicht um die korrekte typografische Variation der
+Anführungszeichen in Abhängigkeit der verwendeten
+\index{Sprache!unterschiedliche Anführungszeichen}Sprache kümmern muss.
+Außerdem werden so auch \enquote{verschachtelte \enquote{Anführungszeichen}}
+korrekt behandelt werden.
