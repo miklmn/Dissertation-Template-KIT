@@ -195,3 +195,12 @@ So wird beispielsweise bei Umstellung auf Englisch als Hauptsprache
 \enquote{Inhaltsverzeichnis} durch \enquote{Contents}
 \usw ersetzt.
 Auch die Regeln der Silbentrennung werden entsprechend angepasst.
+
+Regeln zur Silbentrennung unbekannter Wörtern (\zB von Fachbegriffen)
+können in der Datei \printfilepath{./preambel/Hyphenation.tex} festgelegt werden.
+Zu beachten ist, dass zusammengesetzte Wörter mit einem Bindestrich
+ausschließlich am Bindestrich getrennt werden,
+wogegen auch ein Eintrag in die Datei \printfilepath{Hyphenation.tex} nicht hilft.
+Um Silbentrennung an anderen Stellen eines zusammengesetzten Wortes zu erlauben,
+muss man den Bindestrich durch „\verb+"=+“ ersetzen%
+\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}.

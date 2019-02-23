@@ -6,9 +6,9 @@
 \label{sec:Sprache}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Die Hauptsprache der Arbeit wird in der Datei \texttt{./preambel/AlleAngaben.tex} festgelegt.
+Die Hauptsprache der Arbeit wird in der Datei \printfilepath{./preambel/AlleAngaben.tex} festgelegt.
 Aktuell werden nur Deutsch und Englisch als Hauptsprachen unterstützt.
-Die Auswahl geschieht mit der Angabe des Wertes \texttt{true} oder \texttt{false}
+Die Auswahl geschieht mit der Angabe des Wertes \printkeyword{true} oder \printkeyword{false}
 in der Zeile \lc{setboolean\{iesenglishs\}\{<Wert>\}}.
 
 Bei Verwendung von fremdsprachlichen Begriffen oder Textabschnitten
@@ -24,5 +24,5 @@ Dann wird für den Text in den geschweiften Klammern die in den eckigen Klammern
 Um die Sprache bis zum nächsten Aufruf des gleichen Kommandos dauerhaft umstellen,
 gibt es den Befehl \verb+\selectlanguage{Sprache}+.
 Es gilt eine Liste der Sprachen aus dem Paket \pkg{babel}.
-Für deustch sollte \texttt{ngerman} verwendet werden, was für die
+Für Deustch sollte \printkeyword{ngerman} verwendet werden, was für die
 \index{Rechtschreibung!neue deutsche}neue deutsche Rechtschreibung steht.

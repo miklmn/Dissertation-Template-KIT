@@ -6,7 +6,7 @@
 Die Vorlage unterstützt auch ein Abkürzungsverzeichnis, ein Stichwortverzeichnis,
 ein Symbolverzeichnis sowie ein allgemeines \index{Glossar}\gls{gls:Glossar},
 das Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
-\index{Übersetzung}Übersetzungen von fremdsprachlichen Begriffen
+\index{Uebersetzung@Übersetzung}Übersetzungen von fremdsprachlichen Begriffen
 (d.h. eine Art Lexikons) enthalten kann.
 
 
@@ -19,7 +19,7 @@ Zur Erzeugung des Abkürzungsverzeichnis und des Glossar wird intern das
 Zudem wurden einige Makros definiert, welche die Erfassung der Begriffe erleichtern sollen.
 
 Um ein Abkürzungsverzeichnis zu erzeugen, muss zuerst eine Liste der Abkürzungen angelegt werden.
-Dies geschieht in der Datei \texttt{./preambel/Acronyms.tex}.
+Dies geschieht in der Datei \printfilepath{./preambel/Acronyms.tex}.
 Hierfür wird das Makro \lc{newacronym} verwendet.
 Dieses Makro hat drei obligatorische Argumente, nämlich das
 \begin{itemize*}
@@ -60,10 +60,10 @@ Beim zweiten Vorkommen wird nur noch die Abkürzung gedruckt.
 Zusätzlich definiert die Vorlage die Befehle
 \lc{acgen\{...\}}, \lc{acdat\{...\}} und \lc{acacc\{...\}}, sowie
 \lc{acplgen\{...\}}, \lc{acpldat\{...\}} und \lc{acplacc\{...\}},
-die jeweils die Genitiv- Dativ- und Akkusativ-Form (singular und Plural) drucken.
+die jeweils die Genitiv-, Dativ- und Akkusativ-Form (singular und Plural) drucken.
 
 Im \gls{gls:pkg} \pkg{glossaries} stellt der Befehl \lc{ac\{...\}} ein Shortcut für den Befehl \lc{gls\{...\}} dar.
-Mit diesem kann ein allgemeines Glossareintrag im Text referenziert werden.
+Mit diesem kann ein allgemeines Glossar-Eintrag im Text referenziert werden.
 
 Mit den Befehlen
 \lc{acrshort\{...\}}, \lc{acrlong\{...\}}, \lc{acrfull\{...\}}
@@ -106,30 +106,30 @@ gefolgt von der Kurzform. Bei der zweiten Nennung des
 Neben einem Abkürzungsverzeichnis kann man auch ein
 \index{Glossar}\gls{gls:Glossar} erstellen lassen.
 In diesem können Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
-\index{Übersetzung}Übersetzungen von fremdsprachlichen Begriffen stehen.
+\index{Uebersetzung@Übersetzung}Übersetzungen von fremdsprachlichen Begriffen stehen.
 
-Der wesentliche Unterschied zwischen einer Abkürzung und einem allgemeinen Glossareintrag ist,
+Der wesentliche Unterschied zwischen einer Abkürzung und einem allgemeinen Glossar-Eintrag ist,
 dass bei Abkürzungen bei erstmaliger Verwendung die Abkürzung gedruckt und die Langform in Klammer dahinter gesetzt wird.
-Bei allgemeinen Glossareinträgen wird normalerweise nur der Name gesetzt.
+Bei allgemeinen Glossar-Einträgen wird normalerweise nur der Name gesetzt.
 Durch eine Option des \pkg{glossaries}-\glsgen{gls:pkg} kann man sicher stellen,
-dass alle Glossareinträge auf das Glossar am Ende des Manuskripts verlinkt werden.
+dass alle Glossar-Einträge auf das Glossar am Ende des Manuskripts verlinkt werden.
 Standardmäßig ist diese Option jedoch deaktiviert.
 
-Die Glossareinträge werden in der Datei  \texttt{./preambel/Glossary.tex} definiert.
+Die Glossar-Einträge werden in der Datei  \printfilepath{./preambel/Glossary.tex} definiert.
 
-Die Definition der Glossareinträge geschieht mit dem Makro \lc{myglossaryentry},
+Die Definition der Glossar-Einträge geschieht mit dem Makro \lc{myglossaryentry},
 welches drei obligatorische Argumente hat, nämlich
 \begin{itemize*}
 \item die Marke,
 \item den Begriff und
 \item die Erklärung / Definition / Übersetzung.
 \end{itemize*}
-Als Konvention wird der Marke eines Glossareintrages ein \enquote{gls:} als Präfix vorangestellt.
+Als Konvention wird der Marke eines Glossar-Eintrages ein \enquote{gls:} als Präfix vorangestellt.
 Optional kann die Plural-, sowie Genitiv-, Dativ- und Akkusativ-Form des Begriffs angegeben werden,
 sofern sie im Quelltext verwendet werden und sich von der Grundform unterscheiden.
 
-Ein Glossareintrag kann beispielsweise folgendermaßen definiert werden:
-\begin{latex}[caption={Definition eines Glossareintrages},label={lst:GlossEntry}]
+Ein Glossar-Eintrag kann beispielsweise folgendermaßen definiert werden:
+\begin{latex}[caption={Definition eines Glossar-Eintrages},label={lst:GlossEntry}]
 \myglossaryentry[plural={Glossare},%
                  genitive={Glossars}]%
                 {gls:Glossare}{Glossar}{alphabetisch sortierte Liste von Begriffen mit Erklärung}
@@ -137,7 +137,7 @@ Ein Glossareintrag kann beispielsweise folgendermaßen definiert werden:
 
 Normalerweise werden im Glossar nur diejenigen Begriffe angezeigt,
 die im Text des Dokumentes erwähnt und entsprechend referenziert worden sind.
-Eine Referenzierung der Glossareinträge im Text geschieht normalerweise mit dem
+Eine Referenzierung der Glossar-Einträge im Text geschieht normalerweise mit dem
 \lc{gls\{<Marke>\}}-Befehl,
 welcher den Begriff im Text druckt und für seine Aufnahme ins Glossar sorgt.
 Weitere mögliche Befehle sind \lc{Gls\{...\}} und \lc{GLS\{...\}},
@@ -150,10 +150,10 @@ die jeweils die Genitiv- Dativ- und Akkusativ-Form drucken.
 
 Außerdem gibt es mit dem Befehl \lc{glsadd\{...\}} die Möglichkeit,
 eine Stelle im Text mit einem Glossar-Begriff zu verlinken, ohne diesen explizit zu drucken.
-Mit \lc{glsaddall} kann man alle definierte Glossareinträge ins Glossar aufnehmen,
+Mit \lc{glsaddall} kann man alle definierte Glossar-Einträge ins Glossar aufnehmen,
 ohne sie im Text des Dokumentes referenziert zu haben.
 
-Die Verwendung des oben definierten Glossareintrages im Text mit dem Befehl
+Die Verwendung des oben definierten Glossar-Eintrages im Text mit dem Befehl
 \lc{glsgen\{gls:Glossar\}} mündet im Text in Erwähnung des \glsgen{gls:Glossar}.
 
 
@@ -191,7 +191,7 @@ Diese ist recht einfach und lässt sich bei Bedarf beliebig ergänzen.
 Allerdings gibt es auch die Möglichkeit zur automatischen Erzeugung eines
 Symbolverzeichnisses mit Hilfe des \pkg{glossaries}-\glsgen{gls:pkg}.
 Um dieses, am Ende des Manuskriptes eingebundene Symbolverzeichnis zu erzeugen,
-müssen Symbole in Form von Glossareinträgen angelegt und im Text des Dokumentes
+müssen Symbole in Form von Glossar-Einträgen angelegt und im Text des Dokumentes
 zumindest einmal entsprechend mit dem Befehl \lc{gls\{<Marke>\}} referenziert werden.
 Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
 \begin{latex}[caption={Definition eines Symboleintrages},label={lst:SymbEntry}]

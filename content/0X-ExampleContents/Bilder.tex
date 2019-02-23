@@ -11,8 +11,8 @@ Bei Einbindung von Grafiken sind zwei Fälle zu unterscheiden:
 \end{itemize*}
 
 Grundlegender Unterschied bei der Einbindung \enquote{regulärer} Bilder
-und \gls{gls:tikz}-Bilder ist, dass Binärformatgrafiken mit \lc{includegraphics}
-eingebunden werden, während \gls{gls:tikz}-Grafiken mit \lc{input} eingebunden
+und \gls{gls:tikz}-Bilder ist, dass Binärformatgrafiken mit \lc{includegraphics\{...\}}
+eingebunden werden, während \gls{gls:tikz}-Grafiken mit \lc{input\{...\}} eingebunden
 und von \texttt{latex} mitkompiliert werden.
 
 
@@ -26,30 +26,44 @@ damit \LaTeX\ sie geschickt positionieren kann.
 Bei Bildern heißt die entsprechende Float-Umgebung \printkeyword{figure}.
 Die Positionierung kann durch Angabe von Buchstaben
 \printkeyword{h}, \printkeyword{t}, \printkeyword{b} und \printkeyword{p}
-beeinflusst werden, die Auswirkung ist allerdings nicht immer intuitiv.
+beeinflusst werden
+(\enquote{here}, \enquote{top}, \enquote{bottom}, \enquote{extra page}).
+
+\myexcl{Wichtig!}
+Seitens des \glsgen{ac:KSP} wird bezüglich Einbindung von Floats gefordert,
+dass diese die einzelnen Sätze nicht zerreißen.
+Dies bedeutet, dass eine Platzierung von Bildern und Tabellen lediglich
+zwischen zwei Absätzen in Frage kommt.
+Allerdings kann es passieren, dass der Platz auf der Seite nicht mehr ausreicht,
+und das Bild nicht an der gewünschten Stelle gesetzt werden kann.
+Damit wird das Bild auf die nächste Seite verschoben.
+Bei aktivierter \printkeyword{t}- oder \printkeyword{b}-Option würde \LaTeX{} versuchen,
+das Bild am oberen oder unteren Rand der Seite zu platzieren.
+Allerdings passiert das dann häufig mitten in einem Satz,
+was vom \gls{ac:KSP} ausdrücklich nicht erwünscht ist.
+Somit bleibt eigentlich nur noch die Verwendung der \printkeyword{h}-Option.
+
+Leider können dabei einige unerwünschte Effekte auftreten.
+So können beispielsweise auf der vorherigen Seite riesige leere Flächen entstehen.
+Wenn der verbleibende Platz auf der Seite eine Platzierung nicht erlaubt,
+kann es schnell passieren, dass \LaTeX{} das betroffene Bild 
+und alle Folgeilder ans Ende des Kapitels verschiebt
+(genauer gesagt, an die Stelle, wo die nächste \lc{clearpage}-Anweisung kommt).
+
+Eine genaue Auswirkung der Parameter
+\printkeyword{h}, \printkeyword{t}, \printkeyword{b} und \printkeyword{p}
+auf die Bildplatzierung ist nicht immer intuitiv.
 Um diese zu verstehen, empfiehlt sich die Lektüre der Beschreibung
 von Frank Mittelbach
 \href{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}{auf stackexchange.com}.%
 \footnote{\url{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020}}
 
-\myexcl{Wichtig!}
-Seitens des \glsgen{ac:KSP} wird bezüglich Einbindung von Floats gefordert,
-dass diese die einzelnen Sätze nicht zerreißen.
-Dies bedeutet, dass eine Platzierung am Anfang oder am Ende einer Seite
-unerwünscht ist, wenn dadurch ein Satz aufgeteilt wird.
-Somit bleibt eigentlich nur noch die Verwendung der \printkeyword{h}-Option,
-die das Bild allerdings nicht immer an der gewünschten Stelle einfügen kann.
-Manchmal wird das Bild dadurch ans Ende des Kapitels
-(genauer gesagt, an die Stelle, wo die nächste \lc{clearpage}-Anweisung kommt)
-verschoben.
-Und auch wenn die Platzierung mit der \printkeyword{h}-Option klappt,
-können unerwünschte Effekte auftreten.
-So können beispielsweise auf der vorherigen Seite riesige leere Flächen entstehen.
-Daher empfiehlt sich eine endgültige Platzierung der Bilder erst ganz am Schluss,
+Prinzipiell empfiehlt sich eine endgültige Platzierung der Bilder erst ganz am Schluss,
 nachdem alle anderen Korrekturen durchgeführt sind.
 Ggf. müssen die Bilderdefinitionen manuell im Quellcode herumgeschoben werden,
-bis sie von \LaTeX\ optimal gesetzt werden.
-Dafür empfiehlt es sich, die einzelnen Bilddefinitionen in Extra-Dateien auszulagern.
+bis die Abbildungen von \LaTeX\ optimal gesetzt werden.
+Dafür empfiehlt es sich, die einzelnen Bilddefinitionen in Extra-Dateien auszulagern,
+so dass nur noch eine einzige Zeile herumgeschoben werden muss.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[Binärbilder]{\index{Bild!Binär-}Binärbilder}%
@@ -151,12 +165,12 @@ Man beachte die abschließenden Prozent-Zeichen am Ende jeder Zeile!
 \label{sec:TikZ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\pkg{\Gls{gls:tikz}} eignet sich hervorragend, um wissenschaftliche Zeichnungen,
+\Gls{gls:tikz} eignet sich hervorragend, um wissenschaftliche Zeichnungen,
 Vektorgrafiken und \index{Diagramm}Diagramme direkt mithilfe von LaTeX
 zu setzen, sodass die Schrift direkt zum restlichen Dokument passt.
-Zu \gls{gls:tikz} und dem darauf aufsetzenden \pkg{\gls{gls:pgfplots}} gibt
+Zu dem \pkg{tikz}-\gls{gls:pkg} und dem darauf aufsetzenden \pkg{PGFplots}-\gls{gls:pkg} gibt
 es hervorragende Dokumentation \parencites{Tantau2013}{Feuersaenger2014}.
-Mit TikZ lassen sich viele gute Sachen machen.
+Mit \gls{gls:tikz} und \gls{gls:pgfplots} lassen sich viele gute Sachen machen.
 
 
 Der Code für die Einbindung einer \gls{gls:tikz}-Grafik sieht folgendermaßen aus:
