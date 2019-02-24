@@ -49,6 +49,7 @@
 %
 \makeatletter
 \ifxetex %Nutzung von XeLaTeX anstatt nur LaTeX:
+  \usepackage{xltxtra}
 	\usepackage{unicode-math}
 	%--------------------------------------------------
 	%  Libertine Fonts
@@ -198,8 +199,8 @@
 								Extension = .otf
 								]{libertinussans}
 		\setmonofont[
-								Scale = 0.9,
-								FakeStretch = 0.8,
+								Scale = 0.89,
+								FakeStretch = 0.89,
 								UprightFont = *-regular,
 								Path=./fonts/,
 								Extension = .otf
@@ -232,8 +233,8 @@
 								Extension = .ttf
 								]{FrutigerLTCom}
 		\setmonofont[
-								Scale = 0.95,
-								FakeStretch = 0.8,
+								Scale = 0.875,
+								FakeStretch = 0.85,
 								UprightFont = *-regular,
 								Path=./fonts/,
 								Extension = .otf
@@ -245,14 +246,19 @@
 								]{STIX2Math}
 	\fi
 \else %falls doch LaTeX anstatt XeLaTeX verwendet wird soll:
-	\usepackage[utf8x]{inputenc} %Die Dateien liegen in der UTF-8-Kodierung vor
+	\usepackage[utf8]{inputenc} %Die Dateien liegen in der UTF-8-Kodierung vor
 	\usepackage[T1]{fontenc} %Der Text enthält Umlaute
-	\usepackage{libertine}
+	\usepackage{sanitize-umlaut} %behebt Probleme mit Umlauten im Stichwortverzeichnis
+	\usepackage[ttscale=.875]{libertine}
 	\usepackage{libertinust1math}
 	%% Alternative:
 	%\usepackage{mathptmx}
 	%\usepackage[scaled=.92]{helvet}
 	%\usepackage{courier}
+	%
+	%% Workaround for a TikZ-related error :
+	%% https://tex.stackexchange.com/questions/165929/semiverbatim-with-tikz-in-beamer/165937#165937
+	%\global\let\tikz@ensure@dollar@catcode=\relax
 \fi
 %}
 \makeatother
