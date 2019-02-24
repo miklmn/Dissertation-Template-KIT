@@ -16,98 +16,92 @@ Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
 % Tabelle auf die Seitenbreite strecken
 \begin{tabularx}{\columnwidth}%
 % Breite der ersten Spalte auf Inhalt anpassen,
-% Breite der zweiten Spalte auf 25% der Seitenbreite,
-% Breite der dritten Spalte automatisch bestimmen,
+% Breite der zweiten Spalte automatisch bestimmen,
 %Spacing zwischen den Spalten auf 10pt setzen:
-{l@{\extracolsep{10pt}}p{0.25\columnwidth}X}%
+{l@{\extracolsep{8pt}}X}%
 %-----------------------------------------------------------------------------------------------------
 \toprule%
 %-----------------------------------------------------------------------------------------------------
-\bfseries Datei/Verzeichnis               & \bfseries Bedeutung
-                                          & \bfseries Benutzerinteraktion\\
+\bfseries Datei/Verzeichnis               & \bfseries Bedeutung und Benutzerinteraktion\\
 %-----------------------------------------------------------------------------------------------------
 \midrule%
 %-----------------------------------------------------------------------------------------------------
-\texttt{./Diss.tcp}                       & \texttt{TeXnicCenter}-Projektdatei
-                                          & Aufruf im TeXnicCenter. Indirekte Änderung durch Einstellungen im TeXnicCenter.\\
+\texttt{./Diss.tcp}                       & TeXnicCenter-Projektdatei. Aufruf im TeXnicCenter.
+                                          Indirekte Änderung durch Einstellungen im Programm.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei
-                                          & Aus- und Einblenden der einzelnen Teile durch Ersetzen von \lc{showif} durch \lc{hideif} und vice versa.\\
+\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei. Aus- und Einblenden der einzelnen Manuskript-Teile
+                                          durch Ersetzen von \lc{showif} durch \lc{hideif} und vice versa.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./bib/Diss.bib}                   & \texttt{BibLaTeX}-Quelldatei
-                                          & Verwendete Referenzen einfügen.\\
+\texttt{./bib/Diss.bib}                   & Literaturdatenbank im \texttt{BibLaTeX}-Format. Verwendete Referenzen einfügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./content/*}                      & \texttt{LaTeX}-Kapitel
-                                          & Kapitelinhalte einfügen.\\
+\texttt{./content/*}                      & Inhalte der Arbeit. Hier Inhalte der einzelnen \texttt{LaTeX}-Kapitel einfügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./figures-src/*}                  & \texttt{TikZ}-Zeichnungen
-                                          & Ggf. \texttt{TikZ}-Zeichnungen hinzufügen.\\
+\texttt{./figures-src/*}                  & \texttt{TikZ}-Zeichnungen. %(Quellcode).
+                                          Ggf. weitere hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./figures-compiled/*}             & Temporäre Kompilate
-                                          & nur löschen \\
+\texttt{./figures-compiled/*}             & Temporäre Kompilate der \texttt{TikZ}-Zeichnungen.
+                                          Bei Aktualisierung der \texttt{TikZ}-Zeichnungen löschen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./fonts/*}                        & Schriften
-                                          & keine \\
+\texttt{./fonts/*}                        & Verwendete Schriften. Keine.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./images/*}                       & Binärformat-Bilder
-                                          & Ggf. Bilder im Binärformat hinzufügen. \\
+\texttt{./images/*}                       & Bilder im Binärformat. %(jpg, png, pdf etc).
+                                          Ggf. weitere hinzufügen. \\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/*}                     & Konfigurationsdateien
-                                          & s.u.\\
+\texttt{./preambel/*}                     & Konfigurationsdateien. S.u.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Acronyms.tex}          & Akronyme
-                                          & Ggf. Definition von Akronymen.\\
+\texttt{./preambel/Acronyms.tex}          & Definition der Akronyme.
+                                          Ggf. weitere hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/AlleAngaben.tex}       & Daten der Arbeit
-                                          & Hier werden die Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern gemacht. Auch lässt sich hier die Sprache der Arbeit einstellen.\\
+\texttt{./preambel/AlleAngaben.tex}       & Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern.
+                                          Einstellung der Hauptsprache.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/AllePfade.tex}         & Definition von Zusatzpfaden
-                                          & Ggf. Pfade zu weiteren Bildverzeichnissen und Bibliografie"=Dateien ergänzen.\\
+\texttt{./preambel/AllePfade.tex}         & Definition von Suchpfaden für Bildverzeichnisse und Bibliografie"=Dateien.
+                                          Ggf. ergänzen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/BibSettings.tex}       & Konfiguration der Bibliografie
-%                                          & Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern. \\
+%\texttt{./preambel/BibSettings.tex}       & Konfiguration der Bibliografie
+%                                          Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern. \\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/EncodingAndFont.tex}   & Schriftarteinstellungen
-%                                          & Keine.\\
+%\texttt{./preambel/EncodingAndFont.tex}   & Schriftarteinstellungen
+%                                          Keine.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Glossary.tex}          & Glossareinträge
-                                          & Ggf. Glossareinträge definieren.\\
+\texttt{./preambel/Glossary.tex}          & Definition der Glossar-Einträge.
+                                          Ggf. weitere hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Header.tex}            & Präambel-Definitionen
-                                          & Hier könnte das A4-Layout und die \printkeyword{draft}-Option aktiviert werden.\\
+\texttt{./preambel/GlossarySymbols.tex}   & Glossar-Einträge für automatisches Symbolverzeichnis.
+                                          Bei Verwendung ergänzen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Hyphenation.tex}       & Silbentrennung
-                                          & Ggf. Regeln für die Silbentrennung unbekannter Wörter hinzufügen.\\
+\texttt{./preambel/Header.tex}            & Alle Präambel-Definitionen (\teilw in weiteren Dateien).
+                                          Aktivierung der \printkeyword{draft}-Option und des A4-Layouts.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/IndexStyle.tex}        & Layout des Stichwortverzeichnisses
-%                                          & Keine.\\
+\texttt{./preambel/Hyphenation.tex}       & Silbentrennung für unbekannte Wörter.
+                                          Ggf. Regeln für die Silbentrennung weiterer Begriffe hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/KomaOptions.tex}       & KomaScript-Optionen
-%                                          & Keine.\\
+%\texttt{./preambel/IndexStyle.tex}        & Layout des Stichwortverzeichnisses.
+%                                          Keine.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Math.tex}              & Mathe-Einstellungen
-                                          & Bei Bedarf eigene Mathe-Makros definieren.\\
+%\texttt{./preambel/KomaOptions.tex}       & KomaScript-Optionen.
+%                                          Keine.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/MyPackages.tex}        & Zusatzpakete
-                                          & Ggf. Einbindung von Zusatzpaketen.\\
+\texttt{./preambel/Math.tex}              & Mathe-Einstellungen und Makros.
+                                          Bei Bedarf eigene Mathe-Makros definieren.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preamble/Newcommands.tex}       & Eigene Macros
-                                          & Ggf. eigene \LaTeX{}-Macros hinzufügen.\\
+\texttt{./preambel/MyPackages.tex}        & Zusatzpakete
+                                          Ggf. Einbindung von Zusatzpaketen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/preambel.tex}          & Paketkonfigurationen
-%                                          & normalerweise keine \\
+\texttt{./preambel/Newcommands.tex}       & Eigene \LaTeX{}-Makros.
+                                          Ggf. weitere Makros hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/preambel-commands.tex} & Paketkonfigurationen
-%                                          & normalerweise keine \\
+%\texttt{./preambel/preambel-commands.tex} & Paketkonfigurationen.
+%                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
-%                                          & normalerweise keine \\
+%\texttt{./preambel/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
+%                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/TableCommands.tex}     & Tabelleneinstellungen
-%                                          & normalerweise keine \\
+%\texttt{./preambel/TableCommands.tex}     & Tabelleneinstellungen.
+%                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen
-%                                          & normalerweise keine \\
+%\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen.
+%                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
 \bottomrule%
 %-----------------------------------------------------------------------------------------------------
@@ -180,14 +174,14 @@ werden mit \lc{includegraphics}-Befehl eingebunden.
 Bei den \index{Bild!TikZ}\gls{gls:tikz}-Zeichnungen handelt es sich um reguläre TeX-Quellcode-Dateien,
 die mit dem \verb+\input+-Befehl eingebunden werden.
 Für eine einfache Verwaltung wird empfohlen, Binärbilder im Verzeichnis \printfilepath{./images/} abzulegen.
-Zusätzliche Pfade können in der Datei \printfilepath{./preamble/AllePfade.tex} definiert werden.
+Zusätzliche Pfade können in der Datei \printfilepath{./preambel/AllePfade.tex} definiert werden.
 Die \gls{gls:tikz}-Quellcode-Dateien sollten im Verzeichnis \printfilepath{./figures-src/} abgelegt werden.
 Während des Kompilierens werden für jede \gls{gls:tikz}-Zeichnung im Verzeichnis \printfilepath{./figures-compiled/} mehrere Dateien erzeugt.
 Der Inhalt dieses Verzeichnisses kann gefahrlos gelöscht werden.
 Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{sec:Bilder}.
 
 Die wichtigsten Einstellungen, die auf jeden Fall geändert werden müssen,
-finden sich in der Datei \printfilepath{./preamble/AlleAngaben.tex}.
+finden sich in der Datei \printfilepath{./preambel/AlleAngaben.tex}.
 Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
 Außerdem wird hier die Hauptsprache der Arbeit gesetzt, was sich an mehreren Stellen auswirkt.
 So wird beispielsweise bei Umstellung auf Englisch als Hauptsprache
