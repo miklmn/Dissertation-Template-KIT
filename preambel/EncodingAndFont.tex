@@ -246,6 +246,7 @@
 								]{STIX2Math}
 	\fi
 \else %falls doch LaTeX anstatt XeLaTeX verwendet wird soll:
+  \GenericError{}{This template should be compiled with xelatex! Please use xelatex instead of pdflatex as compiler}{}{}%
 	\usepackage[utf8]{inputenc} %Die Dateien liegen in der UTF-8-Kodierung vor
 	\usepackage[T1]{fontenc} %Der Text enthält Umlaute
 	\usepackage{sanitize-umlaut} %behebt Probleme mit Umlauten im Stichwortverzeichnis
