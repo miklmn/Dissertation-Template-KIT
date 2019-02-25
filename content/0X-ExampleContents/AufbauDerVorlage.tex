@@ -6,106 +6,17 @@
 Die Vorlage besteht aus mehreren Dateien und Verzeichnissen.
 Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
 %
-%{\footnotesize
 \begin{table}[htbp]
-%\scriptsize% kleinere Schrift
-\footnotesize% kleinere Schrift
-\centering%% Tabelle zentrieren (falls nicht volle Seitenbreite)
-\renewcommand{\arraystretch}{1.5}% Abstand zwischen den Zeilen auf 1,5faches
-\setlength{\tabcolsep}{0pt}% Seitliche Abstände eliminieren
-% Tabelle auf die Seitenbreite strecken
-\begin{tabularx}{\columnwidth}%
-% Breite der ersten Spalte auf Inhalt anpassen,
-% Breite der zweiten Spalte automatisch bestimmen,
-%Spacing zwischen den Spalten auf 10pt setzen:
-{l@{\extracolsep{8pt}}X}%
-%-----------------------------------------------------------------------------------------------------
-\toprule%
-%-----------------------------------------------------------------------------------------------------
-\bfseries Datei/Verzeichnis               & \bfseries Bedeutung und Benutzerinteraktion\\
-%-----------------------------------------------------------------------------------------------------
-\midrule%
-%-----------------------------------------------------------------------------------------------------
-\texttt{./Diss.tcp}                       & TeXnicCenter-Projektdatei. Aufruf im TeXnicCenter.
-                                          Indirekte Änderung durch Einstellungen im Programm.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei. Aus- und Einblenden der einzelnen Manuskript-Teile
-                                          durch Ersetzen von \lc{showif} durch \lc{hideif} und vice versa.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./bib/Diss.bib}                   & Literaturdatenbank im \texttt{BibLaTeX}-Format. Verwendete Referenzen einfügen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./content/*}                      & Inhalte der Arbeit. Hier Inhalte der einzelnen \texttt{LaTeX}-Kapitel einfügen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./figures-src/*}                  & \texttt{TikZ}-Zeichnungen. %(Quellcode).
-                                          Ggf. weitere hinzufügen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./figures-compiled/*}             & Temporäre Kompilate der \texttt{TikZ}-Zeichnungen.
-                                          Bei Aktualisierung der \texttt{TikZ}-Zeichnungen löschen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./fonts/*}                        & Verwendete Schriften. Keine.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./images/*}                       & Bilder im Binärformat. %(jpg, png, pdf etc).
-                                          Ggf. weitere hinzufügen. \\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/*}                     & Konfigurationsdateien. S.u.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Acronyms.tex}          & Definition der Akronyme.
-                                          Ggf. weitere hinzufügen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/AlleAngaben.tex}       & Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern.
-                                          Einstellung der Hauptsprache.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/AllePfade.tex}         & Definition von Suchpfaden für Bildverzeichnisse und Bibliografie"=Dateien.
-                                          Ggf. ergänzen.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/BibSettings.tex}       & Konfiguration der Bibliografie
-%                                          Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern. \\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/EncodingAndFont.tex}   & Schriftarteinstellungen
-%                                          Keine.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Glossary.tex}          & Definition der Glossar-Einträge.
-                                          Ggf. weitere hinzufügen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/GlossarySymbols.tex}   & Glossar-Einträge für automatisches Symbolverzeichnis.
-                                          Bei Verwendung ergänzen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Header.tex}            & Alle Präambel-Definitionen (\teilw in weiteren Dateien).
-                                          Aktivierung der \printkeyword{draft}-Option und des A4-Layouts.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Hyphenation.tex}       & Silbentrennung für unbekannte Wörter.
-                                          Ggf. Regeln für die Silbentrennung weiterer Begriffe hinzufügen.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/IndexStyle.tex}        & Layout des Stichwortverzeichnisses.
-%                                          Keine.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/KomaOptions.tex}       & KomaScript-Optionen.
-%                                          Keine.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Math.tex}              & Mathe-Einstellungen und Makros.
-                                          Bei Bedarf eigene Mathe-Makros definieren.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/MyPackages.tex}        & Zusatzpakete
-                                          Ggf. Einbindung von Zusatzpaketen.\\
-%-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/Newcommands.tex}       & Eigene \LaTeX{}-Makros.
-                                          Ggf. weitere Makros hinzufügen.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/preambel-commands.tex} & Paketkonfigurationen.
-%                                          Normalerweise keine.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
-%                                          Normalerweise keine.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/TableCommands.tex}     & Tabelleneinstellungen.
-%                                          Normalerweise keine.\\
-%-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen.
-%                                          Normalerweise keine.\\
-%-----------------------------------------------------------------------------------------------------
-\bottomrule%
-%-----------------------------------------------------------------------------------------------------
-\end{tabularx}%
+% kleinere Schrift
+\footnotesize%
+% Tabelle zentrieren (für den Fall, dass nicht die volle Seitenbreite benutzt wird)
+\centering%
+% Abstand zwischen den Zeilen auf 1,5faches setzen
+\renewcommand{\arraystretch}{1.5}%
+% Seitliche Abstände links und rechts eliminieren
+\setlength{\tabcolsep}{0pt}%
+% Tabelle aus einer Extra-Datei einlesen und auf die Seitenbreite strecken
+\LTXtable{\textwidth}{tables/DateienUndVerzeichnisse.tex}%
 \caption[Dateien und Verzeichnisse der Vorlage]{Dateien und Verzeichnisse der Vorlage}%
 \label{tab:StrukturDerVorlage}%
 \end{table}
