@@ -26,7 +26,7 @@
 		\DocDegree%
 		\vspace{1\baselineskip}\\%
 		\normalsize%
-		der Fakultät für Informatik\texorpdfstring{\\}{}%
+		der \Department\texorpdfstring{\\}{}%
 		des Karlsruher Instituts für Technologie (KIT)%
 		\vspace{0.75\baselineskip}\\%
 \ifthenelse{\boolean{istgenehmigt}}{%
@@ -52,12 +52,13 @@
 	\begin{textblock}{11}[0.5,0.5](7.8,17)
 	%\begin{textblock}{9}(2.4,17)
 	\sffamily%
-	\raggedleft%
-		\begin{tabular}{lp{0.5cm}l}
-			Tag der mündlichen Prüfung: && \ExamDate\texorpdfstring{\\}{}
-			Erster Gutachter: && \Reviewer\texorpdfstring{\\}{}
-			Zweiter Gutachter: && \Supervisor\texorpdfstring{\\}{}
-		\end{tabular}
+	\raggedright%
+	\setlength{\tabcolsep}{0pt}
+		\begin{tabularx}{\columnwidth}{x@{\extracolsep{20pt}}l}
+			Tag der mündlichen Prüfung: & \ExamDate\texorpdfstring{\\}{}
+			Erster Gutachter: & \Reviewer\texorpdfstring{\\}{}
+			Zweiter Gutachter: & \Supervisor\texorpdfstring{\\}{}
+		\end{tabularx}
  	\end{textblock}
 	
 \end{titlepage}
