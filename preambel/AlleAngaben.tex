@@ -7,7 +7,9 @@
 \newboolean{useiosblogo}     % Soll zusätzlich das IOSB-Logo verwendet werden
 \newboolean{isdissertation}  % Ist die Arbeit eine Dissertation?
 \newboolean{printMuster}     % Die Seiten mit dem Wort "Muster" bedrucken
-\newboolean{coloredlinks}    % Sollen die Links farbig dargestellt werden (oder schwarz für den Druck)?
+\newboolean{coloredlinks}    % Sollen Links farbig dargestellt werden (oder schwarz für den Druck)?
+\newboolean{coloredlistings} % Sollen Listings farbig dargestellt werden (oder schwarz für den Druck)?
+\newboolean{useCMYKcolors}   % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
 \newboolean{istgenehmigt}    % Bei Dissertationen: handelt es sich um die genehmigte Version?
 \newboolean{showFrame}       % Sollen die Satzspiegel-Ränder angezeigt werden?
 \newboolean{showGrid}        % soll ein Gitter angezeigt werden?
@@ -18,6 +20,8 @@
 \setboolean{isdissertation}{true}
 \setboolean{printMuster}{false}
 \setboolean{coloredlinks}{true}
+\setboolean{coloredlistings}{true}
+\setboolean{useCMYKcolors}{false}
 \setboolean{istgenehmigt}{false}
 \setboolean{showFrame}{false}
 \setboolean{showGrid}{false}

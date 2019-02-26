@@ -471,7 +471,7 @@ verbose,
          showspaces=false,           % Leerzeichen anzeigen ?
          showtabs=false,             % Tabs anzeigen ?
          showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
-         %commentstyle=\color{commentcolor},
+         commentstyle=\color{commentcolor},
          captionpos=b,
    			language=[Visual]C++
 }
@@ -952,47 +952,8 @@ verbose,
 
 
 % Farben ================================================================
-
-\IfDefined{definecolor}{%
-
-% Farbe der Ueberschriften
-%\definecolor{sectioncolor}{RGB}{0, 51, 153} % Blau
-%\definecolor{sectioncolor}{RGB}{0, 25, 152}    % Blau (dunkler))
-\definecolor{sectioncolor}{RGB}{0, 0, 0}    % Schwarz
 %
-% Farbe des Textes
-\definecolor{textcolor}{RGB}{0, 0, 0}        % Schwarz
-%
-% Farbe fuer grau hinterlegte Boxen (fuer Paket framed.sty)
-\definecolor{shadecolor}{gray}{0.90}
-
-\ifthenelse{\boolean{coloredlinks}}{%
-% Farben fuer die Links im PDF
- \definecolor{pdfurlcolor}{rgb}{0,0,0.6}
- \definecolor{pdffilecolor}{rgb}{0.7,0,0}
- \definecolor{pdflinkcolor}{rgb}{0,0,0.6}
- \definecolor{pdfcitecolor}{rgb}{0,0,0.6}
-}{%
-% PDF-Linkfarben auf schwarz für den Druck:
- \definecolor{pdfurlcolor}{rgb}{0,0,0}
- \definecolor{pdffilecolor}{rgb}{0,0,0}
- \definecolor{pdflinkcolor}{rgb}{0,0,0}
- \definecolor{pdfcitecolor}{rgb}{0,0,0}
-}
-
-% Farben fuer Listings  %%PW:Damit knallts leider
-%\colorlet{stringcolor}{green!40!black!100}
-%\colorlet{commoncolor}{blue!0!black!100}
-%\colorlet{keywordcolor}{blue!70!black!20!green!20}
-%%PW: damit knallts nicht
-\definecolor{keywordcolor}{RGB}{0,20.0,192}
-\definecolor{commentcolor}{RGB}{63,127,95}
-\definecolor{stringcolor}{RGB}{112,0,85}
-
-
-} % Endif
-
-%% Aussehen der URLS======================================================
+% Farbendefinition ausgelagert in die Datei ColorSettings.tex%% Aussehen der URLS======================================================
 
 %fuer URL (nur wenn url geladen ist)
 \IfDefined{urlstyle}{

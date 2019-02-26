@@ -1,0 +1,62 @@
+% Farben ================================================================
+
+% Abhängig von der Einstellung in der Datei "AlleAngaben.tex":
+% Konvertiere alle Farben in den CMYK-Farbraum für den Druck
+\ifthenelse{\boolean{useCMYKcolors}}{%
+	\selectcolormodel{cmyk}
+	% use CMYK definitions of the KIT corporate identity colors from KAcolors.sty
+	\usepackage[cmyk]{KAcolors}
+}{% no color conversion (use natural colors) but:
+	% use RGB definitions of the KIT corporate identity colors from KAcolors.sty
+	\usepackage[rgb]{KAcolors}
+}
+
+% Further color definitions
+\ifthenelse{\boolean{useCMYKcolors}}{%
+	% speziell für den Druck:
+	\definecolor{customBlue}{cmyk}{1,0.8,0,0}
+	\definecolor{customRed}{cmyk}{0.6,1,1,0}
+	\definecolor{customGreen}{cmyk}{1,0,1,0}
+}{% normale Darstellung:
+	\definecolor{customBlue}{rgb}{0,0,0.6}
+	%\definecolor{customBlue}{RGB}{0,20.0,192}
+	\definecolor{customRed}{RGB}{112,0,85}
+	\definecolor{customGreen}{RGB}{63,127,95}
+}
+
+
+% Farbe der Ueberschriften
+%\colorlet{sectioncolor}{KITblue}    % Schwarz
+\colorlet{sectioncolor}{KITblack}    % Schwarz
+%
+% Farbe des Textes
+\colorlet{textcolor}{KITblack}        % Schwarz
+%
+%
+% Farbe fuer grau hinterlegte Boxen (fuer Paket framed.sty)
+\definecolor{shadecolor}{gray}{0.90}
+
+% Farben fuer die Links im PDF
+\ifthenelse{\boolean{coloredlinks}}{%
+	\colorlet{pdfurlcolor}{customBlue}
+	\colorlet{pdffilecolor}{customRed}
+	\colorlet{pdflinkcolor}{customBlue}
+	\colorlet{pdfcitecolor}{customBlue}
+}{%
+% PDF-Linkfarben auf schwarz für den Druck:
+	\colorlet{pdfurlcolor}{KITblack}
+	\colorlet{pdffilecolor}{KITblack}
+	\colorlet{pdflinkcolor}{KITblack}
+	\colorlet{pdfcitecolor}{KITblack}
+}
+
+% Farben fuer Listings
+\ifthenelse{\boolean{coloredlistings}}{%
+	\colorlet{keywordcolor}{customBlue}
+	\colorlet{commentcolor}{customGreen}
+	\colorlet{stringcolor}{customRed}
+}{%
+	\colorlet{keywordcolor}{KITblack70}
+	\colorlet{commentcolor}{KITblack50}
+	\colorlet{stringcolor}{KITblack}
+}

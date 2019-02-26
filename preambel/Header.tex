@@ -1,11 +1,7 @@
-%%%%%%%%%% HAUPTDOKUMENT DER LATEX-VORLAGE DES IES %%%%%%%%%%%%%%%
-%% Im wesentlichen basierend auf der Vorlage von Matthias Pospiech
-%% http://www.matthiaspospiech.de/latex/vorlagen/allgemein/
-%% für KOMA-Script 3.x
-%% Erweitert und angepasst von Philipp Woock und Michael Grinberg
-%% Version 3.0
-%% Februar 2019
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% "Magic comments" for the LaTeX editor -------------
+% !TEX root = ../Diss.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% PW: Paket silence unterdrückt Warnungen. Schreibt die unterdrückten Sachen aber in eine .sil Datei
 %% Silence braucht für save auch ein TeX \write :-(
@@ -61,15 +57,14 @@
 \usepackage{ifthen}
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/xcolor/xcolor.pdf
-% Farben
-% Muss früher geladen werden, da ansonsten Optionen-Clash mit xelibertine?
+% Farben. Weitere Einstellungen in der Datei ColorSettings.tex
+% xcolor muss früher geladen werden, da ansonsten Optionen-Clash mit xelibertine?
 % Incompatible: Do not load when using pstricks !
 \usepackage[%
 	table, % Load for using rowcolors command in tables
-	%cmyk, % CMYK Farbraum
+	%cmyk, % CMYK Farbraum für den Druck (wird später mit \selectcolormodel gesetzt)
 	dvipsnames % for using the extended name set
 ]{xcolor}
-\usepackage{KAcolors}
 
 % Encoding der Quellcode-Dateien (sonst funktionieren Umlaute in den Quellcodedateien nicht)
 \input{preambel/EncodingAndFont.tex}
@@ -80,6 +75,9 @@
 
 %%% Einstellungen zu Seitenlayout, Abständen etc.
 \input{preambel/settings.tex}
+
+%%% Einstellungen zu Farben etc.
+\input{preambel/ColorSettings.tex}
 
 %%% LaTeX-Präambel
 %%% Hier werden Pakete eingebunden, Teil I
