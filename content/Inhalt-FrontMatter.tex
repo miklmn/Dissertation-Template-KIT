@@ -1,3 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%               "Front matter":               %%%%%
+%%%%                                             %%%%%
+%%%%  - Cover page (Titelblatt)                  %%%%%
+%%%%  - Curriculum Vitae                         %%%%%
+%%%%  - Abstract (English)                       %%%%%
+%%%%  - Kurzzusammenfassung (German)             %%%%%
+%%%%  - Acknowledgements                         %%%%%
+%%%%  - Table of contents                        %%%%%
+%%%%  - Notation / Symbols                       %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% "Magic comments" for the LaTeX editor -------------
+% !TEX root = ../Diss.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%           Deckblatt            %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,10 +25,9 @@
 %% due to duplicates in page numbering
 %% ("destinatiion with same identifier (name{page.1})...")
 \pagenumbering{alph}%
-\pdfbookmark[0]{\TransTitlePageName}{cover}% Sets a PDF bookmark for the title page
-%\input{content/00-FrontMatter/Titel-A4.tex}
-%\input{content/00-FrontMatter/Titel-A5.tex}
-%\input{content/00-FrontMatter/Titel-A4-DissBlank.tex}
+%% Set a PDF bookmark for the cover page:
+\pdfbookmark[0]{\TransTitlePageName}{cover}%
+%% Cover page:
 \input{content/00-FrontMatter/Titel-A5-DissBlank.tex}
 \clearpage
 \end{showCoverPage}%
@@ -50,7 +66,7 @@
 \begin{showAbstractDE}%
 %
 %% Set German as the text language
-%% independent on the document language
+%% independently on the document language
 \textInGerman{%
 \input{content/00-FrontMatter/Kurzfassung.tex}
 }%endtextInGerman
@@ -90,11 +106,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showNotation}
 \input{content/00-FrontMatter/Notation.tex}
-%
-%\input{content/Z-Anhang/Symbolverzeichnis}
-%\IfDefined{printglossary}{\printglossary[type=notation]} %,style=long-booktabs]}
 \end{showNotation}
 %
-% Ab hier der Hauptteil
+%\IfDefined{printglossary}{\printglossary[type=notation]} %,style=long-booktabs]}
+%
+% Ab hier der Hauptteil:
 \mainmatter
 %

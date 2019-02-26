@@ -20,25 +20,26 @@ siehe die Dokumentation des \pkg{booktabs}-Pakets \cite{Fear2005}.
 Eine einfache Tabelle hat den folgenden Code:
 \begin{latex}[caption={Einfache Tabelle in \LaTeX},label={lst:tables}]
 \begin{table}%
-  \centering%
-  \begin{tabular}{l l l}%
-	  \toprule%
-    Datei       &  Bedeutung    &  Benutzer \\
+	\centering%
+	\begin{tabularx}{\columnwidth}{l l X}%
+		\toprule%
+		Datei       &  Bedeutung    &  Benutzerinteraktion \\%
 		\midrule%
-    ./main.tex  &  Hauptdatei   &  nein     \\
-    ./figures/  &  Zeichnungen  &  ja       \\
-    ./content/  &  Kapitel      &  ja       \\
-    ./logos/    &  Logos        &  nein     \\
+		\endheader%
+		main.tex  &  Hauptdatei   &  nein     \\%
+		figures/  &  Zeichnungen  &  ja       \\%
+		content/  &  Kapitel      &  ja       \\%
+		logos/    &  Logos        &  nein     \\%
 		\bottomrule%
-  \end{tabular}%
-  \caption{Dateien der Vorlage}%
-  \label{tab:files-dirs-of-template}%
+	\end{tabularx}%
+	\caption{Dateien der Vorlage}%
+	\label{tab:files-dirs-of-template}%
 \end{table}
 \end{latex}
 %und sieht dann so aus wie \cref{tab:files-dirs-of-template}.
 
 
-%Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einfügen möchte
+Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einfügen möchte
 %
 %% -- Einstellungen für Tabellen  ----------
 %% -- Können auch in die Präambel ----------
@@ -61,32 +62,32 @@ Eine einfache Tabelle hat den folgenden Code:
 %
 %%---------------------------------------
 %%
-%\begin{center}
-   %\tablestyle
-   %\tablealtcolored
-   %\begin{tabular}{*{2}{v{0.45\textwidth}}}
-   %\hline
-   %\tableheadcolor
-%\tablehead Tabellenkopf &
-%\tablehead Tabellenkopf \tabularnewline\hline
-%% Zwischenkopf
-%\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{
-   %\bfseries\color{blue} Zwischenkopf
-%} \tabularnewline
-%
-%\tablebody
- %Inhalt  & Inhalt \tabularnewline
- %Inhalt  & Inhalt \tabularnewline
- %Inhalt  & Inhalt \tabularnewline
-%\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{
-   %\bfseries\color{green} Zwischenkopf
-%} \tabularnewline
- %Inhalt  & Inhalt \tabularnewline
- %Inhalt  & Inhalt \tabularnewline
-   %\hline
-   %\end{tabular}
-%\captionof{table}{Superteil 4}
-%\end{center}
+\begin{table}
+	\tablestyle%
+	\tablealtcolored%
+	\begin{tabular}{*{2}{v{0.45\textwidth}}}
+		\toprule%
+		\tableheadcolor%
+		\tableheadformat Tabellenkopf &	\tableheadformat Tabellenkopf
+		\tabularnewline%
+		\midrule%
+		%% Zwischenkopf ---------------------------------------------
+		\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{\bfseries\color{KITblue} Zwischenkopf}%
+		\tabularnewline%
+		%%-----------------------------------------------------------
+		Inhalt  & Inhalt \tabularnewline
+		Inhalt  & Inhalt \tabularnewline
+		Inhalt  & Inhalt \tabularnewline
+		%% Zwischenkopf ---------------------------------------------
+		\multicolumn{2}{>{\columncolor{tablesubheadcolor}}l}{\bfseries\color{KITgreen} Zwischenkopf}%
+		\tabularnewline
+		%%-----------------------------------------------------------
+		Inhalt  & Inhalt \tabularnewline
+		Inhalt  & Inhalt \tabularnewline
+		\bottomrule%
+	\end{tabular}%
+\captionof{table}{Superteil 4}%
+\end{table}
 %%
 %% ------------------------------------------------------------
 %\IfDefined{LTXtable}{%
