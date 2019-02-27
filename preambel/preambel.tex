@@ -1366,6 +1366,24 @@ afterskip=\myparagraphafterskip%
    singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
    position = bottom %top
 }
+\captionsetup[lstlisting]{
+   margin = 0pt,
+   aboveskip = \myaboveskip,
+   belowskip = \mybelowskip,
+   captionskip = \mycaptionskip,
+   %skip = \mycaptionskip,
+   font = {small,rm},
+   labelfont = {small,bf},
+   %format = plain, % oder 'hang'
+   format = hang, %zweite und weitere Zeilen einrücken (an die erste ausrichten)
+   indention = 0em,  % Einruecken der Beschriftung
+   labelsep = colon, %period, space, quad, newline
+   %justification = RaggedRight, % Falettersatz
+   %justification = centering, % zentriert
+   justification = justified, % Blocksatz
+   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
+   position = bottom %top
+}
 %%% Bugfix Workaround
 \DeclareCaptionOption{parskip}[]{}
 \DeclareCaptionOption{parindent}[]{}
