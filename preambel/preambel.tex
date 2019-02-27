@@ -454,9 +454,15 @@ verbose,
 
  \lstset{
          basicstyle=\small\ttfamily, % Standardschrift
-         %numbers=left,               % Ort der Zeilennummern
+         frame = single,             % Rahmen um Listings zeichnen
+         %numbers=left,               % Ort der Zeilennummern (falls gewünscht, 
          %numberstyle=\tiny,          % Stil der Zeilennummern
          %xleftmargin=\marginparsep,  % Einrückung, damit die Zeilennummern innerhalb des Textrahmens stehen!
+         %xleftmargin=\marginparsep,
+         framesep=\mylistingframesep,
+         framerule=\mylistingframerule,
+         xleftmargin=\dimexpr\mylistingframesep+\mylistingframerule,
+         xrightmargin=\dimexpr\mylistingframesep+\mylistingframerule,
          %stepnumber=1,               % Abstand zwischen den Zeilennummern
          %numbersep=5pt,              % Abstand der Nummern zum Text
          tabsize=2,                  % Groesse von Tabs
