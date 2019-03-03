@@ -50,7 +50,7 @@ Eine Abkürzung wird folgendermaßen definiert (Angaben in eckigen Klammern und 
             pluraldative={meinen schönen Akronymen},%
             %shortpluralaccusative={MSAs},%
             pluralaccusative={meine schönen Akronyme},%
-            description={mein schönes Akronym, %   <- optional
+            description={mein schönes Akronym, %   <- optional!
                          ein Beispiel für eine Abkürzung}%
            ]{ac:MSA}{MSA}{mein schönes Akronym}
 \end{latex}
@@ -208,5 +208,6 @@ Die Referenzierung des Symbols \gls{symb:pi} im Text geschieht dann mit \verb+\g
 Die Einbindung eines automatisch erzeugten Symbolverzeichnisses ist am Ende des Manuskripts vorgesehen.
 Es passiert in der Datei
 \texttt{./content/Inhalt-BackMatter.tex}.
+Bei Bedarf lässt sich diese Einbindung auch an eine geeignete Stelle in den Frontmatter verschieben.
 Dabei ist darauf zu achten, dass in der Hauptdatei \texttt{Diss.tex}
 die Einblendung durch \lc{showif\{showListOfSymbols\}} aktiviert ist.

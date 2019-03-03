@@ -3,27 +3,36 @@
 \label{sec:Grundsätzliches}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%
 Beim Erstellen neuer Dateien bzw. Öffnen und Speichern bereits vorhandener Dateien ist darauf zu achten,
-dass stets UTF-8 als Zeichenkodierung verwendet wird.
+dass stets \index{UTF8-Kodierung}UTF-8 als Zeichenkodierung verwendet wird.
+Wichtig ist dabei, dass alle tex-Dateien die UTF8-Kodierung ohne BOM haben,
+worauf beim Anlegen neuer TeX-Dateien besonders zu achten ist
+(am besten man kopiert und bearbeitet eine bereits vorhandene Datei).
+
+Dank geeigneter Einstellungen in den Header-Dateien können deutsche Umlaute wie 
+\index{Umlaute}%
+ä,ö,ü,ß, Zeichen mit Akzent wie é sowie weitere UTF8-Zeichen wie z.B.
+\index{Anführungszeichen}%
+\index{Sprache!unterschiedliche Anführungszeichen}%
+„deutsche“, “englische”, »französische« oder «russische» Anführungszeichen 
+direkt im Quellcode eingegeben werden ohne irgendwelche Umwege wie z.B. 
+\verb+"a+ für "a,
+\verb+"u+ für "ü,
+\verb+\ss+, für \ss und
+\verb+'e+ für 'e.
 Dies gilt insbesondere auch für Quellen des Literaturverzeichnisses (Bib-Dateien).
-Umlaute und Zeichen mit Akzent werden in den Quelldateien direkt als solche eingegeben,
-also direkt mit
-\texttt{Ä},
-\texttt{ä},
-\texttt{ß},
-\texttt{é},
-usw. und nicht etwa mit
-\verb+"A+,
-\verb+"a+,
-\verb+\ss+,
-\verb+'e+.
+
 Die Zeiten, in welchen man sich bei der Eingabe deutscher Buchstaben verkünsteln musste,
 sind zum Glück endgültig vorbei.
+
+\myexcl{Wichtig!}
+Normale, gerade Anführungszeichen (\texttt{{\dq}}) haben eine Sonderfunktion und sollten im Quellcode (außer in Listings) nicht verwendet werden.
+Für die Eingabe von Anführungszeichen sollte man am besten die entsprechende Textstelle mit dem \lc{enquote\{...\}}"=Befehl umschließen.
+Damit werden je nach Spracheinstellung des Dokumentes automatisch die richtigen Anführungszeichen gesetzt.
+Außerdem werden so auch die \enquote{verschachtelten \enquote{Anführungszeichen}} korrekt behandelt.
 
 Es empfiehlt sich, die einzelnen Sätze jeweils in einer neuen Zeile anzufangen.
 Ein einfaches Zeilenumbruch wird von LaTeX wie ein Leerzeichen gehandhabt
 und hat somit keinen Einfluss auf die Zeilenumbrüche im Ergebnisdokument.
 Beim Rückwärtsspringen aus der PDF-Datei zum Quellcode wird dadurch jedoch
 eine bessere Lokalisierung der betroffenen Textstelle ermöglicht.
-Weitere nützliche \LaTeX-Tipps finden sich in \cref{sec:DOsAndDONTs}.

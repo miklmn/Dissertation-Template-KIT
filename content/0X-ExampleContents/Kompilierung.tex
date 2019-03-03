@@ -79,10 +79,15 @@ Die einzelnen Aufrufe sind:
 zur Erstellung einer Zwischenausgabe für das Abkürzungsverzeichnis und das Glossar
 \index{makexindex}\texttt{makeindex}, welches durch die Verwendung des Pakets \pkg{imakeidx} implizit aufgerufen wird, zur Erstellung des Stichwortverzeichnisses
 \end{itemize*}
-Dabei sind mehrere Durchläufe von \texttt{xelatex} nötig,
-damit sowohl alle Verzeichnisse
-(Inhalts-, Abbildungs-, Tabellen-, Literatur, Abkürzungs- und Stichwortverzeichnis)
-samt den Seitenzahlen, als auch die PDF"=Lesezeichen korrekt aktualisiert werden.
+Bei einem Durchlauf von \texttt{xelatex}, \texttt{biber}, \texttt{makeglossaries} und \texttt{makeindex}
+werden die einzelnen Inhalte sowie die entsprechenden Querverweise
+zuerst jeweils in eine oder mehrere Zwischendateien hinausgeschrieben,
+die sodann wieder eingelesen und verarbeitet werden müssen.
+Manche Inhalte werden daher erst jeweils beim zweiten Aufruf von \texttt{xelatex} generiert.
+Für die korrekte Generierung eines Dokumentes mit allen Verzeichnissen
+(Inhalts-, Abbildungs-, Tabellen-, Literatur, Abkürzungs-, Begriffs und Stichwortverzeichnis),
+PDF"=Lesezeichen und korrekt gesetzten Querverweisen,
+muss \texttt{xelatex} daher mehrmals aufgerufen werden.
 
 Sollte man ausnahmsweise das Dokument doch noch aus der Kommandozeile oder von einem Script heraus aufrufen wollen,
 so ist die Reihenfolge der Aufrufe wie folgt:

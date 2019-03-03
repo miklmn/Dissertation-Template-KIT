@@ -1,8 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sprachumschaltung (Deutsch, Englisch, etc.)}%
+\section{Sprachumstellung und temporäre Sprachumschaltung bei fremdsprachlichen Begriffen und Textabschnitten}%
 \index{Fremdsprachen}%
 \index{Sprache!Fremdsprache}%
-\index{Sprache!Umschaltung}%
+\index{Sprache!Umstellung}%
+\index{Sprache!Temporäre Umschaltung}%
 \label{sec:Sprache}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -26,3 +27,7 @@ gibt es den Befehl \verb+\selectlanguage{Sprache}+.
 Es gilt eine Liste der Sprachen aus dem Paket \pkg{babel}.
 Für Deustch sollte \printkeyword{ngerman} verwendet werden, was für die
 \index{Rechtschreibung!neue deutsche}neue deutsche Rechtschreibung steht.
+
+Für eine korrekte Behandlung der deutschen Kurzfassung und des englischen Abstracts
+unabhängig von der gewählten Hauptsprache ist durch die Verwendung der Befehle
+\lc{textInGerman\{...\}} und \lc{textInEnglish\{...\}} bereits gesorgt.

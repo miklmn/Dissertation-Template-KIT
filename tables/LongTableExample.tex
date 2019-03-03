@@ -1,16 +1,28 @@
-\begin{longtable}{l*{5}{Y}}
-\caption{Longtable Tabelle über einen Seitenumbruch hinaus mit tabularx Spalten. Da ist die Tabellenüberschrift sinnvollerweise auch über der Tabelle.} \\
+\begin{longtable}{l*{5}{Y}}%
+\hiderowcolors
+\caption{Longtable Tabelle über einen Seitenumbruch hinaus mit tabularx Spalten. Da ist die Tabellenüberschrift sinnvollerweise auch über der Tabelle.}\\%
+\showrowcolors
 	\tableheadcolor
-   \tablehead Tabellenkopf &
+	\tablehead Tabellenkopf &
 	\tablehead Tabellenkopf	&
 	\tablehead Tabellenkopf	&
 	\tablehead Tabellenkopf	&
 	\tablehead Tabellenkopf	&
 	\tablehead Tabellenkopf \tabularnewline
 \endfirsthead
+	\tableheadcolor
+	\tablehead Tabellenkopf &
+	\tablehead Tabellenkopf	&
+	\tablehead Tabellenkopf	&
+	\tablehead Tabellenkopf	&
+	\tablehead Tabellenkopf	&
+	\tablehead Tabellenkopf \tabularnewline
+\endhead
+	\hiderowcolors
 	\hline
 	\multicolumn{6}{r}{\emph{weiter auf der nächsten Seite}}
 \endfoot
+	\showrowcolors
 	\hline
 \endlastfoot
 \itshape Beschreibung 	& 1 Inhalt & Inhalt & Inhalt & Inhalt & Inhalt \tabularnewline

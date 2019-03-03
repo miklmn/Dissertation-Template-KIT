@@ -6,9 +6,14 @@
 %% Spacing zwischen den Spalten auf 8pt setzen:
 \begin{longtable}{l@{\extracolsep{8pt}}X}%
 %-----------------------------------------------------------------------------------------------------
+\caption[Dateien und Verzeichnisse der Vorlage]{Dateien und Verzeichnisse der Vorlage}%
+\label{tab:StrukturDerVorlage}%
+\endlastfoot%
+%-----------------------------------------------------------------------------------------------------
 \toprule%
 %-----------------------------------------------------------------------------------------------------
-\bfseries Datei/Verzeichnis               & \bfseries Bedeutung und Benutzerinteraktion\\
+\bfseries Datei/Verzeichnis               & \bfseries Bedeutung und Benutzerinteraktion
+\tabularnewline%
 %-----------------------------------------------------------------------------------------------------
 \midrule%
 \endhead%
@@ -16,7 +21,8 @@
 \texttt{./Diss.tcp}                       & TeXnicCenter-Projektdatei. Aufruf im TeXnicCenter.
                                           Indirekte Änderung durch Einstellungen im Programm.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei. Aus- und Einblenden der einzelnen Manuskript-Teile
+\texttt{./Diss.tex}                       & \texttt{TeX}-Hauptdatei. Einbindung der Inhalte.
+                                          Aus- und Wieder"=Einblenden der einzelnen Manuskript"=Teile
                                           durch Ersetzen von \lc{showif} durch \lc{hideif} und vice versa.\\
 %-----------------------------------------------------------------------------------------------------
 \texttt{./bib/Diss.bib}                   & Literaturdatenbank im \texttt{BibLaTeX}-Format. Verwendete Referenzen einfügen.\\
@@ -39,17 +45,19 @@
 \texttt{./preambel/Acronyms.tex}          & Definition der Akronyme.
                                           Ggf. weitere hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-\texttt{./preambel/AlleAngaben.tex}       & Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern.
-                                          Einstellung der Hauptsprache.\\
+\texttt{./preambel/AlleAngaben.tex}       & Wichtige Angaben und Einstellungen.
+                                          Hier Angaben zum Typ der Arbeit, zum Autor und zu den Gutachtern ändern.
+                                          Bei Bedarf Hauptsprache auf Englisch umstellen.
+                                          Anpassungen für die Druckversion vornehmen.\\
 %-----------------------------------------------------------------------------------------------------
 \texttt{./preambel/AllePfade.tex}         & Definition von Suchpfaden für Bildverzeichnisse und Bibliografie"=Dateien.
                                           Ggf. ergänzen.\\
 %-----------------------------------------------------------------------------------------------------
 %\texttt{./preambel/BibSettings.tex}       & Konfiguration der Bibliografie
-%                                          Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern. \\
+%                                          Normalerweise keine, es sei denn man möchte den Stil der Literaturverzeichnisse ändern.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/EncodingAndFont.tex}   & Schriftarteinstellungen
-%                                          Keine.\\
+\texttt{./preambel/EncodingAndFont.tex}   & Schriftarteinstellungen.
+                                          Keine, sofern man die vorgegeben Schriftarten nutzen möchte.\\
 %-----------------------------------------------------------------------------------------------------
 \texttt{./preambel/Glossary.tex}          & Definition der Glossar-Einträge.
                                           Ggf. weitere hinzufügen.\\
@@ -63,11 +71,11 @@
 \texttt{./preambel/Hyphenation.tex}       & Silbentrennung für unbekannte Wörter.
                                           Ggf. Regeln für die Silbentrennung weiterer Begriffe hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/IndexStyle.tex}        & Layout des Stichwortverzeichnisses.
-%                                          Keine.\\
+\texttt{./preambel/IndexStyle.tex}        & Layout des Stichwortverzeichnisses.
+                                          Keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/KomaOptions.tex}       & KomaScript-Optionen.
-%                                          Keine.\\
+\texttt{./preambel/KomaOptions.tex}       & KomaScript-Optionen.
+                                          Keine.\\
 %-----------------------------------------------------------------------------------------------------
 \texttt{./preambel/Math.tex}              & Mathe-Einstellungen und Makros.
                                           Bei Bedarf eigene Mathe-Makros definieren.\\
@@ -78,17 +86,17 @@
 \texttt{./preambel/Newcommands.tex}       & Eigene \LaTeX{}-Makros.
                                           Ggf. weitere Makros hinzufügen.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/preambel-commands.tex} & Paketkonfigurationen.
-%                                          Normalerweise keine.\\
+\texttt{./preambel/preambel-commands.tex} & Interne Befehle aus der alten Vorlage.
+                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
-%                                          Normalerweise keine.\\
+\texttt{./preambel/settings.tex}          & Einstellungen zu Längen, Breiten, Verzeichnistiefen etc.
+                                          Normalerweise keine, da diese Einstellungen mit dem \gls{ac:KSP} abgestimmt worden sind.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preambel/TableCommands.tex}     & Tabelleneinstellungen.
-%                                          Normalerweise keine.\\
+\texttt{./preambel/TableCommands.tex}     & Tabelleneinstellungen.
+                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
-%\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen.
-%                                          Normalerweise keine.\\
+\texttt{./preamble/Translations.tex}      & Multilinguale Begriffsdefinitionen für Beschriftungen etc.
+                                          Normalerweise keine.\\
 %-----------------------------------------------------------------------------------------------------
 \bottomrule%
 %-----------------------------------------------------------------------------------------------------

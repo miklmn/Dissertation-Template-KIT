@@ -5,22 +5,20 @@
 %
 Die Vorlage besteht aus mehreren Dateien und Verzeichnissen.
 Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
-%
-\begin{table}[htbp]
+
+{%%% Übersicht über die Dateien und Verzechnisse der Vorlage %%%
 % kleinere Schrift
 \footnotesize%
-% Tabelle zentrieren (für den Fall, dass nicht die volle Seitenbreite benutzt wird)
-\centering%
 % Abstand zwischen den Zeilen auf 1,5faches setzen
 \renewcommand{\arraystretch}{1.5}%
 % Seitliche Abstände links und rechts eliminieren
+%\setlength\LTleft{0pt}%
+%\setlength\LTright{0pt}%
 \setlength{\tabcolsep}{0pt}%
 % Tabelle aus einer Extra-Datei einlesen und auf die Seitenbreite strecken
 \LTXtable{\columnwidth}{tables/DateienUndVerzeichnisse.tex}%
-\caption[Dateien und Verzeichnisse der Vorlage]{Dateien und Verzeichnisse der Vorlage}%
-\label{tab:StrukturDerVorlage}%
-\end{table}
-
+}%
+%
 Bei der Datei \printfilepath{Diss.tcp} handelt es sich um die Projektdatei für den \LaTeX-Editor TeXnicCenter.
 In ihr werden die projektbezogenen Einstellungen des TeXnicCenter festgehalten.
 Das sind u.a. Angaben zur Hauptdatei des Projektes und zur Projektsprache.
@@ -79,7 +77,7 @@ Es wird davon ausgegangen, dass sich sämtliche Bibliografie-Angaben in der Date
 Sollten mehrere Bibliografie-Dateien verwendet werden, können diese in der Datei
 \printfilepath{./preamble/AllePfade.tex} gesetzt werden.
 
-\index{Bild}Bilder bzw. \index{Zeichnung|see{Bild}}Zeichnungen werden auf zwei Arten eingebunden.
+Bilder bzw. \index{Zeichnung|see{Bild}}Zeichnungen werden auf zwei Arten eingebunden.
 Bilder im \index{Bild!Binär-}Binärformat (PNG, JPEG, TIFF, PDF, etc.)
 werden mit \lc{includegraphics}-Befehl eingebunden. 
 Bei den \index{Bild!TikZ}\gls{gls:tikz}-Zeichnungen handelt es sich um reguläre TeX-Quellcode-Dateien,
@@ -94,18 +92,48 @@ Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{
 Die wichtigsten Einstellungen, die auf jeden Fall geändert werden müssen,
 finden sich in der Datei \printfilepath{./preambel/AlleAngaben.tex}.
 Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
-Außerdem wird hier die Hauptsprache der Arbeit gesetzt, was sich an mehreren Stellen auswirkt.
-So wird beispielsweise bei Umstellung auf Englisch als Hauptsprache
+Außerdem wird hier die \index{Sprache!Hauptsprache}Hauptsprache der Arbeit gesetzt, was sich an mehreren Stellen auswirkt.
+So wird beispielsweise bei \index{Sprache!Umstellung}Umstellung auf Englisch als Hauptsprache
 \enquote{Danksagung} durch \enquote{Acknowledgments},
 \enquote{Inhaltsverzeichnis} durch \enquote{Contents}
 \usw ersetzt.
-Auch die Regeln der Silbentrennung werden entsprechend angepasst.
+Auch die Regeln der \index{Silbentrennung!Allgemeine Einstellung}Silbentrennung werden entsprechend angepasst.
 
-Regeln zur Silbentrennung unbekannter Wörtern (\zB von Fachbegriffen)
+Neben diesen Einstellungen werden in der Datei \printfilepath{./preambel/AlleAngaben.tex} auch Einstellungen,
+die für die Vorbereitung des Manuskriptes zum Druck beim \gls{ac:KSP} wichtig sind, gesetzt.
+Insbesondere können hier
+\begin{itemize*}
+\item mit der Einstellung \printkeyword{showFrame}
+die Satzspiegel-Ränder angezeigt werden und so kontrolliert werden,
+ob nichts hinausragt und ob Tabellen und Bilder die komplett verfügbare Breite ausfüllen,
+\item mit den Einstellungen \printkeyword{coloredlistings} und \printkeyword{coloredlinks}
+dafür gesorgt werden, dass alle Quellcode-Listings sowie Querverweise und URL-Adressen,
+die normalerweise farbig sind, für die Druckversion nicht farbig gesetzt werden
+und so die Anzahl der farbig zu druckenden Seiten reduziert wird,
+\item mit der Einstellung \printkeyword{useCMYKcolors} eine Farbkonvertierung
+aller Farben in den CMYK-Farbraum für den Offset-Druck vorgenommen werden.
+Diese Einstellung sollte nur für die Druckversion vorgenommen werden.%
+\footnote{Da manche RGB-Farben bei der Konvertierung in den CMYK-Farbraum blass aussehen,
+ist es sinnvoll, eine Alternativversion der betroffenen Farben im CYMK-Farbraum zu definieren,
+die gut aussieht.
+Beispiele dafür gibt es in der Datei \printfilepath{./preambel/ColorSettings.tex}.
+Vorzugsweise sollten aber die KIT-Corporate-Identity-Farben verwendet werden,
+welche in der Datei \printfilepath{KAcolors.sty} definiert sind.
+Für diese Farben wurde sowohl eine RGB- als auch eine CMYK-Definition erstellt.}
+\end{itemize*}
+
+Regeln zur \index{Silbentrennung}Silbentrennung unbekannter Wörter (\zB Fachbegriffe)
 können in der Datei \printfilepath{./preambel/Hyphenation.tex} festgelegt werden.
 Zu beachten ist, dass zusammengesetzte Wörter mit einem Bindestrich
 ausschließlich am Bindestrich getrennt werden,
 wogegen auch ein Eintrag in die Datei \printfilepath{Hyphenation.tex} nicht hilft.
 Um Silbentrennung an anderen Stellen eines zusammengesetzten Wortes zu erlauben,
-muss man den Bindestrich durch „\verb+"=+“ ersetzen%
-\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}.
+muss man den Bindestrich durch „\verb+"=+“ ersetzen. Dies gilt jedoch nur für deutschsprachige Texte.%
+\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}
+
+In den Dateien
+\printfilepath{./preambel/Acronyms.tex},
+\printfilepath{./preambel/Glossary.tex} und
+\printfilepath{./preambel/GlossarySymbols.tex}
+kann eine Liste der Abkürzungen, Fachbegriff-Definitionen und Symbole angelegt werden.
+Details hierzu finden sich im \cref{sec:Glossare}.
