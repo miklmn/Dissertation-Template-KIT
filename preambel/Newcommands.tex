@@ -23,6 +23,15 @@
 \newcommand{\insbes}{insbes.\ }
 \newcommand{\bspw}{bspw.\ }
 
+
+%Macro for code inclusions
+\newcommand{\code}[1]{\lstinline|#1|}
+
+% macros for emphasizing text
+\newcommand{\myemph}[1]{\emph{#1}}
+\newcommand{\mydef}[1]{\textbf{#1}}
+\newcommand{\myexcl}[1]{\textbf{#1}}
+
 % Short command for backslash in text mode:
 \newcommand{\bs}{\textbackslash}
 % Short command for printing latex commands (appends backslash in front)
@@ -31,7 +40,7 @@
 \newcommand{\printkeyword}[1]{\enquote{\texttt{#1}}}
 % Formatting file names or file paths
 \newcommand{\printfilepath}[1]{\enquote{\texttt{#1}}}
-% Formatting name of a software
+% Formatting name of a software (in bold)
 \newcommand{\printswname}[1]{\textbf{#1}}
 % Short command for referencing a latex package in the text (adds an index)
 \newcommand{\pkg}[1]{\index{#1}\index{Paket!#1}\texttt{#1}}
@@ -49,18 +58,18 @@
 
 % 1.) Seitliche Kommentare/Abschnitts-Untertitel
 %   a.) Für Verwendung im Text (Float-Variante)
-\newcommand{\partitle}[1]{%
+\newcommand{\floatmarginnote}[1]{%
 \ifthenelse{\boolean{showMarginNotes}}{%if margin notes should be displayed:
 %Variante mit Kapitälchen
-\marginpar[\flushleft{\textcolor{gray}{\textsc{#1}}}]{\flushleft{\textcolor{gray}{\textsc{#1}}}}%
+%\marginpar[\flushleft{\textcolor{gray}{\textsc{#1}}}]{\flushleft{\textcolor{gray}{\textsc{#1}}}}%
 %Variante ohne Kapitälchen
-%\marginpar[\flushleft{\textcolor{gray}{#1}}]{\flushleft{\textcolor{gray}{#1}}}%
+\marginpar[\flushleft{\textcolor{gray}{#1}}]{\flushleft{\textcolor{gray}{#1}}}%
 }{%else
 \relax%
 }}
 
 %   b.) Non-Float-Variante (für Verwendung in Gleichungen):
-\newcommand{\partitlenonfloat}[1]{%
+\newcommand{\nonfloatmarginnote}[1]{%
 \ifthenelse{\boolean{showMarginNotes}}{%if margin notes should be displayed:
 \marginnote[\RaggedRight#1]{\RaggedRight#1}%
 %%Variante mit Kapitälchen (obsolet, s.u.)
@@ -72,31 +81,13 @@
 \relax%
 }}
 
-% Command for margin text with usefull style
-%\newcommand{\marginlabel}[1]{\mbox{}\marginline{\hspace{0pt}\footnotesize\sffamily #1}}%
-\newcommand{\marginlabel}[1]{\marginnote{#1}}%
-
 \newlength{\marginwidth}
 \setlength{\marginwidth}{\marginparwidth}
 \addtolength{\marginwidth}{\marginparsep}
 
 
-%2.) Befehle zum Rumspielen mit Layout:
-%Zusätzliche Seitenumbrüche, die bei Bedarf deaktiviert werden können
-%\newcommand{\mynewpage}{\newpage}
-\newcommand{\mynewpage}{\relax}
-\newcommand{\myspecialpagebreak}{\clearpage}
-%\newcommand{\myspecialpagebreak}{\relax}
-%%
-%
-
 %Breite der Grafiken in einer fbox:
 \newcommand{\linewidthwithoutfbox}{\linewidth-2\fboxsep-2\fboxrule}
-
-\newcommand{\code}[1]{\lstinline|#1|}
-\newcommand{\myemph}[1]{\emph{#1}}
-\newcommand{\mydef}[1]{\textbf{#1}}
-\newcommand{\myexcl}[1]{\textbf{#1}}
 
 
 
@@ -109,7 +100,8 @@
 % Außerdem werden entsprechende includeversion/excludeversion-Macros aufgerufen.
 \newcommand{\showif}[1]{%
 	\ifcsname#1\endcsname%
-		%falls Boolean bereits existiert: nichts tun
+		%falls ein Makro mit diesem Namen bereits existiert: Fehlermeldung ausgeben
+		\GenericError{}{A macro with the name #1 is already defined somewhere else! Please use another name}{}{}%
 	\else%
 		\newboolean{#1}%
 	\fi%
@@ -118,7 +110,8 @@
 }
 \newcommand{\hideif}[1]{%
 	\ifcsname#1\endcsname%
-		%falls Boolean bereits existiert: nichts tun
+		%falls ein Makro mit diesem namen bereits existiert: Fehlermeldung ausgeben
+		\GenericError{}{A macro with the name #1 is already defined somewhere else! Please use another name}{}{}%
 	\else%
 		\newboolean{#1}%
 	\fi%
