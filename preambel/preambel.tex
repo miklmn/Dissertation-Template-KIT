@@ -199,7 +199,8 @@
 \IfPackageLoaded{marginnote}{%
 \renewcommand*{\raggedleftmarginnote}{\RaggedRight}
 \renewcommand*{\raggedrightmarginnote}{\RaggedRight}
-\renewcommand*{\marginfont}{\color{gray}\sffamily\scshape}
+%\renewcommand*{\marginfont}{\color{gray}\sffamily\scshape}% serifenlos, mit Kapitälchen
+\renewcommand*{\marginfont}{\color{gray}}% ohne Kapitälchen
 }
 
 
@@ -1377,7 +1378,7 @@ afterskip=\myparagraphafterskip%
    aboveskip = \myaboveskip,
    belowskip = \mybelowskip,
    captionskip = \mycaptionskip,
-   %skip = \mycaptionskip,
+   skip = \mycaptionskip,
    font = {small,rm},
    labelfont = {small,bf},
    %format = plain, % oder 'hang'
@@ -2140,11 +2141,12 @@ afterskip=\myparagraphafterskip%
 %]{acronym}
 
 
+\IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
+
 % Auszufuehrende Befehle  ------------------------------------------------
 %% Verschoben in Header.tex
 %\IfDefined{makeindex}{\makeindex[options=-s preambel/IndexStyle.tex]}
 %\IfDefined{makenomenclature}{\makenomenclature}
-%\IfPackageLoaded{minitoc}{\IfElseUnDefined{chapter}{\dosecttoc}{\dominitoc}}
 %\listfiles
 %------------------------------------------------------------------------
 
