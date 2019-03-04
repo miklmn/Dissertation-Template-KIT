@@ -1494,6 +1494,28 @@ afterskip=\myparagraphafterskip%
 \makeatother
 
 
+% Workaround for correct setting of the list of listings taken from
+% https://tex.stackexchange.com/questions/319372/customize-list-of-listings/319374#319374
+\makeatletter
+\AtBeginDocument{%
+\renewcommand\lstlistoflistings{\bgroup
+	\let\contentsname\lstlistlistingname
+	%\def\l@lstlisting##1##2{\@dottedtocline{1}{1.5em}{2.3em}{\bfseries L ##1}{##2}}
+	\def\l@lstlisting##1##2{\@dottedtocline{1}{0em}{2.3em}{##1}{##2}}
+	\let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{lol}}%
+	\tableofcontents 
+	\addcontentsline{toc}{chapter}{\lstlistlistingname} % <-- diese Zeile selbst hinzugefügt
+	\egroup}
+}
+\makeatother
+
+%% Workaround for correct setting of the list of listings taken from
+%% https://www.mrunix.de/forums/showthread.php?56028-List-of-Listings
+%% (hat nicht funktioniert):
+%\makeatletter
+%\renewcommand{\l@lstlisting}[2]{\@dottedtocline{1}{0em}{2.3em}{#1}{#2}}
+%\makeatother
+
 
 % Inhalte von List of Figures
 \IfPackageLoaded{subfig}{
