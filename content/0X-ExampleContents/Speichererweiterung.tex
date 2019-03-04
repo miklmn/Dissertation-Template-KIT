@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Speichererweiterung}%
+\index{Speichererweiterung}%
+\label{sec:Speichererweiterung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Sollte bei der Kompilierung die \index{Fehler!TeX capacity exceeded}Fehler-Meldung \enquote{\texttt{TeX capacity exceeded}} kommen,
+bedeutet dies, dass die von der \LaTeX-Distribution vorgesehene Arbeitsspeicherkapazität
+nicht ausreicht, um die Datenmenge zu verarbeiten.
+Wenn im Code kein Fehler vorliegt (z.B. eine vergessene Klammer,
+die ebenfalls für eine solche Fehlermeldung sorgen kann),
+kann dies auch daran liegen, dass die Verarbeitung umfangreicher TiKZ-Bilder oder Bibliographien 
+Zusatzspeicher benötigen.
+Um den Speicher zu erweitern, gibt es zwei Möglichkeiten.
+Zum einen kann man bei jedem Aufruf von \texttt{xelatex} die Optionen zur Speichererweiterung,
+z.B. \printkeyword{-main-memory=500000000}, \printkeyword{-extra-mem-top=500000000}, \printkeyword{-extra-mem-bot=500000000} und ggf. weitere setzen.
+Zum anderen kann man diese Einstellungen ein für alle Male direkt bei den LaTeX-Distributionen setzen.
+
+Unter TeXLive kann die Einstellung in der Datei
+\printfilepath{/Pfad-zur-TeXLive-Installation/texmf.cnf} vorgenommen werden.
+Der Aufruf erfolgt am besten, indem man im Terminal den Befehl \printkeyword{kpsewhich -a texmf.cnf} eintippt.
+In der Datei kann dann beispielsweise folgendes gesetzt werden:
+\begin{lstlisting}[caption={[Einstellungen zur erweiterten Speichernutzung]Einstellungen zur erweiterten Speichernutzung in der Datei \printfilepath{texmf.cnf} bei TeXLive bzw. \printfilepath{xelatex.ini} bei MiKTeX},label={lst:Speichererweiterung}]
+main_memory=5000000
+extra_mem_top=5000000
+extra_mem_bot=5000000
+pool_size=5000000
+buf_size=5000000
+save_size=79999
+\end{lstlisting}
+Der maximal mögliche Wert für \printkeyword{main\_memory} etc. ist \printkeyword{79999999}.
+
+Unter MiKTeX unterscheidet sich die Vorgehensweise je nach dem,
+ob man die Einstellung nur für den aktuellen Benutzer oder
+global für alle Benutzer des Computers machen möchte.
+Im zweiten Fall braucht man Admin-Rechte.
+
+Um die Einstellungen nur für den aktuellen Benutzer zu setzen,
+öffnet man die Windows-Eingabeaufforderung
+(Auf den \printkeyword{Start}-Knopf gehen und \printkeyword{cmd} eintippen)
+und tippt dort \printkeyword{initexmf --edit-config-file=xelatex} ein.
+Um die Einstellungen nur für alle Benutzer zu setzen,
+öffnet man die Windows"=Eingabeaufforderung im Administrator"=Modus
+(dazu auf den Menüeintrag \printkeyword{Eingabeaufforderung} mit der rechten Maustaste anklicken und \printkeyword{Als Administrator ausführen} wählen)
+und tippt dort \printkeyword{initexmf \textbf{--admin} --edit-config-file=xelatex} ein.
+
+Dabei öffnet sich die Datei \printfilepath{xelatex.ini}, in welcher die \og Einstellungen (s. \cref{lst:Speichererweiterung}) gesetzt werden sollten.%
+\footnote{Die Datei \printfilepath{xelatex.ini} mit benutzerübergreifend gültigen Einstellungen befindet sich unter
+\printfilepath{C:\bs Program Files\bs MiKTeX 2.9\bs miktex\bs config}.
+Die dort gesetzten Einstellungen gelten, sofern der einzelne Benutzer keine eigenen Einstellungen definiert hat.
+Die benutzerspezifische Datei, deren Einstellungen die globalen Einstellungen überrufen können, befindet sich unter
+\printfilepath{C:\bs Users\bs <Benutzername>\bs AppData\bs Roaming\bs MiKTeX\bs 2.9\bs miktex\bs config}.}
+
+Nach Speicherung der Datei ist bei der benutzerspezifischen Anpassung in der Eingabeaufforderung der Befehl
+\printkeyword{initexmf --dump=xelatex} aufzurufen.
+Im Falle einer benutzerübergreifenden Anpassung ist der Befehl
+\printkeyword{initexmf \textbf{--admin} --dump=xelatex}
+aufzurufen.
