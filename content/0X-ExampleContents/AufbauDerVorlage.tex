@@ -28,15 +28,16 @@ Die entsprechenden Einstellungen können im TeXnicCenter über den Menüeintrag 
 
 Die Hauptdatei ist die Datei \printfilepath{Diss.tex}.
 Sie ist verhältnismäßig kurz, da die Hauptinhalte in andere Dateien ausgelagert sind, welche mit Hilfe des \lc{input\{\}} \bzw des \lc{include\{\}}-Befehls eingebunden werden.
-Die Hauptdatei besteht im Wesentlichen aus vier Abschnitten.
+Die Hauptdatei besteht im Wesentlichen aus drei Abschnitten.
 Im ersten stehen die sogenannten \enquote{Magic comments}, mit deren Hilfe manche \LaTeX-IDEs sich selbst vorkonfigurieren können.
 Sie fangen mit \enquote{\texttt{\%~!TeX}} an und geben an, welche Kodierung für die Dateien verwendet wird und welche Programme für die Kompilierung des Quelltextes und der Bibliografie verwendet werden sollen.
 Außerdem kann hier angegeben werden, welche Sprache für die Rechtschreibprüfung innerhalb der IDE verwendet werden soll.
+Aktuell sind sie durch ein weiteres Prozentzeichen deaktiviert, da es keine dokumentierte Möglichkeit gibt, Aufruf für Glossar-Erzeugung miteinzubinden.
+
 Im zweiten Abschnitt wird die Header-Datei eingebunden.
 In dieser wird die verwendeten Dokumentklasse (inklusive Papierformat und Schriftgröße) definiert, sowie weitere Dateien eingebunden,
-in welchen die zu landenden Pakete, Layout"=Parameter sowie alle weiteren Einstellungen definiert und konfiguriert werden.
-Im dritten Teil können mit Hilfe von Schaltern einzelne Teile der Arbeit aus- und wieder eingeblendet werden, ohne dass sie auskommentiert werden müssen.
-Im vierten Teil werden nun die einzelnen Inhalte der Arbeit eingebunden.
+in welchen die zu landenden Pakete, Layout"=Parameter sowie alle weiteren Einstellungen und Makros definiert und konfiguriert werden.
+Im dritten Teil werden nun die einzelnen Inhalte der Arbeit eingebunden.
 
 Das entstehende PDF heißt genauso wie die Hauptdatei.
 
@@ -92,15 +93,17 @@ Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{
 Die wichtigsten Einstellungen, die auf jeden Fall geändert werden müssen,
 finden sich in der Datei \printfilepath{./preambel/AlleAngaben.tex}.
 Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
-Außerdem wird hier die \index{Sprache!Hauptsprache}Hauptsprache der Arbeit gesetzt, was sich an mehreren Stellen auswirkt.
+
+Eine weitere wichtige Datei ist \printfilepath{./preambel/AlleSchalter.tex}.
+Darin wird u.a. die Hauptsprache \index{Sprache!Hauptsprache}Hauptsprache des Manuskriptes gesetzt, was sich an mehreren Stellen auswirkt.
 So wird beispielsweise bei \index{Sprache!Umstellung}Umstellung auf Englisch als Hauptsprache
 \enquote{Danksagung} durch \enquote{Acknowledgments},
 \enquote{Inhaltsverzeichnis} durch \enquote{Contents}
 \usw ersetzt.
 Auch die Regeln der \index{Silbentrennung!Allgemeine Einstellung}Silbentrennung werden entsprechend angepasst.
-
-Neben diesen Einstellungen werden in der Datei \printfilepath{./preambel/AlleAngaben.tex} auch Einstellungen,
-die für die Vorbereitung des Manuskriptes zum Druck beim \gls{ac:KSP} wichtig sind, gesetzt.
+Durch das Umsetzen der Schalter \lc{hideif} \bzw. \lc{showif} können hier Teile der Arbeit aus- und wieder eingeblendet werden, ohne dass sie auskommentiert werden müssen.
+Neben diesen Einstellungen befinden sich in der Datei \printfilepath{./preambel/AlleSchalter.tex} auch Einstellungen,
+die für die Vorbereitung des Manuskriptes zum Druck beim \gls{ac:KSP} wichtig sind.
 Insbesondere können hier
 \begin{itemize*}
 \item mit der Einstellung \printkeyword{showFrame}

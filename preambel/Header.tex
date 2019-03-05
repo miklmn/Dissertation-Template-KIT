@@ -72,24 +72,22 @@
 %%% Wichtige Befehle für weitere Präambel-Dateien
 \input{preambel/preambel-commands.tex}
 
-%%%%%%%%%%%%%%%% HIER EINSTELLEN, OB ENGLISCH ODER DEUTSCH USW.
-%%% Angaben zum Dokument (Autor, Titel etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%     WICHTIG !     %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%  HIER EINSTELLEN, OB ENGLISCH ODER DEUTSCH USW.  %%%%%%%%
+%%%%%%%%%%%%         SOWIE WAS UND WIE ANGEZEIGT WIRD         %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preambel/AlleSchalter.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%     WICHTIG  !    %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%      HIER ANGABEN ZUM AUTOR, TITEL, ETC     %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{preambel/AlleAngaben.tex}
 
 %%% Einstellungen zu Seitenlayout, Abständen etc.
 \input{preambel/settings.tex}
 
-%%% Einstellungen zu Farben etc.
+%%% Definition der Farben etc.
 \input{preambel/ColorSettings.tex}
-
-
-
-%% Es werden jeweils eines der begrenzt verfügbaren TeX-\writes verwendet für
-% Table of Contents
-% List of figures
-% List of tables
-% List of listings
-% List of theorems
 
 %%% Einstellungen für KOMA-Script
 %%% Hier werden die KOMAoptions gesetzt wie z.B. Ränder, Kopfzeilen, einseitig/zweiseitig, Absatzabstände, Inhaltsverzeichnis usw.
@@ -97,14 +95,14 @@
 \input{preambel/KomaOptions.tex}
 
 %% Präambel Teil II
+%% Einbindung sämtlicher Pakete
 \input{preambel/preambel.tex}
 
-%%%Alle Pakete, die ich selbst eingebunden habe
+%% Zusatzpakete
 \input{preambel/MyPackages.tex}
 
-%% Mathe-Pakete laden, Sondersymbole und Mathe-Macros definieren
+%% Mathe-Pakete sowie Definition der Sondersymbole und sonstiger Mathe-Macros
 \input{preambel/Math}
-
 
 %% Hauptsprache des Dokuments setzen
 \ifthenelse{\boolean{iesenglishs}}{%

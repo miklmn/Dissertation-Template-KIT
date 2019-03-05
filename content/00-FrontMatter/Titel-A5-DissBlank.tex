@@ -12,7 +12,7 @@
 		%\huge%
 		\LARGE%
  		\centering%
-		\textbf{\WorktitleDivided}
+		\textbf{\WorkTitleDivided}
  	\end{textblock}
 
 %%%%%%%%%%%% TYP DER ARBEIT
@@ -29,11 +29,7 @@
 		der \Department\texorpdfstring{\\}{}%
 		des Karlsruher Instituts für Technologie (KIT)%
 		\vspace{0.75\baselineskip}\\%
-\ifthenelse{\boolean{istgenehmigt}}{%
-		\textbf{genehmigte}%
-}{%
-		\textbf{vorgelegte}% 
-}%
+		\textbf{\DissStatus}%
 		\vspace{0.5\baselineskip}\\%
 		\Large%
 		{Dissertation}%
@@ -42,7 +38,7 @@
 		von%
 		\vspace{0.5\baselineskip}\\%
 		\Large%
-		\textbf{\Authorname}%
+		\textbf{\AuthorName}%
 		\vspace{0.5\baselineskip}\\%
 		\normalsize%
 		aus \PlaceOfBirth%
@@ -56,8 +52,8 @@
 	\setlength{\tabcolsep}{0pt}
 		\begin{tabularx}{\columnwidth}{x@{\extracolsep{20pt}}l}
 			Tag der mündlichen Prüfung: & \ExamDate\texorpdfstring{\\}{}
-			Erster Gutachter: & \Reviewer\texorpdfstring{\\}{}
-			Zweiter Gutachter: & \Supervisor\texorpdfstring{\\}{}
+			Erster Gutachter: & \MainAdvisor\texorpdfstring{\\}{}
+			Zweiter Gutachter: & \CoAdvisor\texorpdfstring{\\}{}
 		\end{tabularx}
  	\end{textblock}
 	

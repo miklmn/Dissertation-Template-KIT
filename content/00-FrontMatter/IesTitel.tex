@@ -1,7 +1,7 @@
 
 %Setze Titelseite in der IES-Art
 \newcommand{\iestitle}{
-	%\extratitle{\Arbeitsart \\ \Arbeitstitel}
+	%\extratitle{\TypeOfThesis \\ \WorkTitle}
 	\titlehead{
 		\vspace*{-40pt}
 		\begin{tabular}{ll}
@@ -20,19 +20,19 @@
 		\hline
 		\end{tabular}
 	}
-	\subject{\vspace*{3cm}\Arbeitsart}
-	\title{\Arbeitstitel}
-	\author{\vspace*{1cm}\\Vorgelegt von:\\ \Verfasserkomplett}
-	\publishers{\vspace*{3cm}Betreut von:\\ \Hauptreferent \\ \Korreferent \\[-2cm]}
+	\subject{\vspace*{3cm}\TypeOfThesis}
+	\title{\WorkTitle}
+	\author{\vspace*{1cm}\\Vorgelegt von:\\ \AuthorFull}
+	\publishers{\vspace*{3cm}Betreut von:\\ \MainAdvisor \\ \CoAdvisor \\[-2cm]}
 	\uppertitleback{%#1 #2 am\\
 	            \Uni \\
 	            \Institut \\
 	            \Lehrstuhl \\
-	            Thema: \Arbeitstitel \\
-	            Autor: \Verfasser}
+	            Thema: \WorkTitle \\
+	            Autor: \AuthorFull}
 	\lowertitleback{\Adresse}
 	%\dedication{\Widmung}
-	\date{\Ort, den \Abgabedatum}
+	\date{\Signplace, den \Submissiondate}
 	\maketitle
 }
 

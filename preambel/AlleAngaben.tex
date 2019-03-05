@@ -1,72 +1,10 @@
 % ******  Angaben zur Arbeit ******
 
 
-%% Booleans, mit deren Hilfe wichtige Festlegungen gemacht werden.
-%% Belegung mit "true" und "false" weiter unten
-\newboolean{iesenglishs}     % Hauptsprache der Arbeit: Englisch oder Deutsch
-\newboolean{useiosblogo}     % Soll zusätzlich das IOSB-Logo verwendet werden
-\newboolean{isdissertation}  % Ist die Arbeit eine Dissertation?
-\newboolean{printMuster}     % Die Seiten mit dem Wort "Muster" bedrucken
-\newboolean{coloredlinks}    % Sollen Links farbig dargestellt werden (oder schwarz für den Druck)?
-\newboolean{coloredlistings} % Sollen Listings farbig dargestellt werden (oder schwarz für den Druck)?
-\newboolean{useCMYKcolors}   % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
-\newboolean{istgenehmigt}    % Bei Dissertationen: handelt es sich um die genehmigte Version?
-\newboolean{showFrame}       % Sollen die Satzspiegel-Ränder angezeigt werden?
-\newboolean{showGrid}        % Soll ein Gitter angezeigt werden?
-\newboolean{showMarginNotes} % Sollen Randnotizen angezeigt werden?
-
-%% Hier true oder false auswählen!!!
-\setboolean{iesenglishs}{false}
-\setboolean{useiosblogo}{true}
-\setboolean{isdissertation}{true}
-\setboolean{printMuster}{false}
-\setboolean{coloredlinks}{true}
-\setboolean{coloredlistings}{true}
-\setboolean{useCMYKcolors}{false}
-\setboolean{istgenehmigt}{false}
-\setboolean{showFrame}{false}
-\setboolean{showGrid}{false}
-\setboolean{showMarginNotes}{true}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%  Macros for hiding individual chapters, remarks, TODOs %%%%
-%%%%  use showif{} or hideif{} for showing or hiding parts  %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\showif{showCoverPage}
-\showif{showCV}
-\showif{showAbstractEN}
-\showif{showAbstractDE}
-\showif{showAcknowledgments}
-\showif{showContents}
-\showif{showNotation}
-\showif{showExamples}
-\showif{showIntro}
-\showif{showRelatedWork}
-\showif{showConcept}
-\showif{showSystem}
-\showif{showEvaluation}
-\showif{showConclusion}
-\showif{showOutlook}
-\showif{showBackmatter}
-\showif{showBibliography}
-\showif{showOwnPublications}
-\showif{showOwnPatents}
-\showif{showSupervisedTheses}
-\showif{showListOfFigures}
-\showif{showListOfTables}
-\showif{showListOfListings}
-\showif{showListOfAcronyms}
-\showif{showListOfSymbols}
-\showif{showNomenclature}
-\showif{showGlossary}
-\showif{showIndex}%
-\showif{showAppendix}
-\showif{showTODOs}
-
-
-% Titel der Arbeit
-\newcommand{\Worktitle}{Hier den kompletten Titel der Arbeit angeben}
-\newcommand{\WorktitleDivided}{Hier den manuell\\umbrochenen Titel der Arbeit\\für die Titelseite angeben}
+% Titel der Arbeit (u.a. für PDF-Lesezeichen und Dokumenteigenschaften)
+\newcommand{\WorkTitle}{Hier den kompletten Titel der Arbeit angeben}
+% Und nochmal für die Anzeige auf der Titelseite, ggf. mit "schön" gesetzten manuellen Zeilenumbrüchen)
+\newcommand{\WorkTitleDivided}{Hier den manuell\\umbrochenen Titel der Arbeit\\für die Titelseite angeben}
 
 % Typ der Arbeit angeben
 \newcommand{\TypeOfThesis}{%
@@ -85,19 +23,14 @@ Dissertation%
 %Technical report%
 }
 
-\newcommand{\Authortitle}{Dipl.-Ing.~}
+\newcommand{\AuthorTitle}{Dipl.-Ing.~}
 \newcommand{\AuthorFirstname}{Max}
 \newcommand{\AuthorSurname}{Mustermann}
-\newcommand{\Authorname}{\AuthorFirstname \  \AuthorSurname}
-\newcommand{\AuthorFull}{\Authortitle \Authorname}
+
+\newcommand{\AuthorName}{\AuthorFirstname \  \AuthorSurname}
+\newcommand{\AuthorFull}{\AuthorTitle \  \AuthorFirstname \  \AuthorSurname}
+
 \newcommand{\PlaceOfBirth}{Kiel}
-\newcommand{\DocDegreeVorgelegt}{Doktors der Ingenieurwissenschaften /\newline Doktors der Naturwissenschaften}
-\newcommand{\DocDegreeGenehmigt}{Doktors der Ingenieurwissenschaften}
-\ifthenelse{\boolean{istgenehmigt}}{%
-		\newcommand{\DocDegree}{\DocDegreeGenehmigt}
-}{%
-		\newcommand{\DocDegree}{\DocDegreeVorgelegt}
-}%
 
 \newcommand{\Uni}{Karlsruhe Institut für Technologie (KIT)}
 \newcommand{\Department}{Fakultät für Informatik}
@@ -108,33 +41,18 @@ Dissertation%
 
 \newcommand{\MainAdvisor}{Prof.~Dr.-Ing.~habil.~Jürgen~Beyerer}
 \newcommand{\CoAdvisor}{Zweitgutachter}
-\newcommand{\Reviewer}{\MainAdvisor}
-\newcommand{\Supervisor}{\CoAdvisor}
 
+%% Umschaltung zwischen "vorgelegt" und "genehmigt":
+\newcommand{\DissStatus}{vorgelegte}
+%\newcommand{\DissStatus}{genehmigte}
 
-\newcommand{\Submissiondate}{\today} %entsprechend ändern
-\newcommand{\Signplace}{Karlsruhe}
+%% bei Vorlage
+\newcommand{\DocDegree}{Doktors der Ingenieurwissenschaften /\newline Doktors der Naturwissenschaften}
+%% nach Genehmigung:
+%\newcommand{\DocDegree}{Doktors der Ingenieurwissenschaften}
+%\newcommand{\DocDegree}{Doktors der Naturwissenschaften}
+
 \newcommand{\ExamDate}{12.12.2017}
 
-%\newcommand{\Widmung}{Für meine Eltern}
-
-\newcommand{\Strassenadresse}{Strassenadresse hier einfügen\\PLZ und Ort}
-\newcommand{\eMailAdresse}{test@test.de}
-\newcommand{\Adresse}{
-\Verfasser \\
-\Strassenadresse
-}
-
-
-\newcommand{\Arbeitsart}{\TypeOfThesis}
-\newcommand{\Arbeitstitel}{\Worktitle}
-\newcommand{\Verfassertitel}{\Authortitle}
-\newcommand{\Verfasservorname}{\AuthorFirstname}
-\newcommand{\Verfassernachname}{\AuthorSurname}
-\newcommand{\Verfasser}{\Verfasservorname \  \Verfassernachname}
-\newcommand{\Verfasserkomplett}{\Verfassertitel \Verfasser}
-\newcommand{\Abgabedatum}{\Submissiondate}
-\newcommand{\Ort}{\Signplace}
-\newcommand{\Hauptreferent}{\MainAdvisor}
-\newcommand{\Korreferent}{\CoAdvisor}
-\newcommand{\Betreuer}{\Supervisor}
+%\newcommand{\Submissiondate}{\today} %entsprechend ändern
+%\newcommand{\Signplace}{Karlsruhe}

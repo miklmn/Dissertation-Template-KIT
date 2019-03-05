@@ -27,18 +27,24 @@ Dieses Makro hat drei obligatorische Argumente, nämlich das
 \item das Akronym und
 \item die Langform.
 \end{itemize*}
+
 Als Konvention wird der Marke eines Akronyms ein \printkeyword{ac:} als Präfix vorangestellt.
+
+\begin{latex}[caption={Definition einer Abkürzung},label={lst:SimpleAcronymEntry}]
+\newacronym{ac:MSA}{MSA}{mein schönes Akronym}
+\end{latex}
+
 Optional können Pluralformen, sowie Genitiv-, Dativ- und Akkusativ-Formen 
 der Abkürzung und des eigentlichen Begriffs angegeben werden,
 sofern sie im Quelltext verwendet werden und sich von der Grundform unterscheiden.
 Außerdem kann mit dem Schlüsselwort \printkeyword{description}
-eine abweichende Version der Langform für die Verwendung im Abkürzungsverzeichnis definiert werden.
+eine abweichende Version der Langform für die Verwendung im Abkürzungsverzeichnis definiert werden:
 
-Eine Abkürzung wird folgendermaßen definiert (Angaben in eckigen Klammern und auskommentierte Zeilen sind optional):
-\begin{latex}[caption={Definition einer Abkürzung},label={lst:AcronymEntry}]
+\begin{latex}[caption={Definition einer Abkürzung mit Zusatzangaben},label={lst:AdvancedAcronymEntry}]
 \newacronym[shortgenitive={MSAs},%
             genitive={meines schönen Akronyms},%
-            %shortdative={MSA},%
+            %shortdative={MSA},% <- entspriht der Hauptform 
+            %            % ==> keine Zusatzdefinition nötig!
             dative={meinem schönen Akronym},%
             %shortaccusative={MSA},%
             %accusative={mein schönes Akronym},%
@@ -154,8 +160,8 @@ eine Stelle im Text mit einem Glossar-Begriff zu verlinken, ohne diesen explizit
 Mit \lc{glsaddall} kann man alle definierte Glossar-Einträge ins Glossar aufnehmen,
 ohne sie im Text des Dokumentes referenziert zu haben.
 
-Die Verwendung des oben definierten Glossar-Eintrages im Text mit dem Befehl
-\lc{glsgen\{gls:Glossar\}} mündet im Text in Erwähnung des \glsgen{gls:Glossar}.
+Die Verwendung des oben definierten Eintrages im Text mit dem Befehl
+\lc{glsgen\{gls:Glossar\}} mündet im Text in einer Erwähnung des \glsgen{gls:Glossar}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -209,5 +215,5 @@ Die Einbindung eines automatisch erzeugten Symbolverzeichnisses ist am Ende des 
 Es passiert in der Datei
 \texttt{./content/Inhalt-BackMatter.tex}.
 Bei Bedarf lässt sich diese Einbindung auch an eine geeignete Stelle in den Frontmatter verschieben.
-Dabei ist darauf zu achten, dass in der Hauptdatei \texttt{Diss.tex}
+Dabei ist darauf zu achten, dass in der Datei \texttt{preambel/AlleSchalter.tex}
 die Einblendung durch \lc{showif\{showListOfSymbols\}} aktiviert ist.
