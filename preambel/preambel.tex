@@ -530,12 +530,6 @@ verbose,
 
 %% Bilder und Graphiken ==================================================
 
-%%% Doc: only dtx Package
-% float has to be loaded after listings package, see
-% https://tex.stackexchange.com/questions/316830/float-package-screws-up-list-of-listing-format-style/316843#316843
-%\usepackage{float}             % Stellt die Option [H] fuer Floats zur Verfgung  % Muss vor wrapfig
-											%% sorgt für float@addtolists-Warnung mit
-\usepackage{floatrow}           %for better aligning images and captions
 
 %%% Doc: No Documentation
 %\usepackage{latexrelease}     % wird wohl vom flafter gebraucht
@@ -630,22 +624,6 @@ verbose,
 
 %% pstool hat aber noch tolle Unterstützung für Matlab-Figures
 %\fi
-
-%%% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf
-\usepackage[%
-%	outercaption,%	(default) caption is placed always on the outside side
-%	innercaption,% caption placed on the inner side
-%	leftcaption,%  caption placed on the left side
-	rightcaption,% caption placed on the right side
-%	wide,%			caption of float my extend into the margin if necessary
-%	margincaption,% caption set into margin
-	ragged,% caption is set ragged
-]{sidecap}
-
-\renewcommand\sidecaptionsep{2em}
-%\renewcommand\sidecaptionrelwidth{20}
-\sidecaptionvpos{table}{c}
-\sidecaptionvpos{figure}{c}
 
 
 
@@ -1371,7 +1349,7 @@ afterskip=\myparagraphafterskip%
    %justification = centering, % zentriert
    justification = justified, % Blocksatz
    singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
-   position = bottom %top
+   position = top %bottom
 }
 \captionsetup[lstlisting]{
    margin = 0pt,
@@ -1424,32 +1402,13 @@ afterskip=\myparagraphafterskip%
  }
 }
 
-% Aendern der Bezeichnung fuer Abbildung und Tabelle
-% \addto\captionsngerman{% "captionsgerman" fuer alte  Rechschreibung
-%   \renewcommand{\figurename}{Abb.}%
-%   \renewcommand{\tablename}{Tab.}%
-% }
-
-
-%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/mcaption/mcaption.pdf
-%% Captions in Margins
-%\usepackage[%
- 	%top,%
- 	%bottom%
- %]{mcaption}
-
-%%% Example:
-% \begin{figure}
-%   \begin{margincap}[short caption]{margin caption}
-%     \centering
-%     \includegraphics{picture}
-%   \end{margincap}
-% \end{figure}
-
-
-
 % \numberwithin{figure}{chapter} %Befehl zum Kapitelweise Nummerieren der Bilder, setzt `amsmath' vorraus
 % \numberwithin{table}{chapter}  %Befehl zum Kapitelweise Nummerieren der Tabellen, setzt `amsmath' vorraus
+
+%for better aligning images and captions
+% has to be loaded after call of \captionsetup
+\usepackage{floatrow}
+\floatsetup[table]{style=plain,capposition=TOP}
 
 %% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
 
