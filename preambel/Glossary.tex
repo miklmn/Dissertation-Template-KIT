@@ -206,6 +206,9 @@
 %% Achtung: Falls die Begriffe im Text nicht mit \gls{label} referenziert werden:
 %% Alle Begriffe am Anfang des Dokuments zur Liste hinzufügen
 %\AtBeginDocument{%
-	%\glsadd{#1}%
+	%% einzeln:
+	%\glsadd{Begriff}%
+	%% oder alle zusammen:
+	%\glsaddall%
 %}%
 %% Problem: erzeugt eine leere Seite am Anfang des Dokumentes

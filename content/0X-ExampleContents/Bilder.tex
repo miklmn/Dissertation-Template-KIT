@@ -72,7 +72,7 @@ so dass nur noch eine einzige Zeile herumgeschoben werden muss.
 %
 Ein Beispiel für die Einbindung eines Bildes im Binärformat ist in \cref{lst:binary-image} angeführt:
 
-\begin{latex}[caption={Einbindung einer Binärgrafik in LaTeX},label={lst:binary-image}]
+\begin{lstlisting}[caption={Einbindung einer Binärgrafik in LaTeX},label={lst:binary-image},language={[LaTeX]TeX},float={htbp}]
 \begin{figure}[h]%
   \centering%
   \includegraphics[width=\linewidth]{Bildpfad/Dateiname}%
@@ -80,7 +80,7 @@ Ein Beispiel für die Einbindung eines Bildes im Binärformat ist in \cref{lst:b
            Eine tolle sehr lange Abbildungsunterschrift}%
   \label{fig:my-binary-image}%
 \end{figure}
-\end{latex}
+\end{lstlisting}
 
 Die Angabe des Pfades kann sowohl absolut als auch relativ
 zum Verzeichnis der Hauptdatei oder zu einem der Pfade angegeben werden,
@@ -131,7 +131,7 @@ referenziert werden.
 
 Der Beispielcode dafür ist in \cref{lst:subfigures} dargestellt.
 
-\begin{latex}[caption={Unterabbildungen in LaTeX},label={lst:subfigures}]
+\begin{lstlisting}[caption={Unterabbildungen in LaTeX},label={lst:subfigures},language={[LaTeX]TeX},float={htbp}]
 \begin{figure}[h]%
 	\centering%
 	\subfloat[Unterbezeichnung 1)]{%
@@ -156,7 +156,7 @@ Der Beispielcode dafür ist in \cref{lst:subfigures} dargestellt.
 \caption[Kurzversion]{Langversion der Bildunterschrift}%
 \label{fig:MeinGanzesBild}%
 \end{figure}
-\end{latex}
+\end{lstlisting}
 
 Man beachte die abschließenden Prozent-Zeichen am Ende jeder Zeile!
 
@@ -173,8 +173,8 @@ es hervorragende Dokumentation \parencites{Tantau2013}{Feuersaenger2014}.
 Mit \gls{gls:tikz} und \gls{gls:pgfplots} lassen sich viele gute Sachen machen.
 
 
-Der Code für die Einbindung einer \gls{gls:tikz}-Grafik sieht folgendermaßen aus:
-\begin{latex}[caption={Einbindung einer TikZ-Zeichnung in LaTeX},label={lst:tikz-figure}]
+Der Code für die Einbindung einer \gls{gls:tikz}-Grafik steht in \cref{lst:tikz-figure}.
+\begin{lstlisting}[caption={Einbindung einer TikZ-Zeichnung in LaTeX},label={lst:tikz-figure},language={[LaTeX]TeX},float={htbp}]
 \begin{figure}[h]%
   \centering%
   \tikzsetnextfilename{TikZ-Bild}%
@@ -185,7 +185,7 @@ Der Code für die Einbindung einer \gls{gls:tikz}-Grafik sieht folgendermaßen a
            Eine tolle sehr lange Abbildungsunterschrift}%
   \label{fig:my-tikz-figure}%
 \end{figure}
-\end{latex}
+\end{lstlisting}
 
 Eine Skalierung auf die volle Seitenbreite oder ein vielfaches davon im Falle von Unterabbildungen kann bei Bedarf mit Hilfe der Anweisung
 \texttt{\bs resizebox\{\bs textwidth\}\{!\}\{...\}}
@@ -212,7 +212,7 @@ als auch eine CMYK"=Definition für den Offset-Druck haben.%
 \footnote{Bei Erstellung der Manuskriptversionen
 für die Online-Veröffentlichung bzw. für den Offset-Druck
 ist auf die korrekte Einstellung der Option \printkeyword{useCMYKcolors}
-in der Datei \printfilepath{preambel/AlleAngaben.tex} zu achten
+in der Datei \printfilepath{preambel/AlleSchalter.tex} zu achten
 (\printkeyword{false} für die Online-Veröffentlichung und \printkeyword{true} für den Druck!}
 
 \begin{figure}[hp]%
