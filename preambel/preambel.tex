@@ -77,7 +77,7 @@
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/required/babel/babel.pdf
 % Language setting.
 % Main document language is listed at last
-\ifthenelse{\boolean{iesenglishs}}%
+\ifthenelse{\boolean{englishAsMainLanguage}}%
 {\usepackage[ngerman,english]{babel}}%
 {\usepackage[english,ngerman]{babel}}
 
@@ -377,7 +377,7 @@ verbose,
 %%% Verweise =============================================================
 %
 %%% Doc: Documentation inside dtx File
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 		\usepackage[english]{varioref} % Intelligente Querverweise
 }{%
 		\usepackage[ngerman]{varioref} % Intelligente Querverweise
@@ -1338,8 +1338,8 @@ afterskip=\myparagraphafterskip%
    belowskip = \mybelowskip,
    captionskip = \mycaptionskip,
    %skip = \mycaptionskip,
-   font = {small,rm},
-   labelfont = {small,bf},
+   font = {footnotesize,rm},
+   labelfont = {footnotesize,bf},
    %format = plain, % oder 'hang'
    format = hang, %zweite und weitere Zeilen einrücken (an die erste ausrichten)
    indention = 0em,  % Einruecken der Beschriftung
@@ -1356,8 +1356,8 @@ afterskip=\myparagraphafterskip%
    belowskip = \mybelowskip,
    captionskip = \mycaptionskip,
    %skip = \mycaptionskip,
-   font = {small,rm},
-   labelfont = {small,bf},
+   font = {footnotesize,rm},
+   labelfont = {footnotesize,bf},
    %format = plain, % oder 'hang'
    format = hang, %zweite und weitere Zeilen einrücken (an die erste ausrichten)
    indention = 0em,  % Einruecken der Beschriftung
@@ -1374,8 +1374,8 @@ afterskip=\myparagraphafterskip%
    belowskip = \mybelowskip,
    captionskip = \mycaptionskip,
    skip = \mycaptionskip,
-   font = {small,rm},
-   labelfont = {small,bf},
+   font = {footnotesize,rm},
+   labelfont = {footnotesize,bf},
    %format = plain, % oder 'hang'
    format = hang, %zweite und weitere Zeilen einrücken (an die erste ausrichten)
    indention = 0em,  % Einruecken der Beschriftung
@@ -1403,8 +1403,8 @@ afterskip=\myparagraphafterskip%
    captionskip = \mysubcaptionskip, %Glue placed between the sub-float and the caption (default: 4pt)
    %skip = \mycaptionskip,
    %topadjust=0pt, %Extra glue added to 'captionskip' when above the sub-float (default: 0pt)
-   font = {small,rm},
-   labelfont = {small,bf},
+   font = {footnotesize,rm},
+   labelfont = {footnotesize,bf},
    %format = plain, % oder 'hang'
    format = hang, %zweite und weitere Zeilen einrücken (an die erste ausrichten)
    indention = 0em,  % Einruecken der Beschriftung
@@ -1505,7 +1505,7 @@ afterskip=\myparagraphafterskip%
 %% geht nur grau
 \ifthenelse{\boolean{printMuster}}%
 {\usepackage{draftwatermark}%
-\SetWatermarkText{MUSTER}}{}
+\SetWatermarkText{\TransMuster}}{}
 
 
 %% PW: Todo-Liste. Braucht anscheinend eines der begrenzt verfügbaren TeX-\writes
@@ -1815,7 +1815,7 @@ afterskip=\myparagraphafterskip%
 \renewcommand*{\labelnamepunct}{\addcolon\addspace}
 
 %% Vergrößerung des hängenden Einzuges
-\setlength{\bibhang}{5em}
+%\setlength{\bibhang}{5em}
 %\addtolength{\bibhang}{2em}
 
 
@@ -1842,8 +1842,8 @@ afterskip=\myparagraphafterskip%
      {\setlength{\labelwidth}{\labelalphawidth}%
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
-      \addtolength{\leftmargin}{2\labelsep}%
-      \setlength{\itemindent}{-\labelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      %\setlength{\itemindent}{-\labelsep}%
       \setlength{\itemsep}{\bibitemsep}%
       \setlength{\parsep}{\bibparsep}%
       %\addtolength{\bibhang}{3em}%
@@ -1864,8 +1864,8 @@ afterskip=\myparagraphafterskip%
      {\setlength{\labelwidth}{\labelnumberwidth}%
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
-      \addtolength{\leftmargin}{2\labelsep}%
-      \setlength{\itemindent}{-\labelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      %\setlength{\itemindent}{-\labelsep}%
       \setlength{\itemsep}{\bibitemsep}%
       \setlength{\parsep}{\bibparsep}%
       %\addtolength{\bibhang}{3em}%
@@ -1907,7 +1907,7 @@ afterskip=\myparagraphafterskip%
 
 \IfPackageLoaded{backref}%
 {
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 	\def\backrefpagesname{pages}%
 	\def\backrefsectionsname{sections}%
 	\def\backrefsep{, }%
@@ -1941,7 +1941,7 @@ afterskip=\myparagraphafterskip%
 	  {}%
 		\else%
 		\hfill\mbox{%
-   		\ifthenelse{\boolean{iesenglishs}}{p.~}{S.~}%%
+   		\ifthenelse{\boolean{englishAsMainLanguage}}{p.~}{S.~}%%
 			#2}%
    	\fi%
 		}
@@ -1949,7 +1949,7 @@ afterskip=\myparagraphafterskip%
 
 
 \usepackage{cleveref}
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 	\crefname{chapter}{Chapter}{Chapters}
 	\crefname{section}{Section}{Sections}
 	\crefname{subsection}{Section}{Sections}
@@ -2093,7 +2093,7 @@ afterskip=\myparagraphafterskip%
 
 %%% PW Muster quer drüber
 %\ifthenelse{\boolean{printMuster}}%
-%{\ifthenelse{\boolean{iesenglishs}}%
+%{\ifthenelse{\boolean{englishAsMainLanguage}}%
 %{\makeatletter%
 %\AddToShipoutPicture{%
             %\setlength{\@tempdimb}{.5\paperwidth}%

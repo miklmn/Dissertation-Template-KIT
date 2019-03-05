@@ -3,7 +3,7 @@
 %
 %%%%%%%%%%%%  KIT FRAME
 \ifxelatexorpdflatex%
-\ifthenelse{\boolean{iesenglishs}}{\ThisCenterWallPaper{1.0}{./images/KIT-FrameA4-EN_13.pdf}}{\ThisCenterWallPaper{1.0}{./images/KIT-FrameA4-DE_13.pdf}}%
+\ifthenelse{\boolean{englishAsMainLanguage}}{\ThisCenterWallPaper{1.0}{./images/KIT-FrameA4-EN_13.pdf}}{\ThisCenterWallPaper{1.0}{./images/KIT-FrameA4-DE_13.pdf}}%
 \fi%
 
 %%%%Dazu muss \usepackage[absolute]{textpos} eingebunden werden.
@@ -16,7 +16,7 @@
 		\begin{textblock}{3.6}(2.5,1.4)
 		\RaggedRight
 		\ifxelatexorpdflatex%
-				  	\ifthenelse{\boolean{iesenglishs}}{%
+				  	\ifthenelse{\boolean{englishAsMainLanguage}}{%
 							\includegraphics[width=\textwidth]{./images/kit_logo_en_col_epstopdf_13.pdf}}{%
 							\includegraphics[width=\textwidth]{./images/kit_logo_de_col_epstopdf_13.pdf}
 						}
@@ -54,7 +54,7 @@
  	\textsc{
 		\LARGE%
 		\TypeOfThesis\\
-		%\ifthenelse{\boolean{iesenglishs}}{\TypeOfThesisEnglish}{\TypeOfThesisGerman}\\%
+		%\ifthenelse{\boolean{englishAsMainLanguage}}{\TypeOfThesisEnglish}{\TypeOfThesisGerman}\\%
 	}% end of textsc
  		\end{textblock}
 	
@@ -63,7 +63,7 @@
 	\Centering
 	\rmfamily
  	\textsc{
-	\ifthenelse{\boolean{iesenglishs}}{%
+	\ifthenelse{\boolean{englishAsMainLanguage}}{%
 			%\large
 			KIT - Karlsruhe Institute of Technology\\
 			%Institut for Anthropomatics\\
@@ -74,7 +74,7 @@
 			%Institut für Anthropomatik\\
 			%Lehrstuhl für Interaktive Echtzeitsysteme\\
 	}%
- 	\ifthenelse{\boolean{iesenglishs}}{%
+ 	\ifthenelse{\boolean{englishAsMainLanguage}}{%
  		\ifthenelse{\boolean{useiosblogo}}{%
 			in cooperation with\\
 			%\large
@@ -117,14 +117,14 @@
 	\RaggedRight
 		\ifthenelse{\boolean{isdissertation}}{%
 		%% Dissertation
-			\ifthenelse{\boolean{iesenglishs}}{
+			\ifthenelse{\boolean{englishAsMainLanguage}}{
 				First Reviewer: \hfill \Reviewer\\Second Reviewer: \hfill \Supervisor\\
 			}{%
 				Erster Gutachter: \hfill \Reviewer\\Zweiter Gutachter: \hfill \Supervisor\\
 			}%
 		}{%
 		%% Diplomarbeit
-			\ifthenelse{\boolean{iesenglishs}}{%
+			\ifthenelse{\boolean{englishAsMainLanguage}}{%
 				Main Advisor: \hfill \Reviewer\\Co-Advisor: \hfill \Supervisor\\
 			}{%
 				Verantwortlicher Betreuer: \hfill \Reviewer\\Betreuender Mitarbeiter: \hfill \Supervisor\\
@@ -145,7 +145,7 @@
 \begin{titlepage}
 \thispagestyle{empty}
 
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 \chapter*{Statement of authorship}% %%PW
 %% Andere Möglichkeiten
 %% Own Work Declaration  %%sagt die Uni von Edinburgh
@@ -155,7 +155,7 @@
 }
 \thispagestyle{empty}
 %% Text von hz übernommen
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 I hereby declare that I have produced this work by myself except the utilities known to the supervisor, 
 that I have labeled all used utilities completely and detailed and that I have labeled all material that has been taken with or without modification from the work of others.
 }{%
@@ -167,7 +167,7 @@ Abänderung entnommen wurde.}
 %% Alternative
 %Hiermit versichere ich, die vorliegende Arbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie die Zitate deutlich kenntlich gemacht zu haben.
 \vspace{4\baselineskip}\\
-\ifthenelse{\boolean{iesenglishs}}{%
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 \Signplace, \Submissiondate \hfill \AuthorName}{%
 \Signplace, den \Submissiondate} \hfill \AuthorName%
 \vspace{4\baselineskip}\\

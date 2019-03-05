@@ -7,25 +7,18 @@
 
 
 %% Booleans, mit deren Hilfe wichtige Festlegungen gemacht werden.
-%% Belegung mit "true" und "false" weiter unten
-\newboolean{iesenglishs}     % Hauptsprache der Arbeit: Englisch oder Deutsch
-\newboolean{printMuster}     % Die Seiten mit dem Wort "Muster" bedrucken
-\newboolean{coloredlinks}    % Sollen Links farbig dargestellt werden (oder schwarz für den Druck)?
-\newboolean{coloredlistings} % Sollen Listings farbig dargestellt werden (oder schwarz für den Druck)?
-\newboolean{useCMYKcolors}   % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
-\newboolean{showFrame}       % Sollen die Satzspiegel-Ränder angezeigt werden?
-\newboolean{showGrid}        % Soll ein Gitter angezeigt werden?
-\newboolean{showMarginNotes} % Sollen Randnotizen angezeigt werden?
-
 %% Hier true oder false auswählen!!!
-\setboolean{iesenglishs}{false}
-\setboolean{printMuster}{false}
-\setboolean{coloredlinks}{true}
-\setboolean{coloredlistings}{true}
-\setboolean{useCMYKcolors}{false}
-\setboolean{showFrame}{false}
-\setboolean{showGrid}{false}
-\setboolean{showMarginNotes}{true}
+
+% Hauptsprache der Arbeit: Englisch oder Deutsch
+\setUserDefinedBoolean{englishAsMainLanguage}{false}
+% Die Seiten mit dem Wort "Muster" bedrucken
+\setUserDefinedBoolean{printMuster}{false}
+% Sollen Links farbig dargestellt werden (oder schwarz für den Druck)?
+\setUserDefinedBoolean{coloredlinks}{false}
+% Sollen Listings farbig dargestellt werden (oder schwarz für den Druck)?
+\setUserDefinedBoolean{coloredlistings}{true}
+% Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
+\setUserDefinedBoolean{useCMYKcolors}{true}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%  Macros for hiding individual chapters, remarks, TODOs %%%%
@@ -60,4 +53,12 @@
 \showif{showGlossary}
 \showif{showIndex}%
 \showif{showAppendix}
+
+% Sollen TODO-Notizen samt einer Übersicht am Ende angezeigt werden?
 \showif{showTODOs}
+% Sollen Randnotizen angezeigt werden?
+\showif{showMarginNotes}
+% Sollen die Satzspiegel-Ränder angezeigt werden?
+\hideif{showFrame}
+% Soll ein Gitter angezeigt werden? (nur falls showFrame aktiviert!)
+\hideif{showGrid}

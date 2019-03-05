@@ -104,8 +104,9 @@
 %% Mathe-Pakete sowie Definition der Sondersymbole und sonstiger Mathe-Macros
 \input{preambel/Math}
 
-%% Hauptsprache des Dokuments setzen
-\ifthenelse{\boolean{iesenglishs}}{%
+%% Hauptsprache des Dokuments setzen (abhängig von der Angabe des Schalters 
+%% "englishAsMainLanguage", welcher in der Datei AlleSchalter.tex gesetzt wird)
+\ifthenelse{\boolean{englishAsMainLanguage}}{%
 	\selectlanguage{english}
 }{%
 	\selectlanguage{ngerman}

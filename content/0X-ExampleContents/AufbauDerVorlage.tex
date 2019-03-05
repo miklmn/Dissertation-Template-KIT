@@ -18,6 +18,13 @@ Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
 % Tabelle aus einer Extra-Datei einlesen und auf die Seitenbreite strecken
 \LTXtable{\columnwidth}{tables/DateienUndVerzeichnisse.tex}%
 }%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Projektdatei \printfilepath{Diss.tcp}}%
+\index{Projektdatei}%
+\label{sec:Projektdatei}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Bei der Datei \printfilepath{Diss.tcp} handelt es sich um die Projektdatei für den \LaTeX-Editor TeXnicCenter.
 In ihr werden die projektbezogenen Einstellungen des TeXnicCenter festgehalten.
@@ -26,20 +33,27 @@ Die korrekte Angabe der Projektsprache ist insofern wichtig, als dass diese in T
 Die entsprechenden Einstellungen können im TeXnicCenter über den Menüeintrag \printkeyword{Projekt} $\rightarrow$ \printkeyword{Eigenschaften} vorgenommen werden.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Hauptdatei Diss.tex]{Hauptdatei \printfilepath{Diss.tex}}%
+\index{Hauptdatei}%
+\label{sec:Hauptdatei}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Die Hauptdatei ist die Datei \printfilepath{Diss.tex}.
 Sie ist verhältnismäßig kurz, da die Hauptinhalte in andere Dateien ausgelagert sind, welche mit Hilfe des \lc{input\{\}} \bzw des \lc{include\{\}}-Befehls eingebunden werden.
 Die Hauptdatei besteht im Wesentlichen aus drei Abschnitten.
-Im ersten stehen die sogenannten \enquote{Magic comments}, mit deren Hilfe manche \LaTeX-IDEs sich selbst vorkonfigurieren können.
+Im ersten stehen die sogenannten \index{Magic Comments}\enquote{Magic comments}, mit deren Hilfe manche \LaTeX-IDEs (wie \zB TeXStudio) sich selbst vorkonfigurieren können.
 Sie fangen mit \enquote{\texttt{\%~!TeX}} an und geben an, welche Kodierung für die Dateien verwendet wird und welche Programme für die Kompilierung des Quelltextes und der Bibliografie verwendet werden sollen.
-Außerdem kann hier angegeben werden, welche Sprache für die Rechtschreibprüfung innerhalb der IDE verwendet werden soll.
-Aktuell sind sie durch ein weiteres Prozentzeichen deaktiviert, da es keine dokumentierte Möglichkeit gibt, Aufruf für Glossar-Erzeugung miteinzubinden.
+Außerdem kann damit angegeben werden, welche Sprache für die Rechtschreibprüfung innerhalb der IDE verwendet werden soll.
+Da es aktuell keine dokumentierte Möglichkeit gibt, Aufruf für \printkeyword{makeglossaries} miteinzubinden,
+führt eine Übernahme der durch die \enquote{Magic Comments} vordefinierten Reihenfolge dazu, dass keine Glossare generiert werden.
+Daher sind die Aktuell sind \enquote{Magic Comments} aktuell durch ein zusätzliches Prozentzeichen deaktiviert.
 
 Im zweiten Abschnitt wird die Header-Datei eingebunden.
-In dieser wird die verwendeten Dokumentklasse (inklusive Papierformat und Schriftgröße) definiert, sowie weitere Dateien eingebunden,
-in welchen die zu landenden Pakete, Layout"=Parameter sowie alle weiteren Einstellungen und Makros definiert und konfiguriert werden.
-Im dritten Teil werden nun die einzelnen Inhalte der Arbeit eingebunden.
+In dieser wird die verwendeten Dokumentklasse (inklusive Papierformat und Schriftgröße) definiert, sowie weitere Dateien eingebunden.
+In diesen werden die zu landenden Pakete, Layout"=Parameter sowie alle weiteren Einstellungen und Makros definiert und konfiguriert.
 
-Das entstehende PDF heißt genauso wie die Hauptdatei.
+Im dritten Abschnitt werden nun die einzelnen Inhalte der Arbeit eingebunden.
 
 Die einzelnen \index{Kapitel}Kapiteln der Arbeit werden im Verzeichnis \printfilepath{./content/} als separate Dateien gespeichert.
 Es empfiehlt sich als Dateiname das Schema \printfilepath{nn-name.tex} zu verwenden, wobei \printkeyword{nn} die Nummer des Kapitels ist,
@@ -69,15 +83,37 @@ Es gibt auch das \pkg{excludeonly} Paket, dessen Befehl \verb+\excludeonly+ das 
 \footnote{\url{https://texwelt.de/wissen/fragen/32/was-ist-der-unterschied-zwischen-include-and-input}}
 \end{quote}
 
+Es empfiehlt sich, die bestehende Struktur (zumindest jedoch die beiden Dateien
+\printfilepath{Inhalt-FrontMatter.tex} und \printfilepath{Inhalt-Backmatter.tex})
+als Vorlage zu übernehmen.
+
+Das entstehende PDF heißt genauso wie die Hauptdatei.
+
 Zur besseren Übersicht und zur Vereinfachung der Fehlersuche wird empfohlen,
 die einzelnen Unterkapitel ebenfalls als separate Dateien in Unterverzeichnissen von \printfilepath{./content/} anzulegen
 und sie mit den \verb+\input{}+-Direktiven in die jeweiligen Kapitel-Dateien einzubinden.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Bibliografie-Dateien]{Bibliografie-Dateien}%
+\index{Bibliografie}%
+\label{sec:Bibliografie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Es wird davon ausgegangen, dass sich sämtliche Bibliografie-Angaben in der Datei
 \printfilepath{./bib/Diss.bib} befinden.
 Sollten mehrere Bibliografie-Dateien verwendet werden, können diese in der Datei
 \printfilepath{./preamble/AllePfade.tex} gesetzt werden.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Bilder und Zeichnungen]{Bilder und Zeichnungen}%
+\index{Bilder!Binär-}%
+\index{Bild!Vektor-}%
+\label{sec:Bibliografie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Bilder bzw. \index{Zeichnung|see{Bild}}Zeichnungen werden auf zwei Arten eingebunden.
 Bilder im \index{Bild!Binär-}Binärformat (PNG, JPEG, TIFF, PDF, etc.)
 werden mit \lc{includegraphics}-Befehl eingebunden. 
@@ -90,10 +126,23 @@ Während des Kompilierens werden für jede \gls{gls:tikz}-Zeichnung im Verzeichn
 Der Inhalt dieses Verzeichnisses kann gefahrlos gelöscht werden.
 Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{sec:Bilder}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[AlleAngaben.tex: Wichtige Angaben zur Arbeit]{AlleAngaben.tex: Wichtige Angaben zur Arbeit}%
+\index{Autor}%
+\index{Titel}%
+\label{sec:Angaben}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Die wichtigsten Einstellungen, die auf jeden Fall geändert werden müssen,
 finden sich in der Datei \printfilepath{./preambel/AlleAngaben.tex}.
 Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[AlleSchalter.tex: Wichtige Einstellungen und Schalter]{AlleSchalter.tex: Wichtige Einstellungen und Schalter}%
+\index{Schalter}%
+\label{sec:Schalter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Eine weitere wichtige Datei ist \printfilepath{./preambel/AlleSchalter.tex}.
 Darin wird u.a. die Hauptsprache \index{Sprache!Hauptsprache}Hauptsprache des Manuskriptes gesetzt, was sich an mehreren Stellen auswirkt.
 So wird beispielsweise bei \index{Sprache!Umstellung}Umstellung auf Englisch als Hauptsprache
@@ -125,6 +174,12 @@ welche in der Datei \printfilepath{KAcolors.sty} definiert sind.
 Für diese Farben wurde sowohl eine RGB- als auch eine CMYK-Definition erstellt.}
 \end{itemize*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Hyphenation.tex: Silbentrennung von Spezialwörtern]{Hyphenation.tex: Silbentrennung von Spezialwörtern}%
+\index{Schalter}%
+\label{sec:Schalter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 Regeln zur \index{Silbentrennung}Silbentrennung unbekannter Wörter (\zB Fachbegriffe)
 können in der Datei \printfilepath{./preambel/Hyphenation.tex} festgelegt werden.
 Zu beachten ist, dass zusammengesetzte Wörter mit einem Bindestrich
@@ -134,6 +189,12 @@ Um Silbentrennung an anderen Stellen eines zusammengesetzten Wortes zu erlauben,
 muss man den Bindestrich durch „\verb+"=+“ ersetzen. Dies gilt jedoch nur für deutschsprachige Texte.%
 \footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Abkürzungen und Fachbegriff-Definitionen]{Abkürzungen und Fachbegriff-Definitionen}%
+\index{Schalter}%
+\label{sec:Schalter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 In den Dateien
 \printfilepath{./preambel/Acronyms.tex},
 \printfilepath{./preambel/Glossary.tex} und

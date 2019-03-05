@@ -92,26 +92,20 @@ Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einf
 %%
 %% ------------------------------------------------------------
 \IfDefined{LTXtable}{%
-
 Und hier ein Beispiel für eine sehr lange Tabelle, die umbrochen werden soll.
-
 %--Einstellungen für Tabellen ----------
 \colorlet{tablerowcolor}{gray!10.0}
-
-\renewcommand\tableheadcolor{
-   \rowcolor{tableheadcolor}
-}
-
+\renewcommand\tableheadcolor{\rowcolor{tableheadcolor}}
 \renewcommand\tablehead{%
-  \tableheadfontsize%
-  \sffamily\bfseries%
-  \slshape
-  \color{black}
+		\tableheadfontsize%
+		\sffamily\bfseries%
+		\slshape
+		\color{black}
 }
 %---------------------------------------
 {
-   \tablestyle
-   %\tablealtcolored
+  \tablestyle
+  %\tablealtcolored
 	\rowcolors{1}{tablerowcolor}{white!100}%
    \LTXtable{\textwidth}{tables/LongTableExample.tex}
 }
