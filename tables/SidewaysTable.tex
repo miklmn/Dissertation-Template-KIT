@@ -1,0 +1,48 @@
+%% Um 90° gedrehte Tabelle
+%
+\begin{sidewaystable}[p]
+\scriptsize%
+%\tiny
+\centering%
+\begin{tabular}{l M M M M M}%
+\toprule%
+\addlinespace[0pt]%
+ & \multicolumn{5}{c}{\bfseries Level} \tabularnewline
+ & \multicolumn{2}{c}{\bfseries Qualitative} & \multicolumn{3}{c}{\bfseries Quantitative} \tabularnewline
+ & \bfseries\centering Nominal & \bfseries\centering Ordinal & \bfseries\centering Interval & \bfseries\centering Ratio & \bfseries\centering Absolute \tabularnewline \addlinespace[0pt]\midrule\addlinespace[0pt]
+Empirical relation &
+\begin{tabitemize}\item[$\sim$] Equivalence\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\strut\end{tabitemize} &
+\begin{tabitemize}\item[$\sim$] Equivalence\item[$\prec$] Ordering\strut\end{tabitemize} \tabularnewline \midrule
+Empirical operation &
+ &
+ &
+\begin{tabitemize}\item[$\oplus$] Addition\end{tabitemize} &
+\begin{tabitemize}\item[$\oplus$] Addition\item[$\otimes$] Multiplication\strut\end{tabitemize} &
+\begin{tabitemize}\item[$\oplus$] Addition\item[$\otimes$] Multiplication\strut\end{tabitemize} \tabularnewline \midrule
+Feasable transformation &
+$m' = f( m )$ for $f$ bij.\strut &
+$m' = f( m )$ for $f$ mon.\strut &
+$m' = am + b$ for $a>0$\strut &
+$m' = am$ for $a>0$\strut &
+$m' = m$\strut \tabularnewline \midrule
+Examples of features &
+\begin{tabitemize}\item Telephone numbers\item Postal codes\item Gender\strut\end{tabitemize} &
+\begin{tabitemize}\item Grades\item Degree of hardness\item Wind intensity\strut\end{tabitemize} &
+\begin{tabitemize}\item Temperatur in F\textdegree\item Calendric time\item Geographic altitude\strut\end{tabitemize} &
+\begin{tabitemize}\item Temperatur in K\item Mass\item Length\item Electric current\strut\end{tabitemize} &
+\begin{tabitemize}\item Quantum numbers\item Error number\strut\end{tabitemize} \tabularnewline \midrule
+Range of features &
+\begin{tabitemize}\item Numbers\item Names\item Symbols\strut\end{tabitemize} &
+Natural numbers &
+Real numbers &
+Real, positive numbers &
+Natural numbers \tabularnewline \midrule
+Expressiveness & low & \dots & \dots & \dots & high\strut \tabularnewline \addlinespace[0pt]
+\bottomrule%
+\end{tabular}%
+\caption{Beispiel für eine breite, gedrehte Tabelle (hier: Taxonomie der Maßskalen)}%
+\label{tab:ex-sideways}%
+\end{sidewaystable}
