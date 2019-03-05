@@ -81,6 +81,23 @@
 {\usepackage[ngerman,english]{babel}}%
 {\usepackage[english,ngerman]{babel}}
 
+% The \babelhyphenation macro has been introduced
+% only in the babel v.3.9 released in March 2013.
+% For the sake of compatibility with older TeX distribution:
+\providecommand{\babelhyphenation}[2][english]{%
+\begin{hyphenrules}{#1}
+\hyphenation{#2}
+\end{hyphenrules}
+}
+
+%for allowing hyphenation of words that contain a dash
+%using shortcuts \-/, \=/, \--, \==, \---, and \===
+\usepackage[shortcuts]{extdash}
+
+%Zur besseren Silbentrennung
+%s. http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+
 %% Paket zur Abfrage der aktuellen Sprache
 \usepackage{iflang}
 
@@ -1492,8 +1509,11 @@ afterskip=\myparagraphafterskip%
 
 
 %% PW: Todo-Liste. Braucht anscheinend eines der begrenzt verfügbaren TeX-\writes
-%\usepackage{todonotes}
-
+\ifthenelse{\boolean{showTODOs}}{%
+	\usepackage[textsize=footnotesize,ngerman,colorinlistoftodos]{todonotes}
+}{%
+	\usepackage[disable]{todonotes}
+}
 % -------------------------------------------------------
 
 % Aussehen des Inhaltsverzeichnisses: tocloft

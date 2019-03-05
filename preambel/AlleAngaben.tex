@@ -12,7 +12,8 @@
 \newboolean{useCMYKcolors}   % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
 \newboolean{istgenehmigt}    % Bei Dissertationen: handelt es sich um die genehmigte Version?
 \newboolean{showFrame}       % Sollen die Satzspiegel-Ränder angezeigt werden?
-\newboolean{showGrid}        % soll ein Gitter angezeigt werden?
+\newboolean{showGrid}        % Soll ein Gitter angezeigt werden?
+\newboolean{showMarginNotes} % Sollen Randnotizen angezeigt werden?
 
 %% Hier true oder false auswählen!!!
 \setboolean{iesenglishs}{false}
@@ -25,6 +26,43 @@
 \setboolean{istgenehmigt}{false}
 \setboolean{showFrame}{false}
 \setboolean{showGrid}{false}
+\setboolean{showMarginNotes}{true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Macros for hiding individual chapters, remarks, TODOs %%%%
+%%%%  use showif{} or hideif{} for showing or hiding parts  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\showif{showCoverPage}
+\showif{showCV}
+\showif{showAbstractEN}
+\showif{showAbstractDE}
+\showif{showAcknowledgments}
+\showif{showContents}
+\showif{showNotation}
+\showif{showExamples}
+\showif{showIntro}
+\showif{showRelatedWork}
+\showif{showConcept}
+\showif{showSystem}
+\showif{showEvaluation}
+\showif{showConclusion}
+\showif{showOutlook}
+\showif{showBackmatter}
+\showif{showBibliography}
+\showif{showOwnPublications}
+\showif{showOwnPatents}
+\showif{showSupervisedTheses}
+\showif{showListOfFigures}
+\showif{showListOfTables}
+\showif{showListOfListings}
+\showif{showListOfAcronyms}
+\showif{showListOfSymbols}
+\showif{showNomenclature}
+\showif{showGlossary}
+\showif{showIndex}%
+\showif{showAppendix}
+\showif{showTODOs}
+
 
 % Titel der Arbeit
 \newcommand{\Worktitle}{Hier den kompletten Titel der Arbeit angeben}

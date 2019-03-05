@@ -1,16 +1,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Randnotizen}%
+\section{Randnotizen und TODO-Notizen}%
+\index{Randnotizen}%
+\index{TODO-Notizen}%
 \label{sec:Randnotizen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Randnotizen 
 \floatmarginnote{Ich bin eine überflüssige Randnotiz}%
 werden mit dem Kommando \lc{floatmarginnote} gesetzt.
-Diese eignet sich zum Beispiel um im Text Stellen zu kennzeichnen,
-an denen man noch arbeiten sollte.
-Da die Vorgaben des \glsgen{ac:KSP} für den Seitenlayout
-einen sehr kleinen Randbereich vorsehen, der zudem nicht bedruckt werden darf,
-werden keine Randnotizen in der endgültigen Version des Manuskriptes akzeptiert.
-Die Randnotizen lassen sich bequem in der Hauptdatei ausschalten,
-indem man \texttt{\bs showif\{showMarginNotes\}}
-zu \texttt{\bs hideif\{showMarginNotes\}} ändert.
+Diese eignet sich zum Beispiel um wichtige Begriffe oder Aussagen zu verdeutlichen
+oder durch eine Kurzzusammenfassung jedes einzelnen Textabschnitts
+den roten Faden zu verdeutlichen.
+Da die Vorgaben des \glsgen{ac:KSP} für den Seitenlayout einen sehr kleinen Randbereich vorsehen, der zudem nicht bedruckt werden darf,
+werden keine Randnotizen in der endgültigen Druckversion des Manuskriptes akzeptiert.
+Um ggf. vorhandene Randnotizen auszublenden,
+muss man in der Datei \printfilepath{preambel/AlleAngaben.tex} den Wert des Schalters
+\printkeyword{showMarginNotes} auf \printkeyword{false} setzen.
+
+TODOs im Text lassen sich mit Hilfe des Befehls \lc{todo\{<Hinweistext>\}} aus dem Paket \pkg{todonotes} setzen.
+\todo{Features des Pakets \pkg{todonotes} beschreiben!}
+
+Mit dem Befehl \lc{missingfigure\{<Hinweistext>\}} lässt sich auf eine fehlende Grafik hinweisen.
+\missingfigure{Hier fehlt eine Grafik!}
