@@ -8,60 +8,52 @@ sondern nur wenige horizontale Linien.
 Ferner haben sie eine trennende Linie ganz oben und ganz unten.
 Hierfür stellt das Paket \pkg{booktabs} die Befehle
 \begin{itemize*}
-  \item \lc{toprule}
-	\item \lc{midrule}
-	\item \lc{bottomrule}
+  \item \lstinline|\toprule|
+	\item \lstinline|\midrule|
+	\item \lstinline|\bottomrule|
 \end{itemize*}
 zur Verfügung.
-Der Befehl \lc{hline} ist tabu.
+Der Befehl \lstinline|\hline| ist tabu.
 Für eine ausführliche Erläuterung auch über gute und schlechte Tabellen
 siehe die Dokumentation des \pkg{booktabs}-Pakets \cite{Fear2005}.
 
 Eine einfache Tabelle hat den folgenden Code:
-\begin{latex}[caption={Einfache Tabelle in \LaTeX},label={lst:tables}]
+\begin{latex}[caption={Einfache Tabelle in \LaTeX},label={lst:tabellenbeispiel}]
 \begin{table}%
 	\centering%
 	\begin{tabularx}{\columnwidth}{l l X}%
 		\toprule%
 		Datei       &  Bedeutung    &  Benutzerinteraktion \\%
 		\midrule%
-		\endheader%
-		main.tex  &  Hauptdatei   &  nein     \\%
-		figures/  &  Zeichnungen  &  ja       \\%
+		Diss.tex  &  Hauptdatei   &  nein     \\%
+		images/   &  Bilder       &  ja       \\%
 		content/  &  Kapitel      &  ja       \\%
-		logos/    &  Logos        &  nein     \\%
 		\bottomrule%
 	\end{tabularx}%
 	\caption{Dateien der Vorlage}%
-	\label{tab:files-dirs-of-template}%
+	\label{tab:tabellenbeispiel}%
 \end{table}
 \end{latex}
-%und sieht dann so aus wie \cref{tab:files-dirs-of-template}.
 
+Das Ergebnis sieht man in \cref{tab:tabellenbeispiel}.
 
-Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einfügen möchte
-%
-%% -- Einstellungen für Tabellen  ----------
-%% -- Können auch in die Präambel ----------
-%\colorlet{tablesubheadcolor}{gray!40}
-%\colorlet{tableheadcolor}{gray!25}
-%\colorlet{tableblackheadcolor}{black!60}
-%\colorlet{tablerowcolor}{gray!15.0}
-%
-%
-%\renewcommand\tablehead{%
-  %\tableheadfontsize%
-  %\sffamily\bfseries%
-  %\slshape
-%}
-%
-%%\renewcommand\tableheadcolor{
-   %%\rowcolor{tableblackheadcolor}
-%%}
-%
-%
-%%---------------------------------------
-%%
+\begin{table}%
+	\centering%
+	\begin{tabular}{l l l}%
+		\toprule%
+		Datei       &  Bedeutung    &  Benutzerinteraktion \\%
+		\midrule%
+		Diss.tex  &  Hauptdatei   &  nein     \\%
+		images/   &  Bilder       &  ja       \\%
+		content/  &  Kapitel      &  ja       \\%
+		\bottomrule%
+	\end{tabular}%
+	\caption{Dateien der Vorlage}%
+	\label{tab:tabellenbeispiel}%
+\end{table}
+
+Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einfügen möchte (\cref{tab:AlternierendeZeilenfarben}).
+
 \begin{table}
 \caption{Tabelle mit alternierender Zeilenfarbe}%
 \label{tab:AlternierendeZeilenfarben}%
@@ -89,26 +81,30 @@ Etwas komplizierter wird es, wenn man eine Tabelle mit alternierender Farbe einf
 		\bottomrule%
 	\end{tabular}%
 \end{table}
-%%
+
 %% ------------------------------------------------------------
+Lange Tabellen, die umbrochen werden sollen, können mit
+\lstinline|\LTXtable{\textwidth}{Datei}|
+eingebunden werden, wobei die Tabelle in eine Datei ausgelagert werden muss.
+Ein Beispiel dafür sieht man in \cref{tab:MehrseitigeTabelle}.
+
 \IfDefined{LTXtable}{%
-Und hier ein Beispiel für eine sehr lange Tabelle, die umbrochen werden soll.
-%--Einstellungen für Tabellen ----------
-\colorlet{tablerowcolor}{gray!10.0}
-\renewcommand\tableheadcolor{\rowcolor{tableheadcolor}}
-\renewcommand\tablehead{%
-		\tableheadfontsize%
-		\sffamily\bfseries%
-		\slshape
-		\color{black}
-}
-%---------------------------------------
-{
-  \tablestyle
-  %\tablealtcolored
-	\rowcolors{1}{tablerowcolor}{white!100}%
-   \LTXtable{\textwidth}{tables/LongTableExample.tex}
-}
+	%--Einstellungen für Tabellen ----------
+	\colorlet{tablerowcolor}{gray!10.0}%
+	\renewcommand\tableheadcolor{\rowcolor{tableheadcolor}}%
+	\renewcommand\tablehead{%
+			\tableheadfontsize%
+			\sffamily\bfseries%
+			\slshape%
+			\color{black}%
+	}%
+	%---------------------------------------
+	{
+		\tablestyle%
+		%\tablealtcolored
+		\rowcolors{1}{tablerowcolor}{white!100}%
+		 \LTXtable{\textwidth}{tables/LongTableExample.tex}%
+	}%
 } % End If 
 %
 %
@@ -129,6 +125,6 @@ Also so:
 \end{sidewaystable}%
 \end{latex}
 
-Ein Ergebnis sieht man in \cref{tab:ex-sideways}.
+Das Ergebnis sieht man in \cref{tab:ex-sideways}.
 
 \input{tables/SidewaysTable.tex}

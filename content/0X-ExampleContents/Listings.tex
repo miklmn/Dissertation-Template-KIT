@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Listings}%
+\section{Quellcode-Listings}%
+\index{Listing!Gestaltungsstil}%
 \label{sec:Listings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -9,12 +10,29 @@ Zum Einbinden und formatieren von \index{Code|see{Listing}}Quellcode"=Beispielen
 Das Hervorheben von \index{Schlusselwort@Schlüsselwort}Schlüsselwörtern
 wird von LaTeX automatisch erledigt,
 wenn die korrekte Sprache des Listings angegeben ist.
-Vordefininiert sind die Umgebungen \index{Java}\texttt{java} für \gls{gls:java},
-\index{C++}\texttt{C++} für C++ und \texttt{latex} für \gls{gls:latex}.
+Dies geschieht mit Hilfe der Option \printkeyword{language}
+oder durch die Angabe eines entsprechend definierten Gestaltungsstils.
 
-So bewirkt
+Im Befehl \lstinline|\lstset{...}|,
+welcher in der Datei \printfilepath{preambel/preambel.tex} zu finden ist,
+kann man einen globalen Stil für alle Listings vorgeben
+(welcher jedoch bei Bedarf im Einzelfall überrufen werden kann).
+Aktuell ist der etwas weiter oben im Code mit dem Befehl
+\lstinline|\lstdefinestyle{...}| vordefinierte Stil
+\printkeyword{latex} als Standardgestaltungsstil ausgewählt.
+
+Neben \printkeyword{latex} sind in der Datei \printfilepath{preambel/preambel.tex}
+auch noch \printkeyword{java} und \printkeyword{C++} als Gestaltungsstile vordefiniert.
+Bei Bedarf lassen sich dort weitere Stile definieren und auswählen.
+
+Zur Vereinfachung der Einbindung wurden zusätzlich Umgebungen
+\printkeyword{latex}, \printkeyword{java} und \printkeyword{C++}
+vordefiniert, die im Code mit \lstinline|\begin{<name>}...\end{<name>}|
+direkt verwendet werden können (s. \cref{lst:java-listing}).
 %
-\begin{latex}[caption={Beispiel eines Listings in Java},label={lst:listing}]
+So bewirkt beispielsweise
+%
+\begin{latex}[caption={Beispiel eines Listings in Java},label={lst:java-listing}]
 \begin{java}[caption={A Java Hello-World example},%
              label={lst:hello-world}]
 public class HelloWorld {
@@ -27,22 +45,22 @@ public class HelloWorld {
 %
 das folgende Ergebnis:
 %
-\begin{java}[caption={A Java Hello-World example},label={lst:hello-world}]
+\begin{C++}[caption={A Java Hello-World example},label={lst:hello-world}]
 public class HelloWorld {
   public static void main( String[] args ) {
     System.out.println( "HelloWorld" );
   }
 }
-\end{java}
+\end{C++}
 
-Man beachte, dass anders als bei anderen Umgebungen
+Man beachte, dass anders als bei Abbildungen und Tabellen
 die Bezeichnung (\texttt{caption}) und die Referenzmarke (\texttt{label})
 nicht als gesonderte Befehle sondern als optionale Argumente übergeben werden.
 Dies liegt daran, dass ein Listing in der Regel keine Fließumgebung ist,
 sondern an der Stelle im Text erscheint, an der sie im Code auch steht.
 Ferner folgt ein Listing den ganz normalen Seitenumbruchsregeln.
 Das heißt, überlanger Code wird einfach umgebrochen. 
-m ein Listing zu einem Fließobjekt zu machen, muss das optionale Argument
+Um ein Listing zu einem Fließobjekt zu machen, muss das optionale Argument
 \texttt{float=<tbp>} angegeben werden.
 Die \index{Platzierung}Plazierungsangabe \enquote{\texttt{h}} für \enquote{hier}
 ist nicht erlaubt. Denn dies ist das Standardverhalten ohne \texttt{float}.

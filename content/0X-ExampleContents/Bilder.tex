@@ -11,9 +11,10 @@ Bei Einbindung von Grafiken sind zwei Fälle zu unterscheiden:
 \end{itemize*}
 
 Grundlegender Unterschied bei der Einbindung \enquote{regulärer} Bilder
-und \gls{gls:tikz}-Bilder ist, dass Binärformatgrafiken mit \lc{includegraphics\{...\}}
-eingebunden werden, während \gls{gls:tikz}-Grafiken mit \lc{input\{...\}} eingebunden
-und von \texttt{latex} mitkompiliert werden.
+und \gls{gls:tikz}-Bilder ist, dass Binärformatgrafiken mit
+\lc{includegraphics\{...\}} eingebunden werden,
+während \gls{gls:tikz}-Grafiken mit \lc{input\{...\}}
+eingebunden und von \printkeyword{latex} mitkompiliert werden.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,7 +49,7 @@ So können beispielsweise auf der vorherigen Seite riesige leere Flächen entste
 Wenn der verbleibende Platz auf der Seite eine Platzierung nicht erlaubt,
 kann es schnell passieren, dass \LaTeX{} das betroffene Bild 
 und alle Folgeilder ans Ende des Kapitels verschiebt
-(genauer gesagt, an die Stelle, wo die nächste \lc{clearpage}-Anweisung kommt).
+(genauer gesagt, an die Stelle, wo die nächste \lstinline|\clearpage|-Anweisung kommt).
 
 Eine genaue Auswirkung der Parameter
 \printkeyword{h}, \printkeyword{t}, \printkeyword{b} und \printkeyword{p}
@@ -72,7 +73,7 @@ so dass nur noch eine einzige Zeile herumgeschoben werden muss.
 %
 Ein Beispiel für die Einbindung eines Bildes im Binärformat ist in \cref{lst:binary-image} angeführt:
 
-\begin{lstlisting}[caption={Einbindung einer Binärgrafik in LaTeX},label={lst:binary-image},language={[LaTeX]TeX},float={htbp}]
+\begin{lstlisting}[float={htbp},caption={Einbindung einer Binärgrafik in LaTeX},label={lst:binary-image}]
 \begin{figure}[h]%
   \centering%
   \includegraphics[width=\linewidth]{Bildpfad/Dateiname}%
@@ -131,7 +132,7 @@ referenziert werden.
 
 Der Beispielcode dafür ist in \cref{lst:subfigures} dargestellt.
 
-\begin{lstlisting}[caption={Unterabbildungen in LaTeX},label={lst:subfigures},language={[LaTeX]TeX},float={htbp}]
+\begin{lstlisting}[float={htbp},caption={Unterabbildungen in LaTeX},label={lst:subfigures}]
 \begin{figure}[h]%
 	\centering%
 	\subfloat[Unterbezeichnung 1)]{%
@@ -174,7 +175,7 @@ Mit \gls{gls:tikz} und \gls{gls:pgfplots} lassen sich viele gute Sachen machen.
 
 
 Der Code für die Einbindung einer \gls{gls:tikz}-Grafik steht in \cref{lst:tikz-figure}.
-\begin{lstlisting}[caption={Einbindung einer TikZ-Zeichnung in LaTeX},label={lst:tikz-figure},language={[LaTeX]TeX},float={htbp}]
+\begin{lstlisting}[float={htbp},caption={Einbindung einer TikZ-Zeichnung in LaTeX},label={lst:tikz-figure}]
 \begin{figure}[h]%
   \centering%
   \tikzsetnextfilename{TikZ-Bild}%
@@ -191,7 +192,7 @@ Eine Skalierung auf die volle Seitenbreite oder ein vielfaches davon im Falle vo
 \texttt{\bs resizebox\{\bs textwidth\}\{!\}\{...\}}
 durchgeführt werden.
 
-Das Kommando \verb+\tikzsetnextfilename{...}+ ist nicht unbedingt notwendig,
+Das Kommando \lstinline|\tikzsetnextfilename{...}| ist nicht unbedingt notwendig,
  aber sehr zu empfehlen, da dies als Name für das temporäre Kompilat im Ordner
 \printfilepath{./figures-compiled/} genommen wird.
 Dieser sollte gleich dem Namen des Quelldatei (ohne Endung) gewählt werden.

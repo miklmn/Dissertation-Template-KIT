@@ -1,5 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abkürzungsverzeichnis, Stichwortverzeichnis (Index) und Glossar}%
+\index{Abkürzungsverzeichnis}%
+\index{Glossar}%
+\index{Symbolverzeichnis}%
+\index{Stichwortverzeichnis}%
+\index{Index|see{Stichwortverzeichnis}}
 \label{sec:Glossare}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -12,6 +17,8 @@ das Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Abkürzungen und Abkürzungsverzeichnis}%
+\index{Abkürzungen}%
+\index{Akronyme}%
 \label{sec:Akronyme}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Zur Erzeugung des Abkürzungsverzeichnis und des Glossar wird intern das
@@ -20,7 +27,7 @@ Zudem wurden einige Makros definiert, welche die Erfassung der Begriffe erleicht
 
 Um ein Abkürzungsverzeichnis zu erzeugen, muss zuerst eine Liste der Abkürzungen angelegt werden.
 Dies geschieht in der Datei \printfilepath{./preambel/Acronyms.tex}.
-Hierfür wird das Makro \lc{newacronym} verwendet.
+Hierfür wird das Makro \lstinline|\newacronym| verwendet.
 Dieses Makro hat drei obligatorische Argumente, nämlich das
 \begin{itemize*}
 \item die Marke,
@@ -56,62 +63,67 @@ eine abweichende Version der Langform für die Verwendung im Abkürzungsverzeich
             pluraldative={meinen schönen Akronymen},%
             %shortpluralaccusative={MSAs},%
             pluralaccusative={meine schönen Akronyme},%
-            description={mein schönes Akronym, %   <- optional!
+            description={mein schönes Akronym, % <- optional!
                          ein Beispiel für eine Abkürzung}%
            ]{ac:MSA}{MSA}{mein schönes Akronym}
 \end{latex}
 
-Im Text des Dokumentes werden die Einträge durch den Befehl \lc{ac\{<Marke>\}} verwendet.
+Im Text des Dokumentes werden die Einträge durch den Befehl \lstinline|\ac{<Marke>}| verwendet.
 Bei der erstmaliger Verwendung wird die Langform gedruckt, gefolgt von der Abkürzung, welche in Klammern gesetzt wird.
 Beim zweiten Vorkommen wird nur noch die Abkürzung gedruckt.
 Zusätzlich definiert die Vorlage die Befehle
-\lc{acgen\{...\}}, \lc{acdat\{...\}} und \lc{acacc\{...\}}, sowie
-\lc{acplgen\{...\}}, \lc{acpldat\{...\}} und \lc{acplacc\{...\}},
+\lstinline|\acgen{...}|, \lstinline|\acdat{...}| und \lstinline|\acacc{...}|, sowie
+\lstinline|\acplgen{...}|, \lstinline|\acpldat{...}| und \lstinline|\acplacc{...}|,
 die jeweils die Genitiv-, Dativ- und Akkusativ-Form (singular und Plural) drucken.
 
-Im \gls{gls:pkg} \pkg{glossaries} stellt der Befehl \lc{ac\{...\}} ein Shortcut für den Befehl \lc{gls\{...\}} dar.
+Im \gls{gls:pkg} \pkg{glossaries} stellt der Befehl \lstinline|\ac{...}| ein Shortcut für den Befehl \lstinline|\gls{...}| dar.
 Mit diesem kann ein allgemeines Glossar-Eintrag im Text referenziert werden.
 
 Mit den Befehlen
-\lc{acrshort\{...\}}, \lc{acrlong\{...\}}, \lc{acrfull\{...\}}
+\lstinline|\acrshort{...}|, \lstinline|\acrlong{...}|, \lstinline|\acrfull{...}|
 und ihren Abwandlungen sowie den Shortcuts
-\lc{acs\{...\}}, \lc{acl\{...\}}, \lc{acf\{...\}},
+\lstinline|\acs{...}|, \lstinline|\acl{...}|, \lstinline|\acf{...}|,
 kann jeweils nur die Abkürzung, nur die Langform oder beides explizit angefordert werden.
 Allerdings wird eine solche Verwendung ggf. nicht als \enquote{erstmalige Verwendung} zählen.
 
 Damit resultiert der folgende Quellcode
 \begin{latex}[caption={Verwendung von Abkürzungen},label={lst:AcronymUsage}]
-    \Acf{ac:MSA} ist ein Beispiel für die Verwendung einer
-    Abkürzung am Anfang des Satzes. Man beachte, dass
-    der Aufruf der Marke mit dem Makro \lc{acf} bzw. \lc{Acf}
+    \Acf{ac:MSA} ist ein Beispiel für die Verwendung
+    einer Abkürzung am Anfang des Satzes. Man beachte,
+    dass der Aufruf der Marke mit dem Makro
+    \lstinline|\acf{...}| bzw. \lstinline|\Acf{...}|
     nicht als die erste Erwähnung im Text zählt.
-    Bei der ersten Nennung des \acgen{ac:MSA} unter Verwendung
-    der Makros \lc{ac}, \lc{acgen} \oae erscheint die Langform,
-    gefolgt von der Kurzform. Bei der zweiten Nennung des
-    \acgen{ac:MSA} erscheint nur noch die Kurzform.
+    Bei der ersten Nennung \acgen{ac:MSA} unter
+    Verwendung der Makros \lc{ac}, \lc{acgen} \oae
+    erscheint die Langform, gefolgt von der Kurzform.
+    Bei der zweiten Nennung \acgen{ac:MSA}
+    erscheint nur noch die Kurzform \ac{ac:MSA}.
 \end{latex}
 %
-in der Ausgabe
+in der folgenden Ausgabe:
 %
 \begin{quote}
-\Acf{ac:MSA} ist ein Beispiel für die Verwendung einer
-Abkürzung am Anfang des Satzes. Man beachte, dass
-der Aufruf der Marke mit dem Makro \lc{acf} bzw. \lc{Acf}
-nicht als die erste Erwähnung im Text zählt.
-Bei der ersten Nennung des \acgen{ac:MSA} unter Verwendung
-der Makros \lc{ac}, \lc{acgen} \oae erscheint die Langform,
-gefolgt von der Kurzform. Bei der zweiten Nennung des
-\acgen{ac:MSA} erscheint nur noch die Kurzform.
+    \Acf{ac:MSA} ist ein Beispiel für die Verwendung
+    einer Abkürzung am Anfang des Satzes. Man beachte,
+    dass der Aufruf der Marke mit dem Makro
+    \lstinline|\acf{...}| bzw. \lstinline|\Acf{...}|
+    nicht als die erste Erwähnung im Text zählt.
+    Bei der ersten Nennung \acgen{ac:MSA} unter
+    Verwendung der Makros \lc{ac}, \lc{acgen} \oae
+    erscheint die Langform, gefolgt von der Kurzform.
+    Bei der zweiten Nennung \acgen{ac:MSA}
+    erscheint nur noch die Kurzform \ac{ac:MSA}.
 \end{quote}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Glossar}%
+\index{Glossar}%
 \label{sec:Glossar}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Neben einem Abkürzungsverzeichnis kann man auch ein
-\index{Glossar}\gls{gls:Glossar} erstellen lassen.
+\gls{gls:Glossar} erstellen lassen.
 In diesem können Definitionen von \index{Fachbegriff!Definition}Fachtermini oder
 \index{Uebersetzung@Übersetzung}Übersetzungen von fremdsprachlichen Begriffen stehen.
 
@@ -145,59 +157,48 @@ Ein Glossar-Eintrag kann beispielsweise folgendermaßen definiert werden:
 Normalerweise werden im Glossar nur diejenigen Begriffe angezeigt,
 die im Text des Dokumentes erwähnt und entsprechend referenziert worden sind.
 Eine Referenzierung der Glossar-Einträge im Text geschieht normalerweise mit dem
-\lc{gls\{<Marke>\}}-Befehl,
+\lstinline|\gls{<Marke>}|-Befehl,
 welcher den Begriff im Text druckt und für seine Aufnahme ins Glossar sorgt.
-Weitere mögliche Befehle sind \lc{Gls\{...\}} und \lc{GLS\{...\}},
+Weitere mögliche Befehle sind \lstinline|\Gls{...}| und \lstinline|\GLS{...}|,
 die den ersten bzw. alle Buchstaben in Großbuchstaben umwandeln,
-\lc{glpl\{...\}}, \lc{Glspl\{...\}}, \lc{GLSpl\{...\}} für die Pluralform \usw.
+\lstinline|\glpl{...}|, \lstinline|\Glspl{...}|, \lstinline|\GLSpl{...}|
+für die Pluralform usw.
 Zusätzlich definiert die Vorlage die Befehle
-\lc{glsgen\{...\}}, \lc{glsdat\{...\}} und \lc{glsacc\{...\}}, sowie
-\lc{glsplgen\{...\}}, \lc{glspldat\{...\}} und \lc{glsplacc\{...\}},
+\lstinline|\glsgen{...}|, \lstinline|\glsdat{...}| und \lstinline|\glsacc{...}|,
+sowie
+\lstinline|\glsplgen{...}|, \lstinline|\glspldat{...}| und \lstinline|\glsplacc{...}|,
 die jeweils die Genitiv- Dativ- und Akkusativ-Form drucken.
 
-Außerdem gibt es mit dem Befehl \lc{glsadd\{...\}} die Möglichkeit,
+Außerdem gibt es mit dem Befehl \lstinline|\glsadd{...}| die Möglichkeit,
 eine Stelle im Text mit einem Glossar-Begriff zu verlinken, ohne diesen explizit zu drucken.
-Mit \lc{glsaddall} kann man alle definierte Glossar-Einträge ins Glossar aufnehmen,
+Mit \lstinline|\glsaddall| kann man alle definierte Glossar-Einträge ins Glossar aufnehmen,
 ohne sie im Text des Dokumentes referenziert zu haben.
 
 Die Verwendung des oben definierten Eintrages im Text mit dem Befehl
-\lc{glsgen\{gls:Glossar\}} mündet im Text in einer Erwähnung des \glsgen{gls:Glossar}.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Stichwortverzeichnis (Index)}%
-\label{sec:Index}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-Ein \index{Stichwortverzeichnis}Stichwortverzeichnis (oder
-\index{Index|see{Stichwortverzeichnis}}Index)
-ist einfach nur eine alphabetisch sortierte Liste von Begriffen mit einer Auflistung der Fundstellen im Dokument.
-Diese ist nützlich, wenn sich der Leser zu einem Begriff alle Vorkommnisse anschauen möchte.
-Der Index wird erzeugt, indem im Quellcode der Befehl \verb+\index{Begriff}+
-eingefügt wird. Der Begriff selbst wird dadurch nicht gedruckt und muss daher
-noch einmal wiederholt werden, um auch im Text gedruckt zu werden. Dieses Verhalten
-ist beabsichtigt, sodass im Index immer nur die Grundform des Wortes verwendet
-wird, aber im Text natürlich die richtige Deklination.
+\lstinline|\glsgen{gls:Glossar}| mündet im Text in einer Erwähnung des \glsgen{gls:Glossar}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Symbolverzeichnis}%
+\index{Symbolverzeichnis}%
+\index{Symbole}%
+\index{Notation}%
 \label{sec:Symbolverz}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Ein Symbolverzeichnis kann auf zwei Arten angelegt werden.
 Normalerweise reicht eine manuell erstellte Übersicht über die Notation,
-so wie sie in der Datei \texttt{./00-Front-Matter/Notation.tex}
+so wie sie in der Datei \printfilepath{./00-Front-Matter/Notation.tex}
 mit Hilfe von Befehlen
-\texttt{\bs myNotationTableEntryMath\{<Mathe-Ausdruck>\}\{<Beschreibung>\}}
+\lstinline|\myNotationTableEntryMath{<Mathe-Ausdruck>}{<Beschreibung>}|
 und
-\texttt{\bs myNotationTableEntryText\{<Text-Ausdruck>\}\{<Beschreibung>\}}
+\lstinline|\myNotationTableEntryText{<Text-Ausdruck>}{<Beschreibung>}|
 definiert wird.
 Diese ist recht einfach und lässt sich bei Bedarf beliebig ergänzen.
 
 Allerdings gibt es auch die Möglichkeit zur automatischen Erzeugung eines
 Symbolverzeichnisses mit Hilfe des \pkg{glossaries}-\glsgen{gls:pkg}.
-Um dieses, am Ende des Manuskriptes eingebundene Symbolverzeichnis zu erzeugen,
+Um dieses automatisch generierte Symbolverzeichnis zu erzeugen,
 müssen Symbole in Form von Glossar-Einträgen angelegt und im Text des Dokumentes
 zumindest einmal entsprechend mit dem Befehl \lc{gls\{<Marke>\}} referenziert werden.
 Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
@@ -211,9 +212,34 @@ Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
 \end{latex}
 Die Referenzierung des Symbols \gls{symb:pi} im Text geschieht dann mit \verb+\gls{symb:pi}+.
 
-Die Einbindung eines automatisch erzeugten Symbolverzeichnisses ist am Ende des Manuskripts vorgesehen.
-Es passiert in der Datei
-\texttt{./content/Inhalt-BackMatter.tex}.
-Bei Bedarf lässt sich diese Einbindung auch an eine geeignete Stelle in den Frontmatter verschieben.
-Dabei ist darauf zu achten, dass in der Datei \texttt{preambel/AlleSchalter.tex}
-die Einblendung durch \lc{showif\{showListOfSymbols\}} aktiviert ist.
+In der Vorlage sind beide Arten von Symbolverzeichnissen vorgesehen.
+Sie werden am Anfang des Manuskriptes vor dem Inhaltsverzeichnis eingebunden.
+Es passiert in der Datei \printfilepath{./content/Inhalt-FrontMatter.tex}.
+Bei Bedarf lässt sich diese Einbindung auch an eine geeignete Stelle in den Backmatter verschieben.
+
+Zum einfachen Ein- bzw. Ausblenden der beiden Symbolverzeichnisse
+gibt es in der Datei \printfilepath{preambel/AlleSchalter.tex}
+die beiden Schalter
+\begin{itemize}
+\item \printkeyword{showNotation} für den manuell erstelle Notationübersicht
+\printkeyword{showListOfSymbols} für das automatisch erstelltes Symbolverzeichnis.
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stichwortverzeichnis (Index)}%
+\index{Stichwortverzeichnis}%
+\index{Index|see{Stichwortverzeichnis}}%
+\label{sec:Index}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Ein \index{Stichwortverzeichnis}Stichwortverzeichnis (oder
+\index{Index|see{Stichwortverzeichnis}}Index)
+ist einfach nur eine alphabetisch sortierte Liste von Begriffen mit einer Auflistung der Fundstellen im Dokument.
+Diese ist nützlich, wenn sich der Leser zu einem Begriff alle Vorkommnisse anschauen möchte.
+Der Index wird erzeugt, indem im Quellcode der Befehl \verb+\index{Begriff}+
+eingefügt wird. Der Begriff selbst wird dadurch nicht gedruckt und muss daher
+noch einmal wiederholt werden, um auch im Text gedruckt zu werden. Dieses Verhalten
+ist beabsichtigt, sodass im Index immer nur die Grundform des Wortes verwendet
+wird, aber im Text natürlich die richtige Deklination.

@@ -47,14 +47,14 @@ So vermeidet man beim automatischen Nachladen weiterer \glspl{gls:pkg} aus dem \
 Bei Verwendung von TeXLive unter Linux muss darauf geachtet werden, dass alle notwendigen Linux-\glspl{gls:pkg} installiert sind.
 Unter Ubuntu 17.04 sollte es funktionieren, wenn folgende Linux-\glspl{gls:pkg} installiert wurden:
 \begin{itemize*}
-	\item {\small\verb#texlive#}
-	\item {\small\verb#texlive-lang-german#}
-	\item {\small\verb#texlive-fonts-extra#}
-	\item {\small\verb#texlive-bibtex-extra#}
-	\item {\small\verb#fonts-linuxlibertine#}
-	\item {\small\verb#biber#}
-	\item {\small\verb#xindy#}
-	\item {\small\verb#texmaker#}
+	\item \printkeyword{texlive}
+	\item \printkeyword{texlive-lang-german}
+	\item \printkeyword{texlive-fonts-extra}
+	\item \printkeyword{texlive-bibtex-extra}
+	\item \printkeyword{fonts-linuxlibertine}
+	\item \printkeyword{biber}
+	\item \printkeyword{xindy}
+	\item \printkeyword{texmaker}
 \end{itemize*}
 Texmaker ist eine IDE für \LaTeX, die aber vermutlich über Dependencies schon einige Pakete mitbringt.
 
@@ -73,21 +73,21 @@ in den nachfolgenden Kapiteln.
 
 Die einzelnen Aufrufe sind:
 \begin{itemize*}
-\item \index{xelatex}\texttt{xelatex} zur eigentlichen Kompilierung von \LaTeX-Quelltext,
-\item \index{biber}\texttt{biber} zur Kompilierung von Bibliografien,
-\item \index{makeglossaries}\texttt{makeglossaries}, welches intern \index{xindy}\texttt{xindy} aufruft,
+\item \index{xelatex}\printkeyword{xelatex} zur eigentlichen Kompilierung von \LaTeX-Quelltext,
+\item \index{biber}\printkeyword{biber} zur Kompilierung von Bibliografien,
+\item \index{makeglossaries}\printkeyword{makeglossaries}, welches intern \index{xindy}\printkeyword{xindy} aufruft,
 zur Erstellung einer Zwischenausgabe für das Abkürzungsverzeichnis und das Glossar
-\index{makexindex}\texttt{makeindex}, welches durch die Verwendung des Pakets \pkg{imakeidx} implizit aufgerufen wird, zur Erstellung des Stichwortverzeichnisses
+\index{makexindex}\printkeyword{makeindex}, welches durch die Verwendung des Pakets \pkg{imakeidx} implizit aufgerufen wird, zur Erstellung des Stichwortverzeichnisses
 \end{itemize*}
-Bei einem Durchlauf von \texttt{xelatex}, \texttt{biber}, \texttt{makeglossaries} und \texttt{makeindex}
+Bei einem Durchlauf von \printkeyword{xelatex}, \printkeyword{biber}, \printkeyword{makeglossaries} und \printkeyword{makeindex}
 werden die einzelnen Inhalte sowie die entsprechenden Querverweise
 zuerst jeweils in eine oder mehrere Zwischendateien hinausgeschrieben,
 die sodann wieder eingelesen und verarbeitet werden müssen.
-Manche Inhalte werden daher erst jeweils beim zweiten Aufruf von \texttt{xelatex} generiert.
+Manche Inhalte werden daher erst jeweils beim zweiten Aufruf von \printkeyword{xelatex} generiert.
 Für die korrekte Generierung eines Dokumentes mit allen Verzeichnissen
 (Inhalts-, Abbildungs-, Tabellen-, Literatur, Abkürzungs-, Begriffs und Stichwortverzeichnis),
 PDF"=Lesezeichen und korrekt gesetzten Querverweisen,
-muss \texttt{xelatex} daher mehrmals aufgerufen werden.
+muss \printkeyword{xelatex} daher mehrmals aufgerufen werden.
 
 Sollte man ausnahmsweise das Dokument doch noch aus der Kommandozeile oder von einem Script heraus aufrufen wollen,
 so ist die Reihenfolge der Aufrufe wie folgt:
@@ -101,6 +101,6 @@ so ist die Reihenfolge der Aufrufe wie folgt:
 \end{verbatim}
 
 Wenn kein \index{Kompilierfehler}Kompilierfehler aufgetreten ist,
-sollte nach dem vierten Durchlauf von \texttt{xelatex} die
+sollte nach dem vierten Durchlauf von \printkeyword{xelatex} die
 \index{Warnung!Please re-run latex}Warnung \enquote{Please re-run latex}
 verschwunden sein.

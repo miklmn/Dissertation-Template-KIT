@@ -4,14 +4,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Grundsätzlich gilt, was in \parencites{ams1999a}{ams1999b} steht. In der Datei
-\printfilepath{preambel/05-math.tex} sind eine Menge Kurzkommandos definiert, um eine
-einheitliche Typografie von \index{Skalare}Skalaren, \index{Vektoren}Vektoren,
-\index{Matrizen}Matrizen, \index{Zufallsvariablen}Zufallsvariablen etc.
-zur vereinfachen. In diese Dateien einfach mal reinschauen, welche Kurzkommandos
-es gibt.
+\printfilepath{preambel/Math.tex} sind eine Menge Kurzkommandos definiert,
+um eine einheitliche Typografie von
+\index{Skalare}Skalaren, \index{Vektoren}Vektoren, \index{Matrizen}Matrizen,
+\index{Zufallsvariablen}Zufallsvariablen etc. zur vereinfachen.
+In diese Dateien einfach mal reinschauen, welche Kurzkommandos es gibt.
 
-Auf zwei besondere Kommandos wird näher eingegangen, weil dies häufig falsch
-gemacht wird.
+Auf zwei besondere Kommandos wird näher eingegangen,
+weil dies häufig falsch gemacht wird.
 \begin{itemize}
   \item Für die Matrixtransponierte gibt es das Kommando \verb#\Tr#, also
 	\verb#$A^{\Tr}$# liefert $A^{\Tr}$
@@ -28,3 +28,6 @@ gemacht wird.
 	 \int^1_0 x^2 \diff x = \frac{1}{3} \qquad \text{(richtige Typografie!)}
 	\end{equation}
 \end{itemize}
+Grundsätzlich empfiehlt es sich eigene Makros zu definieren und durchgehend zu verwenden.
+Damit kann man bei Bedarf die Formatierung der Variablen an einer einzigen Stelle anpassen
+ohne den gesamten Code des Arbeit durchgehen zu müssen.
