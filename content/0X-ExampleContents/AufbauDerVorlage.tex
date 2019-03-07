@@ -10,7 +10,7 @@ Ihre Bedeutung ist in \cref{tab:StrukturDerVorlage} zusammengefasst.
 % kleinere Schrift
 \footnotesize%
 % Abstand zwischen den Zeilen auf 1,5faches setzen
-\renewcommand{\arraystretch}{1.5}%
+\renewcommand{\arraystretch}{2.0}%
 % Seitliche Abstände links und rechts eliminieren
 %\setlength\LTleft{0pt}%
 %\setlength\LTright{0pt}%
@@ -111,7 +111,7 @@ Sollten mehrere Bibliografie-Dateien verwendet werden, können diese in der Date
 \subsection[Bilder und Zeichnungen]{Bilder und Zeichnungen}%
 \index{Bilder!Binär-}%
 \index{Bild!Vektor-}%
-\label{sec:Bibliografie}
+\label{sec:BilderUndZeichnungen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Bilder bzw. \index{Zeichnung|see{Bild}}Zeichnungen werden auf zwei Arten eingebunden.
@@ -127,7 +127,7 @@ Der Inhalt dieses Verzeichnisses kann gefahrlos gelöscht werden.
 Weitere Hinweise und Beispiele zur Einbindung von Grafiken finden sich in \cref{sec:Bilder}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[AlleAngaben.tex: Wichtige Angaben zur Arbeit]{AlleAngaben.tex: Wichtige Angaben zur Arbeit}%
+\subsection[Datei \printfilepath{AlleAngaben.tex}: Angaben zur Arbeit]{Datei \printfilepath{AlleAngaben.tex}: Angaben zur Arbeit}%
 \index{Autor}%
 \index{Titel}%
 \label{sec:Angaben}
@@ -138,32 +138,39 @@ finden sich in der Datei \printfilepath{./preambel/AlleAngaben.tex}.
 Hier werden \ua Angaben zum Verfasser, Art und Titel der Arbeit sowie zu den Gutachtern gemacht.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[AlleSchalter.tex: Wichtige Einstellungen und Schalter]{AlleSchalter.tex: Wichtige Einstellungen und Schalter}%
+\subsection[Datei \printfilepath{AlleSchalter.tex}: Anzeigeeinstellungen]{Datei \printfilepath{AlleSchalter.tex}: Anzeigeeinstellungen}%
 \index{Schalter}%
 \label{sec:Schalter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Eine weitere wichtige Datei ist \printfilepath{./preambel/AlleSchalter.tex}.
 Darin wird u.a. die Hauptsprache \index{Sprache!Hauptsprache}Hauptsprache des Manuskriptes gesetzt, was sich an mehreren Stellen auswirkt.
-So wird beispielsweise bei \index{Sprache!Umstellung}Umstellung auf Englisch als Hauptsprache
+So wird beispielsweise bei \index{Sprache!globale Umstellung}Umstellung auf Englisch als Hauptsprache
 \enquote{Danksagung} durch \enquote{Acknowledgments},
 \enquote{Inhaltsverzeichnis} durch \enquote{Contents}
 \usw ersetzt.
 Auch die Regeln der \index{Silbentrennung!Allgemeine Einstellung}Silbentrennung werden entsprechend angepasst.
-Durch das Umsetzen der Schalter \lc{hideif} \bzw. \lc{showif} können hier Teile der Arbeit aus- und wieder eingeblendet werden, ohne dass sie auskommentiert werden müssen.
+
+Durch das Umsetzen der Schalter 
+\lstinline|\setUserDefinedBoolean{SchalterName}{Bool-Wert}| 
+können hier Teile der Arbeit aus- und wieder eingeblendet werden, ohne dass sie auskommentiert werden müssen.
 Neben diesen Einstellungen befinden sich in der Datei \printfilepath{./preambel/AlleSchalter.tex} auch Einstellungen,
 die für die Vorbereitung des Manuskriptes zum Druck beim \gls{ac:KSP} wichtig sind.
 Insbesondere können hier
-\begin{itemize*}
-\item mit der Einstellung \printkeyword{showFrame}
+\begin{itemize}
+\item mit der Einstellung
+\lstinline|\setUserDefinedBoolean{showFrame}{true}|
 die Satzspiegel-Ränder angezeigt werden und so kontrolliert werden,
 ob nichts hinausragt und ob Tabellen und Bilder die komplett verfügbare Breite ausfüllen,
-\item mit den Einstellungen \printkeyword{coloredlistings} und \printkeyword{coloredlinks}
+\item mit den Einstellungen
+\lstinline|\setUserDefinedBoolean{coloredlistings}{false}| und 
+\lstinline|\setUserDefinedBoolean{coloredlinks}{false}|
 dafür gesorgt werden, dass alle Quellcode-Listings sowie Querverweise und URL-Adressen,
 die normalerweise farbig sind, für die Druckversion nicht farbig gesetzt werden
 und so die Anzahl der farbig zu druckenden Seiten reduziert wird,
-\item mit der Einstellung \printkeyword{useCMYKcolors} eine Farbkonvertierung
-aller Farben in den CMYK-Farbraum für den Offset-Druck vorgenommen werden.
+\item mit der Einstellung
+\lstinline|\setUserDefinedBoolean{useCMYKcolors}{true}|
+eine Farbkonvertierung aller Farben in den CMYK-Farbraum für den Offset-Druck vorgenommen werden.
 Diese Einstellung sollte nur für die Druckversion vorgenommen werden.%
 \footnote{Da manche RGB-Farben bei der Konvertierung in den CMYK-Farbraum blass aussehen,
 ist es sinnvoll, eine Alternativversion der betroffenen Farben im CYMK-Farbraum zu definieren,
@@ -172,27 +179,34 @@ Beispiele dafür gibt es in der Datei \printfilepath{./preambel/ColorSettings.te
 Vorzugsweise sollten aber die KIT-Corporate-Identity-Farben verwendet werden,
 welche in der Datei \printfilepath{KAcolors.sty} definiert sind.
 Für diese Farben wurde sowohl eine RGB- als auch eine CMYK-Definition erstellt.}
-\end{itemize*}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[Hyphenation.tex: Silbentrennung von Spezialwörtern]{Hyphenation.tex: Silbentrennung von Spezialwörtern}%
-\index{Schalter}%
-\label{sec:Schalter}
+\subsection[Datei \printfilepath{Hyphenation.tex}: Silbentrennung von Spezialwörtern]{Datei \printfilepath{Hyphenation.tex}: Silbentrennung von Spezialwörtern}%
+\index{Silbentrennung}%
+\label{sec:Hyphenation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Regeln zur \index{Silbentrennung}Silbentrennung unbekannter Wörter (\zB Fachbegriffe)
+Regeln zur Silbentrennung unbekannter Wörter (\zB Fachbegriffe)
 können in der Datei \printfilepath{./preambel/Hyphenation.tex} festgelegt werden.
 Zu beachten ist, dass zusammengesetzte Wörter mit einem Bindestrich
 ausschließlich am Bindestrich getrennt werden,
 wogegen auch ein Eintrag in die Datei \printfilepath{Hyphenation.tex} nicht hilft.
 Um Silbentrennung an anderen Stellen eines zusammengesetzten Wortes zu erlauben,
-muss man den Bindestrich durch „\verb+"=+“ ersetzen. Dies gilt jedoch nur für deutschsprachige Texte.%
+muss man den Bindestrich durch „\verb+"=+“ ersetzen. Dies gilt jedoch nur für deutschsprachige Texte.
+Alternative Trennstellen in bestimmten Wörtern kann man Hilfe der Hinweise auf 
+\href{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}{wikibooks.org}%
 \footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}
+erreichen.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[Abkürzungen und Fachbegriff-Definitionen]{Abkürzungen und Fachbegriff-Definitionen}%
-\index{Schalter}%
-\label{sec:Schalter}
+\index{Abkürzungen}%
+\index{Akronyme}%
+\index{Glossar}%
+\index{Symbole}%
+\label{sec:Abkuerzungen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 In den Dateien
@@ -201,3 +215,27 @@ In den Dateien
 \printfilepath{./preambel/GlossarySymbols.tex}
 kann eine Liste der Abkürzungen, Fachbegriff-Definitionen und Symbole angelegt werden.
 Details hierzu finden sich im \cref{sec:Glossare}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Frontmatter und Backmatter]{Frontmatter und Backmatter}%
+\index{Frontmatter}%
+\index{Backmatter}%
+\index{Notation}%
+\index{Symbolverzeichnis}%
+\index{Literaturverzeichnis}%
+\index{Abkürzungsverzeichnis}%
+\index{Abbildungsverzeichnis}%
+\index{Tabellenverzeichnis}%
+\index{Listingsverzeichnis}%
+\index{Glossar}%
+\index{Stichwortverzeichnis}%
+\index{Index|see{Stichwortverzeichnis}}
+\label{sec:FrontmatterBackmatter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Die Einbindung von der Titelseite, Danksagung, dem englischen und deutschen Abstract,
+einer Notationsübersicht und ggf. einem Symbolverzeichnis
+erfolgt in der Datei \printfilepath{./content/Inhalt-FrontMatter.tex}.
+Die jeweilige Inhalte sind im Verzeichnis \printfilepath{./content/00-FrontMatter/} zu finden.
+Die Einbindung von Literatur-, Abbildungs, Tabellen, Quellcodelistings-, Abkürzungsverzeichnissen sowie ggf. einem Glossar, Stichwortverzeichnis (Index) und den Anhängen erfolgt in der Datei \printfilepath{./content/Inhalt-BackMatter.tex}.

@@ -2,15 +2,15 @@
 \section[Globale Sprachumstellung und temporäre Sprachumschaltung]{Globale Sprachumstellung und temporäre Sprachumschaltung bei fremdsprachlichen Begriffen und Textabschnitten}%
 \index{Fremdsprachen}%
 \index{Sprache!Fremdsprache}%
-\index{Sprache!Umstellung}%
-\index{Sprache!Temporäre Umschaltung}%
+\index{Sprache!globale Umstellung}%
+\index{Sprache!temporäre Umschaltung}%
 \label{sec:Sprache}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Die Hauptsprache der Arbeit wird in der Datei \printfilepath{./preambel/AlleSchalter.tex} festgelegt.
 Aktuell werden nur Deutsch und Englisch als Hauptsprachen unterstützt.
 Die Auswahl geschieht mit der Angabe des Wertes \printkeyword{true} oder \printkeyword{false}
-in der Zeile \lc{setUserDefinedBoolean\{englishAsMainLanguage\}\{<Wert>\}}.
+in der Zeile \lstinline|\setUserDefinedBoolean{englishAsMainLanguage}{<Wert>}|.
 
 Bei Verwendung von fremdsprachlichen Begriffen oder Textabschnitten
 (\zB bei englischen oder französischen Zitaten in einer deutschsprachigen Arbeit
@@ -18,16 +18,16 @@ oder bei deutschen Begriffen in einer englischsprachigen Arbeit),
 sollte man dies entsprechend markieren,
 damit \LaTeX{} die richtigen Regeln für die \index{Silbentrennung}Silbentrennung
 und die passenden Anführungszeichen bei Verwendung des Befehls
-\lc{enquote\{...\}} ansetzt.
+\lstinline|\enquote{...}| ansetzt.
 Für die einzelnen Begriffe und kürzere Texte gibt es den Befehl
-\verb+\foreignlanguage{Sprache}{...}+.
+\lstinline|\foreignlanguage{Sprache}{...}|.
 Dann wird für den Text in den geschweiften Klammern die in den eckigen Klammern angegebene Sprache verwendet.
 Um die Sprache bis zum nächsten Aufruf des gleichen Kommandos dauerhaft umstellen,
-gibt es den Befehl \verb+\selectlanguage{Sprache}+.
+gibt es den Befehl \lstinline|\selectlanguage{Sprache}|.
 Es gilt eine Liste der Sprachen aus dem Paket \pkg{babel}.
 Für Deustch sollte \printkeyword{ngerman} verwendet werden, was für die
 \index{Rechtschreibung!neue deutsche}neue deutsche Rechtschreibung steht.
 
 Für eine korrekte Behandlung der deutschen Kurzfassung und des englischen Abstracts
 unabhängig von der gewählten Hauptsprache ist durch die Verwendung der Befehle
-\lc{textInGerman\{...\}} und \lc{textInEnglish\{...\}} bereits gesorgt.
+\lstinline|\textInGerman{...}| und \lstinline|\textInEnglish{...}| bereits gesorgt.

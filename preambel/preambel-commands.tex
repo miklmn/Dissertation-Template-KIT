@@ -132,35 +132,7 @@
 %for conditional text inclusions and invisible comments
 \usepackage[nogroup]{versions}
 
-%Hilfsmakros:
-
-% Definition von Hilfsmacros \showif und \hideif, die
-% das Verstecken bzw. Einblenden von Textteilen ermöglichen werden:
-% Es wird eine Boolean-Variable mit dem angegebenen Namen angelegt
-% und entsprechend auf true (showif) oder false (hideif) gesetzt.
-% Außerdem werden entsprechende includeversion/excludeversion-Macros aufgerufen.
-\newcommand{\showif}[1]{%
-	\ifcsname#1\endcsname%
-		%falls ein Makro mit diesem Namen bereits existiert: Fehlermeldung ausgeben
-		\GenericError{}{A macro with the name #1 is already defined somewhere else! Please use another name}{}{}%
-	\else%
-		\newboolean{#1}%
-	\fi%
-	\setboolean{#1}{true}%
-	\includeversion{#1}%
-}
-\newcommand{\hideif}[1]{%
-	\ifcsname#1\endcsname%
-		%falls ein Makro mit diesem namen bereits existiert: Fehlermeldung ausgeben
-		\GenericError{}{A macro with the name #1 is already defined somewhere else! Please use another name}{}{}%
-	\else%
-		\newboolean{#1}%
-	\fi%
-	\setboolean{#1}{false}%
-	\excludeversion{#1}%
-}
-
-% Definition von Hilfsmacros \setUserDefinedBool, die eine Boolean-Variable erstellen und sie sogleich auf den Wert true oder false
+% Definition von Hilfsmacros \setUserDefinedBoolean, die eine Boolean-Variable erstellen und sie sogleich auf den Wert true oder false
 % Es wird eine Boolean-Variable mit dem angegebenen Namen angelegt
 % und entsprechend auf true oder false gesetzt.
 \newcommand{\setUserDefinedBoolean}[2]{%

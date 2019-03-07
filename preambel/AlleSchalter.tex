@@ -5,9 +5,10 @@
 %%%  -  Ein- und Ausblenden der Textteile  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%% Booleans, mit deren Hilfe wichtige Festlegungen gemacht werden.
-%% Hier true oder false auswählen!!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Booleans, mit deren Hilfe wichtige Festlegungen gemacht werden. %%
+%%              Hier true oder false auswählen!!!                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Hauptsprache der Arbeit: Englisch oder Deutsch
 \setUserDefinedBoolean{englishAsMainLanguage}{false}
@@ -20,45 +21,45 @@
 % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
 \setUserDefinedBoolean{useCMYKcolors}{false}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%  Macros for hiding individual chapters, remarks, TODOs %%%%
-%%%%  use showif{} or hideif{} for showing or hiding parts  %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\showif{showCoverPage}
-\showif{showCV}
-\showif{showAbstractEN}
-\showif{showAbstractDE}
-\showif{showAcknowledgments}
-\showif{showContents}
-\showif{showNotation}
-\showif{showExamples}
-\showif{showIntro}
-\showif{showRelatedWork}
-\showif{showConcept}
-\showif{showSystem}
-\showif{showEvaluation}
-\showif{showConclusion}
-\showif{showOutlook}
-\showif{showBackmatter}
-\showif{showBibliography}
-\showif{showOwnPublications}
-\showif{showOwnPatents}
-\showif{showSupervisedTheses}
-\showif{showListOfFigures}
-\showif{showListOfTables}
-\showif{showListOfListings}
-\showif{showListOfAcronyms}
-\showif{showListOfSymbols}
-\showif{showNomenclature}
-\showif{showGlossary}
-\showif{showIndex}%
-\showif{showAppendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%     Macros for hiding individual chapters, remarks, TODOs    %%%%
+%%%%   Set to "false" in order to hide corresponding text parts   %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setUserDefinedBoolean{showCoverPage}{true}
+\setUserDefinedBoolean{showCV}{true}
+\setUserDefinedBoolean{showAbstractEN}{true}
+\setUserDefinedBoolean{showAbstractDE}{true}
+\setUserDefinedBoolean{showAcknowledgments}{true}
+\setUserDefinedBoolean{showContents}{true}
+\setUserDefinedBoolean{showNotation}{true}
+\setUserDefinedBoolean{showExamples}{true}
+\setUserDefinedBoolean{showIntro}{true}
+\setUserDefinedBoolean{showRelatedWork}{true}
+\setUserDefinedBoolean{showConcept}{true}
+\setUserDefinedBoolean{showSystem}{true}
+\setUserDefinedBoolean{showEvaluation}{true}
+\setUserDefinedBoolean{showConclusion}{true}
+\setUserDefinedBoolean{showOutlook}{true}
+\setUserDefinedBoolean{showBackmatter}{true}
+\setUserDefinedBoolean{showBibliography}{true}
+\setUserDefinedBoolean{showOwnPublications}{true}
+\setUserDefinedBoolean{showOwnPatents}{true}
+\setUserDefinedBoolean{showSupervisedTheses}{true}
+\setUserDefinedBoolean{showListOfFigures}{true}
+\setUserDefinedBoolean{showListOfTables}{true}
+\setUserDefinedBoolean{showListOfListings}{true}
+\setUserDefinedBoolean{showListOfAcronyms}{true}
+\setUserDefinedBoolean{showListOfSymbols}{true}
+\setUserDefinedBoolean{showNomenclature}{true}
+\setUserDefinedBoolean{showGlossary}{true}
+\setUserDefinedBoolean{showIndex}{true}
+\setUserDefinedBoolean{showAppendix}{true}
 
 % Sollen TODO-Notizen samt einer Übersicht am Ende angezeigt werden?
-\showif{showTODOs}
+\setUserDefinedBoolean{showTODOs}{true}
 % Sollen Randnotizen angezeigt werden?
-\showif{showMarginNotes}
+\setUserDefinedBoolean{showMarginNotes}{true}
 % Sollen die Satzspiegel-Ränder angezeigt werden?
-\hideif{showFrame}
+\setUserDefinedBoolean{showFrame}{false}
 % Soll ein Gitter angezeigt werden? (nur falls showFrame aktiviert!)
-\hideif{showGrid}
+\setUserDefinedBoolean{showGrid}{false}
