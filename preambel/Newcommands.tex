@@ -35,15 +35,15 @@
 % Short command for backslash in text mode:
 \newcommand{\bs}{\textbackslash}
 % Short command for printing latex commands (appends backslash in front)
-\newcommand{\lc}[1]{\texttt{\textbackslash #1}}
+\newcommand{\lc}[1]{{\ttfamily\textbackslash #1}}
 % Formatting keywords, menu settings, parameters
-\newcommand{\printkeyword}[1]{\enquote{\texttt{#1}}}
+\newcommand{\printkeyword}[1]{\enquote{\ttfamily #1}}
 % Formatting file names or file paths
-\newcommand{\printfilepath}[1]{\enquote{\texttt{#1}}}
+\newcommand{\printfilepath}[1]{\enquote{\ttfamily #1}}
 % Formatting name of a software (in bold)
-\newcommand{\printswname}[1]{\textbf{#1}}
+\newcommand{\printswname}[1]{{\bfseries #1}}
 % Short command for referencing a latex package in the text (adds an index)
-\newcommand{\pkg}[1]{\index{#1}\index{Paket!#1}\texttt{#1}}
+\newcommand{\pkg}[1]{{\ttfamily\index{#1}\index{Paket!#1}#1}}
 
 %\newcommand{\bild}[6]% Bild-Pfadname, Beschriftung, Label, Breite, Kurzbeschriftung (für Abbildungsverzeichnis), optional: Platzierung
 %{%
