@@ -161,7 +161,7 @@ Eine Referenzierung der Glossar-Einträge im Text geschieht normalerweise mit de
 welcher den Begriff im Text druckt und für seine Aufnahme ins Glossar sorgt.
 Weitere mögliche Befehle sind \lstinline|\Gls{...}| und \lstinline|\GLS{...}|,
 die den ersten bzw. alle Buchstaben in Großbuchstaben umwandeln,
-\lstinline|\glpl{...}|, \lstinline|\Glspl{...}|, \lstinline|\GLSpl{...}|
+\lstinline|\glspl{...}|, \lstinline|\Glspl{...}|, \lstinline|\GLSpl{...}|
 für die Pluralform usw.
 Zusätzlich definiert die Vorlage die Befehle
 \lstinline|\glsgen{...}|, \lstinline|\glsdat{...}| und \lstinline|\glsacc{...}|,
@@ -200,7 +200,7 @@ Allerdings gibt es auch die Möglichkeit zur automatischen Erzeugung eines
 Symbolverzeichnisses mit Hilfe des \pkg{glossaries}-\glsgen{gls:pkg}.
 Um dieses automatisch generierte Symbolverzeichnis zu erzeugen,
 müssen Symbole in Form von Glossar-Einträgen angelegt und im Text des Dokumentes
-zumindest einmal entsprechend mit dem Befehl \lc{gls\{<Marke>\}} referenziert werden.
+zumindest einmal entsprechend mit dem Befehl \lstinline|\gls{<Marke>}| referenziert werden.
 Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
 \begin{latex}[caption={Definition eines Symboleintrages},label={lst:SymbEntry}]
 \newglossaryentry{symb:pi}{%
@@ -210,7 +210,8 @@ Dafür müsste ein Symboleintrag folgendermaßen angelegt werden:
                   description={Kreiszahl, Verhältnis des Umfangs eines Kreises zu seinem Durchmesser}%
                  }
 \end{latex}
-Die Referenzierung des Symbols \gls{symb:pi} im Text geschieht dann mit \verb+\gls{symb:pi}+.
+Die Referenzierung des Symbols \gls{symb:pi} im Text geschieht dann mit 
+\lstinline|\gls{symb:pi}|.
 
 In der Vorlage sind beide Arten von Symbolverzeichnissen vorgesehen.
 Sie werden am Anfang des Manuskriptes vor dem Inhaltsverzeichnis eingebunden.
@@ -238,7 +239,7 @@ Ein \index{Stichwortverzeichnis}Stichwortverzeichnis (oder
 \index{Index|see{Stichwortverzeichnis}}Index)
 ist einfach nur eine alphabetisch sortierte Liste von Begriffen mit einer Auflistung der Fundstellen im Dokument.
 Diese ist nützlich, wenn sich der Leser zu einem Begriff alle Vorkommnisse anschauen möchte.
-Der Index wird erzeugt, indem im Quellcode der Befehl \verb+\index{Begriff}+
+Der Index wird erzeugt, indem im Quellcode der Befehl \lstinline+\index{Begriff}+
 eingefügt wird. Der Begriff selbst wird dadurch nicht gedruckt und muss daher
 noch einmal wiederholt werden, um auch im Text gedruckt zu werden. Dieses Verhalten
 ist beabsichtigt, sodass im Index immer nur die Grundform des Wortes verwendet
