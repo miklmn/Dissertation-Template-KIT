@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note: the translation macros (e.g. "\TransAcknowledgements")
+% are to be found in /preambel/Translations.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% No entry for this chapter to the table of contents:
+%% Kein Eintrag für dieses Kapitel im Imhaltsverzeichnis
+%\addcontentsline{toc}{chapter}{\TransAcknowledgements}
+%
+%% However, set a PDF bookmark (PDF-Lesezeichen setzen):
+\pdfbookmark[0]{Intro}{intro}
+%
+%Add a header title (Kolumnentitel beidseitig setzen)
+\markboth{Intro}{Intro}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\lettrine[nindent=0.2em]{H}{erzlich Willkommen} zur \LaTeX-Vorlage
+%Nutzung von \glsdisp wegen der Genitiv-Form
+des \glsgen{ac:IES} %{Lehrstuhls für Interalktive Echtzeitsysteme (IES)}
+des \glsgen{ac:KIT}. %{Karlsruher Institus für Technilogie (KIT)}.
+Sie wurde ursprünglich von
+\href{http://ies.anthropomatik.kit.edu/mitarbeiter.php?person=woock}{Philipp Woock}
+entwickelt und basiert in ihren Grundzügen auf der \enquote{allgemeinen sehr umfassenden}
+\href{http://www.matthiaspospiech.de/latex/templates/thesis/}{Vorlage} von 
+\href{http://www.matthiaspospiech.de}{Matthias Pospiech} von der Leibniz Universität Hannover.
+Ohne diese Basis wäre die Vorlage niemals das geworden, was sie ist. Vielen Dank!
+
+Im Jahre 2018 wurde diese Vorlage von
+\href{http://ies.anthropomatik.kit.edu/mitarbeiter.php?person=grinberg}{Michael Grinberg}
+im Zuge seiner Promotion überarbeitet und an die neuen Vorgaben des \glsgen{ac:KSP} angepasst.
+Insbesondere wurde die Vorlage dahingehend abgeändert, dass sie nun XeLaTeX statt pdfLaTeX, 
+\gls{gls:biblatex} statt \gls{gls:bibtex} verwendet und die inzwischen aufgetretene
+Inkompatibilitäten mit neuen Versionen einiger \gls{gls:latex}-\glspl{gls:pkg} behebt.
+In 2019 wurde die Vorlage weiter angepasst und mit Beispielen aus einer Vorlage
+für studentische Arbeiten, die von
+\href{https://crypto.iti.kit.edu/index.php?id=nagel}{Mathias Nagel}
+entwickelt worden ist, angereichert.
+
+Zu beachten ist, dass zum Kompilieren der Vorlage
+\printkeyword{xelatex} statt \printkeyword{pdflatex}
+und zum Kompilieren der Bibliographien
+\printkeyword{biber} statt \printkeyword{bibtex}
+verwendet werden sollen.
+Zur Generierung des Begriffs- und Abkürzungsverzeichnisses muss zusätzlich
+\printkeyword{makeglossaries} aufgerufen werden.

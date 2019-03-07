@@ -35,6 +35,17 @@
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%           Danksagung           %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showExamples}%
+%
+\input{content/0X-ExampleContents/Intro.tex}
+%
+\cleardoublepage
+\end{showExamples}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%       Curriculum Vitae         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showCV}%
@@ -102,13 +113,30 @@
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%            Notation            %%%%
+%%%%     bzw. manuell erstelltes    %%%%
 %%%%       Symbolverzeichnis        %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showNotation}
 \input{content/00-FrontMatter/Notation.tex}
 \end{showNotation}
 %
-%\IfDefined{printglossary}{\printglossary[type=notation]} %,style=long-booktabs]}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%     automatisch erstelltes     %%%%
+%%%%       Symbolverzeichnis        %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showListOfSymbols}%
+\IfDefined{printglossary}{%
+	\setlength{\LTleft}{0pt}% Einzug entfernen (Forderung des KSP-Verlages)
+	%\setlength{\LTleft}{-5pt}% Bei Verwendung von style=long-booktabs
+	%printsymbols[style=mylongglossstyle]
+	\printglossary[type=symbols,style=mylongglossstyle]
+	%\printglossary[type=notation,style=longheader,sort=def] %,style=long-booktabs]
+}%
+\cleardoublepage
+\end{showListOfSymbols}%
 %
 % Ab hier der Hauptteil:
 \mainmatter
