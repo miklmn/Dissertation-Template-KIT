@@ -80,7 +80,8 @@
       %In Römischen Grossbuchstaben nummerieren (I, II, III)
       %\pagenumbering{Roman}
 			\cleardoubleoddpage  %% M. Kohm sagt, das sollte man vor jedem Pagenumbering-Wechsel tun
-			\pagenumbering{Roman}%
+			\pagenumbering{roman}%
+			%\pagenumbering{Roman}%
 			\hypersetup{pageanchor=false}
 			%\renewcommand*\thepage{\texorpdfstring{\arabic{page}}{frontP.\arabic{page}}}%
 			%%\renewcommand*{\theHpage}{front.\thepage} %statt front.\thepage ginge auch \arabic{chapter}.\thepage. Hauptsache eindeutig: http://de.authex.info/1132586-pdflatex-und-hyperref-mit-plainpages 
@@ -109,8 +110,8 @@
    \newcommand*{\backmatter}{
       %In Römischen Kleinbuchstaben nummerieren (i, ii, iii)
 			\cleardoubleoddpage  %% M. Kohm sagt, das sollte man vor jedem Pagenumbering-Wechsel tun
-			%\pagenumbering{Roman}%
-     \pagenumbering{roman}
+			\pagenumbering{Roman}%
+			%\pagenumbering{roman}
 			%\renewcommand*\thepage{\texorpdfstring{\arabic{page}}{backP.\arabic{page}}}%
 			%%\renewcommand*{\theHpage}{back.\thepage}
 			%\renewcommand\theHchapter{backC.\arabic{chapter}}

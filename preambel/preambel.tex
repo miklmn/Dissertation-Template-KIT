@@ -1214,8 +1214,10 @@ verbose,
    {0.8em}% indentation (par)
    {\makebox[0.8em][l]{\textsuperscript{\thefootnotemark}}}%
 %
-%\addtolength{\skip\footins}{2\baselineskip} % Abstand Text <-> Fussnote
-%\addtolength{\skip\footins}{\baselineskip}
+
+%% Forderung des KSP-Verlages: Abstand Text <-> Fussnote auf mindestens 1,5 der normalen Leerzeile setzen
+\setlength{\skip\footins}{1.5\baselineskip} % Abstand Text <-> Fussnote
+
 
 \setlength{\dimen\footins}{10\baselineskip} % Beschraenkt den Platz von Fussnoten auf 10 Zeilen
 

@@ -23,7 +23,7 @@ angezeigt wird:
 \section[Kurzversion]{Langer Titel}
 \end{latex}
 Dasselbe gilt für Bild- und Tabellenunterschriften. Hier kann man dem
-\lc{caption}-Befehl ebenfalls einen optionalen Parameter übergeben.
+\lc{caption}-Befehl ebenfalls einen optionalen Parameter in eckigen Klammern übergeben.
 
 Manchmal sind dem \glsdat{ac:KSP} die von \LaTeX{} automatisch eingefügten Zeilenumbrüche in den Kapitelüberschriften im Inhaltsverzeichnis nicht \enquote{schön} genug.
 Ein manuelles Einfügen der Zeilenumbrüche etwa mit \verb+\newline+ in der Kurzversion des Titels funktioniert leider nicht,
@@ -33,6 +33,13 @@ was normalerweise nicht erwünscht ist.
 Abhilfe schafft der folgende Trick:
 man schließt den letzten, umzubrechenden Teil der Kurzversion des Titels in eine \verb+\mbox{}+.
 Der Text, der in eine \verb+\mbox{}+ eingeschlossen wird, darf nicht umbrochen werden.
-Im Kolumnentiteln und in den PDF"=Lesezeichen hat dies keine besondere Wirkung; im Inhaltsverzeichnis führt dies jedoch dazu, dass \LaTeX{} den Zeilenumbruch vor der \verb+\mbox{}+ einfügt.
-Dasselbe gilt für die ungünstig umbrochene Wörter (so will 
+Im Kolumnentiteln und in den PDF"=Lesezeichen hat dies keine besondere Wirkung;
+im Inhaltsverzeichnis führt dies jedoch dazu, dass \LaTeX{} den Zeilenumbruch vor der \verb+\mbox{}+ einfügt.
 Ein entsprechendes Beispiel stellt die Überschrift dieses Abschnitts dar.
+Dasselbe gilt für die ungünstig umbrochenen Wörter
+(so will der KSP-Verlag keine seitenübergreifenden Wort-Trennungen und nicht mehr als 4 nacheinanderfolgenden Zeilen mit Worttrennung am Ende der Zeile zulassen).
+Weiteren Spielraum gibt das umbruchgeschützte Leerzeichen (eingefügt mit einer Tilde),
+der Parameter \printkeyword{emergencystretch}, welcher global die maximal mögliche Dehnung des Zwischenraums zwischen den einzelnen Wörtern steuert,
+sowie zusätzliche Steuermöglichkeiten der Silbertrennung, die auf Wikibooks%
+\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung}}
+beschrieben sind.

@@ -10,6 +10,10 @@ um eine einheitliche Typografie von
 \index{Zufallsvariablen}Zufallsvariablen etc. zur vereinfachen.
 In diese Dateien einfach mal reinschauen, welche Kurzkommandos es gibt.
 
+Grundsätzlich empfiehlt es sich eigene Mathe-Makros zu definieren und durchgehend zu verwenden.
+Damit kann man bei Bedarf die Formatierung der Variablen an einer einzigen Stelle anpassen
+ohne den gesamten Code des Arbeit durchgehen zu müssen.
+
 Auf zwei besondere Kommandos wird näher eingegangen,
 weil dies häufig falsch gemacht wird.
 \begin{itemize}
@@ -28,6 +32,11 @@ weil dies häufig falsch gemacht wird.
 	 \int^1_0 x^2 \diff x = \frac{1}{3} \qquad \text{(richtige Typografie!)}
 	\end{equation}
 \end{itemize}
-Grundsätzlich empfiehlt es sich eigene Makros zu definieren und durchgehend zu verwenden.
-Damit kann man bei Bedarf die Formatierung der Variablen an einer einzigen Stelle anpassen
-ohne den gesamten Code des Arbeit durchgehen zu müssen.
+
+Auch sollte man darauf achten, dass zwischen einer Zahl und der physikalischen Einheit ein umbruchgeschütztes Leerzeichen verwendet wird.
+Allerdings sollte statt dem üblichen (dehnbaren) umbruchgeschützen Wortzwischenraum, 
+welches mit einer Tilde erzeugt wird, ein schmälerer Abstand verwendet werden.
+Dieser wird mit \verb+\,+  erzeugt und beträgt standardmäßig 0,1667\,em. Dies geht so:
+\begin{latex}
+Der eingefügte Abstand beträgt 0,1667\,em.
+\end{latex}

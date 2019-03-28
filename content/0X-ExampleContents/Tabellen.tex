@@ -1,23 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Tabellen}
+\section{Tabellen}%
 \label{sec:Tabellen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Typografisch gute Tabellen haben \emph{niemals} vertikale Trennlinien,
-sondern nur wenige horizontale Linien.
-Ferner haben sie eine trennende Linie ganz oben und ganz unten.
-Hierfür stellt das Paket \pkg{booktabs} die Befehle
+Für eine ausführliche Erläuterung auch über gute und schlechte Tabellen
+und deren Gestaltung empfiehlt sich die Lektüre des entsprechenden Artikels im \LaTeX{}"=Kompendium auf Wikibooks%
+\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-Kompendium:_Tabellen}}
+sowie die Dokumentation des \pkg{booktabs}-Pakets \cite{Fear2005}.
+\Ua stellt dieses Paket die Befehle
 \begin{itemize*}
-  \item \lstinline|\toprule|
+	\item \lstinline|\toprule|
 	\item \lstinline|\midrule|
 	\item \lstinline|\bottomrule|
 \end{itemize*}
 zur Verfügung.
-Der Befehl \lstinline|\hline| ist tabu.
-Für eine ausführliche Erläuterung auch über gute und schlechte Tabellen
-siehe die Dokumentation des \pkg{booktabs}-Pakets \cite{Fear2005}.
 
 Eine einfache Tabelle hat den folgenden Code:
+
 \begin{latex}[caption={Einfache Tabelle in \LaTeX},label={lst:tabellenbeispiel}]
 \begin{table}%
 	\centering%
