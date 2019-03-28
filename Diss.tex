@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% "Magic comments" for some LaTeX editors ----------
 %%% Disabled, since glossaries are not created due to a missing call directive
-%%% Reihenfolge: xelatex | biber | makeglossaries | xelatex | xelatex
+%%% Call order: xelatex | biber | makeglossaries | xelatex | xelatex
 %%%
 %% !TeX encoding = utf8
 %% !TeX program = xelatex
@@ -42,12 +42,20 @@
 %
 \input{content/Inhalt-FrontMatter.tex}
 \input{content/Inhalt-Examples.tex}
-\input{content/Inhalt-Intro.tex}
-\input{content/Inhalt-Basics.tex}
-\input{content/Inhalt-Concept.tex}
-\input{content/Inhalt-System.tex}
-\input{content/Inhalt-Evaluation.tex}
-\input{content/Inhalt-Conclusion.tex}
+%
+% Add own contents with 
+%\input{content\ChapterX}
+% or
+% \include{content\ChapterX}
+% here:
+%
+%\input{content/Inhalt-Intro.tex}
+%\input{content/Inhalt-Basics.tex}
+%\input{content/Inhalt-Concept.tex}
+%\input{content/Inhalt-System.tex}
+%\input{content/Inhalt-Evaluation.tex}
+%\input{content/Inhalt-Conclusion.tex}
+%
 \input{content/Inhalt-BackMatter.tex}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

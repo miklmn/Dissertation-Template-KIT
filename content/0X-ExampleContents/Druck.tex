@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Anpassungen für den Druck]{Anpassungen für den Druck}%
+\index{Druck}%
+\label{sec:Druckanpassungen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Vor der Abgabe einer Druckversion an den KSP-Verlag sollte die Korrekte Schaltersetzung in der Datei \printfilepath{./preambel/AlleSchalter.tex} nochmals geprüft werden.
+Insbesondere sollte mit der Einstellung
+\lstinline|\setUserDefinedBoolean{showFrame}{true}|
+die Satzspiegel-Ränder angezeigt werden und so kontrolliert werden,
+ob nichts hinausragt und ob Tabellen und Bilder die komplett verfügbare Breite ausfüllen.
+Besonders sollte man dabei auch die Overfullbox- und Underfullbox 
+Danach sollte der Schalter wieder auf \printkeyword{false} umgestellt werden.
+
+Bei Abbildungen, die am Anfang einer Seite stehen, ist dabei zu achten,
+dass es keinen leeren Zwischenraum zwischen dem oberen Rand des Satzspiegels und der Abbildung gibt.
+Normalerweise passiert dies durch die Einstellungen der Vorlage automatisch.
+Falls doch noch ein leeres Raum entsteht, liegt dies zumeist daran, dass die Abbildung selbst weiße Ränder hat.
+Bei Binärbildern können diese durch Setzen der Optionen
+\printkeyword{clip=true} und \printkeyword{trim=<left> <lower> <right> <upper>}
+im \printkeyword{includegraphics}-Befehl beschnitten werden, z.B. so:
+\lstinline|\includegraphics[clip=true, trim={0cm 1cm 0cm 1cm}]{Bildpfad\Dateiname}|.
+
+Mit den Einstellungen 
+\lstinline|\setUserDefinedBoolean{coloredlistings}{false}| und 
+\lstinline|\setUserDefinedBoolean{coloredlinks}{false}|
+sollte dafür gesorgt werden, dass alle Quellcode-Listings sowie Querverweise und URL-Adressen,
+die normalerweise farbig sind, für die Druckversion nicht farbig gesetzt werden
+und so die Anzahl der farbig zu druckenden Seiten reduziert wird.
+
+Schließlich kann mit der Einstellung
+\lstinline|\setUserDefinedBoolean{useCMYKcolors}{true}|
+eine Farbkonvertierung aller Farben in den CMYK-Farbraum für den Offset-Druck vorgenommen werden.
+So kann man die Farbgebung der Druckversion begutachten und sicherstellen, dass alle Farben beim Druck gut aussehen.%
+\footnote{Da manche RGB-Farben bei der Konvertierung in den CMYK-Farbraum blass aussehen,
+ist es sinnvoll, eine Alternativversion der betroffenen Farben im CYMK-Farbraum zu definieren,
+die gut aussieht.
+Beispiele dafür gibt es in der Datei \printfilepath{./preambel/ColorSettings.tex}.
+Vorzugsweise sollten aber die KIT-Corporate-Identity-Farben verwendet werden,
+welche in der Datei \printfilepath{KAcolors.sty} definiert sind.
+Für diese Farben wurde sowohl eine RGB- als auch eine CMYK-Definition erstellt.}
