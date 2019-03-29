@@ -1882,7 +1882,8 @@ afterskip=\myparagraphafterskip%
 %%DIN1505
 %%\usepackage[backref=true,backend=bibtex8,style=alphabetic,maxnames=10]{biblatex}
 \usepackage[backend=biber,%
-						style=alphabetic,%
+						bibstyle=alphabetic,%
+						citestyle=alphabetic,%
 						labelnumber,% zusätzlich labelnummer zur Verfügung stel
 						defernumbers=true,%
 						%maxnames=10,% Maximal 10 Autorennamen zulassen, wenn >10, dann lasse nur einen + et al. (ggf. änderbar mit  der Option "minnames"
@@ -1890,6 +1891,7 @@ afterskip=\myparagraphafterskip%
 						maxcitenames=1,%
 						maxalphanames=1,% Anzahl der aufzuführenden Namen in Bib-Label
 						%dashed=false,%will print recurring author/editor names instead of replacing them by a dash in case of authoryear, authortitle, and verbose bibliography styles)
+						%uniquename=full,
 						isbn=false,%die ISBN-Felder nicht drucken
 						%doi=false,%
 						%eprint=false,%
@@ -1933,6 +1935,8 @@ afterskip=\myparagraphafterskip%
 %%% Hack, damit man mehrere Bibliografien mit verschiedenen Zitationsstilen hat:
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
 
+\DeclareFieldFormat{extraalpha}{\mknumalph{#1}}
+
 %% Mehrere Zitate in einer Klammer, aber Komma statt Semikolon:
 \renewcommand*{\multicitedelim}{\addcomma\addspace}
 %% Nicht mehrere Zitate in einer Klammer, sondern eine Klammer pro Zitat:
@@ -1943,7 +1947,9 @@ afterskip=\myparagraphafterskip%
   {\list
      {\printtext[labelalphawidth]{%
         \printfield{labelprefix}%
-        \printfield{labelalpha}}}
+        \printfield{labelalpha}%
+				\printfield{extraalpha}%
+				}}
      {\setlength{\labelwidth}{\labelalphawidth}%
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
