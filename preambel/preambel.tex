@@ -90,6 +90,11 @@
 \end{hyphenrules}
 }
 
+%Adding ngerman's language shorthands to english
+%see https://tex.stackexchange.com/questions/49359/babels-hyphenation-friendly-hyphen-in-multiple-languages/49366
+\useshorthands{"}
+\addto\extrasenglish{\languageshorthands{ngerman}}
+
 %for allowing hyphenation of words that contain a dash
 %using shortcuts \-/, \=/, \--, \==, \---, and \===
 \usepackage[shortcuts]{extdash}
