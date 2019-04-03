@@ -1540,32 +1540,11 @@ afterskip=\myparagraphafterskip%
 %% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
 
 
-% Aussehen der Inhalts-, Abbildung, Tabellenverzeichnisse: tocloft
-\usepackage[subfigure,titles]{tocloft}
-
-%Wird in der Datei settings.tex gesetzt
-%\setcounter{secnumdepth}{2}    % Abbildungsnummerierung mit groesserer Tiefe
-%\setcounter{tocdepth}{3}		 % Inhaltsverzeichnis mit groesserer Tiefe
-%Fonts in Kapiteln und sections...
-\renewcommand\cftchapfont{\normalsize\bfseries\raggedright}
-\renewcommand\cftsecfont{\normalsize\raggedright}
-\renewcommand\cftsubsecfont{\normalsize\raggedright}
-%
-% Gepunktete Verbindung zwischen den Kapiteleinträgen und korrespondierenden Seitenzahlen:
-% funktioniert!
-\renewcommand{\cftchapdotsep}{\cftdotsep}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
-
-% Seitenzahlen bei Part unterdrücken
-\cftpagenumbersoff{part}
-
-% Einzug im Abbildungsverzeichnis zu Null setzen
-\renewcommand{\cftfigindent}{0cm}
-% Einzug im Tabellenverzeichnis zu Null setzen
-\renewcommand{\cfttabindent}{0cm}
-
 %\usepackage[tocgraduated]{tocstyle}
 %\usetocstyle{allwithdot}
+
+% Aussehen der Inhalts-, Abbildung, Tabellenverzeichnisse: tocloft
+\usepackage[subfigure,titles]{tocloft}
 
 %% Abstand zwischen Text und Seitenzahlen im Inhaltsverzeichnis vergrößern:
 \cftsetrmarg{4.07em}% original häufig  2.55em
@@ -1580,6 +1559,34 @@ afterskip=\myparagraphafterskip%
 \egroup
 \makeatother
 
+%Wird in der Datei settings.tex gesetzt
+%\setcounter{secnumdepth}{2}    % Abbildungsnummerierung mit groesserer Tiefe
+%\setcounter{tocdepth}{3}		 % Inhaltsverzeichnis mit groesserer Tiefe
+%Fonts in Kapiteln und sections...
+\renewcommand\cftchapfont{\normalsize\bfseries\raggedright}
+\renewcommand\cftsecfont{\normalsize\raggedright}
+\renewcommand\cftsubsecfont{\normalsize\raggedright}
+%
+% Seitenzahlen bei Part unterdrücken
+\cftpagenumbersoff{part}
+
+% Gepunktete Verbindung zwischen den Kapiteleinträgen und korrespondierenden Seitenzahlen:
+% funktioniert!
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+
+% Einzug im Abbildungsverzeichnis zu Null setzen
+\renewcommand{\cftfigindent}{0cm}
+% Einzug im Tabellenverzeichnis zu Null setzen
+\renewcommand{\cfttabindent}{0cm}
+
+%% Minestanzahl an Punkten (2 Punkte zwischen den Kapiteleinträgen und korrespondierenden Seitenzahlen:
+\renewcommand{\cftchapleader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
+\renewcommand{\cftsecleader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
+\renewcommand{\cftsubsecleader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
+\renewcommand{\cftfigleader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
+\renewcommand{\cftsubfigleader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
+\renewcommand{\cfttableader}{\leaders\hbox to1em{\hss.\hss}\hskip 3em plus1fill}
 
 % Workaround for correct setting of the list of listings taken from
 % https://tex.stackexchange.com/questions/319372/customize-list-of-listings/319374#319374
