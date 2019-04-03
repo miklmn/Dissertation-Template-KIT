@@ -1567,9 +1567,9 @@ afterskip=\myparagraphafterskip%
 %\usepackage[tocgraduated]{tocstyle}
 %\usetocstyle{allwithdot}
 
-%Abstand zwischen Text und Seitenzahlen im Inhaltsverzeichnis vergrößern:
-%\cftsetpnumwidth{2em}
-%\cftsetrmarg{2.5em}
+%% Abstand zwischen Text und Seitenzahlen im Inhaltsverzeichnis vergrößern:
+\cftsetrmarg{4.07em}% original häufig  2.55em
+%\cftsetpnumwidth{1.7em}% default is 1.55em
 
 %% Flattersatz ohne Silbentrennung in Inhaltsverzeichnis
 %(Lösung aus https://tex.stackexchange.com/questions/283730/left-align-toc-items-when-using-tableofcontents)
@@ -1626,58 +1626,6 @@ afterskip=\myparagraphafterskip%
 	\usepackage[disable]{todonotes}
 }
 % -------------------------------------------------------
-
-% Aussehen des Inhaltsverzeichnisses: tocloft
-%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
-%% Laden mit Option subfigure in Abhaengigkeit vom Paket subfigure und subfig
-% \IfElsePackageLoaded{subfig}
-% 	% IF subfig
-% 	{\usepackage[subfigure]{tocloft}}{
-% 	% ELSE
-% 	\IfElsePackageLoaded{subfigure}
-% 		% IF subfigure
-% 		{\usepackage[subfigure]{tocloft}}
-% 	   % Else (No subfig nor subfigure)
-% 		{\usepackage{tocloft}}
-% 	}
-%
-% %TOCLOFT zerstoert Layout der Ueberschriften von TOC, LOT, LOF
-% \IfPackageLoaded{tocloft}{
-% %
-% %%%% Layout Matthias Pospiech (alles serifenlos)
-% \IfChapterDefined{%
-% 	\renewcommand{\cftchappagefont}{\bfseries\sffamily}  % Kapitel Seiten Schrift
-% 	\renewcommand{\cftchapfont}{\bfseries\sffamily}      % Kapitel Schrift
-% }
-% \renewcommand{\cftsecpagefont}{\sffamily}            % Section Seiten Schrift
-% \renewcommand{\cftsubsecpagefont}{\sffamily}         % Subsectin Seiten Schrift
-% \renewcommand{\cftsecfont}{\sffamily}                % Section Schrift
-% \renewcommand{\cftsubsecfont}{\sffamily}             % Subsection Schrift
-%
-% %%%% Layout aus Typokurz:
-% % % Seitenzahlen direkt hinter TOC-Eintrag:
-% % % Ebene \chapter
-% % \renewcommand{\cftchapleader}{}
-% % \renewcommand{\cftchapafterpnum}{\cftparfillskip}
-% % % Ebene \section
-% % \renewcommand{\cftsecleader}{}
-% % \renewcommand{\cftsecafterpnum}{\cftparfillskip}
-% % % Ebene \subsection
-% % \renewcommand{\cftsubsecleader}{}
-% % \renewcommand{\cftsubsecafterpnum}{\cftparfillskip}
-% % % Abstaende vor Eintraegen im TOC verkleinern
-% % \setlength{\cftbeforesecskip}{.4\baselineskip}
-% % \setlength{\cftbeforesubsecskip}{.1\baselineskip}
-%
-% % wenn subsubsections unnumeriert:
-% % - Einzug der ersten Zeile manuell vergrößern
-% % - zusätzlichen Einzug der nachfolgenden Zeilen 
-% %   (bei einem eventuellen Zeilenumbruch) entfernen
-% % (Zahlen aus der Dokumentation zu tocloft-Pakage):
-%\setlength{\cftsubsubsecindent}{10.0em} %normalerweise: {7.0em}
-%\setlength{\cftsubsubsecnumwidth}{0em} %normalerweise: {4.1em}
-% }
-% % Ende tocloft Einstellungen --------------
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/ms/multitoc.dvi
 % TOC in mehreren Spalten setzen
