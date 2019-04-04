@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Aufzählungen}%
+\index{Aufzählungen}%
+\label{sec:Aufzählungen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Nachfolgend gibt es Beispiele für unterschiedliche Aufzählungen.
+%
+\begin{enumerate}
+\item Aufzählungen mit längeren \enquote{Items}, die ganze Sätze enthalten, sollten mit \printkeyword{itemize} (unnummerierte Liste) bzw. \printkeyword{enumerate} (nummerierte Liste) eingefügt werden.
+\item Dabei ist darauf zu achten, dass im Quellcode keine leeren Zeilen und damit kein zusätzlicher Absatz zwischen der Aufzählung und dem vorhergehenden Textabschnitt eingefügt wird.
+\item Um die Aufzählung im Quellcode optisch vom vorangegangenem Textabschnitt zu trennen, können leere Zeilen mit einem Prozentzeichen verwendet werden, die von \LaTeX{} ignoriert werden.
+\end{enumerate}
+%
+Bei Verwendung von \printkeyword{itemize} bzw. \printkeyword{enumerate} ist der vertikale Abstand zwischen den einzelnen \enquote{Items} ziemlich groß.
+Dies ist gut für längere Punkte, sieht aber bei Aufzählungen mit kürzeren \enquote{Items} unschön aus.
+Hierfür bieten die beiden Umgebungen \printkeyword{itemize*} und \printkeyword{enumerate*} mit einem Stern eine Abhilfe.
+Das Ergebnis sind kompaktere Auflistungen mit kleinerem Abstand:
+%
+\begin{itemize*}
+\item Punkt 1
+\item Punkt 2
+\item Punkt 3
+\end{itemize*}
