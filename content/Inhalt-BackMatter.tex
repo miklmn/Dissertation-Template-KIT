@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showBibliography}%
 %% mit BibLaTeX:
-\printbibliography
+\printbibliography[heading=bibintoc]
 \end{showBibliography}%
 %
 %
@@ -37,10 +37,11 @@
 \nocite{*}
 %
 \printbibliography[env=bibliographyNUM,%
-									 keyword=ownpubl,%
-									 %heading=subbibliography,%
-									 %nottype=patent,%
-									 title={\TransOwnPublications}]
+				   keyword=ownpubl,%
+				   heading=bibintoc,%
+				   %heading=subbibliography,%
+				   %nottype=patent,%
+				   title={\TransOwnPublications}]
 \end{refsection}
 \end{showOwnPublications}%
 %
@@ -68,6 +69,7 @@
 \printbibliography[env=bibliographyNUM,%
 									 keyword=ownpatent,%
 									 %heading=subbibliography,%
+									 heading=bibintoc,%
 									 type=patent,%
 									 title={\TransOwnPatents}]
 \end{refsection}
@@ -97,6 +99,7 @@
 									 keyword=supervised,%
 									 %heading=subbibliography,%
 									 %type=thesis,%
+									 heading=bibintoc,%
 									 title={\TransSupervisedTheses}]
 \end{refsection}
 \end{showSupervisedTheses}%
