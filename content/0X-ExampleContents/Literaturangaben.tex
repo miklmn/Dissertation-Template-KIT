@@ -1,17 +1,64 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Literaturangaben}%
-\label{sec:Literaturangaben}
+\section{Literaturverzeichnisse}%
+\label{sec:Literaturverzeichnisse}%
+\index{Bibliographie}\index{Literaturverzeichnis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Die Erstellung eines Literaturverzeichnisses geschieht mithilfe von \gls{gls:biblatex}.
-Hier soll an dieser Stelle nicht viel Erklärung dazugegeben werden, denn die
-offizielle Dokumentation ist eine der besten Dokumentation, die ich überhaupt
-kenne \parencite{Lehman2013}. Insbesondere seien die Abschnitte \enquote{3.7
-Citation Commands} und das gesamte Kapitel \enquote{2 Database Guide} ans Herz
-gelegt. Ersteres erklärt, wie im Text korrekt auf eine \index{Zitat}Zitatstelle verwiesen
-wird, letzteres erklärt wie die BIB-Datei auszusehen hat.
+Defaultmäßig befinden sich alle Literaturangaben in der Datei
+\printfilepath{bib/Diss.bib}
+Falls ein davon abweichendes Pfad oder weitere Literaturdatenbanken
+verwendet werden sollen, können entsprechende Pfade in der Datei
+\printfilepath{preambel/AllePfade.tex} mit
+\lstinline|\addbibresource{...}|
+festgelegt werden.
+Bitte beachten, dass bei den Literaturdatenbanken kein \gls{gls:bibtex}-,
+sondern \gls{gls:biblatex}-Format verwendet werden soll,
+also Umlaute direkt eingegeben werden können).
 
-Wer nicht die Originaldokumentation liest sondern nach irgendwelche (stets total
-falschen) Lösungen im Internet sucht, weil er zu faul ist einfach nur mal lesen,
-der hat mit Fug und Recht jede nur denkbare schlechte Note auf seine Arbeit
-verdient.
+Die Vorlage ermöglicht es, neben dem Haupt"=Literaturverzeichnis
+jeweils separat durchnummerierte Listen der eigenen Publikationen und Patente
+sowie der betreuten studentischen Arbeiten zu erstellen.
+Diese Auflistungen sind von den Referenzierungen im Manuskript unabhängig.
+Standardmäßig werden die entsprechenden Angaben aus der Hauptliteraturdatenbank
+\printfilepath{bib/Diss.bib} extrahiert.
+Durch Änderung der Definitionen der Pfade
+\printkeyword{bibpathOwnPatents},
+\printkeyword{bibpathOwnPublications} und
+\printkeyword{bibpathStudentTheses}
+in der Datei
+\printfilepath{preambel/AllePfade.tex}
+können hierfür jedoch zusätzliche, speziell dafür angelegten Datenbanken
+verwendet werden.
+
+Die Einbindung aller Literaturverzeichnisse erfolgt in der Datei
+\printfilepath{content/Inhalt-BackMatter.tex}.
+Die Zusatz"=Literaturverzeichnisse werden separat von Haupt"=Literaturverzeichnis erstellt.
+Dazu wird im jeweiligen Abschnitt,
+welche jeweils mit Hilfe der \printkeyword{refsection}"=Umgebung abgegrenzt sind,
+die kompletten Inhalte der jeweiligen Datenbank unsichtbar referenziert.
+Dies geschieht mit dem \lstinline|\nocite{*}|"=Befehl.
+
+Die Filterung der eigenen Publikationen, Patente und betreuten Arbeiten
+für das jeweilige Verzeichnis geschieht jeweils mit der Angabe
+\lstinline|keyword=ownpubl|,
+\lstinline|keyword=ownpatent|
+und
+\lstinline|keyword=supervised|
+in der Optionenliste des
+\lstinline|printbibliography|"=Befehls.
+
+Dazu müssen die Literatureinträge in der Literaturdatenbank freilich
+entsprechend jeweils mit der Angabe
+\lstinline|keywords = {ownpubl}|,
+\lstinline|keywords = {ownpatent}|
+oder
+\lstinline|keywords = {supervised}|
+versehen werden.
+
+Bei Verwendung separater Literaturdatenbanken für die einzelnen Zusatzverzeichnisse
+oder bei einer expliziten Aufzählung der einzelnen Veröffentlichungen mit dem
+\lstinline|\nocite{Quelle1,Quelle2,...,QuelleN}|"=Befehl,
+ist eine Filterung der Literaturdatenbank nach einem Keyword nicht notwendig.
+Damit könnte die Zusatzangabe in der Literaturdatenbank entfallen.
+Allerdings muss dann auch die entsprechende Filter-Option in den jeweiligen
+\lstinline|printbibliography|"=Befehlen deaktiviert (sprich auskommentiert) werden.
