@@ -93,9 +93,9 @@ Sollte man ausnahmsweise das Dokument doch noch aus der Kommandozeile oder von e
 so ist die Reihenfolge der Aufrufe wie folgt:
 \begin{verbatim}
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
-#> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> biber Diss
 #> makeglossaries Diss
+#> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 #> xelatex -synctex=1 -interaction=nonstopmode Diss.tex
 \end{verbatim}
