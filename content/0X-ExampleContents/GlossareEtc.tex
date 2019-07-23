@@ -28,14 +28,14 @@ Zudem wurden einige Makros definiert, welche die Erfassung der Begriffe erleicht
 Um ein Abkürzungsverzeichnis zu erzeugen, muss zuerst eine Liste der Abkürzungen angelegt werden.
 Dies geschieht in der Datei \printfilepath{./preambel/Acronyms.tex}.
 Hierfür wird das Makro \lstinline|\newacronym| verwendet.
-Dieses Makro hat drei obligatorische Argumente, nämlich das
+Dieses Makro hat drei obligatorische Argumente, nämlich
 \begin{itemize*}
 \item die Marke,
 \item das Akronym und
 \item die Langform.
 \end{itemize*}
 
-Als Konvention wird der Marke eines Akronyms ein \printkeyword{ac:} als Präfix vorangestellt.
+Als Konvention wird der Marke eines Akronyms \printkeyword{ac:} als Präfix vorangestellt.
 
 \begin{latex}[caption={Definition einer Abkürzung},label={lst:SimpleAcronymEntry}]
 \newacronym{ac:MSA}{MSA}{mein schönes Akronym}

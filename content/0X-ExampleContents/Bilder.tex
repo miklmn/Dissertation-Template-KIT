@@ -48,7 +48,7 @@ Leider können dabei einige unerwünschte Effekte auftreten.
 So können beispielsweise auf der vorherigen Seite riesige leere Flächen entstehen.
 Wenn der verbleibende Platz auf der Seite eine Platzierung nicht erlaubt,
 kann es schnell passieren, dass \LaTeX{} das betroffene Bild 
-und alle Folgeilder ans Ende des Kapitels verschiebt
+und alle Folgebilder ans Ende des Kapitels verschiebt
 (genauer gesagt, an die Stelle, wo die nächste \lstinline|\clearpage|-Anweisung kommt).
 
 Eine genaue Auswirkung der Parameter
@@ -89,7 +89,7 @@ die in der Datei \printfilepath{./preambel/AllePfade.tex} definiert sind.
 Diese Pfade werden in angegebenen Reihenfolge durchsucht.
 Dasselbe gilt für die Dateierweiterung.
 Ist keine Erweiterung definiert und liegen mehrere Bilder mit gleichem Namen jedoch unterschiedlicher Dateierweiterung vor,
-wird die Reihenfolge, die in der Datei texttt{AllePfade.tex} definiert ist, verwendet.
+wird die Reihenfolge, die in der Datei \printfilepath{AllePfade.tex} definiert ist, verwendet.
 
 Zu beachten ist dabei, dass der \gls{ac:KSP} Skalierung der Bildern auf die Seitenbreite fordert,
 was hier durch die Option \printkeyword{width=\bs linewidth} verwirklicht wurde.

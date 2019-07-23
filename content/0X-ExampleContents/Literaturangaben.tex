@@ -13,13 +13,12 @@ verwendet werden sollen, können entsprechende Pfade in der Datei
 festgelegt werden.
 Bitte beachten, dass bei den Literaturdatenbanken kein \gls{gls:bibtex}-,
 sondern \gls{gls:biblatex}-Format verwendet werden soll,
-also Umlaute direkt eingegeben werden können).
+also Umlaute direkt eingegeben werden können.
 
 Die Vorlage ermöglicht es, neben dem Haupt"=Literaturverzeichnis
 jeweils separat durchnummerierte Listen der eigenen Publikationen und Patente
 sowie der betreuten studentischen Arbeiten zu erstellen.
-Diese Auflistungen sind von den Referenzierungen im Manuskript unabhängig.
-Standardmäßig werden die entsprechenden Angaben aus der Hauptliteraturdatenbank
+Standardmäßig werden alle Literaturangaben aus der Hauptliteraturdatenbank
 \printfilepath{bib/Diss.bib} extrahiert.
 Durch Änderung der Definitionen der Pfade
 \printkeyword{bibpathOwnPatents},
@@ -27,26 +26,32 @@ Durch Änderung der Definitionen der Pfade
 \printkeyword{bibpathStudentTheses}
 in der Datei
 \printfilepath{preambel/AllePfade.tex}
-können hierfür jedoch zusätzliche, speziell dafür angelegten Datenbanken
-verwendet werden.
+können jedoch für die einzelnen Auflistungen 
+jeweils eigene, speziell dafür angelegten Datenbanken verwendet werden.
 
-Die Einbindung aller Literaturverzeichnisse erfolgt in der Datei
+Die Einbindung der Literaturverzeichnisse in das Manuskript erfolgt in der Datei
 \printfilepath{content/Inhalt-BackMatter.tex}.
 Die Zusatz"=Literaturverzeichnisse werden separat von Haupt"=Literaturverzeichnis erstellt.
-Dazu wird im jeweiligen Abschnitt,
+Dazu wird in den einzelnen Abschnitten,
 welche jeweils mit Hilfe der \printkeyword{refsection}"=Umgebung abgegrenzt sind,
-die kompletten Inhalte der jeweiligen Datenbank unsichtbar referenziert.
+die kompletten Inhalte der jeweiligen Literaturdatenbank unsichtbar referenziert.
 Dies geschieht mit dem \lstinline|\nocite{*}|"=Befehl.
+Alternativ dazu können die einzelnen Werke mit
+\lstinline|\nocite{Quelle1,Quelle2,...,QuelleN}|
+explizit referenziert werden.
 
+Sofern man eine einzige Datenbank für sämtliche Literaturverzeichnisse verwendet
+und die unsichtbare Referenzierung jeweils mit dem \lstinline|\nocite{*}|"=Befehl erfolgt,
+müssen die relevanten Referenzen für das jeweilige Zusatzverzeichnis
+gefiltert werden.
 Die Filterung der eigenen Publikationen, Patente und betreuten Arbeiten
-für das jeweilige Verzeichnis geschieht jeweils mit der Angabe
+für die einzelnen Verzeichnisse geschieht jeweils mit der Angabe
 \lstinline|keyword=ownpubl|,
 \lstinline|keyword=ownpatent|
-und
+oder
 \lstinline|keyword=supervised|
-in der Optionenliste des
+in der Optionenliste des jeweiligen
 \lstinline|printbibliography|"=Befehls.
-
 Dazu müssen die Literatureinträge in der Literaturdatenbank freilich
 entsprechend jeweils mit der Angabe
 \lstinline|keywords = {ownpubl}|,
@@ -59,6 +64,15 @@ Bei Verwendung separater Literaturdatenbanken für die einzelnen Zusatzverzeichn
 oder bei einer expliziten Aufzählung der einzelnen Veröffentlichungen mit dem
 \lstinline|\nocite{Quelle1,Quelle2,...,QuelleN}|"=Befehl,
 ist eine Filterung der Literaturdatenbank nach einem Keyword nicht notwendig.
-Damit könnte die Zusatzangabe in der Literaturdatenbank entfallen.
-Allerdings muss dann auch die entsprechende Filter-Option in den jeweiligen
-\lstinline|printbibliography|"=Befehlen deaktiviert (sprich auskommentiert) werden.
+Damit könnte die Notwendigkeit von Zusatzangaben in der Literaturdatenbank entfallen.
+Allerdings muss dann auch die standardmäßig gesetzte Filter-Option in den jeweiligen
+\lstinline|printbibliography|"=Befehlen
+in der Datei  \printfilepath{content/Inhalt-BackMatter.tex}
+deaktiviert (sprich auskommentiert) werden.
+
+Die Zusatzauflistungen sind von den Zitierungen im Text unabhängig.
+Damit ergibt sich sich für eigene Veröffentlichungen,
+die im Text explizit zitiert werden, eine doppelte Listung --
+einmal in der Hauptliteraturliste (mit einer alphanumerischen Referenz)
+und einmal in der durchnummerierten Liste eigener Publikationen.
+Dies ist kein Bug, sondern ein Feature der Vorlage.
