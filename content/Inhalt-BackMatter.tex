@@ -12,6 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showBibliography}%
 %% mit BibLaTeX:
+\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
 \printbibliography[heading=bibintoc]
 \end{showBibliography}%
 %
@@ -36,6 +37,7 @@
 %%     ein Keyword (z.B. "ownpubl") als Filter verwenden
 \nocite{*}
 %
+\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
 \printbibliography[env=bibliographyNUM,%
 				   keyword=ownpubl,%
 				   heading=bibintoc,%
@@ -66,6 +68,7 @@
 %%     ein Keyword (z.B. "ownpatent") als Filter verwenden
 \nocite{*}
 %%
+\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
 \printbibliography[env=bibliographyNUM,%
 									 keyword=ownpatent,%
 									 %heading=subbibliography,%
@@ -95,6 +98,7 @@
 %% und ein Keyword (z.B. "supervised") als Filter verwenden
 \nocite{*}
 %%
+\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
 \printbibliography[env=bibliographyNUM,%
 									 keyword=supervised,%
 									 %heading=subbibliography,%
