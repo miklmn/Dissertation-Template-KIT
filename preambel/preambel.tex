@@ -90,14 +90,14 @@
 \end{hyphenrules}
 }
 
+%for allowing hyphenation of words that contain a dash
+%using shortcuts \-/, \=/, \--, \==, \---, and \===
+\usepackage[shortcuts]{extdash}
+
 %Adding ngerman's language shorthands to english
 %see https://tex.stackexchange.com/questions/49359/babels-hyphenation-friendly-hyphen-in-multiple-languages/49366
 \useshorthands{"}
 \addto\extrasenglish{\languageshorthands{ngerman}}
-
-%for allowing hyphenation of words that contain a dash
-%using shortcuts \-/, \=/, \--, \==, \---, and \===
-\usepackage[shortcuts]{extdash}
 
 %Zur besseren Silbentrennung
 %s. http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Silbentrennung
@@ -1247,6 +1247,7 @@ verbose,
 \renewcommand*{\chapterformat}{\makebox[12mm][l]{\thechapter\autodot}}
 \renewcommand*{\sectionformat}{\makebox[12mm][l]{\thesection\autodot}}
 \renewcommand*{\subsectionformat}{\makebox[12mm][l]{\thesubsection\autodot}}
+\renewcommand*{\subsubsectionformat}{\makebox[12mm][l]{\thesubsubsection\autodot}}
 
 %% Forderung des KSP-Verlages: Alle Überschriften fett!
 %% Forderung des KSP-Verlagesg: Überschriften nicht in Blocksatz, sondern in Flattersatz
@@ -1857,7 +1858,7 @@ afterskip=\myparagraphafterskip%
 						isbn=false,%die ISBN-Felder nicht drucken
 						%doi=false,%
 						%eprint=false,%
-						block=none,
+						block=none,% fügt keinen extra Raum zwischen den einzelnen Einträgen
 						%block=space,% Füge zusätzlichen horizontalen Raum zwischen den Einträgen hinzu.
 						%block=par,% Beginne einen neuen Paragraphen für jeden Eintrag
 						%block=nbpar,% Ähnlich der par-Option, aber verbietet Seitensprünge zwischen den Übergängen und innerhalb der Einträge.
